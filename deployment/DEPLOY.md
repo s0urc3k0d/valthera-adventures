@@ -116,12 +116,12 @@ DOMAIN=valthera-adventures.sourcekod.fr
 openssl rand -base64 32
 ```
 
-### 4. Configurer Nginx (sur l'hôte)
+### 4. Configurer Nginx (ÉTAPE 1 - Avant SSL)
 
-Copier la configuration Nginx :
+Copier la configuration **initiale** (sans SSL) :
 ```bash
-# Copier le fichier de configuration
-sudo cp nginx/valthera-adventures.conf /etc/nginx/sites-available/
+# Copier le fichier de configuration INITIAL
+sudo cp nginx/valthera-adventures-initial.conf /etc/nginx/sites-available/valthera-adventures.conf
 
 # Activer le site
 sudo ln -s /etc/nginx/sites-available/valthera-adventures.conf /etc/nginx/sites-enabled/
@@ -143,7 +143,21 @@ sudo apt install certbot python3-certbot-nginx -y
 sudo certbot --nginx -d valthera-adventures.sourcekod.fr -d www.valthera-adventures.sourcekod.fr
 ```
 
-### 6. Démarrer l'Application
+### 6. Configurer Nginx (ÉTAPE 2 - Après SSL)
+
+Remplacer par la configuration **complète** avec SSL :
+```bash
+# Copier la configuration avec SSL
+sudo cp nginx/valthera-adventures.conf /etc/nginx/sites-available/valthera-adventures.conf
+
+# Tester la configuration
+sudo nginx -t
+
+# Recharger Nginx
+sudo systemctl reload nginx
+```
+
+### 7. Démarrer l'Application
 
 ```bash
 # Lancer les conteneurs Docker
@@ -153,7 +167,7 @@ docker compose -f docker-compose.prod.yml up -d --build
 docker compose -f docker-compose.prod.yml ps
 ```
 
-### 7. Déployer les Commandes Discord
+### 8. Déployer les Commandes Discord
 
 ```bash
 # Attendre que le bot soit démarré (30 secondes)
