@@ -3,7 +3,7 @@ import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
 import { DashboardTabs } from '@/components/dashboard/DashboardTabs';
 import { connectDB } from '@/lib/mongodb';
-import { Character, Quest, Guild } from '@/lib/models';
+import { Character, Guild } from '@/lib/models';
 
 export const metadata = {
   title: 'Mon Personnage',
@@ -13,11 +13,13 @@ export const metadata = {
 async function getCharacterData(discordId: string) {
   await connectDB();
 
-  const [character, quests, guild] = await Promise.all([
-    Character.findOne({ odiscordUserId: discordId }).lean(),
-    Quest.find({ odiscordUserId: discordId }).lean(),
-    Guild.findOne({ 'members.odiscordUserId': discordId }).lean(),
+  const [character, guild] = await Promise.all([
+    Character.findOne({ userId: discordId }).lean(),
+    Guild.findOne({ 'members.playerId': discordId }).lean(),
   ]);
+
+  // Les quêtes sont stockées dans le character
+  const quests = character?.quests || [];
 
   return { character, quests, guild };
 }

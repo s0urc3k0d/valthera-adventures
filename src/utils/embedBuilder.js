@@ -18,7 +18,14 @@ export function createEmbed(options = {}) {
   if (options.description) embed.setDescription(options.description);
   if (options.thumbnail) embed.setThumbnail(options.thumbnail);
   if (options.image) embed.setImage(options.image);
-  if (options.footer) embed.setFooter({ text: options.footer });
+  if (options.footer) {
+    // Support both string and object format for footer
+    if (typeof options.footer === 'string') {
+      embed.setFooter({ text: options.footer });
+    } else {
+      embed.setFooter(options.footer);
+    }
+  }
   if (options.author) embed.setAuthor(options.author);
   if (options.fields) embed.addFields(options.fields);
   
