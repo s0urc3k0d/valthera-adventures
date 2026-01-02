@@ -15,6 +15,7 @@
         "properties": ["finesse", "light", "thrown"]
       },
       "requirements": {},
+      "slot": "mainHand",
       "emoji": "🗡️"
     },
     "shortsword": {
@@ -32,6 +33,7 @@
         "properties": ["finesse", "light"]
       },
       "requirements": {},
+      "slot": "mainHand",
       "emoji": "⚔️"
     },
     "longsword": {
@@ -50,6 +52,7 @@
         "versatileDamage": "1d10"
       },
       "requirements": {},
+      "slot": "mainHand",
       "emoji": "⚔️"
     },
     "greatsword": {
@@ -67,6 +70,7 @@
         "properties": ["heavy", "two-handed"]
       },
       "requirements": { "str": 13 },
+      "slot": "mainHand",
       "emoji": "🗡️"
     },
     "battleaxe": {
@@ -85,6 +89,7 @@
         "versatileDamage": "1d10"
       },
       "requirements": {},
+      "slot": "mainHand",
       "emoji": "🪓"
     },
     "greataxe": {
@@ -101,7 +106,8 @@
         "damageType": "slashing",
         "properties": ["heavy", "two-handed"]
       },
-      "requirements": { "str": 13 },
+      "requirements": {},
+      "slot": "mainHand",
       "emoji": "🪓"
     },
     "mace": {
@@ -119,6 +125,7 @@
         "properties": []
       },
       "requirements": {},
+      "slot": "mainHand",
       "emoji": "🔨"
     },
     "warhammer": {
@@ -137,6 +144,7 @@
         "versatileDamage": "1d10"
       },
       "requirements": {},
+      "slot": "mainHand",
       "emoji": "🔨"
     },
     "quarterstaff": {
@@ -155,6 +163,7 @@
         "versatileDamage": "1d8"
       },
       "requirements": {},
+      "slot": "mainHand",
       "emoji": "🪄"
     },
     "rapier": {
@@ -172,6 +181,7 @@
         "properties": ["finesse"]
       },
       "requirements": {},
+      "slot": "mainHand",
       "emoji": "🤺"
     },
     "shortbow": {
@@ -190,6 +200,7 @@
         "range": { "normal": 80, "long": 320 }
       },
       "requirements": {},
+      "slot": "mainHand",
       "emoji": "🏹"
     },
     "longbow": {
@@ -208,6 +219,7 @@
         "range": { "normal": 150, "long": 600 }
       },
       "requirements": { "str": 13 },
+      "slot": "mainHand",
       "emoji": "🏹"
     },
     "crossbow_light": {
@@ -226,6 +238,7 @@
         "range": { "normal": 80, "long": 320 }
       },
       "requirements": {},
+      "slot": "mainHand",
       "emoji": "🎯"
     },
     "handaxe": {
@@ -244,6 +257,7 @@
         "range": { "normal": 20, "long": 60 }
       },
       "requirements": {},
+      "slot": "mainHand",
       "emoji": "🪓"
     },
     "spear": {
@@ -263,6 +277,7 @@
         "range": { "normal": 20, "long": 60 }
       },
       "requirements": {},
+      "slot": "mainHand",
       "emoji": "🔱"
     }
   },
