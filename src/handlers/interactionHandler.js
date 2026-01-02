@@ -46,16 +46,20 @@ async function safeUpdate(interaction, options) {
  * @param {Client} client - Client Discord
  */
 export async function handleInteraction(interaction, client) {
+  logger.debug(`Interaction reçue: type=${interaction.type}, customId=${interaction.customId || 'N/A'}`);
+  
   // Gestion des commandes slash
   if (interaction.isChatInputCommand()) {
     await handleCommand(interaction, client);
   }
   // Gestion des boutons
   else if (interaction.isButton()) {
+    logger.debug(`Bouton cliqué: ${interaction.customId}`);
     await handleButton(interaction, client);
   }
   // Gestion des menus de sélection
   else if (interaction.isStringSelectMenu()) {
+    logger.debug(`Menu sélectionné: ${interaction.customId}, valeur: ${interaction.values?.[0]}`);
     await handleSelectMenu(interaction, client);
   }
   // Gestion des modaux

@@ -117,6 +117,8 @@ export default {
     const userId = interaction.user.id;
     const state = creationSessions.get(userId);
     
+    logger.debug(`handleSelectMenu appelé: params=${JSON.stringify(params)}, userId=${userId}, hasState=${!!state}`);
+    
     if (!state) {
       return interaction.reply({
         embeds: [errorEmbed('Session expirée', 'Veuillez recommencer avec `/create`.')],
@@ -134,6 +136,8 @@ export default {
     
     const [menuType] = params;
     const selected = interaction.values[0];
+    
+    logger.debug(`Menu type: ${menuType}, selected: ${selected}, currentStep: ${state.step}`);
     
     switch (menuType) {
       case 'race':
