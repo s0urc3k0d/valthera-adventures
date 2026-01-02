@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
 export default function InvitePage() {
-  // Replace with your actual Discord bot invite link
-  const DISCORD_BOT_INVITE = 'https://discord.com/api/oauth2/authorize?client_id=YOUR_BOT_CLIENT_ID&permissions=2147485696&scope=bot%20applications.commands';
-  const DISCORD_SERVER_INVITE = 'https://discord.gg/valthera';
+  // Discord bot invite link
+  const DISCORD_BOT_INVITE = 'https://discord.com/oauth2/authorize?client_id=1456637041683992627&permissions=277025770560&scope=bot%20applications.commands';
+  const DISCORD_SERVER_INVITE = 'https://discord.com/invite/zddp4ErzMq';
 
   return (
     <div className="min-h-screen bg-valthera-950 flex items-center justify-center px-4">
