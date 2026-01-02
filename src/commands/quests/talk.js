@@ -250,6 +250,11 @@ async function startDialogue(interaction, character, npc, isUpdate = false) {
   // Mettre à jour la progression des quêtes (objectif "talk")
   const questUpdates = await checkTalkObjective(character, npc.npcId);
   
+  // Sauvegarder si des quêtes ont été mises à jour
+  if (questUpdates.length > 0) {
+    await character.save();
+  }
+  
   // Trouver le dialogue approprié
   const dialogue = findDialogueForNpc(character, npc.npcId);
   
