@@ -1,11 +1,22 @@
 import mongoose, { Schema, Model } from 'mongoose';
 
 // Types pour le Character (correspondant au modèle du bot)
+export interface ICharacterQuest {
+  questId: string;
+  status: 'active' | 'completed' | 'failed' | 'abandoned';
+  progress: Record<string, any>;
+  startedAt: Date;
+  completedAt?: Date;
+}
+
 export interface ICharacter {
-  odiscordUserId: string;
+  userId: string;
+  guildId: string;
   name: string;
   race: string;
+  subrace?: string;
   class: string;
+  subclass?: string;
   background?: string;
   level: number;
   experience: number;
@@ -26,10 +37,13 @@ export interface ICharacter {
     current: number;
     max: number;
   };
+  ac: number;
+  speed: number;
   inventory: Array<{
     itemId: string;
     quantity: number;
     equipped?: boolean;
+    slot?: string;
   }>;
   equipment: {
     weapon?: string;
@@ -39,6 +53,7 @@ export interface ICharacter {
   skills: string[];
   spells: string[];
   abilities: string[];
+  quests: ICharacterQuest[];
   location: {
     zoneId: string;
     subZone?: string;
@@ -71,10 +86,13 @@ export interface ICharacter {
 // Schéma Character (réplique du bot)
 const CharacterSchema = new Schema<ICharacter>(
   {
-    odiscordUserId: { type: String, required: true, unique: true, index: true },
+    userId: { type: String, required: true, index: true },
+    guildId: { type: String, required: true, index: true },
     name: { type: String, required: true },
     race: { type: String, required: true },
+    subrace: String,
     class: { type: String, required: true },
+    subclass: String,
     background: String,
     level: { type: Number, default: 1 },
     experience: { type: Number, default: 0 },
@@ -110,10 +128,21 @@ const CharacterSchema = new Schema<ICharacter>(
     skills: [String],
     spells: [String],
     abilities: [String],
+    quests: [
+      {
+        questId: String,
+        status: { type: String, enum: ['active', 'completed', 'failed', 'abandoned'], default: 'active' },
+        progress: { type: Schema.Types.Mixed, default: {} },
+        startedAt: { type: Date, default: Date.now },
+        completedAt: Date,
+      },
+    ],
     location: {
       zoneId: { type: String, default: 'val-serein' },
       subZone: String,
     },
+    ac: { type: Number, default: 10 },
+    speed: { type: Number, default: 30 },
     reputation: { type: Map, of: Number, default: {} },
     achievements: [String],
     statistics: {
