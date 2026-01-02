@@ -1,0 +1,72 @@
+services:
+  # Bot Discord
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: valthera-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - MONGO_URI=mongodb://mongo:27017/valthera
+    depends_on:
+      mongo:
+        condition: service_healthy
+    networks:
+      - valthera-network
+    healthcheck:
+      test: ["CMD", "node", "src/scripts/healthcheck.js"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Application Web Next.js
+  web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: valthera-web
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      - NODE_ENV=production
+      - MONGODB_URI=mongodb://mongo:27017/valthera
+    depends_on:
+      mongo:
+        condition: service_healthy
+    networks:
+      - valthera-network
+    ports:
+      - "127.0.0.1:3080:3000"
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3000/api/stats"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # MongoDB
+  mongo:
+    image: mongo:7
+    container_name: valthera-mongo
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+      - ./database/mongo-init:/docker-entrypoint-initdb.d
+    networks:
+      - valthera-network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.adminCommand('ping')"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+networks:
+  valthera-network:
+    driver: bridge
+
+volumes:
+  mongo-data:
