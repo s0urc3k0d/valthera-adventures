@@ -207,9 +207,17 @@ export interface IGuild {
   leaderId: string;
   officers: string[];
   members: Array<{
-    odiscordUserId: string;
+    playerId: string;
+    playerName: string;
+    characterName: string;
     rank: string;
     joinedAt: Date;
+    contribution?: {
+      gold: number;
+      quests: number;
+      monsters: number;
+    };
+    lastActive: Date;
   }>;
   level: number;
   experience: number;
@@ -227,9 +235,17 @@ const GuildSchema = new Schema<IGuild>(
     officers: [String],
     members: [
       {
-        odiscordUserId: String,
+        playerId: String,
+        playerName: String,
+        characterName: String,
         rank: String,
         joinedAt: { type: Date, default: Date.now },
+        contribution: {
+          gold: { type: Number, default: 0 },
+          quests: { type: Number, default: 0 },
+          monsters: { type: Number, default: 0 },
+        },
+        lastActive: { type: Date, default: Date.now },
       },
     ],
     level: { type: Number, default: 1 },

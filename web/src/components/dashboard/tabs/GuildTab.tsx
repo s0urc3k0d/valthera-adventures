@@ -35,9 +35,9 @@ export function GuildTab({ guild, character }: GuildTabProps) {
     );
   }
 
-  const isLeader = guild.leaderId === character.odiscordUserId;
-  const isOfficer = guild.officers?.includes(character.odiscordUserId);
-  const memberInfo = guild.members.find((m) => m.odiscordUserId === character.odiscordUserId);
+  const isLeader = guild.leaderId === character.userId;
+  const isOfficer = guild.officers?.includes(character.userId);
+  const memberInfo = guild.members.find((m) => m.playerId === character.userId);
 
   // Calculer XP pour niveau suivant
   const xpForNextLevel = guild.level * 5000;
@@ -147,13 +147,13 @@ export function GuildTab({ guild, character }: GuildTabProps) {
             </thead>
             <tbody>
               {guild.members.map((member) => {
-                const isCurrentUser = member.odiscordUserId === character.odiscordUserId;
-                const isMemberLeader = member.odiscordUserId === guild.leaderId;
-                const isMemberOfficer = guild.officers?.includes(member.odiscordUserId);
+                const isCurrentUser = member.playerId === character.userId;
+                const isMemberLeader = member.playerId === guild.leaderId;
+                const isMemberOfficer = guild.officers?.includes(member.playerId);
 
                 return (
                   <tr
-                    key={member.odiscordUserId}
+                    key={member.playerId}
                     className={isCurrentUser ? 'bg-valthera-500/10' : ''}
                   >
                     <td>
@@ -162,7 +162,7 @@ export function GuildTab({ guild, character }: GuildTabProps) {
                           <Users className="w-4 h-4 text-valthera-300" />
                         </div>
                         <span className={isCurrentUser ? 'text-valthera-400 font-medium' : 'text-valthera-100'}>
-                          {member.odiscordUserId.slice(0, 8)}...
+                          {member.playerName || member.characterName || member.playerId.slice(0, 8) + '...'}
                           {isCurrentUser && ' (Vous)'}
                         </span>
                       </div>
