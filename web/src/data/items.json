@@ -1,0 +1,1038 @@
+{
+  "weapons": {
+    "dagger": {
+      "id": "dagger",
+      "name": "Dague",
+      "type": "weapon",
+      "subtype": "melee",
+      "rarity": "common",
+      "description": "Une petite lame effilée, parfaite pour les coups rapides et discrets.",
+      "price": 2,
+      "weight": 1,
+      "stats": {
+        "damage": "1d4",
+        "damageType": "piercing",
+        "properties": ["finesse", "light", "thrown"]
+      },
+      "requirements": {},
+      "slot": "mainHand",
+      "emoji": "🗡️"
+    },
+    "shortsword": {
+      "id": "shortsword",
+      "name": "Épée courte",
+      "type": "weapon",
+      "subtype": "melee",
+      "rarity": "common",
+      "description": "Une lame légère et maniable, idéale pour le combat rapproché.",
+      "price": 10,
+      "weight": 2,
+      "stats": {
+        "damage": "1d6",
+        "damageType": "piercing",
+        "properties": ["finesse", "light"]
+      },
+      "requirements": {},
+      "slot": "mainHand",
+      "emoji": "⚔️"
+    },
+    "longsword": {
+      "id": "longsword",
+      "name": "Épée longue",
+      "type": "weapon",
+      "subtype": "melee",
+      "rarity": "common",
+      "description": "Une épée classique à une main, symbole des guerriers de Valthera.",
+      "price": 15,
+      "weight": 3,
+      "stats": {
+        "damage": "1d8",
+        "damageType": "slashing",
+        "properties": ["versatile"],
+        "versatileDamage": "1d10"
+      },
+      "requirements": {},
+      "slot": "mainHand",
+      "emoji": "⚔️"
+    },
+    "greatsword": {
+      "id": "greatsword",
+      "name": "Épée à deux mains",
+      "type": "weapon",
+      "subtype": "melee",
+      "rarity": "common",
+      "description": "Une lame massive nécessitant deux mains, dévastatrice au combat.",
+      "price": 50,
+      "weight": 6,
+      "stats": {
+        "damage": "2d6",
+        "damageType": "slashing",
+        "properties": ["heavy", "two-handed"]
+      },
+      "requirements": { "str": 13 },
+      "slot": "mainHand",
+      "emoji": "🗡️"
+    },
+    "battleaxe": {
+      "id": "battleaxe",
+      "name": "Hache de bataille",
+      "type": "weapon",
+      "subtype": "melee",
+      "rarity": "common",
+      "description": "Une hache robuste, favorite des nains et des barbares.",
+      "price": 10,
+      "weight": 4,
+      "stats": {
+        "damage": "1d8",
+        "damageType": "slashing",
+        "properties": ["versatile"],
+        "versatileDamage": "1d10"
+      },
+      "requirements": {},
+      "slot": "mainHand",
+      "emoji": "🪓"
+    },
+    "greataxe": {
+      "id": "greataxe",
+      "name": "Grande hache",
+      "type": "weapon",
+      "subtype": "melee",
+      "rarity": "common",
+      "description": "Une hache énorme capable de trancher un homme en deux.",
+      "price": 30,
+      "weight": 7,
+      "stats": {
+        "damage": "1d12",
+        "damageType": "slashing",
+        "properties": ["heavy", "two-handed"]
+      },
+      "requirements": {},
+      "slot": "mainHand",
+      "emoji": "🪓"
+    },
+    "mace": {
+      "id": "mace",
+      "name": "Masse d'armes",
+      "type": "weapon",
+      "subtype": "melee",
+      "rarity": "common",
+      "description": "Une arme contondante efficace contre les armures.",
+      "price": 5,
+      "weight": 4,
+      "stats": {
+        "damage": "1d6",
+        "damageType": "bludgeoning",
+        "properties": []
+      },
+      "requirements": {},
+      "slot": "mainHand",
+      "emoji": "🔨"
+    },
+    "warhammer": {
+      "id": "warhammer",
+      "name": "Marteau de guerre",
+      "type": "weapon",
+      "subtype": "melee",
+      "rarity": "common",
+      "description": "Un marteau lourd capable de briser os et armures.",
+      "price": 15,
+      "weight": 2,
+      "stats": {
+        "damage": "1d8",
+        "damageType": "bludgeoning",
+        "properties": ["versatile"],
+        "versatileDamage": "1d10"
+      },
+      "requirements": {},
+      "slot": "mainHand",
+      "emoji": "🔨"
+    },
+    "quarterstaff": {
+      "id": "quarterstaff",
+      "name": "Bâton",
+      "type": "weapon",
+      "subtype": "melee",
+      "rarity": "common",
+      "description": "Un bâton de bois simple mais polyvalent.",
+      "price": 2,
+      "weight": 4,
+      "stats": {
+        "damage": "1d6",
+        "damageType": "bludgeoning",
+        "properties": ["versatile"],
+        "versatileDamage": "1d8"
+      },
+      "requirements": {},
+      "slot": "mainHand",
+      "emoji": "🪄"
+    },
+    "rapier": {
+      "id": "rapier",
+      "name": "Rapière",
+      "type": "weapon",
+      "subtype": "melee",
+      "rarity": "common",
+      "description": "Une fine lame d'estoc, arme de prédilection des duellistes.",
+      "price": 25,
+      "weight": 2,
+      "stats": {
+        "damage": "1d8",
+        "damageType": "piercing",
+        "properties": ["finesse"]
+      },
+      "requirements": {},
+      "slot": "mainHand",
+      "emoji": "🤺"
+    },
+    "shortbow": {
+      "id": "shortbow",
+      "name": "Arc court",
+      "type": "weapon",
+      "subtype": "ranged",
+      "rarity": "common",
+      "description": "Un arc léger et maniable pour le combat à distance.",
+      "price": 25,
+      "weight": 2,
+      "stats": {
+        "damage": "1d6",
+        "damageType": "piercing",
+        "properties": ["ammunition", "two-handed"],
+        "range": { "normal": 80, "long": 320 }
+      },
+      "requirements": {},
+      "slot": "mainHand",
+      "emoji": "🏹"
+    },
+    "longbow": {
+      "id": "longbow",
+      "name": "Arc long",
+      "type": "weapon",
+      "subtype": "ranged",
+      "rarity": "common",
+      "description": "Un grand arc puissant pour les tireurs expérimentés.",
+      "price": 50,
+      "weight": 2,
+      "stats": {
+        "damage": "1d8",
+        "damageType": "piercing",
+        "properties": ["ammunition", "heavy", "two-handed"],
+        "range": { "normal": 150, "long": 600 }
+      },
+      "requirements": { "str": 13 },
+      "slot": "mainHand",
+      "emoji": "🏹"
+    },
+    "crossbow_light": {
+      "id": "crossbow_light",
+      "name": "Arbalète légère",
+      "type": "weapon",
+      "subtype": "ranged",
+      "rarity": "common",
+      "description": "Une arbalète compacte facile à manier.",
+      "price": 25,
+      "weight": 5,
+      "stats": {
+        "damage": "1d8",
+        "damageType": "piercing",
+        "properties": ["ammunition", "loading", "two-handed"],
+        "range": { "normal": 80, "long": 320 }
+      },
+      "requirements": {},
+      "slot": "mainHand",
+      "emoji": "🎯"
+    },
+    "handaxe": {
+      "id": "handaxe",
+      "name": "Hachette",
+      "type": "weapon",
+      "subtype": "melee",
+      "rarity": "common",
+      "description": "Une petite hache pouvant être lancée.",
+      "price": 5,
+      "weight": 2,
+      "stats": {
+        "damage": "1d6",
+        "damageType": "slashing",
+        "properties": ["light", "thrown"],
+        "range": { "normal": 20, "long": 60 }
+      },
+      "requirements": {},
+      "slot": "mainHand",
+      "emoji": "🪓"
+    },
+    "spear": {
+      "id": "spear",
+      "name": "Lance",
+      "type": "weapon",
+      "subtype": "melee",
+      "rarity": "common",
+      "description": "Une arme d'hast simple mais efficace.",
+      "price": 1,
+      "weight": 3,
+      "stats": {
+        "damage": "1d6",
+        "damageType": "piercing",
+        "properties": ["thrown", "versatile"],
+        "versatileDamage": "1d8",
+        "range": { "normal": 20, "long": 60 }
+      },
+      "requirements": {},
+      "slot": "mainHand",
+      "emoji": "🔱"
+    }
+  },
+  
+  "armor": {
+    "padded_armor": {
+      "id": "padded_armor",
+      "name": "Armure matelassée",
+      "type": "armor",
+      "subtype": "light",
+      "rarity": "common",
+      "description": "Couches de tissu matelassé offrant une protection basique.",
+      "price": 5,
+      "weight": 8,
+      "stats": {
+        "armorClass": 11,
+        "dexBonus": true,
+        "maxDexBonus": null,
+        "stealthDisadvantage": true
+      },
+      "requirements": {},
+      "slot": "chest",
+      "emoji": "👕"
+    },
+    "leather_armor": {
+      "id": "leather_armor",
+      "name": "Armure de cuir",
+      "type": "armor",
+      "subtype": "light",
+      "rarity": "common",
+      "description": "Cuir souple offrant mobilité et protection légère.",
+      "price": 10,
+      "weight": 10,
+      "stats": {
+        "armorClass": 11,
+        "dexBonus": true,
+        "maxDexBonus": null,
+        "stealthDisadvantage": false
+      },
+      "requirements": {},
+      "slot": "chest",
+      "emoji": "🦺"
+    },
+    "studded_leather": {
+      "id": "studded_leather",
+      "name": "Cuir clouté",
+      "type": "armor",
+      "subtype": "light",
+      "rarity": "common",
+      "description": "Armure de cuir renforcée de rivets métalliques.",
+      "price": 45,
+      "weight": 13,
+      "stats": {
+        "armorClass": 12,
+        "dexBonus": true,
+        "maxDexBonus": null,
+        "stealthDisadvantage": false
+      },
+      "requirements": {},
+      "slot": "chest",
+      "emoji": "🦺"
+    },
+    "hide_armor": {
+      "id": "hide_armor",
+      "name": "Armure de peau",
+      "type": "armor",
+      "subtype": "medium",
+      "rarity": "common",
+      "description": "Peaux et fourrures épaisses de bêtes sauvages.",
+      "price": 10,
+      "weight": 12,
+      "stats": {
+        "armorClass": 12,
+        "dexBonus": true,
+        "maxDexBonus": 2,
+        "stealthDisadvantage": false
+      },
+      "requirements": {},
+      "slot": "chest",
+      "emoji": "🧥"
+    },
+    "chain_shirt": {
+      "id": "chain_shirt",
+      "name": "Chemise de mailles",
+      "type": "armor",
+      "subtype": "medium",
+      "rarity": "common",
+      "description": "Une chemise d'anneaux métalliques entrelacés.",
+      "price": 50,
+      "weight": 20,
+      "stats": {
+        "armorClass": 13,
+        "dexBonus": true,
+        "maxDexBonus": 2,
+        "stealthDisadvantage": false
+      },
+      "requirements": {},
+      "slot": "chest",
+      "emoji": "⛓️"
+    },
+    "scale_mail": {
+      "id": "scale_mail",
+      "name": "Armure d'écailles",
+      "type": "armor",
+      "subtype": "medium",
+      "rarity": "common",
+      "description": "Écailles métalliques cousues sur un support de cuir.",
+      "price": 50,
+      "weight": 45,
+      "stats": {
+        "armorClass": 14,
+        "dexBonus": true,
+        "maxDexBonus": 2,
+        "stealthDisadvantage": true
+      },
+      "requirements": {},
+      "slot": "chest",
+      "emoji": "🐉"
+    },
+    "breastplate": {
+      "id": "breastplate",
+      "name": "Cuirasse",
+      "type": "armor",
+      "subtype": "medium",
+      "rarity": "common",
+      "description": "Plastron métallique protégeant le torse.",
+      "price": 400,
+      "weight": 20,
+      "stats": {
+        "armorClass": 14,
+        "dexBonus": true,
+        "maxDexBonus": 2,
+        "stealthDisadvantage": false
+      },
+      "requirements": {},
+      "slot": "chest",
+      "emoji": "🛡️"
+    },
+    "half_plate": {
+      "id": "half_plate",
+      "name": "Demi-plate",
+      "type": "armor",
+      "subtype": "medium",
+      "rarity": "uncommon",
+      "description": "Plaques métalliques protégeant les zones vitales.",
+      "price": 750,
+      "weight": 40,
+      "stats": {
+        "armorClass": 15,
+        "dexBonus": true,
+        "maxDexBonus": 2,
+        "stealthDisadvantage": true
+      },
+      "requirements": {},
+      "slot": "chest",
+      "emoji": "🛡️"
+    },
+    "ring_mail": {
+      "id": "ring_mail",
+      "name": "Cotte d'anneaux",
+      "type": "armor",
+      "subtype": "heavy",
+      "rarity": "common",
+      "description": "Anneaux métalliques cousus sur une armure de cuir.",
+      "price": 30,
+      "weight": 40,
+      "stats": {
+        "armorClass": 14,
+        "dexBonus": false,
+        "maxDexBonus": 0,
+        "stealthDisadvantage": true
+      },
+      "requirements": {},
+      "slot": "chest",
+      "emoji": "⛓️"
+    },
+    "chain_mail": {
+      "id": "chain_mail",
+      "name": "Cotte de mailles",
+      "type": "armor",
+      "subtype": "heavy",
+      "rarity": "common",
+      "description": "Armure complète d'anneaux métalliques entrelacés.",
+      "price": 75,
+      "weight": 55,
+      "stats": {
+        "armorClass": 16,
+        "dexBonus": false,
+        "maxDexBonus": 0,
+        "stealthDisadvantage": true
+      },
+      "requirements": { "str": 13 },
+      "slot": "chest",
+      "emoji": "⛓️"
+    },
+    "splint_armor": {
+      "id": "splint_armor",
+      "name": "Armure à attelles",
+      "type": "armor",
+      "subtype": "heavy",
+      "rarity": "uncommon",
+      "description": "Bandes de métal vertical rivetées sur un support de cuir.",
+      "price": 200,
+      "weight": 60,
+      "stats": {
+        "armorClass": 17,
+        "dexBonus": false,
+        "maxDexBonus": 0,
+        "stealthDisadvantage": true
+      },
+      "requirements": { "str": 15 },
+      "slot": "chest",
+      "emoji": "🛡️"
+    },
+    "plate_armor": {
+      "id": "plate_armor",
+      "name": "Harnois",
+      "type": "armor",
+      "subtype": "heavy",
+      "rarity": "rare",
+      "description": "Armure de plates complète, protection ultime du guerrier.",
+      "price": 1500,
+      "weight": 65,
+      "stats": {
+        "armorClass": 18,
+        "dexBonus": false,
+        "maxDexBonus": 0,
+        "stealthDisadvantage": true
+      },
+      "requirements": { "str": 15 },
+      "slot": "chest",
+      "emoji": "🏰"
+    },
+    "shield": {
+      "id": "shield",
+      "name": "Bouclier",
+      "type": "armor",
+      "subtype": "shield",
+      "rarity": "common",
+      "description": "Un bouclier en bois et métal offrant +2 CA.",
+      "price": 10,
+      "weight": 6,
+      "stats": {
+        "armorClassBonus": 2
+      },
+      "requirements": {},
+      "slot": "offHand",
+      "emoji": "🛡️"
+    },
+    "leather_helmet": {
+      "id": "leather_helmet",
+      "name": "Casque de cuir",
+      "type": "armor",
+      "subtype": "helmet",
+      "rarity": "common",
+      "description": "Protection basique pour la tête.",
+      "price": 5,
+      "weight": 1,
+      "stats": {},
+      "requirements": {},
+      "slot": "head",
+      "emoji": "👒"
+    },
+    "steel_helmet": {
+      "id": "steel_helmet",
+      "name": "Heaume d'acier",
+      "type": "armor",
+      "subtype": "helmet",
+      "rarity": "uncommon",
+      "description": "Un heaume solide en acier forgé.",
+      "price": 30,
+      "weight": 3,
+      "stats": {},
+      "requirements": {},
+      "slot": "head",
+      "emoji": "⛑️"
+    }
+  },
+  
+  "consumables": {
+    "health_potion_minor": {
+      "id": "health_potion_minor",
+      "name": "Potion de soins mineure",
+      "type": "consumable",
+      "subtype": "potion",
+      "rarity": "common",
+      "description": "Un liquide rouge éclatant qui restaure une petite quantité de vie.",
+      "price": 50,
+      "weight": 0.5,
+      "stats": {
+        "healing": "2d4+2",
+        "effect": "heal"
+      },
+      "stackable": true,
+      "maxStack": 10,
+      "emoji": "🧪"
+    },
+    "health_potion": {
+      "id": "health_potion",
+      "name": "Potion de soins",
+      "type": "consumable",
+      "subtype": "potion",
+      "rarity": "common",
+      "description": "Un liquide rouge brillant qui restaure la vitalité.",
+      "price": 100,
+      "weight": 0.5,
+      "stats": {
+        "healing": "4d4+4",
+        "effect": "heal"
+      },
+      "stackable": true,
+      "maxStack": 10,
+      "emoji": "🧪"
+    },
+    "health_potion_greater": {
+      "id": "health_potion_greater",
+      "name": "Potion de soins supérieure",
+      "type": "consumable",
+      "subtype": "potion",
+      "rarity": "uncommon",
+      "description": "Un liquide rouge intense aux propriétés curatives puissantes.",
+      "price": 250,
+      "weight": 0.5,
+      "stats": {
+        "healing": "8d4+8",
+        "effect": "heal"
+      },
+      "stackable": true,
+      "maxStack": 5,
+      "emoji": "🧪"
+    },
+    "health_potion_supreme": {
+      "id": "health_potion_supreme",
+      "name": "Potion de soins suprême",
+      "type": "consumable",
+      "subtype": "potion",
+      "rarity": "rare",
+      "description": "Un élixir d'un rouge profond capable de guérir les pires blessures.",
+      "price": 1000,
+      "weight": 0.5,
+      "stats": {
+        "healing": "10d4+20",
+        "effect": "heal"
+      },
+      "stackable": true,
+      "maxStack": 5,
+      "emoji": "🧪"
+    },
+    "mana_potion": {
+      "id": "mana_potion",
+      "name": "Potion de mana",
+      "type": "consumable",
+      "subtype": "potion",
+      "rarity": "uncommon",
+      "description": "Un liquide bleu luminescent qui restaure les emplacements de sorts.",
+      "price": 150,
+      "weight": 0.5,
+      "stats": {
+        "restoreSpellSlot": 1,
+        "effect": "restoreMana"
+      },
+      "stackable": true,
+      "maxStack": 5,
+      "emoji": "💙"
+    },
+    "antidote": {
+      "id": "antidote",
+      "name": "Antidote",
+      "type": "consumable",
+      "subtype": "potion",
+      "rarity": "common",
+      "description": "Neutralise la plupart des poisons.",
+      "price": 50,
+      "weight": 0.5,
+      "stats": {
+        "removeEffect": "poisoned",
+        "effect": "cure"
+      },
+      "stackable": true,
+      "maxStack": 10,
+      "emoji": "💚"
+    },
+    "strength_potion": {
+      "id": "strength_potion",
+      "name": "Potion de force du géant",
+      "type": "consumable",
+      "subtype": "potion",
+      "rarity": "rare",
+      "description": "Confère temporairement la force d'un géant des collines.",
+      "price": 500,
+      "weight": 0.5,
+      "stats": {
+        "buffAttribute": "str",
+        "buffValue": 21,
+        "duration": 600,
+        "effect": "buff"
+      },
+      "stackable": true,
+      "maxStack": 3,
+      "emoji": "💪"
+    },
+    "invisibility_potion": {
+      "id": "invisibility_potion",
+      "name": "Potion d'invisibilité",
+      "type": "consumable",
+      "subtype": "potion",
+      "rarity": "rare",
+      "description": "Rend invisible pendant une courte durée.",
+      "price": 400,
+      "weight": 0.5,
+      "stats": {
+        "addEffect": "invisible",
+        "duration": 60,
+        "effect": "buff"
+      },
+      "stackable": true,
+      "maxStack": 3,
+      "emoji": "👻"
+    },
+    "ration": {
+      "id": "ration",
+      "name": "Rations de voyage",
+      "type": "consumable",
+      "subtype": "food",
+      "rarity": "common",
+      "description": "Nourriture séchée pour un jour de voyage.",
+      "price": 1,
+      "weight": 2,
+      "stats": {
+        "effect": "food"
+      },
+      "stackable": true,
+      "maxStack": 30,
+      "emoji": "🍖"
+    },
+    "torch": {
+      "id": "torch",
+      "name": "Torche",
+      "type": "consumable",
+      "subtype": "tool",
+      "rarity": "common",
+      "description": "Éclaire pendant 1 heure dans un rayon de 20 pieds.",
+      "price": 1,
+      "weight": 1,
+      "stats": {
+        "lightRadius": 20,
+        "duration": 60,
+        "effect": "light"
+      },
+      "stackable": true,
+      "maxStack": 10,
+      "emoji": "🔥"
+    },
+    "rope": {
+      "id": "rope",
+      "name": "Corde (50 pieds)",
+      "type": "consumable",
+      "subtype": "tool",
+      "rarity": "common",
+      "description": "Une corde de chanvre solide.",
+      "price": 1,
+      "weight": 10,
+      "stats": {
+        "effect": "utility"
+      },
+      "stackable": true,
+      "maxStack": 5,
+      "emoji": "🪢"
+    },
+    "lockpick": {
+      "id": "lockpick",
+      "name": "Outils de crochetage",
+      "type": "consumable",
+      "subtype": "tool",
+      "rarity": "common",
+      "description": "Petits outils pour ouvrir des serrures.",
+      "price": 25,
+      "weight": 0,
+      "stats": {
+        "skillBonus": { "skill": "sleight_of_hand", "bonus": 2 },
+        "effect": "tool"
+      },
+      "stackable": false,
+      "emoji": "🔐"
+    }
+  },
+  
+  "accessories": {
+    "ring_protection": {
+      "id": "ring_protection",
+      "name": "Anneau de protection",
+      "type": "accessory",
+      "subtype": "ring",
+      "rarity": "rare",
+      "description": "Un anneau enchanté qui renforce les défenses du porteur.",
+      "price": 1000,
+      "weight": 0,
+      "stats": {
+        "acBonus": 1,
+        "savingThrowBonus": 1
+      },
+      "slot": "ring1",
+      "emoji": "💍"
+    },
+    "ring_strength": {
+      "id": "ring_strength",
+      "name": "Anneau de force",
+      "type": "accessory",
+      "subtype": "ring",
+      "rarity": "uncommon",
+      "description": "Ce simple anneau de fer confère une force accrue.",
+      "price": 300,
+      "weight": 0,
+      "stats": {
+        "attributeBonus": { "str": 2 }
+      },
+      "slot": "ring1",
+      "emoji": "💍"
+    },
+    "amulet_health": {
+      "id": "amulet_health",
+      "name": "Amulette de santé",
+      "type": "accessory",
+      "subtype": "amulet",
+      "rarity": "uncommon",
+      "description": "Cette amulette en forme de cœur augmente la vitalité.",
+      "price": 500,
+      "weight": 0,
+      "stats": {
+        "maxHpBonus": 10
+      },
+      "slot": "amulet",
+      "emoji": "📿"
+    },
+    "amulet_wisdom": {
+      "id": "amulet_wisdom",
+      "name": "Amulette du sage",
+      "type": "accessory",
+      "subtype": "amulet",
+      "rarity": "rare",
+      "description": "Une amulette ancienne qui aiguise l'esprit.",
+      "price": 800,
+      "weight": 0,
+      "stats": {
+        "attributeBonus": { "wis": 2 }
+      },
+      "slot": "amulet",
+      "emoji": "📿"
+    },
+    "cloak_elvenkind": {
+      "id": "cloak_elvenkind",
+      "name": "Cape elfique",
+      "type": "accessory",
+      "subtype": "cape",
+      "rarity": "rare",
+      "description": "Une cape tissée par les elfes, qui aide à se fondre dans l'ombre.",
+      "price": 750,
+      "weight": 1,
+      "stats": {
+        "skillBonus": { "skill": "stealth", "bonus": 5 }
+      },
+      "slot": "cape",
+      "emoji": "🧥"
+    },
+    "boots_speed": {
+      "id": "boots_speed",
+      "name": "Bottes de vitesse",
+      "type": "accessory",
+      "subtype": "boots",
+      "rarity": "rare",
+      "description": "Ces bottes magiques augmentent la vitesse de déplacement.",
+      "price": 600,
+      "weight": 1,
+      "stats": {
+        "speedBonus": 10
+      },
+      "slot": "feet",
+      "emoji": "👢"
+    },
+    "belt_giant_strength": {
+      "id": "belt_giant_strength",
+      "name": "Ceinture de force de géant",
+      "type": "accessory",
+      "subtype": "belt",
+      "rarity": "legendary",
+      "description": "Cette large ceinture confère la force d'un géant des collines.",
+      "price": 5000,
+      "weight": 1,
+      "stats": {
+        "setAttribute": { "str": 21 }
+      },
+      "slot": "belt",
+      "emoji": "🎗️"
+    },
+    "gauntlets_ogre": {
+      "id": "gauntlets_ogre",
+      "name": "Gantelets de puissance d'ogre",
+      "type": "accessory",
+      "subtype": "gloves",
+      "rarity": "uncommon",
+      "description": "Ces gantelets métalliques augmentent la force du porteur.",
+      "price": 400,
+      "weight": 1,
+      "stats": {
+        "setAttribute": { "str": 19 }
+      },
+      "slot": "hands",
+      "emoji": "🧤"
+    }
+  },
+  
+  "misc": {
+    "gold_coin": {
+      "id": "gold_coin",
+      "name": "Pièce d'or",
+      "type": "misc",
+      "subtype": "currency",
+      "rarity": "common",
+      "description": "La monnaie standard de Valthera.",
+      "price": 1,
+      "weight": 0.02,
+      "stackable": true,
+      "maxStack": 999999,
+      "emoji": "🪙"
+    },
+    "gem_ruby": {
+      "id": "gem_ruby",
+      "name": "Rubis",
+      "type": "misc",
+      "subtype": "gem",
+      "rarity": "rare",
+      "description": "Une pierre précieuse d'un rouge profond.",
+      "price": 500,
+      "weight": 0,
+      "stackable": true,
+      "maxStack": 99,
+      "emoji": "🔴"
+    },
+    "gem_sapphire": {
+      "id": "gem_sapphire",
+      "name": "Saphir",
+      "type": "misc",
+      "subtype": "gem",
+      "rarity": "rare",
+      "description": "Une pierre précieuse d'un bleu éclatant.",
+      "price": 500,
+      "weight": 0,
+      "stackable": true,
+      "maxStack": 99,
+      "emoji": "🔵"
+    },
+    "gem_emerald": {
+      "id": "gem_emerald",
+      "name": "Émeraude",
+      "type": "misc",
+      "subtype": "gem",
+      "rarity": "rare",
+      "description": "Une pierre précieuse d'un vert brillant.",
+      "price": 500,
+      "weight": 0,
+      "stackable": true,
+      "maxStack": 99,
+      "emoji": "💚"
+    },
+    "gem_diamond": {
+      "id": "gem_diamond",
+      "name": "Diamant",
+      "type": "misc",
+      "subtype": "gem",
+      "rarity": "legendary",
+      "description": "La plus précieuse des pierres, d'une pureté parfaite.",
+      "price": 2000,
+      "weight": 0,
+      "stackable": true,
+      "maxStack": 99,
+      "emoji": "💎"
+    },
+    "monster_fang": {
+      "id": "monster_fang",
+      "name": "Croc de monstre",
+      "type": "misc",
+      "subtype": "material",
+      "rarity": "common",
+      "description": "Un croc arraché à une créature. Utile pour l'artisanat.",
+      "price": 5,
+      "weight": 0.1,
+      "stackable": true,
+      "maxStack": 99,
+      "emoji": "🦷"
+    },
+    "monster_hide": {
+      "id": "monster_hide",
+      "name": "Peau de monstre",
+      "type": "misc",
+      "subtype": "material",
+      "rarity": "common",
+      "description": "Une peau tannée de créature. Peut servir à l'artisanat.",
+      "price": 10,
+      "weight": 2,
+      "stackable": true,
+      "maxStack": 50,
+      "emoji": "🧶"
+    },
+    "iron_ore": {
+      "id": "iron_ore",
+      "name": "Minerai de fer",
+      "type": "misc",
+      "subtype": "material",
+      "rarity": "common",
+      "description": "Du minerai brut pouvant être fondu.",
+      "price": 2,
+      "weight": 5,
+      "stackable": true,
+      "maxStack": 50,
+      "emoji": "🪨"
+    },
+    "herb_healing": {
+      "id": "herb_healing",
+      "name": "Herbe médicinale",
+      "type": "misc",
+      "subtype": "material",
+      "rarity": "common",
+      "description": "Une plante aux propriétés curatives, utilisée en alchimie.",
+      "price": 5,
+      "weight": 0.1,
+      "stackable": true,
+      "maxStack": 99,
+      "emoji": "🌿"
+    },
+    "ancient_tome": {
+      "id": "ancient_tome",
+      "name": "Tome ancien",
+      "type": "misc",
+      "subtype": "treasure",
+      "rarity": "epic",
+      "description": "Un vieux livre rempli de connaissances oubliées.",
+      "price": 1000,
+      "weight": 3,
+      "stackable": false,
+      "emoji": "📕"
+    }
+  },
+  
+  "starterKits": {
+    "warrior": ["longsword", "shield", "chain_shirt", "health_potion_minor", "health_potion_minor", "ration", "ration", "torch"],
+    "rogue": ["shortsword", "dagger", "leather_armor", "lockpick", "health_potion_minor", "health_potion_minor", "rope", "torch"],
+    "mage": ["quarterstaff", "padded_armor", "health_potion_minor", "mana_potion", "torch", "ration", "ration"],
+    "ranger": ["longbow", "shortsword", "leather_armor", "health_potion_minor", "health_potion_minor", "ration", "ration", "rope"],
+    "cleric": ["mace", "shield", "chain_mail", "health_potion_minor", "health_potion_minor", "ration", "torch"],
+    "paladin": ["longsword", "shield", "chain_mail", "health_potion_minor", "health_potion_minor", "ration"],
+    "barbarian": ["greataxe", "handaxe", "hide_armor", "health_potion_minor", "health_potion_minor", "ration", "ration"],
+    "monk": ["quarterstaff", "dagger", "health_potion_minor", "health_potion_minor", "ration", "ration"],
+    "warlock": ["quarterstaff", "leather_armor", "health_potion_minor", "mana_potion", "torch", "ration"],
+    "sorcerer": ["dagger", "padded_armor", "health_potion_minor", "mana_potion", "torch", "ration"],
+    "bard": ["rapier", "leather_armor", "health_potion_minor", "health_potion_minor", "ration", "torch"],
+    "druid": ["quarterstaff", "leather_armor", "health_potion_minor", "herb_healing", "herb_healing", "ration", "ration"]
+  }
+}

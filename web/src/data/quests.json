@@ -1,0 +1,588 @@
+{
+  "main_01_welcome": {
+    "id": "main_01_welcome",
+    "title": "Bienvenue à Valthera",
+    "description": "Vous venez d'arriver à Valthera, la capitale du royaume. Elena Vent-Murmurant, de la Guilde des Aventuriers, souhaite vous rencontrer pour vous guider dans vos premiers pas.",
+    "shortDescription": "Rendez-vous à la Guilde des Aventuriers.",
+    "type": "main",
+    "category": "introduction",
+    "emoji": "📜",
+    "giver": {
+      "npcId": "elena-whisperwind",
+      "npcName": "Elena Vent-Murmurant",
+      "location": "val-serein"
+    },
+    "level": { "min": 1, "max": 5, "recommended": 1 },
+    "objectives": [
+      {
+        "id": "obj_1",
+        "type": "talk",
+        "description": "Parler à Elena Vent-Murmurant",
+        "target": "elena-whisperwind",
+        "required": 1,
+        "order": 1
+      },
+      {
+        "id": "obj_2",
+        "type": "explore",
+        "description": "Explorer les Bois Murmurants",
+        "target": "whispering-woods",
+        "required": 1,
+        "order": 2
+      },
+      {
+        "id": "obj_3",
+        "type": "kill",
+        "description": "Vaincre un loup dans les Bois Murmurants",
+        "target": "wolf",
+        "required": 1,
+        "order": 3
+      },
+      {
+        "id": "obj_4",
+        "type": "talk",
+        "description": "Retourner voir Elena",
+        "target": "elena-whisperwind",
+        "required": 1,
+        "order": 4
+      }
+    ],
+    "rewards": {
+      "xp": 100,
+      "gold": 25,
+      "items": [
+        { "itemId": "health_potion", "quantity": 3 }
+      ],
+      "reputation": [
+        { "factionId": "adventurers-guild", "amount": 50 }
+      ],
+      "unlocks": ["main_02_whispers"]
+    },
+    "prerequisites": {
+      "quests": [],
+      "level": 1
+    },
+    "isRepeatable": false,
+    "autoStart": true,
+    "dialogueStart": "elena_welcome_start"
+  },
+
+  "main_02_whispers": {
+    "id": "main_02_whispers",
+    "title": "Les Murmures de la Forêt",
+    "description": "Des villageois ont signalé des bruits étranges venant des Bois Murmurants. Elena vous demande d'enquêter sur le Cercle des Fées, un lieu mystérieux dont parlent les légendes.",
+    "shortDescription": "Enquêtez sur le Cercle des Fées.",
+    "type": "main",
+    "category": "mystery",
+    "emoji": "🧚",
+    "giver": {
+      "npcId": "elena-whisperwind",
+      "npcName": "Elena Vent-Murmurant",
+      "location": "val-serein"
+    },
+    "level": { "min": 2, "max": 6, "recommended": 3 },
+    "objectives": [
+      {
+        "id": "obj_1",
+        "type": "explore",
+        "description": "Découvrir le Cercle des Fées",
+        "target": "whispering-woods:fairy-ring",
+        "required": 1,
+        "order": 1
+      },
+      {
+        "id": "obj_2",
+        "type": "collect",
+        "description": "Collecter des Herbes Lunaires",
+        "target": "moonflower",
+        "required": 5,
+        "order": 2
+      },
+      {
+        "id": "obj_3",
+        "type": "kill",
+        "description": "Éliminer les Araignées géantes",
+        "target": "giant_spider",
+        "required": 3,
+        "order": 2
+      },
+      {
+        "id": "obj_4",
+        "type": "talk",
+        "description": "Rapporter vos découvertes à Elena",
+        "target": "elena-whisperwind",
+        "required": 1,
+        "order": 3
+      }
+    ],
+    "rewards": {
+      "xp": 200,
+      "gold": 50,
+      "items": [
+        { "itemId": "ring_of_protection", "quantity": 1, "chance": 100 }
+      ],
+      "reputation": [
+        { "factionId": "adventurers-guild", "amount": 75 }
+      ],
+      "unlocks": ["main_03_mines"]
+    },
+    "prerequisites": {
+      "quests": ["main_01_welcome"],
+      "level": 2
+    },
+    "isRepeatable": false,
+    "dialogueStart": "elena_whispers_start"
+  },
+
+  "main_03_mines": {
+    "id": "main_03_mines",
+    "title": "Les Ombres des Mines",
+    "description": "Les Mines d'Argent, abandonnées depuis des années, semblent abriter une menace croissante. Des kobolds ont été aperçus près de l'entrée. Il est temps d'enquêter.",
+    "shortDescription": "Explorez les Mines d'Argent.",
+    "type": "main",
+    "category": "dungeon",
+    "emoji": "⛏️",
+    "giver": {
+      "npcId": "elena-whisperwind",
+      "npcName": "Elena Vent-Murmurant",
+      "location": "val-serein"
+    },
+    "level": { "min": 3, "max": 8, "recommended": 4 },
+    "objectives": [
+      {
+        "id": "obj_1",
+        "type": "reach",
+        "description": "Atteindre les Mines d'Argent",
+        "target": "silver-mines",
+        "required": 1,
+        "order": 1
+      },
+      {
+        "id": "obj_2",
+        "type": "kill",
+        "description": "Éliminer les Kobolds",
+        "target": "kobold",
+        "required": 10,
+        "order": 2
+      },
+      {
+        "id": "obj_3",
+        "type": "explore",
+        "description": "Trouver la source de l'infestation",
+        "target": "silver-mines:kobold-lair",
+        "required": 1,
+        "order": 3,
+        "hidden": true
+      },
+      {
+        "id": "obj_4",
+        "type": "kill",
+        "description": "Vaincre le Chef Kobold",
+        "target": "kobold_chief",
+        "required": 1,
+        "order": 4
+      }
+    ],
+    "rewards": {
+      "xp": 400,
+      "gold": 150,
+      "items": [
+        { "itemId": "silver_ore", "quantity": 10 },
+        { "itemId": "chainmail", "quantity": 1, "chance": 50 }
+      ],
+      "reputation": [
+        { "factionId": "adventurers-guild", "amount": 100 },
+        { "factionId": "valthera-crown", "amount": 50 }
+      ],
+      "unlocks": ["ancient-ruins"]
+    },
+    "prerequisites": {
+      "quests": ["main_02_whispers"],
+      "level": 3
+    },
+    "isRepeatable": false,
+    "dialogueStart": "elena_mines_start"
+  },
+
+  "side_rats_cellar": {
+    "id": "side_rats_cellar",
+    "title": "Des Rats dans la Cave",
+    "description": "Le Vieux Tom, aubergiste de l'Épée Rouillée, a un problème de rats géants dans sa cave. Il offre une récompense pour s'en débarrasser.",
+    "shortDescription": "Éliminez les rats géants de l'auberge.",
+    "type": "side",
+    "category": "extermination",
+    "emoji": "🐀",
+    "giver": {
+      "npcId": "old-tom",
+      "npcName": "Vieux Tom",
+      "location": "val-serein"
+    },
+    "level": { "min": 1, "max": 3, "recommended": 1 },
+    "objectives": [
+      {
+        "id": "obj_1",
+        "type": "talk",
+        "description": "Parler au Vieux Tom",
+        "target": "old-tom",
+        "required": 1,
+        "order": 1
+      },
+      {
+        "id": "obj_2",
+        "type": "kill",
+        "description": "Tuer les rats géants",
+        "target": "giant_rat",
+        "required": 5,
+        "order": 2
+      },
+      {
+        "id": "obj_3",
+        "type": "talk",
+        "description": "Informer le Vieux Tom",
+        "target": "old-tom",
+        "required": 1,
+        "order": 3
+      }
+    ],
+    "rewards": {
+      "xp": 50,
+      "gold": 15,
+      "items": [
+        { "itemId": "ale", "quantity": 5 }
+      ],
+      "reputation": [
+        { "factionId": "valthera-merchants", "amount": 25 }
+      ]
+    },
+    "prerequisites": {
+      "quests": [],
+      "level": 1
+    },
+    "isRepeatable": false,
+    "dialogueStart": "tom_rats_start"
+  },
+
+  "side_herb_gathering": {
+    "id": "side_herb_gathering",
+    "title": "Cueillette d'Herbes",
+    "description": "Sera Belladone, l'apothicaire, a besoin d'herbes médicinales des Bois Murmurants pour ses potions. Elle paie bien pour les ingrédients frais.",
+    "shortDescription": "Collectez des herbes pour l'apothicaire.",
+    "type": "side",
+    "category": "gathering",
+    "emoji": "🌿",
+    "giver": {
+      "npcId": "sera-nightshade",
+      "npcName": "Sera Belladone",
+      "location": "val-serein"
+    },
+    "level": { "min": 1, "max": 5, "recommended": 2 },
+    "objectives": [
+      {
+        "id": "obj_1",
+        "type": "collect",
+        "description": "Collecter des Herbes Médicinales",
+        "target": "medicinal_herbs",
+        "required": 10,
+        "order": 1
+      },
+      {
+        "id": "obj_2",
+        "type": "talk",
+        "description": "Livrer les herbes à Sera",
+        "target": "sera-nightshade",
+        "required": 1,
+        "order": 2
+      }
+    ],
+    "rewards": {
+      "xp": 75,
+      "gold": 30,
+      "items": [
+        { "itemId": "health_potion", "quantity": 2 },
+        { "itemId": "antidote", "quantity": 2 }
+      ],
+      "reputation": [
+        { "factionId": "valthera-merchants", "amount": 30 }
+      ]
+    },
+    "prerequisites": {
+      "quests": [],
+      "level": 1
+    },
+    "isRepeatable": true,
+    "repeatCooldown": 86400000,
+    "dialogueStart": "sera_herbs_start"
+  },
+
+  "contract_wolf_hunt": {
+    "id": "contract_wolf_hunt",
+    "title": "Chasse au Loup",
+    "description": "La Guilde des Aventuriers offre une prime pour chaque loup abattu dans les Bois Murmurants. Les meutes deviennent trop agressives.",
+    "shortDescription": "Chassez les loups des Bois Murmurants.",
+    "type": "contract",
+    "category": "hunt",
+    "emoji": "🐺",
+    "giver": {
+      "npcId": "elena-whisperwind",
+      "npcName": "Elena Vent-Murmurant",
+      "location": "val-serein"
+    },
+    "level": { "min": 1, "max": 5, "recommended": 2 },
+    "objectives": [
+      {
+        "id": "obj_1",
+        "type": "kill",
+        "description": "Éliminer des loups",
+        "target": "wolf",
+        "required": 5,
+        "order": 1
+      }
+    ],
+    "rewards": {
+      "xp": 100,
+      "gold": 40,
+      "items": [
+        { "itemId": "wolf_pelt", "quantity": 2 }
+      ],
+      "reputation": [
+        { "factionId": "adventurers-guild", "amount": 35 }
+      ]
+    },
+    "prerequisites": {
+      "quests": [],
+      "level": 1
+    },
+    "isRepeatable": true,
+    "repeatCooldown": 43200000,
+    "dialogueStart": null
+  },
+
+  "contract_goblin_bounty": {
+    "id": "contract_goblin_bounty",
+    "title": "Prime aux Gobelins",
+    "description": "Les gobelins pillent les caravanes marchandes. La couronne offre une prime pour chaque gobelin éliminé.",
+    "shortDescription": "Éliminez les gobelins pour une prime.",
+    "type": "contract",
+    "category": "bounty",
+    "emoji": "👺",
+    "giver": {
+      "npcId": "elena-whisperwind",
+      "npcName": "Elena Vent-Murmurant",
+      "location": "val-serein"
+    },
+    "level": { "min": 1, "max": 5, "recommended": 2 },
+    "objectives": [
+      {
+        "id": "obj_1",
+        "type": "kill",
+        "description": "Éliminer des gobelins",
+        "target": "goblin",
+        "required": 8,
+        "order": 1
+      }
+    ],
+    "rewards": {
+      "xp": 120,
+      "gold": 50,
+      "items": [],
+      "reputation": [
+        { "factionId": "valthera-crown", "amount": 40 },
+        { "factionId": "adventurers-guild", "amount": 25 }
+      ]
+    },
+    "prerequisites": {
+      "quests": [],
+      "level": 1
+    },
+    "isRepeatable": true,
+    "repeatCooldown": 43200000,
+    "dialogueStart": null
+  },
+
+  "contract_spider_silk": {
+    "id": "contract_spider_silk",
+    "title": "Soie d'Araignée",
+    "description": "Les artisans de Valthera recherchent de la soie d'araignée géante pour leurs créations. Tuez des araignées et récupérez leur soie.",
+    "shortDescription": "Récoltez de la soie d'araignée.",
+    "type": "contract",
+    "category": "gathering",
+    "emoji": "🕷️",
+    "giver": {
+      "npcId": "marcus-ironforge",
+      "npcName": "Marcus Forge-de-Fer",
+      "location": "val-serein"
+    },
+    "level": { "min": 2, "max": 6, "recommended": 3 },
+    "objectives": [
+      {
+        "id": "obj_1",
+        "type": "kill",
+        "description": "Tuer des araignées géantes",
+        "target": "giant_spider",
+        "required": 4,
+        "order": 1
+      },
+      {
+        "id": "obj_2",
+        "type": "collect",
+        "description": "Collecter de la soie d'araignée",
+        "target": "spider_silk",
+        "required": 3,
+        "order": 1
+      }
+    ],
+    "rewards": {
+      "xp": 150,
+      "gold": 75,
+      "items": [
+        { "itemId": "leather_armor", "quantity": 1, "chance": 30 }
+      ],
+      "reputation": [
+        { "factionId": "valthera-merchants", "amount": 45 }
+      ]
+    },
+    "prerequisites": {
+      "quests": [],
+      "level": 2
+    },
+    "isRepeatable": true,
+    "repeatCooldown": 86400000,
+    "dialogueStart": null
+  },
+
+  "daily_training": {
+    "id": "daily_training",
+    "title": "Entraînement Quotidien",
+    "description": "La Guilde des Aventuriers encourage l'entraînement régulier. Combattez quelques monstres pour maintenir vos compétences.",
+    "shortDescription": "Combattez des monstres pour vous entraîner.",
+    "type": "daily",
+    "category": "training",
+    "emoji": "⚔️",
+    "giver": {
+      "npcId": "elena-whisperwind",
+      "npcName": "Elena Vent-Murmurant",
+      "location": "val-serein"
+    },
+    "level": { "min": 1, "max": 20, "recommended": 1 },
+    "objectives": [
+      {
+        "id": "obj_1",
+        "type": "kill",
+        "description": "Vaincre des monstres",
+        "target": "any",
+        "required": 3,
+        "order": 1
+      }
+    ],
+    "rewards": {
+      "xp": 50,
+      "gold": 10,
+      "items": [],
+      "reputation": [
+        { "factionId": "adventurers-guild", "amount": 10 }
+      ]
+    },
+    "prerequisites": {
+      "quests": [],
+      "level": 1
+    },
+    "isRepeatable": true,
+    "repeatCooldown": 86400000,
+    "resetDaily": true,
+    "dialogueStart": null
+  },
+
+  "daily_exploration": {
+    "id": "daily_exploration",
+    "title": "Rapport d'Exploration",
+    "description": "La Guilde collecte des informations sur les zones environnantes. Explorez et faites votre rapport.",
+    "shortDescription": "Explorez une zone et faites votre rapport.",
+    "type": "daily",
+    "category": "exploration",
+    "emoji": "🗺️",
+    "giver": {
+      "npcId": "elena-whisperwind",
+      "npcName": "Elena Vent-Murmurant",
+      "location": "val-serein"
+    },
+    "level": { "min": 1, "max": 20, "recommended": 1 },
+    "objectives": [
+      {
+        "id": "obj_1",
+        "type": "explore",
+        "description": "Explorer une zone",
+        "target": "any",
+        "required": 2,
+        "order": 1
+      }
+    ],
+    "rewards": {
+      "xp": 40,
+      "gold": 15,
+      "items": [
+        { "itemId": "torch", "quantity": 2 }
+      ],
+      "reputation": [
+        { "factionId": "adventurers-guild", "amount": 15 }
+      ]
+    },
+    "prerequisites": {
+      "quests": [],
+      "level": 1
+    },
+    "isRepeatable": true,
+    "repeatCooldown": 86400000,
+    "resetDaily": true,
+    "dialogueStart": null
+  },
+
+  "daily_delivery": {
+    "id": "daily_delivery",
+    "title": "Livraison Express",
+    "description": "Les marchands ont besoin d'aide pour leurs livraisons. Voyagez vers une autre zone et revenez.",
+    "shortDescription": "Effectuez une livraison.",
+    "type": "daily",
+    "category": "delivery",
+    "emoji": "📦",
+    "giver": {
+      "npcId": "old-tom",
+      "npcName": "Vieux Tom",
+      "location": "val-serein"
+    },
+    "level": { "min": 1, "max": 20, "recommended": 1 },
+    "objectives": [
+      {
+        "id": "obj_1",
+        "type": "reach",
+        "description": "Voyager vers une autre zone",
+        "target": "any_other",
+        "required": 1,
+        "order": 1
+      },
+      {
+        "id": "obj_2",
+        "type": "reach",
+        "description": "Revenir à Valthera",
+        "target": "val-serein",
+        "required": 1,
+        "order": 2
+      }
+    ],
+    "rewards": {
+      "xp": 30,
+      "gold": 20,
+      "items": [],
+      "reputation": [
+        { "factionId": "valthera-merchants", "amount": 15 }
+      ]
+    },
+    "prerequisites": {
+      "quests": [],
+      "level": 1
+    },
+    "isRepeatable": true,
+    "repeatCooldown": 86400000,
+    "resetDaily": true,
+    "dialogueStart": null
+  }
+}

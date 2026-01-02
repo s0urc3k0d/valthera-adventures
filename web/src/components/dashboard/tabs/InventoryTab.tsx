@@ -1,6 +1,7 @@
 'use client';
 
 import { Package, Sword, Shield, FlaskConical, Scroll, Gem } from 'lucide-react';
+import { getItemName, getItemRarity, getItemType } from '@/lib/gameData';
 
 interface InventoryTabProps {
   character: any;
@@ -11,8 +12,10 @@ const itemTypeConfig: Record<string, { icon: any; color: string; bg: string }> =
   weapon: { icon: Sword, color: 'text-blood-400', bg: 'bg-blood-500/20' },
   armor: { icon: Shield, color: 'text-steel-400', bg: 'bg-steel-500/20' },
   potion: { icon: FlaskConical, color: 'text-forest-400', bg: 'bg-forest-500/20' },
+  consumable: { icon: FlaskConical, color: 'text-forest-400', bg: 'bg-forest-500/20' },
   scroll: { icon: Scroll, color: 'text-rarity-epic', bg: 'bg-rarity-epic/20' },
   material: { icon: Gem, color: 'text-valthera-400', bg: 'bg-valthera-400/20' },
+  misc: { icon: Package, color: 'text-valthera-200', bg: 'bg-valthera-700/20' },
   default: { icon: Package, color: 'text-valthera-200', bg: 'bg-valthera-700/20' },
 };
 
@@ -25,8 +28,6 @@ const rarityConfig: Record<string, { border: string; text: string; glow: string 
 };
 
 export function InventoryTab({ character }: InventoryTabProps) {
-  // Pour l'instant on affiche les items bruts
-  // TODO: Charger les détails des items depuis la base de données
   const inventory = character.inventory || [];
 
   const equippedItems = inventory.filter((item: any) => item.equipped);
@@ -63,35 +64,40 @@ export function InventoryTab({ character }: InventoryTabProps) {
         {bagItems.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
             {bagItems.map((item: any, index: number) => {
-              const config = itemTypeConfig.default;
+              // Get item details from game data
+              const itemName = item.customName || getItemName(item.itemId);
+              const itemRarity = getItemRarity(item.itemId);
+              const itemType = getItemType(item.itemId);
+              
+              const config = itemTypeConfig[itemType] || itemTypeConfig.default;
               const Icon = config.icon;
-              const rarity = rarityConfig.common;
+              const rarity = rarityConfig[itemRarity] || rarityConfig.common;
 
               return (
                 <div
                   key={`${item.itemId}-${index}`}
-                  className={`relative bg-valthera-800/50 rounded-xl p-4 border ${rarity.border} ${rarity.glow} hover:scale-105 transition-transform cursor-pointer group`}
+                  className={`relative bg-valthera-800/50 rounded-xl p-3 border ${rarity.border} ${rarity.glow} hover:scale-105 transition-transform cursor-pointer group overflow-hidden`}
                 >
                   {/* Quantité */}
                   {item.quantity > 1 && (
-                    <div className="absolute -top-2 -right-2 bg-valthera-600 text-valthera-100 text-xs font-bold px-2 py-0.5 rounded-full">
+                    <div className="absolute -top-1 -right-1 bg-valthera-600 text-valthera-100 text-xs font-bold px-1.5 py-0.5 rounded-full z-10">
                       x{item.quantity}
                     </div>
                   )}
 
                   {/* Icône */}
-                  <div className={`w-12 h-12 ${config.bg} rounded-lg flex items-center justify-center mx-auto mb-2`}>
-                    <Icon className={`w-6 h-6 ${config.color}`} />
+                  <div className={`w-10 h-10 ${config.bg} rounded-lg flex items-center justify-center mx-auto mb-2`}>
+                    <Icon className={`w-5 h-5 ${config.color}`} />
                   </div>
 
-                  {/* Nom */}
-                  <div className={`text-sm text-center ${rarity.text} truncate font-body`}>
-                    {item.itemId.replace(/_/g, ' ')}
+                  {/* Nom - avec gestion du débordement */}
+                  <div className={`text-xs text-center ${rarity.text} font-body line-clamp-2 leading-tight min-h-[2rem]`} title={itemName}>
+                    {itemName}
                   </div>
 
                   {/* Tooltip au survol */}
-                  <div className="tooltip bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 group-hover:opacity-100 group-hover:visible">
-                    <div className="font-medium text-valthera-100">{item.itemId.replace(/_/g, ' ')}</div>
+                  <div className="absolute hidden group-hover:block bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 bg-valthera-900 border border-valthera-700 rounded-lg p-2 shadow-lg z-20">
+                    <div className={`font-medium ${rarity.text}`}>{itemName}</div>
                     <div className="text-xs text-valthera-200/60 mt-1 font-body">
                       Quantité: {item.quantity}
                     </div>

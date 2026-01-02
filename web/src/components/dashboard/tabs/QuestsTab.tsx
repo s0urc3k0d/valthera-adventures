@@ -2,6 +2,7 @@
 
 import { ScrollText, CheckCircle, Clock, XCircle } from 'lucide-react';
 import type { ICharacterQuest } from '@/lib/models';
+import { getQuestTitle, getQuestDescription, calculateQuestProgress } from '@/lib/gameData';
 
 interface QuestsTabProps {
   quests: ICharacterQuest[];
@@ -22,11 +23,13 @@ export function QuestsTab({ quests }: QuestsTabProps) {
     const config = statusConfig[quest.status as keyof typeof statusConfig] || statusConfig.active;
     const Icon = config.icon;
 
-    // Calculer la progression
-    const progressEntries = quest.progress ? Object.entries(quest.progress) : [];
-    const totalProgress = progressEntries.length > 0
-      ? progressEntries.reduce((acc, [_, val]) => acc + (val as number), 0) / progressEntries.length
-      : 0;
+    // Get quest details from game data
+    const questTitle = getQuestTitle(quest.questId);
+    const questDescription = getQuestDescription(quest.questId);
+
+    // Calculate real progress based on quest objectives
+    const progress = quest.progress || {};
+    const progressPercent = calculateQuestProgress(quest.questId, progress);
 
     return (
       <div className="card-hover p-4">
@@ -37,23 +40,29 @@ export function QuestsTab({ quests }: QuestsTabProps) {
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2 mb-1">
               <h3 className="text-valthera-100 font-medium truncate font-medieval">
-                {quest.questId.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}
+                {questTitle}
               </h3>
               <span className={`badge ${config.bg} ${config.color}`}>
                 {config.label}
               </span>
             </div>
 
-            {quest.status === 'active' && progressEntries.length > 0 && (
+            {questDescription && (
+              <p className="text-sm text-valthera-200/60 font-body mb-2 line-clamp-2">
+                {questDescription}
+              </p>
+            )}
+
+            {quest.status === 'active' && (
               <div className="mt-2">
                 <div className="flex items-center justify-between text-xs text-valthera-200/60 mb-1 font-body">
                   <span>Progression</span>
-                  <span>{Math.round(totalProgress * 100)}%</span>
+                  <span>{Math.round(progressPercent * 100)}%</span>
                 </div>
                 <div className="progress-bar h-2">
                   <div
                     className="progress-fill bg-valthera-500"
-                    style={{ width: `${totalProgress * 100}%` }}
+                    style={{ width: `${progressPercent * 100}%` }}
                   />
                 </div>
               </div>

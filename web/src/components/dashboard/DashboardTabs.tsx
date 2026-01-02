@@ -10,6 +10,7 @@ import { QuestsTab } from './tabs/QuestsTab';
 import { StatsTab } from './tabs/StatsTab';
 import { GuildTab } from './tabs/GuildTab';
 import type { ICharacter, IGuild, ICharacterQuest } from '@/lib/models';
+import { getItemName } from '@/lib/gameData';
 
 // Normaliser les données du personnage pour gérer les différences entre bot et web models
 function normalizeCharacter(char: any) {
@@ -28,10 +29,12 @@ function normalizeCharacter(char: any) {
   const inventory = char.inventory || [];
   const getEquippedItem = (slots: string[]) => {
     const item = inventory.find((i: any) => i.equipped && slots.includes(i.slot));
-    return item ? (item.customName || item.itemId) : null;
+    if (!item) return null;
+    // Use custom name if set, otherwise get French name from gameData
+    return item.customName || getItemName(item.itemId);
   };
 
-  // Build equipment object with item names
+  // Build equipment object with item names (French)
   const equipment = {
     weapon: getEquippedItem(['mainHand', 'offHand']),
     armor: getEquippedItem(['chest', 'head', 'legs', 'feet', 'hands']),
@@ -46,8 +49,10 @@ function normalizeCharacter(char: any) {
     mana: char.mana || { current: 0, max: 0 },
     // Stats in web format (full names)
     stats,
-    // Equipment with item names
+    // Equipment with item names (French)
     equipment,
+    // Experience: bot uses 'xp', web expects 'experience'
+    experience: char.experience ?? char.xp ?? 0,
     // Gold: bot uses object, normalize to number
     goldTotal: typeof char.gold === 'number' 
       ? char.gold 
