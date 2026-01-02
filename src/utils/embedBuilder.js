@@ -1,7 +1,8 @@
 import { EmbedBuilder } from 'discord.js';
 import constants from '../config/constants.js';
 
-const { embedColors, emojis } = constants.bot;
+const { embedColors } = constants.bot;
+const { emojis } = constants;
 
 /**
  * Crée un embed de base avec le style Valthera

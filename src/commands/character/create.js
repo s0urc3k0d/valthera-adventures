@@ -613,13 +613,30 @@ function createAttributeEmbed(state) {
 function createAttributeComponents(state) {
   const attrs = ['str', 'dex', 'con', 'int', 'wis', 'cha'];
   const labels = ['FOR', 'DEX', 'CON', 'INT', 'SAG', 'CHA'];
+  const emojis = ['💪', '🏃', '🫀', '🧠', '👁️', '💬'];
   
   const rows = [];
   
-  for (let i = 0; i < 2; i++) {
+  // Ligne 1: STR, DEX, CON (boutons - et + seulement, 2 boutons par attribut = 6 max, mais on fait 5)
+  // Nouvelle approche: 2 lignes avec 3 attributs chacune, format compact
+  // [STR-] [STR: 8] [STR+] [DEX-] [DEX: 8] -> 5 boutons max par ligne impossible avec ce format
+  
+  // Solution: Utiliser un format avec moins de boutons
+  // Ligne 1: FOR- FOR+ DEX- DEX+ CON- (5)
+  // Ligne 2: CON+ INT- INT+ WIS- WIS+ (5)  
+  // Ligne 3: CHA- CHA+ [valeurs dans embed]
+  // Ou mieux: Utiliser des boutons avec emoji + label combinés
+  
+  // Format alternatif: 3 lignes de 4 boutons (- attr + | - attr +)
+  // Ligne 1: FOR- FOR+ | DEX- DEX+ (4 boutons)
+  // Ligne 2: CON- CON+ | INT- INT+ (4 boutons)
+  // Ligne 3: SAG- SAG+ | CHA- CHA+ (4 boutons)
+  // Ligne 4: Annuler | Continuer
+  
+  for (let i = 0; i < 3; i++) {
     const row = new ActionRowBuilder();
-    for (let j = 0; j < 3; j++) {
-      const idx = i * 3 + j;
+    for (let j = 0; j < 2; j++) {
+      const idx = i * 2 + j;
       const attr = attrs[idx];
       const value = state.attributes[attr];
       const cost = getAttributeCost(value, true);
@@ -627,18 +644,13 @@ function createAttributeComponents(state) {
       row.addComponents(
         new ButtonBuilder()
           .setCustomId(`create:attr:${attr}_down`)
-          .setLabel('−')
+          .setLabel(`${labels[idx]} −`)
           .setStyle(ButtonStyle.Secondary)
           .setDisabled(value <= 8),
         new ButtonBuilder()
-          .setCustomId(`create:attr:${attr}_display`)
-          .setLabel(`${labels[idx]}: ${value}`)
-          .setStyle(ButtonStyle.Primary)
-          .setDisabled(true),
-        new ButtonBuilder()
           .setCustomId(`create:attr:${attr}_up`)
-          .setLabel('+')
-          .setStyle(ButtonStyle.Secondary)
+          .setLabel(`${labels[idx]} ${value} +`)
+          .setStyle(value > 8 ? ButtonStyle.Primary : ButtonStyle.Secondary)
           .setDisabled(value >= 15 || state.pointsRemaining < cost)
       );
     }
