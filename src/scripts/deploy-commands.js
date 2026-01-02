@@ -65,6 +65,9 @@ async function deployCommands() {
       console.log(`✅ ${data.length} commandes déployées sur le serveur de développement!`);
     }
     
+    // Terminer le processus proprement
+    process.exit(0);
+    
   } catch (error) {
     console.error('❌ Erreur lors du déploiement des commandes:', error);
     process.exit(1);
