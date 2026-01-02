@@ -193,29 +193,29 @@ export default function CommandsPage() {
       {/* Header */}
       <div className="mb-12">
         <div className="flex items-center gap-4 mb-4">
-          <div className="w-12 h-12 bg-blue-500/20 rounded-xl flex items-center justify-center">
-            <Terminal className="w-6 h-6 text-blue-400" />
+          <div className="w-12 h-12 bg-rarity-rare/20 rounded-xl flex items-center justify-center border border-rarity-rare/30">
+            <Terminal className="w-6 h-6 text-rarity-rare" />
           </div>
-          <h1 className="text-3xl font-bold text-white font-medieval">
+          <h1 className="text-3xl font-bold text-valthera-100 font-medieval">
             Commandes
           </h1>
         </div>
-        <p className="text-gray-400">
+        <p className="text-valthera-200/70 font-body">
           Liste complète des commandes slash disponibles dans Valthera Adventures.
-          Toutes les commandes commencent par <code className="text-valthera-400">/</code>
+          Toutes les commandes commencent par <code className="text-valthera-400 bg-valthera-800/50 px-2 py-0.5 rounded">/</code>
         </p>
       </div>
 
       {/* Info box */}
-      <div className="card p-4 mb-8 border-blue-500/30 bg-blue-500/5">
+      <div className="card p-4 mb-8 border-rarity-rare/30 bg-rarity-rare/5">
         <div className="flex items-start gap-3">
-          <Info className="w-5 h-5 text-blue-400 mt-0.5" />
+          <Info className="w-5 h-5 text-rarity-rare mt-0.5" />
           <div>
-            <div className="text-white font-medium">Comment utiliser les commandes</div>
-            <p className="text-sm text-gray-400 mt-1">
-              Tapez <code className="text-valthera-400">/</code> dans Discord pour voir la liste des commandes.
-              Les options entre <code className="text-gray-500">[crochets]</code> sont optionnelles,
-              celles entre <code className="text-gray-500">&lt;chevrons&gt;</code> sont obligatoires.
+            <div className="text-valthera-100 font-medium font-medieval">Comment utiliser les commandes</div>
+            <p className="text-sm text-valthera-200/60 mt-1 font-body">
+              Tapez <code className="text-valthera-400 bg-valthera-800/50 px-1 rounded">/</code> dans Discord pour voir la liste des commandes.
+              Les options entre <code className="text-valthera-200/50 bg-valthera-800/50 px-1 rounded">[crochets]</code> sont optionnelles,
+              celles entre <code className="text-valthera-200/50 bg-valthera-800/50 px-1 rounded">&lt;chevrons&gt;</code> sont obligatoires.
             </p>
           </div>
         </div>
@@ -226,20 +226,20 @@ export default function CommandsPage() {
         {commandCategories.map((category) => (
           <div key={category.name} className="card overflow-hidden">
             {/* Category Header */}
-            <div className="bg-gray-800/50 px-6 py-4 border-b border-gray-800">
-              <h2 className="text-lg font-semibold text-white flex items-center gap-3">
+            <div className="bg-valthera-800/50 px-6 py-4 border-b border-valthera-700">
+              <h2 className="text-lg font-semibold text-valthera-100 flex items-center gap-3 font-medieval">
                 <span className="text-2xl">{category.emoji}</span>
                 {category.name}
-                <span className="text-sm text-gray-400 font-normal">
+                <span className="text-sm text-valthera-200/50 font-normal font-body">
                   ({category.commands.length} commandes)
                 </span>
               </h2>
             </div>
 
             {/* Commands List */}
-            <div className="divide-y divide-gray-800">
+            <div className="divide-y divide-valthera-700/50">
               {category.commands.map((command) => (
-                <div key={command.name} className="p-6 hover:bg-gray-800/30 transition-colors">
+                <div key={command.name} className="p-6 hover:bg-valthera-800/30 transition-colors">
                   <div className="flex flex-col md:flex-row md:items-start gap-4">
                     {/* Command name */}
                     <div className="md:w-48 flex-shrink-0">
@@ -250,10 +250,10 @@ export default function CommandsPage() {
 
                     {/* Description & Usage */}
                     <div className="flex-1">
-                      <p className="text-gray-300 mb-2">{command.description}</p>
+                      <p className="text-valthera-200 mb-2 font-body">{command.description}</p>
                       <div className="flex items-center gap-2">
-                        <span className="text-xs text-gray-500">Usage:</span>
-                        <code className="text-sm text-gray-400 bg-gray-800 px-2 py-1 rounded">
+                        <span className="text-xs text-valthera-200/50 font-body">Usage:</span>
+                        <code className="text-sm text-valthera-300 bg-valthera-800 px-2 py-1 rounded border border-valthera-700/50">
                           {command.usage}
                         </code>
                       </div>
@@ -264,10 +264,10 @@ export default function CommandsPage() {
                           {command.options.map((option) => (
                             <span
                               key={option.name}
-                              className={`text-xs px-2 py-1 rounded ${
+                              className={`text-xs px-2 py-1 rounded border ${
                                 option.optional
-                                  ? 'bg-gray-700 text-gray-300'
-                                  : 'bg-valthera-500/20 text-valthera-300'
+                                  ? 'bg-valthera-700/50 text-valthera-200 border-valthera-600/30'
+                                  : 'bg-valthera-600/20 text-valthera-300 border-valthera-500/30'
                               }`}
                             >
                               {option.name}: {option.type}

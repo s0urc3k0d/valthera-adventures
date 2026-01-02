@@ -37,16 +37,16 @@ export default async function DashboardPage() {
       <div className="min-h-[60vh] flex items-center justify-center px-4">
         <div className="text-center max-w-md">
           <div className="text-6xl mb-6">🎭</div>
-          <h1 className="text-2xl font-bold text-white font-medieval mb-4">
+          <h1 className="text-2xl font-bold text-valthera-100 font-medieval mb-4">
             Aucun Personnage Trouvé
           </h1>
-          <p className="text-gray-400 mb-8">
+          <p className="text-valthera-200/70 mb-8 font-body">
             Vous n'avez pas encore créé de personnage dans Valthera Adventures. 
-            Utilisez la commande <code className="text-valthera-400">/create</code> sur Discord pour commencer votre aventure !
+            Utilisez la commande <code className="text-valthera-400 bg-valthera-800/50 px-2 py-1 rounded">/create</code> sur Discord pour commencer votre aventure !
           </p>
           <a
             href="/invite"
-            className="btn-primary"
+            className="btn-gold"
           >
             Ajouter le Bot à Discord
           </a>

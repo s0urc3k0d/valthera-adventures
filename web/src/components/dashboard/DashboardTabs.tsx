@@ -81,10 +81,10 @@ export function DashboardTabs({ character, quests, guild, user }: DashboardTabsP
 
           {/* Infos principales */}
           <div className="flex-1">
-            <h1 className="text-2xl font-bold text-white font-medieval">
+            <h1 className="text-2xl font-bold text-valthera-100 font-medieval">
               {character.name}
             </h1>
-            <p className="text-gray-400">
+            <p className="text-valthera-200/60 font-body">
               {character.race} • {character.class}
               {character.background && ` • ${character.background}`}
             </p>
@@ -93,42 +93,42 @@ export function DashboardTabs({ character, quests, guild, user }: DashboardTabsP
             <div className="mt-4 space-y-2 max-w-md">
               {/* HP */}
               <div className="flex items-center gap-3">
-                <span className="text-xs text-gray-400 w-10">PV</span>
+                <span className="text-xs text-valthera-200/60 w-10">PV</span>
                 <div className="flex-1 progress-bar">
                   <div
                     className="progress-fill progress-health"
                     style={{ width: `${(character.health.current / character.health.max) * 100}%` }}
                   />
                 </div>
-                <span className="text-xs text-gray-300 w-16 text-right">
+                <span className="text-xs text-valthera-200 w-16 text-right">
                   {character.health.current}/{character.health.max}
                 </span>
               </div>
 
               {/* Mana */}
               <div className="flex items-center gap-3">
-                <span className="text-xs text-gray-400 w-10">Mana</span>
+                <span className="text-xs text-valthera-200/60 w-10">Mana</span>
                 <div className="flex-1 progress-bar">
                   <div
                     className="progress-fill progress-mana"
                     style={{ width: `${(character.mana.current / character.mana.max) * 100}%` }}
                   />
                 </div>
-                <span className="text-xs text-gray-300 w-16 text-right">
+                <span className="text-xs text-valthera-200 w-16 text-right">
                   {character.mana.current}/{character.mana.max}
                 </span>
               </div>
 
               {/* XP */}
               <div className="flex items-center gap-3">
-                <span className="text-xs text-gray-400 w-10">XP</span>
+                <span className="text-xs text-valthera-200/60 w-10">XP</span>
                 <div className="flex-1 progress-bar">
                   <div
                     className="progress-fill progress-xp"
                     style={{ width: `${Math.min(xpProgress, 100)}%` }}
                   />
                 </div>
-                <span className="text-xs text-gray-300 w-16 text-right">
+                <span className="text-xs text-valthera-200 w-16 text-right">
                   {character.experience}/{xpForNextLevel}
                 </span>
               </div>
@@ -140,21 +140,21 @@ export function DashboardTabs({ character, quests, guild, user }: DashboardTabsP
             <div className="text-3xl font-bold text-gradient-gold font-medieval">
               {character.gold.toLocaleString()}
             </div>
-            <div className="text-sm text-gray-400">Pièces d'or</div>
+            <div className="text-sm text-valthera-200/60 font-body">Pièces d'or</div>
           </div>
         </div>
       </div>
 
       {/* Tabs Navigation */}
-      <div className="flex gap-2 mb-6 overflow-x-auto pb-2 scrollbar-thin">
+      <div className="flex gap-2 mb-6 overflow-x-auto pb-2 scrollbar-valthera">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all whitespace-nowrap ${
               activeTab === tab.id
-                ? 'bg-valthera-600 text-white'
-                : 'bg-gray-800/50 text-gray-400 hover:bg-gray-800 hover:text-white'
+                ? 'bg-valthera-600 text-valthera-100 shadow-gold'
+                : 'bg-valthera-800/50 text-valthera-200/60 hover:bg-valthera-800 hover:text-valthera-100 border border-valthera-700/50'
             }`}
           >
             <tab.icon className="w-4 h-4" />

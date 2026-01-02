@@ -10,7 +10,7 @@
     "giver": {
       "npcId": "elena-whisperwind",
       "npcName": "Elena Vent-Murmurant",
-      "location": "valthera-city"
+      "location": "val-serein"
     },
     "level": { "min": 1, "max": 5, "recommended": 1 },
     "objectives": [
@@ -78,7 +78,7 @@
     "giver": {
       "npcId": "elena-whisperwind",
       "npcName": "Elena Vent-Murmurant",
-      "location": "valthera-city"
+      "location": "val-serein"
     },
     "level": { "min": 2, "max": 6, "recommended": 3 },
     "objectives": [
@@ -145,7 +145,7 @@
     "giver": {
       "npcId": "elena-whisperwind",
       "npcName": "Elena Vent-Murmurant",
-      "location": "valthera-city"
+      "location": "val-serein"
     },
     "level": { "min": 3, "max": 8, "recommended": 4 },
     "objectives": [
@@ -215,7 +215,7 @@
     "giver": {
       "npcId": "old-tom",
       "npcName": "Vieux Tom",
-      "location": "valthera-city"
+      "location": "val-serein"
     },
     "level": { "min": 1, "max": 3, "recommended": 1 },
     "objectives": [
@@ -273,7 +273,7 @@
     "giver": {
       "npcId": "sera-nightshade",
       "npcName": "Sera Belladone",
-      "location": "valthera-city"
+      "location": "val-serein"
     },
     "level": { "min": 1, "max": 5, "recommended": 2 },
     "objectives": [
@@ -325,7 +325,7 @@
     "giver": {
       "npcId": "elena-whisperwind",
       "npcName": "Elena Vent-Murmurant",
-      "location": "valthera-city"
+      "location": "val-serein"
     },
     "level": { "min": 1, "max": 5, "recommended": 2 },
     "objectives": [
@@ -368,7 +368,7 @@
     "giver": {
       "npcId": "elena-whisperwind",
       "npcName": "Elena Vent-Murmurant",
-      "location": "valthera-city"
+      "location": "val-serein"
     },
     "level": { "min": 1, "max": 5, "recommended": 2 },
     "objectives": [
@@ -410,7 +410,7 @@
     "giver": {
       "npcId": "marcus-ironforge",
       "npcName": "Marcus Forge-de-Fer",
-      "location": "valthera-city"
+      "location": "val-serein"
     },
     "level": { "min": 2, "max": 6, "recommended": 3 },
     "objectives": [
@@ -461,7 +461,7 @@
     "giver": {
       "npcId": "elena-whisperwind",
       "npcName": "Elena Vent-Murmurant",
-      "location": "valthera-city"
+      "location": "val-serein"
     },
     "level": { "min": 1, "max": 20, "recommended": 1 },
     "objectives": [
@@ -503,7 +503,7 @@
     "giver": {
       "npcId": "elena-whisperwind",
       "npcName": "Elena Vent-Murmurant",
-      "location": "valthera-city"
+      "location": "val-serein"
     },
     "level": { "min": 1, "max": 20, "recommended": 1 },
     "objectives": [
@@ -547,7 +547,7 @@
     "giver": {
       "npcId": "old-tom",
       "npcName": "Vieux Tom",
-      "location": "valthera-city"
+      "location": "val-serein"
     },
     "level": { "min": 1, "max": 20, "recommended": 1 },
     "objectives": [
@@ -563,7 +563,7 @@
         "id": "obj_2",
         "type": "reach",
         "description": "Revenir à Valthera",
-        "target": "valthera-city",
+        "target": "val-serein",
         "required": 1,
         "order": 2
       }

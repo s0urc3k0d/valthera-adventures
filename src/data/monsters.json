@@ -214,7 +214,7 @@
       { "itemId": "leather_armor", "chance": 0.1 },
       { "itemId": "lockpick", "chance": 0.15 }
     ],
-    "zones": ["whispering-woods", "valthera-city"]
+    "zones": ["whispering-woods", "val-serein"]
   },
   
   "dire_wolf": {

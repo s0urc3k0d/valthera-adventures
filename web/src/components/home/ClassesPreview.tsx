@@ -10,26 +10,26 @@ const classes = [
     name: 'Guerrier',
     description: 'Maître des armes et de la stratégie de combat',
     icon: Sword,
-    color: 'from-red-600 to-red-800',
-    textColor: 'text-red-400',
+    color: 'from-blood-600 to-blood-500',
+    bgColor: 'bg-blood-500',
     stats: { force: 5, constitution: 4, dextérité: 3 },
   },
   {
-    id: 'mage',
-    name: 'Mage',
+    id: 'magicien',
+    name: 'Magicien',
     description: 'Manipulateur des arcanes et des éléments',
     icon: Wand2,
-    color: 'from-blue-600 to-blue-800',
-    textColor: 'text-blue-400',
+    color: 'from-blue-600 to-blue-500',
+    bgColor: 'bg-blue-500',
     stats: { intelligence: 5, sagesse: 4, charisme: 3 },
   },
   {
-    id: 'voleur',
-    name: 'Voleur',
+    id: 'roublard',
+    name: 'Roublard',
     description: 'Expert en furtivité et attaques sournoises',
     icon: Crosshair,
-    color: 'from-green-600 to-green-800',
-    textColor: 'text-green-400',
+    color: 'from-forest-600 to-forest-500',
+    bgColor: 'bg-forest-500',
     stats: { dextérité: 5, intelligence: 3, charisme: 3 },
   },
   {
@@ -37,8 +37,8 @@ const classes = [
     name: 'Clerc',
     description: 'Guérisseur divin et protecteur sacré',
     icon: Heart,
-    color: 'from-yellow-600 to-yellow-800',
-    textColor: 'text-yellow-400',
+    color: 'from-valthera-500 to-valthera-400',
+    bgColor: 'bg-valthera-400',
     stats: { sagesse: 5, constitution: 4, charisme: 3 },
   },
   {
@@ -46,8 +46,8 @@ const classes = [
     name: 'Rôdeur',
     description: 'Pisteur et archer de la nature',
     icon: Trees,
-    color: 'from-emerald-600 to-emerald-800',
-    textColor: 'text-emerald-400',
+    color: 'from-forest-500 to-forest-400',
+    bgColor: 'bg-forest-500',
     stats: { dextérité: 4, sagesse: 4, constitution: 3 },
   },
   {
@@ -55,8 +55,8 @@ const classes = [
     name: 'Paladin',
     description: 'Champion sacré alliant foi et combat',
     icon: ShieldCheck,
-    color: 'from-amber-500 to-amber-700',
-    textColor: 'text-amber-400',
+    color: 'from-valthera-400 to-valthera-500',
+    bgColor: 'bg-valthera-400',
     stats: { force: 4, charisme: 4, constitution: 4 },
   },
 ];
@@ -117,14 +117,12 @@ export function ClassesPreview() {
                 <div className="space-y-3">
                   {Object.entries(cls.stats).map(([stat, value]) => (
                     <div key={stat} className="flex items-center gap-3">
-                      <span className="text-sm text-gray-400 capitalize w-24">{stat}</span>
+                      <span className="text-sm text-valthera-200/60 capitalize w-24 font-body">{stat}</span>
                       <div className="flex-1 flex gap-1">
                         {[1, 2, 3, 4, 5].map((i) => (
                           <div
                             key={i}
-                            className={`h-2 flex-1 rounded ${
-                              i <= value ? cls.textColor.replace('text-', 'bg-') : 'bg-gray-700'
-                            }`}
+                            className={`h-2 flex-1 rounded ${i <= value ? cls.bgColor : 'bg-valthera-700'}`}
                           />
                         ))}
                       </div>

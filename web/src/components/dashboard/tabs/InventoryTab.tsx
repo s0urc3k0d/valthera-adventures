@@ -9,20 +9,20 @@ interface InventoryTabProps {
 
 // Mapping des types d'items vers icônes et couleurs
 const itemTypeConfig: Record<string, { icon: any; color: string; bg: string }> = {
-  weapon: { icon: Sword, color: 'text-red-400', bg: 'bg-red-500/20' },
-  armor: { icon: Shield, color: 'text-blue-400', bg: 'bg-blue-500/20' },
-  potion: { icon: FlaskConical, color: 'text-green-400', bg: 'bg-green-500/20' },
-  scroll: { icon: Scroll, color: 'text-purple-400', bg: 'bg-purple-500/20' },
-  material: { icon: Gem, color: 'text-amber-400', bg: 'bg-amber-500/20' },
-  default: { icon: Package, color: 'text-gray-400', bg: 'bg-gray-500/20' },
+  weapon: { icon: Sword, color: 'text-blood-400', bg: 'bg-blood-500/20' },
+  armor: { icon: Shield, color: 'text-steel-400', bg: 'bg-steel-500/20' },
+  potion: { icon: FlaskConical, color: 'text-forest-400', bg: 'bg-forest-500/20' },
+  scroll: { icon: Scroll, color: 'text-rarity-epic', bg: 'bg-rarity-epic/20' },
+  material: { icon: Gem, color: 'text-valthera-400', bg: 'bg-valthera-400/20' },
+  default: { icon: Package, color: 'text-valthera-200', bg: 'bg-valthera-700/20' },
 };
 
 const rarityConfig: Record<string, { border: string; text: string; glow: string }> = {
-  common: { border: 'border-gray-500', text: 'text-gray-400', glow: '' },
-  uncommon: { border: 'border-green-500', text: 'text-green-400', glow: '' },
-  rare: { border: 'border-blue-500', text: 'text-blue-400', glow: 'shadow-blue-500/20' },
-  epic: { border: 'border-purple-500', text: 'text-purple-400', glow: 'shadow-purple-500/20' },
-  legendary: { border: 'border-amber-500', text: 'text-amber-400', glow: 'shadow-amber-500/30 shadow-lg' },
+  common: { border: 'border-rarity-common', text: 'text-rarity-common', glow: '' },
+  uncommon: { border: 'border-rarity-uncommon', text: 'text-rarity-uncommon', glow: '' },
+  rare: { border: 'border-rarity-rare', text: 'text-rarity-rare', glow: 'shadow-rarity-rare/20' },
+  epic: { border: 'border-rarity-epic', text: 'text-rarity-epic', glow: 'shadow-rarity-epic/20' },
+  legendary: { border: 'border-rarity-legendary', text: 'text-rarity-legendary', glow: 'shadow-rarity-legendary/30 shadow-lg animate-pulse-gold' },
 };
 
 export function InventoryTab({ character }: InventoryTabProps) {
@@ -38,26 +38,26 @@ export function InventoryTab({ character }: InventoryTabProps) {
       {/* Stats inventaire */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <div className="card p-4 text-center">
-          <div className="text-2xl font-bold text-white">{inventory.length}</div>
-          <div className="text-sm text-gray-400">Objets total</div>
+          <div className="text-2xl font-bold text-valthera-100">{inventory.length}</div>
+          <div className="text-sm text-valthera-200/60 font-body">Objets total</div>
         </div>
         <div className="card p-4 text-center">
-          <div className="text-2xl font-bold text-green-400">{equippedItems.length}</div>
-          <div className="text-sm text-gray-400">Équipés</div>
+          <div className="text-2xl font-bold text-forest-400">{equippedItems.length}</div>
+          <div className="text-sm text-valthera-200/60 font-body">Équipés</div>
         </div>
         <div className="card p-4 text-center">
-          <div className="text-2xl font-bold text-amber-400">{character.gold.toLocaleString()}</div>
-          <div className="text-sm text-gray-400">Or</div>
+          <div className="text-2xl font-bold text-valthera-400">{character.gold.toLocaleString()}</div>
+          <div className="text-sm text-valthera-200/60 font-body">Or</div>
         </div>
         <div className="card p-4 text-center">
-          <div className="text-2xl font-bold text-purple-400">50</div>
-          <div className="text-sm text-gray-400">Capacité max</div>
+          <div className="text-2xl font-bold text-rarity-epic">50</div>
+          <div className="text-sm text-valthera-200/60 font-body">Capacité max</div>
         </div>
       </div>
 
       {/* Inventaire */}
       <div className="card p-6">
-        <h2 className="text-xl font-bold text-white font-medieval mb-6">
+        <h2 className="text-xl font-bold text-valthera-100 font-medieval mb-6">
           Sac à dos ({bagItems.length} objets)
         </h2>
 
@@ -71,11 +71,11 @@ export function InventoryTab({ character }: InventoryTabProps) {
               return (
                 <div
                   key={`${item.itemId}-${index}`}
-                  className={`relative bg-gray-800/50 rounded-xl p-4 border ${rarity.border} ${rarity.glow} hover:scale-105 transition-transform cursor-pointer group`}
+                  className={`relative bg-valthera-800/50 rounded-xl p-4 border ${rarity.border} ${rarity.glow} hover:scale-105 transition-transform cursor-pointer group`}
                 >
                   {/* Quantité */}
                   {item.quantity > 1 && (
-                    <div className="absolute -top-2 -right-2 bg-valthera-600 text-white text-xs font-bold px-2 py-0.5 rounded-full">
+                    <div className="absolute -top-2 -right-2 bg-valthera-600 text-valthera-100 text-xs font-bold px-2 py-0.5 rounded-full">
                       x{item.quantity}
                     </div>
                   )}
@@ -86,14 +86,14 @@ export function InventoryTab({ character }: InventoryTabProps) {
                   </div>
 
                   {/* Nom */}
-                  <div className={`text-sm text-center ${rarity.text} truncate`}>
+                  <div className={`text-sm text-center ${rarity.text} truncate font-body`}>
                     {item.itemId.replace(/_/g, ' ')}
                   </div>
 
                   {/* Tooltip au survol */}
                   <div className="tooltip bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 group-hover:opacity-100 group-hover:visible">
-                    <div className="font-medium text-white">{item.itemId.replace(/_/g, ' ')}</div>
-                    <div className="text-xs text-gray-400 mt-1">
+                    <div className="font-medium text-valthera-100">{item.itemId.replace(/_/g, ' ')}</div>
+                    <div className="text-xs text-valthera-200/60 mt-1 font-body">
                       Quantité: {item.quantity}
                     </div>
                   </div>
@@ -103,9 +103,9 @@ export function InventoryTab({ character }: InventoryTabProps) {
           </div>
         ) : (
           <div className="text-center py-12">
-            <Package className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-            <p className="text-gray-500">Votre inventaire est vide</p>
-            <p className="text-gray-600 text-sm mt-2">
+            <Package className="w-16 h-16 text-valthera-600 mx-auto mb-4" />
+            <p className="text-valthera-200/50 font-body">Votre inventaire est vide</p>
+            <p className="text-valthera-200/40 text-sm mt-2 font-body">
               Explorez et combattez pour collecter des objets !
             </p>
           </div>
@@ -114,12 +114,12 @@ export function InventoryTab({ character }: InventoryTabProps) {
 
       {/* Légende raretés */}
       <div className="card p-4">
-        <div className="text-sm text-gray-400 mb-3">Raretés</div>
+        <div className="text-sm text-valthera-200/60 mb-3 font-body">Raretés</div>
         <div className="flex flex-wrap gap-4">
           {Object.entries(rarityConfig).map(([rarity, config]) => (
             <div key={rarity} className="flex items-center gap-2">
               <div className={`w-3 h-3 rounded ${config.border} border-2`} />
-              <span className={`text-sm ${config.text} capitalize`}>{rarity}</span>
+              <span className={`text-sm ${config.text} capitalize font-body`}>{rarity}</span>
             </div>
           ))}
         </div>

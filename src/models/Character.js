@@ -179,7 +179,7 @@ const characterSchema = new mongoose.Schema({
   // Position et exploration
   location: {
     type: String,
-    default: 'valthera-city',
+    default: 'val-serein',
   },
   discoveredZones: [String],
   discoveredPOIs: [String], // Format: "zoneId:poiId"

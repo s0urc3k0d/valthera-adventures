@@ -17,7 +17,7 @@ export const authOptions: NextAuthOptions = {
     async jwt({ token, account, profile }) {
       // Persister l'ID Discord dans le token
       if (account && profile) {
-        token.discordId = profile.id;
+        token.discordId = (profile as any).id;
         token.accessToken = account.access_token;
       }
       return token;

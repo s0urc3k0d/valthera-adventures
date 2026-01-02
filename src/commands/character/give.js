@@ -467,7 +467,7 @@ function createCancelButton() {
 
 function formatLocation(locationId) {
   const locations = {
-    'valthera-city': '🏰 Cité de Valthera',
+    'val-serein': '🏰 Val-Serein',
     'whispering-woods': '🌲 Bois des Murmures',
     'shadowfen-marshes': '🏚️ Marais de Sombrefagne',
     'frostpeak-mountains': '🏔️ Monts Givrés',

@@ -36,15 +36,15 @@ export function Navbar() {
   };
 
   return (
-    <nav className="sticky top-0 z-50 bg-gray-900/80 backdrop-blur-md border-b border-gray-800">
+    <nav className="sticky top-0 z-50 bg-valthera-900/95 backdrop-blur-md border-b border-valthera-700">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 bg-gradient-to-br from-valthera-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
-              <Sword className="w-6 h-6 text-white" />
+            <div className="w-10 h-10 bg-gradient-to-br from-valthera-500 to-valthera-400 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform shadow-gold">
+              <Sword className="w-6 h-6 text-valthera-100" />
             </div>
-            <span className="font-medieval text-xl text-white hidden sm:block">
+            <span className="font-medieval text-xl text-valthera-100 hidden sm:block">
               Valthera
             </span>
           </Link>
@@ -73,7 +73,7 @@ export function Navbar() {
               <div className="relative">
                 <button
                   onClick={() => setUserMenuOpen(!userMenuOpen)}
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-gray-800 transition-colors"
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-valthera-800 transition-colors"
                 >
                   {session.user?.image ? (
                     <Image
@@ -88,15 +88,15 @@ export function Navbar() {
                       <User className="w-4 h-4" />
                     </div>
                   )}
-                  <span className="text-sm text-gray-200">{session.user?.name}</span>
-                  <ChevronDown className="w-4 h-4 text-gray-400" />
+                  <span className="text-sm text-valthera-200">{session.user?.name}</span>
+                  <ChevronDown className="w-4 h-4 text-valthera-400" />
                 </button>
 
                 {userMenuOpen && (
-                  <div className="absolute right-0 mt-2 w-48 bg-gray-900 border border-gray-800 rounded-lg shadow-xl py-1">
+                  <div className="absolute right-0 mt-2 w-48 bg-valthera-900 border border-valthera-700 rounded-lg shadow-xl py-1">
                     <Link
                       href="/dashboard"
-                      className="flex items-center gap-2 px-4 py-2 text-sm text-gray-200 hover:bg-gray-800"
+                      className="flex items-center gap-2 px-4 py-2 text-sm text-valthera-200 hover:bg-valthera-800"
                       onClick={() => setUserMenuOpen(false)}
                     >
                       <User className="w-4 h-4" />
@@ -107,7 +107,7 @@ export function Navbar() {
                         setUserMenuOpen(false);
                         signOut();
                       }}
-                      className="flex items-center gap-2 w-full px-4 py-2 text-sm text-red-400 hover:bg-gray-800"
+                      className="flex items-center gap-2 w-full px-4 py-2 text-sm text-blood-400 hover:bg-valthera-800"
                     >
                       <LogOut className="w-4 h-4" />
                       Déconnexion
@@ -131,7 +131,7 @@ export function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 rounded-lg hover:bg-gray-800"
+            className="md:hidden p-2 rounded-lg hover:bg-valthera-800 text-valthera-200"
           >
             {mobileMenuOpen ? (
               <X className="w-6 h-6" />
@@ -144,7 +144,7 @@ export function Navbar() {
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-gray-800 bg-gray-900/95 backdrop-blur-md">
+        <div className="md:hidden border-t border-valthera-700 bg-valthera-900/95 backdrop-blur-md">
           <div className="px-4 py-4 space-y-2">
             {navLinks.map((link) => (
               <Link
@@ -153,8 +153,8 @@ export function Navbar() {
                 onClick={() => setMobileMenuOpen(false)}
                 className={`flex items-center gap-3 px-4 py-3 rounded-lg transition-colors ${
                   isActive(link.href)
-                    ? 'bg-valthera-600/20 text-valthera-400'
-                    : 'text-gray-300 hover:bg-gray-800'
+                    ? 'bg-valthera-500/20 text-valthera-300'
+                    : 'text-valthera-200 hover:bg-valthera-800'
                 }`}
               >
                 <link.icon className="w-5 h-5" />
@@ -162,14 +162,14 @@ export function Navbar() {
               </Link>
             ))}
             
-            <hr className="border-gray-800 my-4" />
+            <hr className="border-valthera-700 my-4" />
             
             {session ? (
               <>
                 <Link
                   href="/dashboard"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-gray-800"
+                  className="flex items-center gap-3 px-4 py-3 rounded-lg text-valthera-200 hover:bg-valthera-800"
                 >
                   <User className="w-5 h-5" />
                   Mon personnage
@@ -179,7 +179,7 @@ export function Navbar() {
                     setMobileMenuOpen(false);
                     signOut();
                   }}
-                  className="flex items-center gap-3 w-full px-4 py-3 rounded-lg text-red-400 hover:bg-gray-800"
+                  className="flex items-center gap-3 w-full px-4 py-3 rounded-lg text-blood-400 hover:bg-valthera-800"
                 >
                   <LogOut className="w-5 h-5" />
                   Déconnexion

@@ -7,14 +7,14 @@ import { MapPin, Skull, Users, ShoppingBag, Compass } from 'lucide-react';
 // Données des zones (simplifié depuis zones.json)
 const zones = [
   {
-    id: 'valthera_city',
-    name: 'Cité de Valthera',
+    id: 'val-serein',
+    name: 'Val-Serein',
     type: 'city',
     level: '1-5',
-    description: 'La capitale du royaume, un hub pour les aventuriers',
+    description: 'La capitale du royaume de Valthera, un hub pour les aventuriers',
     x: 50,
     y: 45,
-    color: 'bg-amber-500',
+    color: 'bg-valthera-500',
     features: ['Boutiques', 'Taverne', 'Guilde', 'Quêtes'],
   },
   {
@@ -25,7 +25,7 @@ const zones = [
     description: 'Une forêt mystérieuse aux arbres centenaires',
     x: 30,
     y: 30,
-    color: 'bg-green-600',
+    color: 'bg-forest-600',
     features: ['Gobelins', 'Loups', 'Herbes'],
   },
   {
@@ -36,7 +36,7 @@ const zones = [
     description: 'Des cavernes remplies de cristaux magiques',
     x: 70,
     y: 25,
-    color: 'bg-cyan-500',
+    color: 'bg-rarity-rare',
     features: ['Minerais', 'Slimes', 'Boss'],
   },
   {
@@ -47,7 +47,7 @@ const zones = [
     description: 'Un marécage dangereux infesté de créatures',
     x: 20,
     y: 60,
-    color: 'bg-purple-600',
+    color: 'bg-rarity-epic',
     features: ['Zombies', 'Sorcières', 'Poisons'],
   },
   {
@@ -58,7 +58,7 @@ const zones = [
     description: 'Le sommet où réside le dragon ancestral',
     x: 80,
     y: 15,
-    color: 'bg-red-600',
+    color: 'bg-blood-500',
     features: ['Dragons', 'Trésors', 'Boss'],
   },
   {
@@ -69,7 +69,7 @@ const zones = [
     description: 'Les vestiges d\'une ancienne civilisation',
     x: 65,
     y: 70,
-    color: 'bg-blue-600',
+    color: 'bg-steel-500',
     features: ['Squelettes', 'Artefacts', 'Pièges'],
   },
   {
@@ -80,7 +80,7 @@ const zones = [
     description: 'La route commerciale principale du royaume',
     x: 45,
     y: 55,
-    color: 'bg-yellow-600',
+    color: 'bg-valthera-400',
     features: ['Bandits', 'Caravanes', 'Commerce'],
   },
   {
@@ -91,7 +91,7 @@ const zones = [
     description: 'Les terres glacées du nord',
     x: 35,
     y: 10,
-    color: 'bg-sky-400',
+    color: 'bg-steel-300',
     features: ['Yetis', 'Loups', 'Blizzards'],
   },
 ];
@@ -115,10 +115,10 @@ export default function MapPage() {
     <div className="max-w-7xl mx-auto px-4 py-12">
       {/* Header */}
       <div className="text-center mb-8">
-        <h1 className="text-4xl font-bold text-white font-medieval mb-4">
+        <h1 className="text-4xl font-bold text-valthera-100 font-medieval mb-4">
           Carte de Valthera
         </h1>
-        <p className="text-gray-400">
+        <p className="text-valthera-200/70 font-body">
           Explorez les différentes régions du royaume. Cliquez sur une zone pour plus de détails.
         </p>
       </div>
@@ -128,12 +128,12 @@ export default function MapPage() {
         <div className="lg:col-span-2">
           <div className="card p-4 aspect-[4/3] relative overflow-hidden">
             {/* Background */}
-            <div className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-gray-800">
+            <div className="absolute inset-0 bg-gradient-to-br from-valthera-900 via-valthera-950 to-valthera-800">
               {/* Grid overlay */}
               <div 
                 className="absolute inset-0 opacity-10"
                 style={{
-                  backgroundImage: 'linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, #fff 1px, transparent 1px)',
+                  backgroundImage: 'linear-gradient(rgba(201, 162, 39, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(201, 162, 39, 0.3) 1px, transparent 1px)',
                   backgroundSize: '50px 50px',
                 }}
               />
@@ -167,12 +167,12 @@ export default function MapPage() {
 
                   {/* Label */}
                   <div
-                    className={`absolute left-1/2 -translate-x-1/2 mt-2 px-2 py-1 bg-gray-900/90 rounded text-xs text-white whitespace-nowrap transition-opacity ${
+                    className={`absolute left-1/2 -translate-x-1/2 mt-2 px-2 py-1 bg-valthera-900/95 rounded text-xs text-valthera-100 whitespace-nowrap transition-opacity border border-valthera-700/50 ${
                       isHovered || isSelected ? 'opacity-100' : 'opacity-0'
                     }`}
                   >
                     {zone.name}
-                    <span className="ml-2 text-gray-400">Nv.{zone.level}</span>
+                    <span className="ml-2 text-valthera-400">Nv.{zone.level}</span>
                   </div>
 
                   {/* Pulse effect for selected */}
@@ -187,8 +187,8 @@ export default function MapPage() {
             <svg className="absolute inset-0 w-full h-full pointer-events-none">
               <defs>
                 <linearGradient id="pathGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" stopColor="rgba(139, 92, 246, 0.3)" />
-                  <stop offset="100%" stopColor="rgba(139, 92, 246, 0.1)" />
+                  <stop offset="0%" stopColor="rgba(201, 162, 39, 0.4)" />
+                  <stop offset="100%" stopColor="rgba(201, 162, 39, 0.15)" />
                 </linearGradient>
               </defs>
               {/* Route from city to forest */}
@@ -202,19 +202,19 @@ export default function MapPage() {
 
           {/* Legend */}
           <div className="card p-4 mt-4">
-            <div className="text-sm text-gray-400 mb-3">Légende</div>
+            <div className="text-sm text-valthera-200/60 mb-3 font-body">Légende</div>
             <div className="flex flex-wrap gap-4">
               {[
-                { color: 'bg-amber-500', label: 'Ville' },
-                { color: 'bg-green-600', label: 'Forêt' },
-                { color: 'bg-cyan-500', label: 'Donjon' },
-                { color: 'bg-purple-600', label: 'Marais' },
-                { color: 'bg-red-600', label: 'Montagne' },
-                { color: 'bg-blue-600', label: 'Ruines' },
+                { color: 'bg-valthera-500', label: 'Ville' },
+                { color: 'bg-forest-600', label: 'Forêt' },
+                { color: 'bg-rarity-rare', label: 'Donjon' },
+                { color: 'bg-rarity-epic', label: 'Marais' },
+                { color: 'bg-blood-500', label: 'Montagne' },
+                { color: 'bg-steel-500', label: 'Ruines' },
               ].map((item) => (
                 <div key={item.label} className="flex items-center gap-2">
                   <div className={`w-4 h-4 ${item.color} rounded-full`} />
-                  <span className="text-sm text-gray-300">{item.label}</span>
+                  <span className="text-sm text-valthera-200 font-body">{item.label}</span>
                 </div>
               ))}
             </div>
@@ -244,16 +244,16 @@ export default function MapPage() {
 
               {/* Content */}
               <div className="p-6 space-y-6">
-                <p className="text-gray-300">{selectedZone.description}</p>
+                <p className="text-valthera-200 font-body">{selectedZone.description}</p>
 
                 {/* Features */}
                 <div>
-                  <h3 className="text-sm font-semibold text-gray-400 mb-3">Points d'intérêt</h3>
+                  <h3 className="text-sm font-semibold text-valthera-200/60 mb-3 font-body">Points d'intérêt</h3>
                   <div className="flex flex-wrap gap-2">
                     {selectedZone.features.map((feature) => (
                       <span
                         key={feature}
-                        className="px-3 py-1 bg-gray-800 rounded-full text-sm text-gray-300"
+                        className="px-3 py-1 bg-valthera-800 rounded-full text-sm text-valthera-200 border border-valthera-700/50"
                       >
                         {feature}
                       </span>
@@ -262,11 +262,11 @@ export default function MapPage() {
                 </div>
 
                 {/* Actions */}
-                <div className="pt-4 border-t border-gray-800">
-                  <p className="text-sm text-gray-500 mb-3">
+                <div className="pt-4 border-t border-valthera-700">
+                  <p className="text-sm text-valthera-200/50 mb-3 font-body">
                     Pour voyager ici, utilisez la commande :
                   </p>
-                  <code className="block px-4 py-2 bg-gray-800 rounded-lg text-valthera-400">
+                  <code className="block px-4 py-2 bg-valthera-800 rounded-lg text-valthera-400 border border-valthera-700/50">
                     /travel {selectedZone.id}
                   </code>
                 </div>
@@ -274,11 +274,11 @@ export default function MapPage() {
             </motion.div>
           ) : (
             <div className="card p-8 text-center">
-              <MapPin className="w-12 h-12 text-gray-600 mx-auto mb-4" />
-              <h3 className="text-lg font-medium text-white mb-2">
+              <MapPin className="w-12 h-12 text-valthera-600 mx-auto mb-4" />
+              <h3 className="text-lg font-medium text-valthera-100 mb-2 font-medieval">
                 Sélectionnez une zone
               </h3>
-              <p className="text-gray-500 text-sm">
+              <p className="text-valthera-200/50 text-sm font-body">
                 Cliquez sur un marqueur sur la carte pour voir les détails de la zone.
               </p>
             </div>
@@ -286,7 +286,7 @@ export default function MapPage() {
 
           {/* Quick Travel */}
           <div className="card p-6 mt-6">
-            <h3 className="text-lg font-semibold text-white mb-4">Zones par niveau</h3>
+            <h3 className="text-lg font-semibold text-valthera-100 mb-4 font-medieval">Zones par niveau</h3>
             <div className="space-y-2">
               {zones
                 .sort((a, b) => parseInt(a.level) - parseInt(b.level))
@@ -297,11 +297,11 @@ export default function MapPage() {
                     className={`w-full flex items-center justify-between px-4 py-3 rounded-lg transition-colors ${
                       selectedZone?.id === zone.id
                         ? 'bg-valthera-600/20 border border-valthera-500/50'
-                        : 'bg-gray-800/50 hover:bg-gray-800'
+                        : 'bg-valthera-800/50 hover:bg-valthera-800 border border-valthera-700/50'
                     }`}
                   >
-                    <span className="text-white">{zone.name}</span>
-                    <span className="text-sm text-gray-400">Nv.{zone.level}</span>
+                    <span className="text-valthera-100 font-body">{zone.name}</span>
+                    <span className="text-sm text-valthera-400">Nv.{zone.level}</span>
                   </button>
                 ))}
             </div>

@@ -111,7 +111,7 @@ const CharacterSchema = new Schema<ICharacter>(
     spells: [String],
     abilities: [String],
     location: {
-      zoneId: { type: String, default: 'valthera_city' },
+      zoneId: { type: String, default: 'val-serein' },
       subZone: String,
     },
     reputation: { type: Map, of: Number, default: {} },
@@ -146,8 +146,7 @@ const CharacterSchema = new Schema<ICharacter>(
 
 // Quest Model
 export interface IQuest {
-  odiscordUserId: string;
-  odiscordUserId: string;
+  discordUserId: string;
   questId: string;
   status: 'active' | 'completed' | 'failed';
   progress: Map<string, number>;
@@ -157,7 +156,7 @@ export interface IQuest {
 
 const QuestSchema = new Schema<IQuest>(
   {
-    odiscordUserId: { type: String, required: true, index: true },
+    discordUserId: { type: String, required: true, index: true },
     questId: { type: String, required: true },
     status: { type: String, enum: ['active', 'completed', 'failed'], default: 'active' },
     progress: { type: Map, of: Number, default: {} },

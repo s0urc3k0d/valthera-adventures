@@ -1,9 +1,9 @@
 [
   {
-    "id": "valthera-city",
-    "name": "Cité de Valthera",
-    "description": "La capitale du royaume, une ville prospère aux hautes murailles de pierre blanche. Les marchands affluent de toutes les régions, et les aventuriers y trouvent tavernes, guildes et opportunités.",
-    "shortDescription": "Capitale du royaume, point de départ des aventuriers.",
+    "id": "val-serein",
+    "name": "Val-Serein",
+    "description": "La capitale du royaume de Valthera, une ville prospère aux hautes murailles de pierre blanche. Les marchands affluent de toutes les régions, et les aventuriers y trouvent tavernes, guildes et opportunités.",
+    "shortDescription": "Capitale du royaume de Valthera, point de départ des aventuriers.",
     "type": "town",
     "level": { "min": 1, "max": 20, "recommended": 1 },
     "safeZone": true,
@@ -23,7 +23,7 @@
     "shops": [
       { "id": "iron-hammer", "name": "Le Marteau d'Argent", "type": "armorer", "npcId": "marcus-ironforge" },
       { "id": "twilight-apothecary", "name": "L'Apothicaire du Crépuscule", "type": "apothecary", "npcId": "sera-nightshade" },
-      { "id": "general-goods", "name": "Bazar de Valthera", "type": "general" }
+      { "id": "general-goods", "name": "Bazar de Val-Serein", "type": "general" }
     ],
     "services": [
       { "id": "rusty-sword-inn", "name": "L'Épée Rouillée", "type": "inn", "cost": 5, "description": "Auberge confortable avec bonnes chambres et meilleure bière." },
@@ -51,7 +51,7 @@
     "restingAllowed": true,
     "encounterRate": 0.35,
     "connectedZones": [
-      { "zoneId": "valthera-city", "travelTime": 30, "travelCost": 0 },
+      { "zoneId": "val-serein", "travelTime": 30, "travelCost": 0 },
       { "zoneId": "ancient-ruins", "travelTime": 45, "travelCost": 0, "requirements": { "level": 3 }, "hidden": true },
       { "zoneId": "moonlit-glade", "travelTime": 20, "travelCost": 0 }
     ],
@@ -91,7 +91,7 @@
     "restingAllowed": false,
     "encounterRate": 0.5,
     "connectedZones": [
-      { "zoneId": "valthera-city", "travelTime": 45, "travelCost": 5 }
+      { "zoneId": "val-serein", "travelTime": 45, "travelCost": 5 }
     ],
     "monsters": [
       { "monsterId": "kobold", "spawnChance": 35, "minCount": 3, "maxCount": 6 },
@@ -173,7 +173,7 @@
     "restingAllowed": true,
     "encounterRate": 0.2,
     "connectedZones": [
-      { "zoneId": "valthera-city", "travelTime": 20, "travelCost": 0 },
+      { "zoneId": "val-serein", "travelTime": 20, "travelCost": 0 },
       { "zoneId": "crossroads-inn", "travelTime": 40, "travelCost": 0 },
       { "zoneId": "bandit-camp", "travelTime": 25, "travelCost": 0, "hidden": true, "requirements": { "quest": "bandit-threat" } }
     ],

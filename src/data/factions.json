@@ -6,7 +6,7 @@
     "shortDescription": "La guilde qui unit les aventuriers.",
     "emoji": "⚔️",
     "color": 15844367,
-    "headquarters": "valthera-city",
+    "headquarters": "val-serein",
     "leader": "elena-whisperwind",
     "ranks": [
       { "name": "Recrue", "minRep": 0, "perks": [] },
@@ -31,7 +31,7 @@
     "shortDescription": "Le gouvernement royal de Valthera.",
     "emoji": "👑",
     "color": 16766720,
-    "headquarters": "valthera-city",
+    "headquarters": "val-serein",
     "leader": "king-aldric",
     "ranks": [
       { "name": "Citoyen", "minRep": 0, "perks": [] },
@@ -56,7 +56,7 @@
     "shortDescription": "L'union des marchands de la ville.",
     "emoji": "💰",
     "color": 15105570,
-    "headquarters": "valthera-city",
+    "headquarters": "val-serein",
     "leader": "marcus-ironforge",
     "ranks": [
       { "name": "Client", "minRep": 0, "perks": [] },
@@ -81,7 +81,7 @@
     "shortDescription": "L'ordre religieux de Solara.",
     "emoji": "✨",
     "color": 16777130,
-    "headquarters": "valthera-city",
+    "headquarters": "val-serein",
     "leader": "high-priestess-lyra",
     "ranks": [
       { "name": "Fidèle", "minRep": 0, "perks": [] },
@@ -106,7 +106,7 @@
     "shortDescription": "Le monde souterrain de Valthera.",
     "emoji": "🗡️",
     "color": 2303786,
-    "headquarters": "valthera-city",
+    "headquarters": "val-serein",
     "leader": "the-whisper",
     "hidden": true,
     "ranks": [

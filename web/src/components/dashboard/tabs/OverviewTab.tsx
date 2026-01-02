@@ -36,18 +36,18 @@ export function OverviewTab({ character }: OverviewTabProps) {
       {/* Statistiques */}
       <div className="lg:col-span-2">
         <div className="card p-6">
-          <h2 className="text-xl font-bold text-white font-medieval mb-6">Caractéristiques</h2>
+          <h2 className="text-xl font-bold text-valthera-100 font-medieval mb-6">Caractéristiques</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {Object.entries(character.stats).map(([stat, value]) => {
               const Icon = statIcons[stat] || Sword;
               return (
                 <div
                   key={stat}
-                  className="bg-gray-800/50 rounded-xl p-4 text-center hover:bg-gray-800 transition-colors"
+                  className="bg-valthera-800/50 rounded-xl p-4 text-center hover:bg-valthera-800 transition-colors border border-valthera-700/50"
                 >
                   <Icon className="w-6 h-6 text-valthera-400 mx-auto mb-2" />
-                  <div className="text-2xl font-bold text-white">{value}</div>
-                  <div className="text-xs text-gray-400">{statNames[stat]}</div>
+                  <div className="text-2xl font-bold text-valthera-100">{value}</div>
+                  <div className="text-xs text-valthera-200/60 font-body">{statNames[stat]}</div>
                   <div className="text-sm text-valthera-400 mt-1">
                     {getModifier(value)}
                   </div>
@@ -59,45 +59,45 @@ export function OverviewTab({ character }: OverviewTabProps) {
 
         {/* Équipement */}
         <div className="card p-6 mt-6">
-          <h2 className="text-xl font-bold text-white font-medieval mb-6">Équipement</h2>
+          <h2 className="text-xl font-bold text-valthera-100 font-medieval mb-6">Équipement</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {/* Arme */}
-            <div className="bg-gray-800/50 rounded-xl p-4">
-              <div className="text-xs text-gray-400 mb-2">Arme</div>
+            <div className="bg-valthera-800/50 rounded-xl p-4 border border-valthera-700/50">
+              <div className="text-xs text-valthera-200/60 mb-2 font-body">Arme</div>
               {character.equipment.weapon ? (
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-red-500/20 rounded-lg flex items-center justify-center">
-                    <Sword className="w-5 h-5 text-red-400" />
+                  <div className="w-10 h-10 bg-blood-500/20 rounded-lg flex items-center justify-center">
+                    <Sword className="w-5 h-5 text-blood-400" />
                   </div>
-                  <span className="text-white">{character.equipment.weapon}</span>
+                  <span className="text-valthera-100">{character.equipment.weapon}</span>
                 </div>
               ) : (
-                <span className="text-gray-500 italic">Aucune arme équipée</span>
+                <span className="text-valthera-200/50 italic font-body">Aucune arme équipée</span>
               )}
             </div>
 
             {/* Armure */}
-            <div className="bg-gray-800/50 rounded-xl p-4">
-              <div className="text-xs text-gray-400 mb-2">Armure</div>
+            <div className="bg-valthera-800/50 rounded-xl p-4 border border-valthera-700/50">
+              <div className="text-xs text-valthera-200/60 mb-2 font-body">Armure</div>
               {character.equipment.armor ? (
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-blue-500/20 rounded-lg flex items-center justify-center">
-                    <Shield className="w-5 h-5 text-blue-400" />
+                  <div className="w-10 h-10 bg-steel-500/20 rounded-lg flex items-center justify-center">
+                    <Shield className="w-5 h-5 text-steel-400" />
                   </div>
-                  <span className="text-white">{character.equipment.armor}</span>
+                  <span className="text-valthera-100">{character.equipment.armor}</span>
                 </div>
               ) : (
-                <span className="text-gray-500 italic">Aucune armure équipée</span>
+                <span className="text-valthera-200/50 italic font-body">Aucune armure équipée</span>
               )}
             </div>
 
             {/* Accessoire */}
-            <div className="bg-gray-800/50 rounded-xl p-4">
-              <div className="text-xs text-gray-400 mb-2">Accessoire</div>
+            <div className="bg-valthera-800/50 rounded-xl p-4 border border-valthera-700/50">
+              <div className="text-xs text-valthera-200/60 mb-2 font-body">Accessoire</div>
               {character.equipment.accessory ? (
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 bg-purple-500/20 rounded-lg flex items-center justify-center">
-                    <Star className="w-5 h-5 text-purple-400" />
+                  <div className="w-10 h-10 bg-rarity-epic/20 rounded-lg flex items-center justify-center">
+                    <Star className="w-5 h-5 text-rarity-epic" />
                   </div>
                   <span className="text-white">{character.equipment.accessory}</span>
                 </div>

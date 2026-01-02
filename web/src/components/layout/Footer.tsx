@@ -22,18 +22,18 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="bg-gray-900/50 border-t border-gray-800 mt-auto">
+    <footer className="bg-valthera-950/80 border-t border-valthera-700 mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 bg-gradient-to-br from-valthera-500 to-purple-600 rounded-lg flex items-center justify-center">
-                <Sword className="w-6 h-6 text-white" />
+              <div className="w-10 h-10 bg-gradient-to-br from-valthera-500 to-valthera-400 rounded-lg flex items-center justify-center shadow-gold">
+                <Sword className="w-6 h-6 text-valthera-100" />
               </div>
-              <span className="font-medieval text-xl text-white">Valthera</span>
+              <span className="font-medieval text-xl text-valthera-100">Valthera</span>
             </Link>
-            <p className="text-gray-400 text-sm mb-4">
+            <p className="text-valthera-200/70 text-sm mb-4 font-body">
               Un bot Discord RPG complet inspiré de Dungeons & Dragons. 
               Créez votre héros et partez à l'aventure !
             </p>
@@ -42,7 +42,7 @@ export function Footer() {
                 href="https://github.com/s0urc3k0d/valthera-adventures"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-gray-400 hover:text-white transition-colors"
+                className="text-valthera-200/70 hover:text-valthera-300 transition-colors"
               >
                 <Github className="w-5 h-5" />
               </a>
@@ -51,13 +51,13 @@ export function Footer() {
 
           {/* Navigation */}
           <div>
-            <h3 className="font-semibold text-white mb-4">Navigation</h3>
+            <h3 className="font-medieval font-semibold text-valthera-300 mb-4">Navigation</h3>
             <ul className="space-y-2">
               {footerLinks.navigation.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-valthera-400 transition-colors text-sm"
+                    className="text-valthera-200/70 hover:text-valthera-300 transition-colors text-sm font-body"
                   >
                     {link.label}
                   </Link>
@@ -68,13 +68,13 @@ export function Footer() {
 
           {/* Wiki */}
           <div>
-            <h3 className="font-semibold text-white mb-4">Wiki</h3>
+            <h3 className="font-medieval font-semibold text-valthera-300 mb-4">Wiki</h3>
             <ul className="space-y-2">
               {footerLinks.wiki.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-valthera-400 transition-colors text-sm"
+                    className="text-valthera-200/70 hover:text-valthera-300 transition-colors text-sm font-body"
                   >
                     {link.label}
                   </Link>
@@ -85,13 +85,13 @@ export function Footer() {
 
           {/* Legal */}
           <div>
-            <h3 className="font-semibold text-white mb-4">Légal</h3>
+            <h3 className="font-medieval font-semibold text-valthera-300 mb-4">Légal</h3>
             <ul className="space-y-2">
               {footerLinks.legal.map((link) => (
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-valthera-400 transition-colors text-sm"
+                    className="text-valthera-200/70 hover:text-valthera-300 transition-colors text-sm font-body"
                   >
                     {link.label}
                   </Link>
@@ -102,12 +102,12 @@ export function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="mt-12 pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-sm">
+        <div className="mt-12 pt-8 border-t border-valthera-800 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-valthera-200/50 text-sm font-body">
             © {new Date().getFullYear()} Valthera Adventures. Tous droits réservés.
           </p>
-          <p className="text-gray-500 text-sm flex items-center gap-1">
-            Fait avec <Heart className="w-4 h-4 text-red-500" /> pour les aventuriers
+          <p className="text-valthera-200/50 text-sm flex items-center gap-1 font-body">
+            Fait avec <Heart className="w-4 h-4 text-blood-500" /> pour les aventuriers
           </p>
         </div>
       </div>

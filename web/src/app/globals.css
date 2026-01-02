@@ -2,96 +2,131 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+/* Fonts - Valthera Style */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 7%;
-    --foreground: 0 0% 95%;
-    --card: 0 0% 10%;
-    --card-foreground: 0 0% 95%;
-    --popover: 0 0% 10%;
-    --popover-foreground: 0 0% 95%;
-    --primary: 263 70% 50%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 0 0% 15%;
-    --secondary-foreground: 0 0% 95%;
-    --muted: 0 0% 15%;
-    --muted-foreground: 0 0% 65%;
-    --accent: 38 92% 50%;
-    --accent-foreground: 0 0% 100%;
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 0 0% 100%;
-    --border: 0 0% 20%;
-    --input: 0 0% 15%;
-    --ring: 263 70% 50%;
+    --valthera-950: #0D0705;
+    --valthera-900: #1A0F08;
+    --valthera-800: #2D1B0E;
+    --valthera-700: #4A2C17;
+    --valthera-600: #6B3D1F;
+    --valthera-500: #8B5A2B;
+    --valthera-400: #C9A227;
+    --valthera-300: #D4AF37;
+    --valthera-200: #E8D5A3;
+    --valthera-100: #F5ECD7;
   }
 
   * {
-    @apply border-border;
+    @apply border-valthera-700;
+  }
+
+  html {
+    scroll-behavior: smooth;
   }
 
   body {
-    @apply bg-[#0a0a0f] text-gray-100 font-body antialiased;
-    background-image: 
-      radial-gradient(ellipse at top, rgba(139, 92, 246, 0.1), transparent 50%),
-      radial-gradient(ellipse at bottom, rgba(30, 27, 75, 0.3), transparent 50%);
+    @apply text-valthera-100 font-body antialiased;
+    background: linear-gradient(180deg, #0D0705 0%, #1A0F08 50%, #2D1B0E 100%);
+    background-attachment: fixed;
     min-height: 100vh;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-medieval;
+    @apply font-medieval text-valthera-100;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-valthera-400/30 text-valthera-100;
   }
 }
 
 @layer components {
-  /* Boutons */
+  /* ================================
+     BOUTONS - Style Valthera
+     ================================ */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200;
-    @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0a0a0f];
+    @apply inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg font-medieval font-semibold transition-all duration-300;
+    @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-valthera-950;
   }
 
   .btn-primary {
-    @apply btn bg-valthera-600 hover:bg-valthera-500 text-white;
-    @apply focus:ring-valthera-500;
+    @apply btn bg-gradient-to-r from-valthera-500 to-valthera-600 text-valthera-100;
+    @apply hover:from-valthera-400 hover:to-valthera-500 hover:shadow-gold;
+    @apply focus:ring-valthera-400;
   }
 
   .btn-secondary {
-    @apply btn bg-gray-800 hover:bg-gray-700 text-gray-100 border border-gray-700;
-    @apply focus:ring-gray-500;
+    @apply btn bg-valthera-800 text-valthera-200 border border-valthera-700;
+    @apply hover:bg-valthera-700 hover:border-valthera-600 hover:text-valthera-100;
+    @apply focus:ring-valthera-500;
   }
 
   .btn-gold {
-    @apply btn bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-gray-900 font-semibold;
-    @apply focus:ring-amber-500;
+    @apply btn bg-gradient-to-r from-valthera-400 to-valthera-300 text-valthera-950 font-bold;
+    @apply hover:from-valthera-300 hover:to-valthera-200 hover:shadow-gold-lg;
+    @apply focus:ring-valthera-300;
   }
 
-  /* Cards */
+  .btn-danger {
+    @apply btn bg-gradient-to-r from-blood-600 to-blood-500 text-valthera-100;
+    @apply hover:from-blood-500 hover:to-blood-400;
+    @apply focus:ring-blood-500;
+  }
+
+  .btn-success {
+    @apply btn bg-gradient-to-r from-forest-700 to-forest-600 text-valthera-100;
+    @apply hover:from-forest-600 hover:to-forest-500;
+    @apply focus:ring-forest-600;
+  }
+
+  /* ================================
+     CARDS - Style Valthera
+     ================================ */
   .card {
-    @apply bg-gray-900/50 backdrop-blur-sm border border-gray-800 rounded-xl;
+    @apply bg-valthera-900/80 backdrop-blur-sm border border-valthera-700 rounded-xl;
   }
 
   .card-hover {
-    @apply card hover:border-valthera-500/50 hover:shadow-lg hover:shadow-valthera-500/10 transition-all duration-300;
+    @apply card transition-all duration-300;
+    @apply hover:border-valthera-500 hover:shadow-lg hover:shadow-valthera-400/10;
+    @apply hover:transform hover:-translate-y-1;
   }
 
-  /* Stats */
+  .card-gold {
+    @apply card border-valthera-400/50;
+    @apply shadow-gold;
+  }
+
+  .card-legendary {
+    @apply card border-rarity-legendary/50 animate-pulse-gold;
+  }
+
+  .card-epic {
+    @apply card border-rarity-epic/50 animate-epic-glow;
+  }
+
+  /* ================================
+     STATS & PROGRESS
+     ================================ */
   .stat-card {
     @apply card p-6 text-center;
   }
 
   .stat-value {
-    @apply text-3xl font-bold text-white font-medieval;
+    @apply text-3xl font-bold text-valthera-300 font-medieval;
   }
 
   .stat-label {
-    @apply text-sm text-gray-400 mt-1;
+    @apply text-sm text-valthera-200/70 mt-1 font-body;
   }
 
-  /* Health/Mana Bars */
+  /* Progress Bars */
   .progress-bar {
-    @apply h-3 bg-gray-800 rounded-full overflow-hidden;
+    @apply h-3 bg-valthera-800 rounded-full overflow-hidden border border-valthera-700/50;
   }
 
   .progress-fill {
@@ -99,146 +134,277 @@
   }
 
   .progress-health {
-    @apply bg-gradient-to-r from-red-600 to-red-400;
+    @apply bg-gradient-to-r from-blood-600 to-blood-400;
   }
 
   .progress-mana {
-    @apply bg-gradient-to-r from-blue-600 to-blue-400;
+    @apply bg-gradient-to-r from-blue-700 to-blue-500;
   }
 
   .progress-xp {
-    @apply bg-gradient-to-r from-purple-600 to-purple-400;
+    @apply bg-gradient-to-r from-rarity-epic to-purple-400;
   }
 
-  /* Rarity colors */
-  .rarity-common { @apply text-gray-400; }
-  .rarity-uncommon { @apply text-green-400; }
-  .rarity-rare { @apply text-blue-400; }
-  .rarity-epic { @apply text-purple-400; }
-  .rarity-legendary { @apply text-amber-400; }
+  .progress-gold {
+    @apply bg-gradient-to-r from-valthera-500 to-valthera-300;
+  }
 
-  .rarity-border-common { @apply border-gray-500; }
-  .rarity-border-uncommon { @apply border-green-500; }
-  .rarity-border-rare { @apply border-blue-500; }
-  .rarity-border-epic { @apply border-purple-500; }
-  .rarity-border-legendary { @apply border-amber-500 shadow-amber-500/20 shadow-lg; }
+  /* ================================
+     RARITY COLORS
+     ================================ */
+  .rarity-common { @apply text-rarity-common; }
+  .rarity-uncommon { @apply text-rarity-uncommon; }
+  .rarity-rare { @apply text-rarity-rare; }
+  .rarity-epic { @apply text-rarity-epic; }
+  .rarity-legendary { @apply text-rarity-legendary; }
 
-  /* Navigation */
+  .rarity-bg-common { @apply bg-rarity-common/10 border-rarity-common/30; }
+  .rarity-bg-uncommon { @apply bg-rarity-uncommon/10 border-rarity-uncommon/30; }
+  .rarity-bg-rare { @apply bg-rarity-rare/10 border-rarity-rare/30; }
+  .rarity-bg-epic { @apply bg-rarity-epic/10 border-rarity-epic/30; }
+  .rarity-bg-legendary { @apply bg-rarity-legendary/10 border-rarity-legendary/30 shadow-legendary; }
+
+  .rarity-border-common { @apply border-rarity-common/50; }
+  .rarity-border-uncommon { @apply border-rarity-uncommon/50; }
+  .rarity-border-rare { @apply border-rarity-rare/50; }
+  .rarity-border-epic { @apply border-rarity-epic/50 shadow-epic; }
+  .rarity-border-legendary { @apply border-rarity-legendary shadow-legendary; }
+
+  /* ================================
+     NAVIGATION
+     ================================ */
   .nav-link {
-    @apply px-4 py-2 text-gray-300 hover:text-white transition-colors relative;
+    @apply px-4 py-2 text-valthera-200 hover:text-valthera-100 transition-all duration-200 relative font-body;
+  }
+
+  .nav-link:hover::after {
+    content: '';
+    @apply absolute bottom-0 left-1/2 -translate-x-1/2 w-1/2 h-0.5 bg-valthera-400;
   }
 
   .nav-link-active {
-    @apply text-valthera-400;
+    @apply text-valthera-300 font-semibold;
   }
 
   .nav-link-active::after {
     content: '';
-    @apply absolute bottom-0 left-0 right-0 h-0.5 bg-valthera-500;
+    @apply absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-valthera-400 to-transparent;
   }
 
-  /* Tables */
+  /* ================================
+     TABLES - Valthera Style
+     ================================ */
   .table-dark {
     @apply w-full text-left;
   }
 
   .table-dark thead {
-    @apply bg-gray-800/50;
+    @apply bg-valthera-800/70;
   }
 
   .table-dark th {
-    @apply px-4 py-3 text-sm font-semibold text-gray-300 uppercase tracking-wider;
+    @apply px-4 py-3 text-sm font-medieval font-semibold text-valthera-300 uppercase tracking-wider border-b border-valthera-700;
   }
 
   .table-dark td {
-    @apply px-4 py-4 border-t border-gray-800;
+    @apply px-4 py-4 border-b border-valthera-800/50 text-valthera-200;
+  }
+
+  .table-dark tbody tr {
+    @apply transition-colors duration-200;
   }
 
   .table-dark tbody tr:hover {
-    @apply bg-gray-800/30;
+    @apply bg-valthera-800/40;
   }
 
-  /* Badges */
+  /* ================================
+     BADGES
+     ================================ */
   .badge {
-    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+    @apply inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold font-body;
   }
 
   .badge-primary {
-    @apply badge bg-valthera-500/20 text-valthera-300;
+    @apply badge bg-valthera-600/30 text-valthera-300 border border-valthera-500/30;
   }
 
   .badge-gold {
-    @apply badge bg-amber-500/20 text-amber-300;
+    @apply badge bg-valthera-400/20 text-valthera-300 border border-valthera-400/30;
   }
 
   .badge-success {
-    @apply badge bg-green-500/20 text-green-300;
+    @apply badge bg-forest-600/30 text-forest-500 border border-forest-600/30;
   }
 
   .badge-danger {
-    @apply badge bg-red-500/20 text-red-300;
+    @apply badge bg-blood-600/30 text-blood-400 border border-blood-600/30;
   }
 
-  /* Tooltips */
-  .tooltip {
-    @apply absolute z-50 px-3 py-2 text-sm bg-gray-900 border border-gray-700 rounded-lg shadow-xl;
-    @apply opacity-0 invisible transition-all duration-200;
+  .badge-info {
+    @apply badge bg-blue-600/30 text-blue-400 border border-blue-600/30;
   }
 
-  .tooltip-trigger:hover .tooltip {
-    @apply opacity-100 visible;
+  /* ================================
+     INPUTS & FORMS
+     ================================ */
+  .input {
+    @apply w-full px-4 py-2.5 bg-valthera-900 border border-valthera-700 rounded-lg;
+    @apply text-valthera-100 placeholder-valthera-200/50 font-body;
+    @apply focus:outline-none focus:border-valthera-500 focus:ring-1 focus:ring-valthera-500;
+    @apply transition-colors duration-200;
   }
 
-  /* Scrollbar */
-  .scrollbar-thin::-webkit-scrollbar {
+  .input-gold {
+    @apply input border-valthera-500/50 focus:border-valthera-400 focus:ring-valthera-400;
+  }
+
+  .select {
+    @apply input appearance-none cursor-pointer;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23C9A227' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.75rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+  }
+
+  /* ================================
+     SCROLLBAR - Valthera Style
+     ================================ */
+  .scrollbar-valthera::-webkit-scrollbar {
     @apply w-2;
   }
 
-  .scrollbar-thin::-webkit-scrollbar-track {
-    @apply bg-gray-900;
+  .scrollbar-valthera::-webkit-scrollbar-track {
+    @apply bg-valthera-900 rounded-full;
   }
 
-  .scrollbar-thin::-webkit-scrollbar-thumb {
-    @apply bg-gray-700 rounded-full hover:bg-gray-600;
+  .scrollbar-valthera::-webkit-scrollbar-thumb {
+    @apply bg-valthera-600 rounded-full;
+    @apply hover:bg-valthera-500;
   }
 
-  /* Glow effects */
-  .glow-valthera {
-    box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
-  }
-
+  /* ================================
+     GLOW EFFECTS
+     ================================ */
   .glow-gold {
-    box-shadow: 0 0 20px rgba(245, 158, 11, 0.3);
+    box-shadow: 0 0 20px rgba(201, 162, 39, 0.4);
   }
 
-  /* Section titles */
+  .glow-legendary {
+    box-shadow: 0 0 25px rgba(212, 175, 55, 0.5);
+  }
+
+  .glow-epic {
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+  }
+
+  /* ================================
+     SECTION TITLES
+     ================================ */
   .section-title {
-    @apply text-3xl font-bold text-white font-medieval mb-2;
+    @apply text-3xl md:text-4xl font-bold text-valthera-100 font-medieval mb-2;
   }
 
   .section-subtitle {
-    @apply text-gray-400 mb-8;
+    @apply text-valthera-200/80 mb-8 font-body;
+  }
+
+  /* ================================
+     DIVIDERS
+     ================================ */
+  .divider {
+    @apply h-px bg-gradient-to-r from-transparent via-valthera-600 to-transparent;
+  }
+
+  .divider-gold {
+    @apply h-px bg-gradient-to-r from-transparent via-valthera-400 to-transparent;
+  }
+
+  /* ================================
+     SPECIAL EFFECTS
+     ================================ */
+  .holographic-overlay {
+    background: linear-gradient(125deg, 
+      rgba(255,215,0,0.15) 0%, 
+      rgba(255,140,0,0.12) 15%, 
+      rgba(255,69,0,0.1) 30%, 
+      rgba(138,43,226,0.12) 50%, 
+      rgba(75,0,130,0.1) 70%, 
+      rgba(255,215,0,0.15) 100%
+    );
+    background-size: 200% 200%;
+    animation: legendaryShimmer 3s ease infinite;
+  }
+
+  .epic-shimmer {
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(168, 85, 247, 0.3) 50%, 
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Card 3D transforms */
+  .card-preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .card-backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
   }
 }
 
 @layer utilities {
+  /* Text Gradients */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-valthera-400 to-purple-400;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-valthera-400 to-valthera-300;
   }
 
   .text-gradient-gold {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-yellow-300;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-valthera-300 via-valthera-200 to-valthera-300;
   }
 
-  .animation-delay-150 {
-    animation-delay: 150ms;
+  .text-gradient-epic {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-400;
   }
 
-  .animation-delay-300 {
-    animation-delay: 300ms;
+  .text-gradient-legendary {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(90deg, #D4AF37, #F5ECD7, #D4AF37);
+    background-size: 200% auto;
+    animation: shine 3s linear infinite;
   }
 
-  .animation-delay-500 {
-    animation-delay: 500ms;
+  /* Animation delays */
+  .animation-delay-100 { animation-delay: 100ms; }
+  .animation-delay-200 { animation-delay: 200ms; }
+  .animation-delay-300 { animation-delay: 300ms; }
+  .animation-delay-400 { animation-delay: 400ms; }
+  .animation-delay-500 { animation-delay: 500ms; }
+
+  /* Opacity on hover for groups */
+  .group-hover-reveal {
+    @apply opacity-0 group-hover:opacity-100 transition-opacity duration-300;
   }
+
+  /* Valthera-specific text colors */
+  .text-valthera-gold { color: #D4AF37; }
+  .text-valthera-parchment { color: #F5ECD7; }
+  .text-valthera-copper { color: #C9A227; }
+}
+
+/* ================================
+   KEYFRAMES (raw CSS)
+   ================================ */
+@keyframes legendaryShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }

@@ -256,7 +256,7 @@ zoneSchema.statics.findByRegion = function(region) {
 };
 
 zoneSchema.statics.findStartingZone = function() {
-  return this.findOne({ id: 'valthera-city' });
+  return this.findOne({ id: 'val-serein' });
 };
 
 const Zone = mongoose.model('Zone', zoneSchema);

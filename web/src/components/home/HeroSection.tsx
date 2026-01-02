@@ -8,10 +8,10 @@ export function HeroSection() {
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-valthera-950/50 via-transparent to-gray-900/80" />
+      <div className="absolute inset-0 bg-gradient-to-b from-valthera-950 via-valthera-900/80 to-valthera-950" />
       <div className="absolute inset-0">
-        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-valthera-600/20 rounded-full blur-3xl animate-pulse-slow" />
-        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl animate-pulse-slow animation-delay-300" />
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-valthera-500/15 rounded-full blur-3xl animate-pulse-slow" />
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-valthera-400/10 rounded-full blur-3xl animate-pulse-slow animation-delay-300" />
       </div>
 
       {/* Floating elements */}
@@ -19,21 +19,21 @@ export function HeroSection() {
         <motion.div
           animate={{ y: [0, -20, 0] }}
           transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-20 left-[15%] text-valthera-400/30"
+          className="absolute top-20 left-[15%] text-valthera-500/40"
         >
           <Sword className="w-12 h-12" />
         </motion.div>
         <motion.div
           animate={{ y: [0, 20, 0] }}
           transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute top-40 right-[20%] text-amber-400/30"
+          className="absolute top-40 right-[20%] text-valthera-400/40"
         >
           <Shield className="w-16 h-16" />
         </motion.div>
         <motion.div
           animate={{ y: [0, -15, 0] }}
           transition={{ duration: 7, repeat: Infinity, ease: 'easeInOut' }}
-          className="absolute bottom-32 left-[25%] text-purple-400/30"
+          className="absolute bottom-32 left-[25%] text-valthera-300/30"
         >
           <Sparkles className="w-10 h-10" />
         </motion.div>
@@ -46,7 +46,7 @@ export function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
-          <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-valthera-300 bg-valthera-500/10 border border-valthera-500/20 rounded-full">
+          <span className="inline-block px-4 py-1.5 mb-6 text-sm font-medium text-valthera-300 bg-valthera-600/20 border border-valthera-500/30 rounded-full font-body">
             ⚔️ Bot Discord RPG
           </span>
         </motion.div>
@@ -57,15 +57,15 @@ export function HeroSection() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-5xl md:text-7xl font-bold font-medieval mb-6"
         >
-          <span className="text-white">Bienvenue à </span>
-          <span className="text-gradient">Valthera</span>
+          <span className="text-valthera-100">Bienvenue à </span>
+          <span className="text-gradient-gold">Valthera</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed"
+          className="text-xl md:text-2xl text-valthera-200/80 mb-8 max-w-3xl mx-auto leading-relaxed font-body"
         >
           Embarquez pour une aventure épique directement sur Discord. 
           Créez votre héros, explorez des donjons, combattez des monstres 
@@ -98,20 +98,20 @@ export function HeroSection() {
           className="mt-16 flex flex-wrap justify-center gap-8 text-center"
         >
           <div>
-            <div className="text-3xl font-bold text-white">6</div>
-            <div className="text-sm text-gray-400">Classes</div>
+            <div className="text-3xl font-bold text-valthera-300 font-medieval">12</div>
+            <div className="text-sm text-valthera-200/60 font-body">Classes</div>
           </div>
           <div>
-            <div className="text-3xl font-bold text-white">7</div>
-            <div className="text-sm text-gray-400">Races</div>
+            <div className="text-3xl font-bold text-valthera-300 font-medieval">9</div>
+            <div className="text-sm text-valthera-200/60 font-body">Races</div>
           </div>
           <div>
-            <div className="text-3xl font-bold text-white">10+</div>
-            <div className="text-sm text-gray-400">Zones</div>
+            <div className="text-3xl font-bold text-valthera-300 font-medieval">8+</div>
+            <div className="text-sm text-valthera-200/60 font-body">Zones</div>
           </div>
           <div>
-            <div className="text-3xl font-bold text-white">50+</div>
-            <div className="text-sm text-gray-400">Monstres</div>
+            <div className="text-3xl font-bold text-valthera-300 font-medieval">15+</div>
+            <div className="text-sm text-valthera-200/60 font-body">Monstres</div>
           </div>
         </motion.div>
       </div>
@@ -126,8 +126,8 @@ export function HeroSection() {
         }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
-        <div className="w-6 h-10 border-2 border-gray-600 rounded-full flex justify-center pt-2">
-          <div className="w-1.5 h-3 bg-valthera-500 rounded-full" />
+        <div className="w-6 h-10 border-2 border-valthera-600 rounded-full flex justify-center pt-2">
+          <div className="w-1.5 h-3 bg-valthera-400 rounded-full" />
         </div>
       </motion.div>
     </section>
