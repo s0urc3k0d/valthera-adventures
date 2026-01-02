@@ -591,20 +591,8 @@ export async function withdrawGold(guildId, playerId, amount) {
   }
 }
 
+// Constantes exportées
 export {
-  createGuild,
-  inviteToGuild,
-  acceptGuildInvite,
-  declineGuildInvite,
-  kickFromGuild,
-  leaveGuild,
-  promoteMember,
-  demoteMember,
-  getGuild,
-  getPendingGuildInvites,
-  setMotd,
-  depositGold,
-  withdrawGold,
   GUILD_CREATION_COST,
   MAX_GUILD_SIZE,
   RANK_ORDER,

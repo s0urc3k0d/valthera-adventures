@@ -387,19 +387,3 @@ export function getInventoryItems(character, options = {}) {
   
   return items;
 }
-
-export default {
-  getItem,
-  getItemsByCategory,
-  getItemsByType,
-  getStarterKit,
-  canEquipItem,
-  calculateWeaponDamage,
-  calculateArmorAC,
-  useConsumable,
-  addToInventory,
-  removeFromInventory,
-  calculateInventoryWeight,
-  calculateCarryCapacity,
-  getInventoryItems,
-};

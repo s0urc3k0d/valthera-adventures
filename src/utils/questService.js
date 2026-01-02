@@ -461,24 +461,3 @@ export function checkExploreObjective(character, target) {
 export function checkCollectObjective(character, itemId, amount = 1) {
   return updateQuestProgress(character, 'collect', itemId, amount);
 }
-
-export default {
-  getQuest,
-  getAllQuests,
-  getQuestsByType,
-  canAcceptQuest,
-  acceptQuest,
-  updateQuestProgress,
-  completeQuest,
-  abandonQuest,
-  getActiveQuests,
-  getCompletedQuests,
-  getAvailableQuests,
-  getFactionRank,
-  getAllReputations,
-  checkTalkObjective,
-  checkKillObjective,
-  checkReachObjective,
-  checkExploreObjective,
-  checkCollectObjective,
-};

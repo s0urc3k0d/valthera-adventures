@@ -475,18 +475,5 @@ export async function setLootDistribution(guildId, leaderId, mode) {
   }
 }
 
-export default {
-  createParty,
-  inviteToParty,
-  acceptInvite,
-  declineInvite,
-  kickFromParty,
-  leaveParty,
-  disbandParty,
-  getParty,
-  getPendingInvites,
-  transferLeadership,
-  distributeRewards,
-  setLootDistribution,
-  MAX_PARTY_SIZE,
-};
+// Constante exportée
+export { MAX_PARTY_SIZE };
