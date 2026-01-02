@@ -5,11 +5,13 @@ const characterSchema = new mongoose.Schema({
   userId: {
     type: String,
     required: true,
+    unique: true, // Un seul personnage par utilisateur Discord
     index: true,
   },
+  // guildId est maintenant optionnel - les personnages sont partagés entre serveurs
   guildId: {
     type: String,
-    required: true,
+    required: false,
     index: true,
   },
   
@@ -310,13 +312,16 @@ characterSchema.methods.isAlive = function() {
 };
 
 // Méthodes statiques
-characterSchema.statics.findByDiscordId = function(userId, guildId) {
-  return this.findOne({ userId, guildId });
+// Les personnages sont maintenant partagés entre serveurs - on ne filtre plus par guildId
+characterSchema.statics.findByDiscordId = function(userId, guildId = null) {
+  // guildId est ignoré, conservé pour compatibilité avec les appels existants
+  return this.findOne({ userId });
 };
 
 characterSchema.statics.getLeaderboard = function(guildId, type = 'level', limit = 10) {
+  // Leaderboard global (pas filtré par guild)
   const sortField = type === 'level' ? { level: -1, xp: -1 } : { [`stats.${type}`]: -1 };
-  return this.find({ guildId }).sort(sortField).limit(limit);
+  return this.find({}).sort(sortField).limit(limit);
 };
 
 // Hooks

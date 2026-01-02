@@ -27,7 +27,7 @@ export async function createParty(guildId, leader) {
     }
     
     // Récupérer le personnage
-    const character = await Character.findOne({ userId: leader.playerId, guildId });
+    const character = await Character.findOne({ userId: leader.playerId });
     if (!character) {
       return { success: false, error: 'Vous n\'avez pas de personnage.' };
     }
@@ -143,7 +143,7 @@ export async function acceptInvite(guildId, playerId) {
     }
     
     // Récupérer le personnage
-    const character = await Character.findOne({ userId: playerId, guildId });
+    const character = await Character.findOne({ userId: playerId });
     if (!character) {
       return { success: false, error: 'Vous n\'avez pas de personnage.' };
     }

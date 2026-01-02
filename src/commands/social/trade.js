@@ -43,7 +43,7 @@ export default {
     const userId = interaction.user.id;
     
     // Vérifier que l'utilisateur a un personnage
-    const character = await Character.findOne({ userId, guildId });
+    const character = await Character.findOne({ userId });
     if (!character) {
       return interaction.reply({
         embeds: [errorEmbed('Erreur', 'Vous n\'avez pas de personnage. Utilisez `/create` pour en créer un.')],
@@ -125,7 +125,7 @@ async function handleRequest(interaction, guildId, userId, character) {
   }
   
   // Vérifier que la cible a un personnage
-  const targetCharacter = await Character.findOne({ userId: targetUser.id, guildId });
+  const targetCharacter = await Character.findOne({ userId: targetUser.id });
   if (!targetCharacter) {
     return interaction.reply({
       embeds: [errorEmbed('Erreur', 'Ce joueur n\'a pas de personnage.')],
@@ -310,7 +310,7 @@ async function handleAddItemMenu(interaction, guildId, userId) {
     });
   }
   
-  const character = await Character.findOne({ userId, guildId });
+  const character = await Character.findOne({ userId });
   if (!character || !character.inventory || character.inventory.length === 0) {
     return interaction.reply({
       embeds: [errorEmbed('Erreur', 'Votre inventaire est vide.')],
@@ -371,7 +371,7 @@ async function handleSelectItem(interaction, guildId, userId, itemId) {
     });
   }
   
-  const character = await Character.findOne({ userId, guildId });
+  const character = await Character.findOne({ userId });
   const invItem = character.inventory.find(i => i.itemId === itemId);
   
   if (!invItem) {
@@ -434,7 +434,7 @@ async function handleAddGoldMenu(interaction, guildId, userId) {
     });
   }
   
-  const character = await Character.findOne({ userId, guildId });
+  const character = await Character.findOne({ userId });
   const side = trade.getParticipantSide(userId);
   const currentGold = trade[side].gold;
   
@@ -644,8 +644,8 @@ function buildTradeComponents(trade, userId) {
 
 async function executeTrade(trade, guildId) {
   try {
-    const initiatorChar = await Character.findOne({ userId: trade.initiator.playerId, guildId });
-    const targetChar = await Character.findOne({ userId: trade.target.playerId, guildId });
+    const initiatorChar = await Character.findOne({ userId: trade.initiator.playerId });
+    const targetChar = await Character.findOne({ userId: trade.target.playerId });
     
     if (!initiatorChar || !targetChar) {
       return { success: false, error: 'Un des personnages est introuvable.' };

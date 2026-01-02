@@ -970,7 +970,7 @@ async function finalizeCharacter(interaction, state) {
     
     const character = new Character({
       userId,
-      guildId,
+      // guildId n'est plus requis - personnages partagés entre serveurs
       name: state.name,
       race: race.name,
       subrace: subrace?.name || null,

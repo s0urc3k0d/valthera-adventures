@@ -188,7 +188,7 @@ async function startCombat(interaction) {
   const combatants = [];
   if (party) {
     for (const member of party.members) {
-      const memberChar = await Character.findOne({ userId: member.playerId, guildId: interaction.guildId });
+      const memberChar = await Character.findOne({ userId: member.playerId });
       if (memberChar) {
         const init = roll('1d20').total + getMod(memberChar.attributes.dex);
         combatants.push({

@@ -56,7 +56,7 @@ export async function createGuild(guildId, founder, name, tag) {
     }
     
     // Récupérer le personnage et vérifier l'or
-    const character = await Character.findOne({ userId: founder.playerId, guildId });
+    const character = await Character.findOne({ userId: founder.playerId });
     if (!character) {
       return { success: false, error: 'Vous n\'avez pas de personnage.' };
     }
@@ -204,7 +204,7 @@ export async function acceptGuildInvite(guildId, playerId, guildName = null) {
     }
     
     // Récupérer le personnage
-    const character = await Character.findOne({ userId: playerId, guildId });
+    const character = await Character.findOne({ userId: playerId });
     if (!character) {
       return { success: false, error: 'Vous n\'avez pas de personnage.' };
     }
@@ -525,7 +525,7 @@ export async function depositGold(guildId, playerId, amount) {
       return { success: false, error: 'Vous n\'êtes pas dans une guilde.' };
     }
     
-    const character = await Character.findOne({ userId: playerId, guildId });
+    const character = await Character.findOne({ userId: playerId });
     if (!character) {
       return { success: false, error: 'Vous n\'avez pas de personnage.' };
     }
@@ -573,7 +573,7 @@ export async function withdrawGold(guildId, playerId, amount) {
       return { success: false, error: 'Le coffre ne contient pas assez d\'or.' };
     }
     
-    const character = await Character.findOne({ userId: playerId, guildId });
+    const character = await Character.findOne({ userId: playerId });
     if (!character) {
       return { success: false, error: 'Vous n\'avez pas de personnage.' };
     }

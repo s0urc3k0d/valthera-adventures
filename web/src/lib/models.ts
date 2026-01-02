@@ -11,7 +11,7 @@ export interface ICharacterQuest {
 
 export interface ICharacter {
   userId: string;
-  guildId: string;
+  guildId?: string; // Optional - characters are shared across servers
   name: string;
   race: string;
   subrace?: string;
@@ -86,8 +86,8 @@ export interface ICharacter {
 // Schéma Character (réplique du bot)
 const CharacterSchema = new Schema<ICharacter>(
   {
-    userId: { type: String, required: true, index: true },
-    guildId: { type: String, required: true, index: true },
+    userId: { type: String, required: true, unique: true, index: true },
+    guildId: { type: String, required: false, index: true }, // Optional - characters are shared
     name: { type: String, required: true },
     race: { type: String, required: true },
     subrace: String,

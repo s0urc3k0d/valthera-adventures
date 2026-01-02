@@ -101,7 +101,7 @@ export default {
     const userId = interaction.user.id;
     
     // Vérifier que l'utilisateur a un personnage
-    const character = await Character.findOne({ userId, guildId });
+    const character = await Character.findOne({ userId });
     if (!character) {
       return interaction.reply({
         embeds: [errorEmbed('Erreur', 'Vous n\'avez pas de personnage. Utilisez `/create` pour en créer un.')],
@@ -262,7 +262,7 @@ async function handleInvite(interaction, guildId, userId) {
   }
   
   // Vérifier que la cible a un personnage
-  const targetCharacter = await Character.findOne({ userId: targetUser.id, guildId });
+  const targetCharacter = await Character.findOne({ userId: targetUser.id });
   if (!targetCharacter) {
     return interaction.reply({
       embeds: [errorEmbed('Erreur', 'Ce joueur n\'a pas de personnage.')],
