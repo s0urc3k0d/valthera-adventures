@@ -85,9 +85,10 @@ https://discord.com/oauth2/authorize?client_id=1456637041683992627&permissions=2
 
 ### 1. Cloner le Repository
 ```bash
-cd /opt
-git clone https://github.com/votre-repo/ValtheraAdventures.git
-cd ValtheraAdventures/deployment
+cd /var/www
+sudo git clone https://github.com/s0urc3k0d/valthera-adventures.git
+sudo chown -R ubuntu:ubuntu /var/www/valthera-adventures
+cd /var/www/valthera-adventures/deployment
 ```
 
 ### 2. Configuration de l'Environnement

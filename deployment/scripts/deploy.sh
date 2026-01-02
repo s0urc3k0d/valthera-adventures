@@ -15,7 +15,7 @@ NC='\033[0m' # No Color
 
 # Configuration
 DOMAIN="valthera-adventures.sourcekod.fr"
-APP_DIR="/opt/valthera-adventures"
+APP_DIR="/var/www/valthera-adventures"
 DEPLOY_DIR="$APP_DIR/deployment"
 
 # Fonction d'affichage
