@@ -19,12 +19,6 @@ export default {
   data: new SlashCommandBuilder()
     .setName('give')
     .setDescription('Donner un objet ou de l\'or à un autre joueur')
-    .addUserOption(option =>
-      option
-        .setName('joueur')
-        .setDescription('Le joueur à qui donner')
-        .setRequired(true)
-    )
     .addSubcommand(sub =>
       sub
         .setName('item')
