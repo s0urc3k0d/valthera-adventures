@@ -1,0 +1,369 @@
+{
+  "elena_welcome_start": {
+    "id": "elena_welcome_start",
+    "npcId": "elena-whisperwind",
+    "npcName": "Elena Vent-Murmurant",
+    "title": "Bienvenue, aventurier !",
+    "portrait": "👩‍🦰",
+    "nodes": {
+      "start": {
+        "text": "Bienvenue à la Guilde des Aventuriers, {playerName} ! Je suis Elena Vent-Murmurant, maître de guilde. Nous accueillons tous ceux qui ont le courage d'affronter les dangers de ce monde.\n\nVous semblez nouveau ici. Puis-je vous aider à faire vos premiers pas ?",
+        "responses": [
+          { "text": "Oui, j'aimerais devenir aventurier !", "next": "explain_guild", "effect": null },
+          { "text": "Qu'est-ce que la Guilde des Aventuriers ?", "next": "about_guild", "effect": null },
+          { "text": "Je cherche du travail.", "next": "quests_available", "effect": null },
+          { "text": "Non merci, je regarde juste.", "next": "end_polite", "effect": null }
+        ]
+      },
+      "explain_guild": {
+        "text": "Excellent ! Pour devenir un véritable aventurier, vous devez prouver votre valeur. J'ai une première mission pour vous.\n\nLes Bois Murmurants à l'ouest abritent des loups qui deviennent trop agressifs. Explorez la forêt et éliminez-en au moins un. Revenez me voir ensuite.",
+        "responses": [
+          { "text": "J'accepte cette mission !", "next": "quest_accepted", "effect": { "type": "accept_quest", "questId": "main_01_welcome" } },
+          { "text": "C'est dangereux ?", "next": "danger_warning", "effect": null },
+          { "text": "Quelle sera ma récompense ?", "next": "rewards_info", "effect": null }
+        ]
+      },
+      "about_guild": {
+        "text": "La Guilde des Aventuriers existe depuis des siècles. Nous rassemblons les héros de Valthera - guerriers, mages, voleurs - tous unis pour protéger le royaume.\n\nNous offrons des contrats rémunérés, un réseau de contacts, et un endroit où les aventuriers peuvent se retrouver entre leurs missions.",
+        "responses": [
+          { "text": "Je veux rejoindre la Guilde !", "next": "explain_guild", "effect": null },
+          { "text": "Merci pour ces informations.", "next": "end_polite", "effect": null }
+        ]
+      },
+      "quests_available": {
+        "text": "Du travail ? Bien sûr ! Mais d'abord, vous devez faire vos preuves avec une mission d'initiation.\n\nLes Bois Murmurants ont besoin d'être explorés. C'est le test parfait pour un nouveau venu.",
+        "responses": [
+          { "text": "Je suis prêt pour cette mission.", "next": "quest_accepted", "effect": { "type": "accept_quest", "questId": "main_01_welcome" } },
+          { "text": "Je reviendrai plus tard.", "next": "end_polite", "effect": null }
+        ]
+      },
+      "danger_warning": {
+        "text": "Un peu, oui. Les loups peuvent être vicieux, surtout en meute. Mais c'est pour ça qu'on vous donne des potions de soin et une bonne formation.\n\nSoyez prudent, restez sur vos gardes, et vous reviendrez en un seul morceau. J'en suis certaine !",
+        "responses": [
+          { "text": "D'accord, j'y vais !", "next": "quest_accepted", "effect": { "type": "accept_quest", "questId": "main_01_welcome" } },
+          { "text": "Je dois me préparer d'abord.", "next": "end_prepare", "effect": null }
+        ]
+      },
+      "rewards_info": {
+        "text": "Pour cette mission d'initiation, vous recevrez :\n• 100 points d'expérience\n• 25 pièces d'or\n• 3 potions de soin\n• Le statut de membre de la Guilde\n\nPas mal pour une première mission, non ?",
+        "responses": [
+          { "text": "C'est parfait ! J'accepte.", "next": "quest_accepted", "effect": { "type": "accept_quest", "questId": "main_01_welcome" } },
+          { "text": "Je vais y réfléchir.", "next": "end_polite", "effect": null }
+        ]
+      },
+      "quest_accepted": {
+        "text": "Parfait ! Que les dieux veillent sur vous, {playerName}.\n\nRendez-vous aux Bois Murmurants à l'ouest de la ville. Explorez, trouvez les loups, et revenez me faire votre rapport.\n\n*Elena vous fait un clin d'œil encourageant.*",
+        "responses": [
+          { "text": "J'y vais de ce pas !", "next": null, "effect": { "type": "end_dialogue" } }
+        ]
+      },
+      "end_polite": {
+        "text": "Très bien. La Guilde sera toujours là quand vous serez prêt. Bonne journée, aventurier !",
+        "responses": [
+          { "text": "Au revoir.", "next": null, "effect": { "type": "end_dialogue" } }
+        ]
+      },
+      "end_prepare": {
+        "text": "Sage décision. Équipez-vous bien et revenez me voir quand vous serez prêt. La forêt ne va pas s'enfuir !",
+        "responses": [
+          { "text": "À bientôt !", "next": null, "effect": { "type": "end_dialogue" } }
+        ]
+      }
+    }
+  },
+
+  "elena_welcome_return": {
+    "id": "elena_welcome_return",
+    "npcId": "elena-whisperwind",
+    "npcName": "Elena Vent-Murmurant",
+    "title": "Mission accomplie ?",
+    "portrait": "👩‍🦰",
+    "triggerCondition": { "questId": "main_01_welcome", "objectiveComplete": "obj_3" },
+    "nodes": {
+      "start": {
+        "text": "Ah, {playerName} ! Vous êtes revenu en un seul morceau. Je vois dans vos yeux que vous avez réussi. Racontez-moi tout !",
+        "responses": [
+          { "text": "J'ai exploré les Bois et vaincu un loup.", "next": "success", "effect": null },
+          { "text": "C'était plus difficile que prévu...", "next": "encourage", "effect": null }
+        ]
+      },
+      "success": {
+        "text": "Excellent travail ! Vous avez prouvé votre valeur. Bienvenue officiellement dans la Guilde des Aventuriers !\n\nVoici votre récompense comme promis. Et... j'ai une autre mission pour vous, si vous êtes intéressé.",
+        "responses": [
+          { "text": "Merci ! Quelle est cette nouvelle mission ?", "next": "next_quest_tease", "effect": { "type": "complete_quest", "questId": "main_01_welcome" } },
+          { "text": "Merci, je vais me reposer d'abord.", "next": "end_rest", "effect": { "type": "complete_quest", "questId": "main_01_welcome" } }
+        ]
+      },
+      "encourage": {
+        "text": "L'aventure n'est jamais facile. Ce qui compte, c'est que vous ayez persévéré et réussi. C'est ça, l'esprit d'un véritable aventurier !\n\nVoici votre récompense bien méritée.",
+        "responses": [
+          { "text": "Merci Elena. Y a-t-il d'autres missions ?", "next": "next_quest_tease", "effect": { "type": "complete_quest", "questId": "main_01_welcome" } },
+          { "text": "Merci, je reviendrai bientôt.", "next": "end_rest", "effect": { "type": "complete_quest", "questId": "main_01_welcome" } }
+        ]
+      },
+      "next_quest_tease": {
+        "text": "Des villageois ont signalé des bruits étranges dans les Bois Murmurants. Un endroit appelé le 'Cercle des Fées'. Cela pourrait être lié à d'anciennes légendes...\n\nMais reposez-vous d'abord. Cette mission peut attendre demain.",
+        "responses": [
+          { "text": "Je suis impatient d'en apprendre plus !", "next": null, "effect": { "type": "end_dialogue" } }
+        ]
+      },
+      "end_rest": {
+        "text": "Vous l'avez bien mérité. L'auberge de l'Épée Rouillée sert une excellente bière. À bientôt, aventurier !",
+        "responses": [
+          { "text": "À bientôt !", "next": null, "effect": { "type": "end_dialogue" } }
+        ]
+      }
+    }
+  },
+
+  "elena_whispers_start": {
+    "id": "elena_whispers_start",
+    "npcId": "elena-whisperwind",
+    "npcName": "Elena Vent-Murmurant",
+    "title": "Les Murmures de la Forêt",
+    "portrait": "👩‍🦰",
+    "triggerCondition": { "questId": "main_01_welcome", "status": "completed" },
+    "nodes": {
+      "start": {
+        "text": "{playerName}, je suis contente de vous revoir. J'ai une mission importante.\n\nLes rapports sur les Bois Murmurants deviennent inquiétants. Des lumières étranges, des murmures la nuit... Et ce 'Cercle des Fées' dont parlent les légendes.",
+        "responses": [
+          { "text": "Qu'est-ce que le Cercle des Fées ?", "next": "fairy_ring_lore", "effect": null },
+          { "text": "Que dois-je faire ?", "next": "mission_details", "effect": null },
+          { "text": "Je ne suis pas sûr d'être prêt...", "next": "reassure", "effect": null }
+        ]
+      },
+      "fairy_ring_lore": {
+        "text": "Les légendes parlent d'un cercle de champignons magiques au cœur de la forêt. Un portail vers le monde des fées, dit-on.\n\nPersonne ne l'a trouvé depuis des générations. Mais ces phénomènes récents... quelque chose se réveille.",
+        "responses": [
+          { "text": "Fascinant ! Je vais enquêter.", "next": "accept_quest", "effect": { "type": "accept_quest", "questId": "main_02_whispers" } },
+          { "text": "Les fées sont-elles dangereuses ?", "next": "fey_warning", "effect": null }
+        ]
+      },
+      "mission_details": {
+        "text": "Trouvez le Cercle des Fées et rapportez ce que vous y voyez. En chemin, collectez des Herbes Lunaires - notre apothicaire en a besoin.\n\nAttention aux araignées géantes qui ont envahi certaines zones de la forêt.",
+        "responses": [
+          { "text": "J'accepte cette mission.", "next": "accept_quest", "effect": { "type": "accept_quest", "questId": "main_02_whispers" } },
+          { "text": "Quelle sera la récompense ?", "next": "rewards", "effect": null }
+        ]
+      },
+      "fey_warning": {
+        "text": "Les fées... sont imprévisibles. Ni bonnes ni mauvaises, juste... autres. Elles peuvent être des alliées précieuses ou des ennemies terribles.\n\nSoyez respectueux si vous les rencontrez. Et ne mangez JAMAIS leur nourriture.",
+        "responses": [
+          { "text": "Compris. J'accepte la mission.", "next": "accept_quest", "effect": { "type": "accept_quest", "questId": "main_02_whispers" } },
+          { "text": "Je dois y réfléchir.", "next": "end_think", "effect": null }
+        ]
+      },
+      "rewards": {
+        "text": "Pour cette mission :\n• 200 XP\n• 50 pièces d'or\n• Un anneau magique de protection\n• Réputation accrue avec la Guilde\n\nC'est une mission plus dangereuse, donc mieux payée.",
+        "responses": [
+          { "text": "Marché conclu !", "next": "accept_quest", "effect": { "type": "accept_quest", "questId": "main_02_whispers" } }
+        ]
+      },
+      "reassure": {
+        "text": "Je comprends vos doutes, mais vous avez déjà prouvé votre courage. Et vous ne serez pas seul - la Guilde veille toujours sur ses membres.\n\nPrenez le temps qu'il vous faut pour vous préparer.",
+        "responses": [
+          { "text": "Vous avez raison. J'y vais !", "next": "accept_quest", "effect": { "type": "accept_quest", "questId": "main_02_whispers" } },
+          { "text": "Je reviendrai quand je serai prêt.", "next": "end_think", "effect": null }
+        ]
+      },
+      "accept_quest": {
+        "text": "Que la lumière guide vos pas, {playerName}. Les Bois Murmurants cachent bien des secrets... peut-être trouverez-vous quelque chose de précieux.\n\nRevenez me voir dès que vous aurez des nouvelles du Cercle.",
+        "responses": [
+          { "text": "Je ne vous décevrai pas !", "next": null, "effect": { "type": "end_dialogue" } }
+        ]
+      },
+      "end_think": {
+        "text": "Prenez votre temps. La forêt sera toujours là. Mais ne tardez pas trop - ces phénomènes m'inquiètent.",
+        "responses": [
+          { "text": "À bientôt.", "next": null, "effect": { "type": "end_dialogue" } }
+        ]
+      }
+    }
+  },
+
+  "tom_rats_start": {
+    "id": "tom_rats_start",
+    "npcId": "old-tom",
+    "npcName": "Vieux Tom",
+    "title": "Un problème de rongeurs",
+    "portrait": "👴",
+    "nodes": {
+      "start": {
+        "text": "*Le vieil aubergiste soupire lourdement*\n\nAh, encore un aventurier ! Dites, vous cherchez du travail ? J'ai un sacré problème dans ma cave...",
+        "responses": [
+          { "text": "Quel genre de problème ?", "next": "explain_problem", "effect": null },
+          { "text": "Combien ça paie ?", "next": "payment", "effect": null },
+          { "text": "Désolé, je suis occupé.", "next": "end_busy", "effect": null }
+        ]
+      },
+      "explain_problem": {
+        "text": "Des rats ! Des rats GÉANTS ! Ils ont envahi ma cave et dévorent mes provisions. J'ai essayé les pièges, le poison... rien ne marche.\n\nCes bestioles font la taille d'un chat, je vous jure !",
+        "responses": [
+          { "text": "Des rats géants ? Je m'en charge !", "next": "accept", "effect": { "type": "accept_quest", "questId": "side_rats_cellar" } },
+          { "text": "Ça semble dangereux. Quelle récompense ?", "next": "payment", "effect": null }
+        ]
+      },
+      "payment": {
+        "text": "J'ai pas beaucoup, mais je peux vous donner 15 pièces d'or et de la bière gratuite pour un mois ! Enfin... 5 chopes. C'est honnête, non ?\n\nEt vous aurez ma gratitude éternelle !",
+        "responses": [
+          { "text": "Marché conclu, Tom !", "next": "accept", "effect": { "type": "accept_quest", "questId": "side_rats_cellar" } },
+          { "text": "Hmm, c'est un peu maigre...", "next": "negotiate", "effect": null }
+        ]
+      },
+      "negotiate": {
+        "text": "*Tom se gratte la barbe*\n\nBon, bon... Je peux ajouter un bon repas chaud. Et si vous trouvez d'où viennent ces satanés rats, je double la prime !\n\nOn a un accord ?",
+        "responses": [
+          { "text": "D'accord, je vais voir votre cave.", "next": "accept", "effect": { "type": "accept_quest", "questId": "side_rats_cellar" } },
+          { "text": "Non merci.", "next": "end_refuse", "effect": null }
+        ]
+      },
+      "accept": {
+        "text": "*Tom pousse un soupir de soulagement*\n\nMerci, merci ! La trappe vers la cave est derrière le comptoir. Faites attention, ils sont vicieux ces rongeurs !\n\n*Il vous tend une torche*",
+        "responses": [
+          { "text": "Je reviens bientôt.", "next": null, "effect": { "type": "end_dialogue" } }
+        ]
+      },
+      "end_busy": {
+        "text": "*Tom hausse les épaules, déçu*\n\nJe comprends, je comprends... Si vous changez d'avis, vous savez où me trouver. Ces rats ne vont pas partir tout seuls...",
+        "responses": [
+          { "text": "Bonne chance avec les rats.", "next": null, "effect": { "type": "end_dialogue" } }
+        ]
+      },
+      "end_refuse": {
+        "text": "*Tom semble abattu*\n\nBon... tant pis. Je trouverai quelqu'un d'autre. Ou peut-être que je devrai fermer l'auberge si ces rats continuent...",
+        "responses": [
+          { "text": "Au revoir.", "next": null, "effect": { "type": "end_dialogue" } }
+        ]
+      }
+    }
+  },
+
+  "tom_rats_complete": {
+    "id": "tom_rats_complete",
+    "npcId": "old-tom",
+    "npcName": "Vieux Tom",
+    "title": "Les rats sont partis !",
+    "portrait": "👴",
+    "triggerCondition": { "questId": "side_rats_cellar", "objectiveComplete": "obj_2" },
+    "nodes": {
+      "start": {
+        "text": "*Tom vous regarde avec des yeux pleins d'espoir*\n\nAlors ? Vous avez réussi ? Ma cave est libérée ?",
+        "responses": [
+          { "text": "C'est fait. Les rats ne vous embêteront plus.", "next": "success", "effect": null },
+          { "text": "Il y en avait plus que prévu...", "next": "complain", "effect": null }
+        ]
+      },
+      "success": {
+        "text": "*Tom saute de joie (autant qu'un vieil homme peut sauter)*\n\nPar les dieux ! Vous êtes mon sauveur ! Voici votre récompense comme promis. Et cette bière, c'est cadeau !\n\n*Il pose une bourse et plusieurs chopes sur le comptoir*",
+        "responses": [
+          { "text": "Merci Tom. À la vôtre !", "next": null, "effect": { "type": "complete_quest", "questId": "side_rats_cellar" } }
+        ]
+      },
+      "complain": {
+        "text": "*Tom baisse les yeux, gêné*\n\nJe sais, je sais... J'aurais dû agir plus tôt. Mais vous avez réussi, c'est l'important !\n\nTenez, prenez votre récompense. Et une bière supplémentaire pour la peine !",
+        "responses": [
+          { "text": "Pas de problème, Tom.", "next": null, "effect": { "type": "complete_quest", "questId": "side_rats_cellar" } }
+        ]
+      }
+    }
+  },
+
+  "sera_herbs_start": {
+    "id": "sera_herbs_start",
+    "npcId": "sera-nightshade",
+    "npcName": "Sera Belladone",
+    "title": "L'apothicaire a besoin d'aide",
+    "portrait": "🧙‍♀️",
+    "nodes": {
+      "start": {
+        "text": "*Une femme aux cheveux noirs et aux yeux perçants vous observe depuis son comptoir encombré de fioles*\n\nUn aventurier... Parfait. J'ai besoin d'ingrédients frais. Intéressé ?",
+        "responses": [
+          { "text": "De quoi avez-vous besoin ?", "next": "explain", "effect": null },
+          { "text": "Que vendez-vous ici ?", "next": "shop_info", "effect": null },
+          { "text": "Non merci.", "next": "end_decline", "effect": null }
+        ]
+      },
+      "explain": {
+        "text": "Des herbes médicinales des Bois Murmurants. Elles poussent près des clairières, là où la lumière perce le feuillage.\n\nJ'en ai besoin de 10 pour mes potions. En échange, je vous en donnerai quelques-unes.",
+        "responses": [
+          { "text": "J'accepte cette tâche.", "next": "accept", "effect": { "type": "accept_quest", "questId": "side_herb_gathering" } },
+          { "text": "Y a-t-il des dangers ?", "next": "dangers", "effect": null }
+        ]
+      },
+      "dangers": {
+        "text": "Les Bois Murmurants... *elle sourit mystérieusement* ...murmurer n'est pas tout ce qu'ils font. Des loups, des araignées, parfois pire.\n\nMais un aventurier comme vous devrait s'en sortir. N'est-ce pas ?",
+        "responses": [
+          { "text": "Aucun problème. J'accepte.", "next": "accept", "effect": { "type": "accept_quest", "questId": "side_herb_gathering" } },
+          { "text": "Je vais y réfléchir.", "next": "end_think", "effect": null }
+        ]
+      },
+      "shop_info": {
+        "text": "Potions de soin, antidotes, élixirs en tout genre. Tout ce dont un aventurier a besoin pour survivre.\n\n*Elle désigne ses étagères*\n\nMais mes stocks s'épuisent. D'où ma demande d'herbes...",
+        "responses": [
+          { "text": "Je peux vous aider avec ça.", "next": "accept", "effect": { "type": "accept_quest", "questId": "side_herb_gathering" } },
+          { "text": "Je regarderai votre boutique plus tard.", "next": "end_shop", "effect": null }
+        ]
+      },
+      "accept": {
+        "text": "*Sera hoche la tête avec satisfaction*\n\nParfait. Les herbes ont des feuilles argentées et une odeur de menthe. Vous les reconnaîtrez.\n\nRevenez quand vous en aurez 10. Ne traînez pas - elles perdent leurs propriétés si elles sèchent.",
+        "responses": [
+          { "text": "Je reviens bientôt.", "next": null, "effect": { "type": "end_dialogue" } }
+        ]
+      },
+      "end_decline": {
+        "text": "*Sera hausse les épaules*\n\nComme vous voulez. Ma boutique reste ouverte si vous changez d'avis... ou si vous avez besoin de potions.",
+        "responses": [
+          { "text": "Au revoir.", "next": null, "effect": { "type": "end_dialogue" } }
+        ]
+      },
+      "end_think": {
+        "text": "Prenez votre temps. Les herbes ne poussent pas moins vite parce que vous hésitez.\n\n*Un sourire énigmatique se dessine sur ses lèvres*",
+        "responses": [
+          { "text": "À bientôt.", "next": null, "effect": { "type": "end_dialogue" } }
+        ]
+      },
+      "end_shop": {
+        "text": "Faites donc. Et si vous trouvez des ingrédients intéressants dans vos aventures, pensez à moi. Je paie bien.",
+        "responses": [
+          { "text": "J'y penserai.", "next": null, "effect": { "type": "end_dialogue" } }
+        ]
+      }
+    }
+  },
+
+  "generic_merchant": {
+    "id": "generic_merchant",
+    "npcId": "generic",
+    "npcName": "Marchand",
+    "title": "Commerce",
+    "portrait": "🧑‍💼",
+    "nodes": {
+      "start": {
+        "text": "Bienvenue ! Que puis-je faire pour vous aujourd'hui ?",
+        "responses": [
+          { "text": "Je voudrais voir vos marchandises.", "next": "shop", "effect": { "type": "open_shop" } },
+          { "text": "Je voudrais vendre quelque chose.", "next": "sell", "effect": { "type": "open_sell" } },
+          { "text": "Juste un coup d'œil.", "next": "end_browse", "effect": null }
+        ]
+      },
+      "shop": {
+        "text": "Voici ma sélection. N'hésitez pas à demander si quelque chose vous intéresse !",
+        "responses": [
+          { "text": "Merci.", "next": null, "effect": { "type": "end_dialogue" } }
+        ]
+      },
+      "sell": {
+        "text": "Voyons ce que vous avez... Je donne un prix honnête, vous verrez.",
+        "responses": [
+          { "text": "D'accord.", "next": null, "effect": { "type": "end_dialogue" } }
+        ]
+      },
+      "end_browse": {
+        "text": "Pas de problème. Revenez quand vous voulez !",
+        "responses": [
+          { "text": "Au revoir.", "next": null, "effect": { "type": "end_dialogue" } }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,299 @@
+{
+  "human": {
+    "id": "human",
+    "name": "Humain",
+    "description": "Les humains sont les plus adaptables et ambitieux des races communes. Leur diversité les rend capables d'exceller dans n'importe quelle voie.",
+    "traits": [
+      "Augmentation de caractéristique: +1 à toutes les caractéristiques",
+      "Taille: Moyenne",
+      "Vitesse: 9 mètres (30 pieds)",
+      "Langues: Commun + 1 langue au choix"
+    ],
+    "abilityScoreIncrease": {
+      "str": 1,
+      "dex": 1,
+      "con": 1,
+      "int": 1,
+      "wis": 1,
+      "cha": 1
+    },
+    "speed": 30,
+    "size": "medium",
+    "languages": ["common"],
+    "extraLanguages": 1,
+    "features": [],
+    "subraces": null,
+    "emoji": "👤"
+  },
+  "elf": {
+    "id": "elf",
+    "name": "Elfe",
+    "description": "Les elfes sont un peuple magique d'une grâce surnaturelle, vivant dans le monde sans en faire partie.",
+    "traits": [
+      "Augmentation de caractéristique: +2 Dextérité",
+      "Taille: Moyenne",
+      "Vitesse: 9 mètres (30 pieds)",
+      "Vision dans le noir: 18 mètres",
+      "Sens aiguisés: Maîtrise de Perception",
+      "Ascendance féerique: Avantage contre charme, immunité au sommeil magique",
+      "Transe: 4h de méditation au lieu de 8h de sommeil"
+    ],
+    "abilityScoreIncrease": {
+      "dex": 2
+    },
+    "speed": 30,
+    "size": "medium",
+    "languages": ["common", "elvish"],
+    "features": ["darkvision", "fey_ancestry", "trance", "keen_senses"],
+    "subraces": {
+      "high_elf": {
+        "id": "high_elf",
+        "name": "Haut-Elfe",
+        "description": "Les hauts-elfes maîtrisent la magie depuis des millénaires.",
+        "abilityScoreIncrease": { "int": 1 },
+        "features": ["cantrip", "extra_language"],
+        "emoji": "🧝"
+      },
+      "wood_elf": {
+        "id": "wood_elf",
+        "name": "Elfe des Bois",
+        "description": "Les elfes des bois sont rapides et furtifs.",
+        "abilityScoreIncrease": { "wis": 1 },
+        "speed": 35,
+        "features": ["fleet_of_foot", "mask_of_the_wild"],
+        "emoji": "🌲"
+      },
+      "drow": {
+        "id": "drow",
+        "name": "Drow",
+        "description": "Les elfes noirs vivent dans l'Outreterre.",
+        "abilityScoreIncrease": { "cha": 1 },
+        "features": ["superior_darkvision", "sunlight_sensitivity", "drow_magic"],
+        "emoji": "🌑"
+      }
+    },
+    "emoji": "🧝"
+  },
+  "dwarf": {
+    "id": "dwarf",
+    "name": "Nain",
+    "description": "Les nains sont des guerriers courageux, des mineurs et des artisans de légende.",
+    "traits": [
+      "Augmentation de caractéristique: +2 Constitution",
+      "Taille: Moyenne",
+      "Vitesse: 7.5 mètres (25 pieds, non réduite par armure lourde)",
+      "Vision dans le noir: 18 mètres",
+      "Résistance naine: Avantage contre le poison",
+      "Entraînement aux armes naines",
+      "Maîtrise des outils"
+    ],
+    "abilityScoreIncrease": {
+      "con": 2
+    },
+    "speed": 25,
+    "size": "medium",
+    "languages": ["common", "dwarvish"],
+    "features": ["darkvision", "dwarven_resilience", "dwarven_combat_training", "stonecunning"],
+    "subraces": {
+      "hill_dwarf": {
+        "id": "hill_dwarf",
+        "name": "Nain des Collines",
+        "description": "Les nains des collines sont sages et résistants.",
+        "abilityScoreIncrease": { "wis": 1 },
+        "features": ["dwarven_toughness"],
+        "emoji": "⛰️"
+      },
+      "mountain_dwarf": {
+        "id": "mountain_dwarf",
+        "name": "Nain des Montagnes",
+        "description": "Les nains des montagnes sont forts et entraînés au combat.",
+        "abilityScoreIncrease": { "str": 2 },
+        "features": ["dwarven_armor_training"],
+        "emoji": "🏔️"
+      }
+    },
+    "emoji": "🧔"
+  },
+  "halfling": {
+    "id": "halfling",
+    "name": "Halfelin",
+    "description": "Les halfelins sont un peuple petit et pratique, célèbre pour sa chance.",
+    "traits": [
+      "Augmentation de caractéristique: +2 Dextérité",
+      "Taille: Petite",
+      "Vitesse: 7.5 mètres (25 pieds)",
+      "Chanceux: Relancer les 1 naturels",
+      "Brave: Avantage contre la peur",
+      "Agilité halfeline: Traverser l'espace des créatures plus grandes"
+    ],
+    "abilityScoreIncrease": {
+      "dex": 2
+    },
+    "speed": 25,
+    "size": "small",
+    "languages": ["common", "halfling"],
+    "features": ["lucky", "brave", "halfling_nimbleness"],
+    "subraces": {
+      "lightfoot": {
+        "id": "lightfoot",
+        "name": "Pied-léger",
+        "description": "Les pieds-légers excellent à se cacher.",
+        "abilityScoreIncrease": { "cha": 1 },
+        "features": ["naturally_stealthy"],
+        "emoji": "🦶"
+      },
+      "stout": {
+        "id": "stout",
+        "name": "Robuste",
+        "description": "Les robustes résistent mieux aux poisons.",
+        "abilityScoreIncrease": { "con": 1 },
+        "features": ["stout_resilience"],
+        "emoji": "💪"
+      }
+    },
+    "emoji": "🧑‍🌾"
+  },
+  "gnome": {
+    "id": "gnome",
+    "name": "Gnome",
+    "description": "Les gnomes sont des inventeurs et des illusionnistes pleins de malice.",
+    "traits": [
+      "Augmentation de caractéristique: +2 Intelligence",
+      "Taille: Petite",
+      "Vitesse: 7.5 mètres (25 pieds)",
+      "Vision dans le noir: 18 mètres",
+      "Ruse gnome: Avantage contre la magie (INT, SAG, CHA)"
+    ],
+    "abilityScoreIncrease": {
+      "int": 2
+    },
+    "speed": 25,
+    "size": "small",
+    "languages": ["common", "gnomish"],
+    "features": ["darkvision", "gnome_cunning"],
+    "subraces": {
+      "rock_gnome": {
+        "id": "rock_gnome",
+        "name": "Gnome des Roches",
+        "description": "Les gnomes des roches sont des inventeurs naturels.",
+        "abilityScoreIncrease": { "con": 1 },
+        "features": ["artificers_lore", "tinker"],
+        "emoji": "🔧"
+      },
+      "forest_gnome": {
+        "id": "forest_gnome",
+        "name": "Gnome des Forêts",
+        "description": "Les gnomes des forêts ont une affinité avec la nature.",
+        "abilityScoreIncrease": { "dex": 1 },
+        "features": ["natural_illusionist", "speak_with_small_beasts"],
+        "emoji": "🌳"
+      }
+    },
+    "emoji": "🧙‍♂️"
+  },
+  "half_elf": {
+    "id": "half_elf",
+    "name": "Demi-Elfe",
+    "description": "Les demi-elfes combinent les qualités des humains et des elfes.",
+    "traits": [
+      "Augmentation de caractéristique: +2 Charisme, +1 à deux autres",
+      "Taille: Moyenne",
+      "Vitesse: 9 mètres (30 pieds)",
+      "Vision dans le noir: 18 mètres",
+      "Ascendance féerique",
+      "Polyvalence: 2 compétences au choix"
+    ],
+    "abilityScoreIncrease": {
+      "cha": 2
+    },
+    "extraAbilityPoints": 2,
+    "speed": 30,
+    "size": "medium",
+    "languages": ["common", "elvish"],
+    "extraLanguages": 1,
+    "features": ["darkvision", "fey_ancestry", "skill_versatility"],
+    "subraces": null,
+    "emoji": "🧝‍♂️"
+  },
+  "half_orc": {
+    "id": "half_orc",
+    "name": "Demi-Orc",
+    "description": "Les demi-orcs sont des guerriers féroces avec une endurance remarquable.",
+    "traits": [
+      "Augmentation de caractéristique: +2 Force, +1 Constitution",
+      "Taille: Moyenne",
+      "Vitesse: 9 mètres (30 pieds)",
+      "Vision dans le noir: 18 mètres",
+      "Menace: Maîtrise d'Intimidation",
+      "Endurance implacable: Tomber à 1 PV au lieu de 0 (1/jour)",
+      "Attaques sauvages: Dé de dégâts supplémentaire sur critique"
+    ],
+    "abilityScoreIncrease": {
+      "str": 2,
+      "con": 1
+    },
+    "speed": 30,
+    "size": "medium",
+    "languages": ["common", "orc"],
+    "features": ["darkvision", "menacing", "relentless_endurance", "savage_attacks"],
+    "subraces": null,
+    "emoji": "👹"
+  },
+  "tiefling": {
+    "id": "tiefling",
+    "name": "Tieffelin",
+    "description": "Les tieffelins portent le sang des fiélons et possèdent des pouvoirs infernaux.",
+    "traits": [
+      "Augmentation de caractéristique: +2 Charisme, +1 Intelligence",
+      "Taille: Moyenne",
+      "Vitesse: 9 mètres (30 pieds)",
+      "Vision dans le noir: 18 mètres",
+      "Résistance infernale: Résistance aux dégâts de feu",
+      "Héritage infernal: Sorts innés"
+    ],
+    "abilityScoreIncrease": {
+      "cha": 2,
+      "int": 1
+    },
+    "speed": 30,
+    "size": "medium",
+    "languages": ["common", "infernal"],
+    "features": ["darkvision", "hellish_resistance", "infernal_legacy"],
+    "subraces": null,
+    "emoji": "😈"
+  },
+  "dragonborn": {
+    "id": "dragonborn",
+    "name": "Draconien",
+    "description": "Les draconiens sont fiers et honorables, descendants des dragons.",
+    "traits": [
+      "Augmentation de caractéristique: +2 Force, +1 Charisme",
+      "Taille: Moyenne",
+      "Vitesse: 9 mètres (30 pieds)",
+      "Ascendance draconique: Résistance et souffle selon ancêtre",
+      "Souffle: Attaque de zone"
+    ],
+    "abilityScoreIncrease": {
+      "str": 2,
+      "cha": 1
+    },
+    "speed": 30,
+    "size": "medium",
+    "languages": ["common", "draconic"],
+    "features": ["draconic_ancestry", "breath_weapon", "damage_resistance"],
+    "subraces": null,
+    "draconicAncestries": {
+      "black": { "damageType": "acid", "breathShape": "line" },
+      "blue": { "damageType": "lightning", "breathShape": "line" },
+      "brass": { "damageType": "fire", "breathShape": "line" },
+      "bronze": { "damageType": "lightning", "breathShape": "line" },
+      "copper": { "damageType": "acid", "breathShape": "line" },
+      "gold": { "damageType": "fire", "breathShape": "cone" },
+      "green": { "damageType": "poison", "breathShape": "cone" },
+      "red": { "damageType": "fire", "breathShape": "cone" },
+      "silver": { "damageType": "cold", "breathShape": "cone" },
+      "white": { "damageType": "cold", "breathShape": "cone" }
+    },
+    "emoji": "🐉"
+  }
+}

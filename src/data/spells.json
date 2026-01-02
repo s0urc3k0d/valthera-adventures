@@ -1,0 +1,1014 @@
+{
+  "cantrips": {
+    "fire_bolt": {
+      "id": "fire_bolt",
+      "name": "Trait de feu",
+      "level": 0,
+      "school": "evocation",
+      "castingTime": "action",
+      "range": 120,
+      "components": ["V", "S"],
+      "duration": "instantaneous",
+      "description": "Vous lancez un trait de feu sur une créature ou un objet à portée.",
+      "damage": {
+        "1": "1d10",
+        "5": "2d10",
+        "11": "3d10",
+        "17": "4d10"
+      },
+      "damageType": "fire",
+      "attackType": "ranged",
+      "classes": ["wizard", "sorcerer"],
+      "emoji": "🔥"
+    },
+    "ray_of_frost": {
+      "id": "ray_of_frost",
+      "name": "Rayon de givre",
+      "level": 0,
+      "school": "evocation",
+      "castingTime": "action",
+      "range": 60,
+      "components": ["V", "S"],
+      "duration": "instantaneous",
+      "description": "Un rayon de lumière bleutée glaciale fonce vers une créature à portée.",
+      "damage": {
+        "1": "1d8",
+        "5": "2d8",
+        "11": "3d8",
+        "17": "4d8"
+      },
+      "damageType": "cold",
+      "attackType": "ranged",
+      "effect": {
+        "type": "slow",
+        "value": -10,
+        "duration": 1
+      },
+      "classes": ["wizard", "sorcerer"],
+      "emoji": "❄️"
+    },
+    "sacred_flame": {
+      "id": "sacred_flame",
+      "name": "Flamme sacrée",
+      "level": 0,
+      "school": "evocation",
+      "castingTime": "action",
+      "range": 60,
+      "components": ["V", "S"],
+      "duration": "instantaneous",
+      "description": "Une lumière semblable à une flamme descend sur une créature visible à portée.",
+      "damage": {
+        "1": "1d8",
+        "5": "2d8",
+        "11": "3d8",
+        "17": "4d8"
+      },
+      "damageType": "radiant",
+      "savingThrow": {
+        "ability": "dex",
+        "effect": "noDamage"
+      },
+      "classes": ["cleric"],
+      "emoji": "✨"
+    },
+    "eldritch_blast": {
+      "id": "eldritch_blast",
+      "name": "Décharge occulte",
+      "level": 0,
+      "school": "evocation",
+      "castingTime": "action",
+      "range": 120,
+      "components": ["V", "S"],
+      "duration": "instantaneous",
+      "description": "Un rayon d'énergie crépitante fonce vers une créature à portée.",
+      "damage": {
+        "1": "1d10",
+        "5": "2d10",
+        "11": "3d10",
+        "17": "4d10"
+      },
+      "damageType": "force",
+      "attackType": "ranged",
+      "beams": {
+        "1": 1,
+        "5": 2,
+        "11": 3,
+        "17": 4
+      },
+      "classes": ["warlock"],
+      "emoji": "💜"
+    },
+    "shocking_grasp": {
+      "id": "shocking_grasp",
+      "name": "Poigne électrique",
+      "level": 0,
+      "school": "evocation",
+      "castingTime": "action",
+      "range": 5,
+      "components": ["V", "S"],
+      "duration": "instantaneous",
+      "description": "Un éclair jaillit de votre main pour frapper une créature à portée.",
+      "damage": {
+        "1": "1d8",
+        "5": "2d8",
+        "11": "3d8",
+        "17": "4d8"
+      },
+      "damageType": "lightning",
+      "attackType": "melee",
+      "effect": {
+        "type": "no_reaction",
+        "duration": 1
+      },
+      "classes": ["wizard", "sorcerer"],
+      "emoji": "⚡"
+    },
+    "vicious_mockery": {
+      "id": "vicious_mockery",
+      "name": "Moquerie cruelle",
+      "level": 0,
+      "school": "enchantment",
+      "castingTime": "action",
+      "range": 60,
+      "components": ["V"],
+      "duration": "instantaneous",
+      "description": "Vous lancez une série d'insultes magiques à une créature visible à portée.",
+      "damage": {
+        "1": "1d4",
+        "5": "2d4",
+        "11": "3d4",
+        "17": "4d4"
+      },
+      "damageType": "psychic",
+      "savingThrow": {
+        "ability": "wis",
+        "effect": "noDamage"
+      },
+      "effect": {
+        "type": "disadvantage_attack",
+        "duration": 1
+      },
+      "classes": ["bard"],
+      "emoji": "🎭"
+    },
+    "chill_touch": {
+      "id": "chill_touch",
+      "name": "Contact glacial",
+      "level": 0,
+      "school": "necromancy",
+      "castingTime": "action",
+      "range": 120,
+      "components": ["V", "S"],
+      "duration": "1 round",
+      "description": "Une main squelettique et fantomatique apparaît et s'accroche à la cible.",
+      "damage": {
+        "1": "1d8",
+        "5": "2d8",
+        "11": "3d8",
+        "17": "4d8"
+      },
+      "damageType": "necrotic",
+      "attackType": "ranged",
+      "effect": {
+        "type": "no_healing",
+        "duration": 1
+      },
+      "classes": ["wizard", "sorcerer", "warlock"],
+      "emoji": "💀"
+    },
+    "light": {
+      "id": "light",
+      "name": "Lumière",
+      "level": 0,
+      "school": "evocation",
+      "castingTime": "action",
+      "range": 0,
+      "components": ["V", "M"],
+      "duration": "1 hour",
+      "description": "Vous touchez un objet qui émet une lumière vive dans un rayon de 6 mètres.",
+      "utility": true,
+      "classes": ["wizard", "sorcerer", "cleric", "bard"],
+      "emoji": "💡"
+    },
+    "mage_hand": {
+      "id": "mage_hand",
+      "name": "Main de mage",
+      "level": 0,
+      "school": "conjuration",
+      "castingTime": "action",
+      "range": 30,
+      "components": ["V", "S"],
+      "duration": "1 minute",
+      "description": "Une main spectrale apparaît et peut manipuler des objets légers.",
+      "utility": true,
+      "classes": ["wizard", "sorcerer", "bard", "warlock"],
+      "emoji": "🖐️"
+    },
+    "prestidigitation": {
+      "id": "prestidigitation",
+      "name": "Prestidigitation",
+      "level": 0,
+      "school": "transmutation",
+      "castingTime": "action",
+      "range": 10,
+      "components": ["V", "S"],
+      "duration": "1 hour",
+      "description": "Un tour de magie mineur utilisé par les apprentis lanceurs de sorts.",
+      "utility": true,
+      "classes": ["wizard", "sorcerer", "bard", "warlock"],
+      "emoji": "✨"
+    },
+    "guidance": {
+      "id": "guidance",
+      "name": "Assistance",
+      "level": 0,
+      "school": "divination",
+      "castingTime": "action",
+      "range": 0,
+      "components": ["V", "S"],
+      "duration": "concentration, 1 minute",
+      "description": "La cible peut ajouter 1d4 à un jet de caractéristique de son choix.",
+      "buff": {
+        "type": "skill_bonus",
+        "dice": "1d4"
+      },
+      "concentration": true,
+      "classes": ["cleric", "druid"],
+      "emoji": "🙏"
+    },
+    "resistance": {
+      "id": "resistance",
+      "name": "Résistance",
+      "level": 0,
+      "school": "abjuration",
+      "castingTime": "action",
+      "range": 0,
+      "components": ["V", "S", "M"],
+      "duration": "concentration, 1 minute",
+      "description": "La cible peut ajouter 1d4 à un jet de sauvegarde de son choix.",
+      "buff": {
+        "type": "save_bonus",
+        "dice": "1d4"
+      },
+      "concentration": true,
+      "classes": ["cleric", "druid"],
+      "emoji": "🛡️"
+    }
+  },
+  
+  "level1": {
+    "magic_missile": {
+      "id": "magic_missile",
+      "name": "Projectile magique",
+      "level": 1,
+      "school": "evocation",
+      "castingTime": "action",
+      "range": 120,
+      "components": ["V", "S"],
+      "duration": "instantaneous",
+      "description": "Vous créez trois projectiles de force magique qui touchent automatiquement.",
+      "damage": "1d4+1",
+      "damageType": "force",
+      "missiles": 3,
+      "autoHit": true,
+      "upcast": {
+        "missiles": 1
+      },
+      "classes": ["wizard", "sorcerer"],
+      "emoji": "💫"
+    },
+    "burning_hands": {
+      "id": "burning_hands",
+      "name": "Mains brûlantes",
+      "level": 1,
+      "school": "evocation",
+      "castingTime": "action",
+      "range": 15,
+      "components": ["V", "S"],
+      "duration": "instantaneous",
+      "description": "Un cône de flammes jaillit de vos mains.",
+      "damage": "3d6",
+      "damageType": "fire",
+      "areaOfEffect": {
+        "type": "cone",
+        "size": 15
+      },
+      "savingThrow": {
+        "ability": "dex",
+        "effect": "halfDamage"
+      },
+      "upcast": {
+        "damage": "1d6"
+      },
+      "classes": ["wizard", "sorcerer"],
+      "emoji": "🔥"
+    },
+    "cure_wounds": {
+      "id": "cure_wounds",
+      "name": "Soins",
+      "level": 1,
+      "school": "evocation",
+      "castingTime": "action",
+      "range": 0,
+      "components": ["V", "S"],
+      "duration": "instantaneous",
+      "description": "Une créature que vous touchez récupère des points de vie.",
+      "healing": "1d8",
+      "upcast": {
+        "healing": "1d8"
+      },
+      "classes": ["cleric", "paladin", "druid", "bard", "ranger"],
+      "emoji": "💚"
+    },
+    "healing_word": {
+      "id": "healing_word",
+      "name": "Mot de guérison",
+      "level": 1,
+      "school": "evocation",
+      "castingTime": "bonus_action",
+      "range": 60,
+      "components": ["V"],
+      "duration": "instantaneous",
+      "description": "Vous prononcez un mot de pouvoir qui soigne une créature à portée.",
+      "healing": "1d4",
+      "upcast": {
+        "healing": "1d4"
+      },
+      "classes": ["cleric", "bard", "druid"],
+      "emoji": "💚"
+    },
+    "shield": {
+      "id": "shield",
+      "name": "Bouclier",
+      "level": 1,
+      "school": "abjuration",
+      "castingTime": "reaction",
+      "range": 0,
+      "components": ["V", "S"],
+      "duration": "1 round",
+      "description": "Une barrière invisible vous confère +5 à la CA jusqu'à votre prochain tour.",
+      "buff": {
+        "type": "ac_bonus",
+        "value": 5
+      },
+      "trigger": "hit_by_attack",
+      "classes": ["wizard", "sorcerer"],
+      "emoji": "🛡️"
+    },
+    "thunderwave": {
+      "id": "thunderwave",
+      "name": "Vague tonnante",
+      "level": 1,
+      "school": "evocation",
+      "castingTime": "action",
+      "range": 0,
+      "components": ["V", "S"],
+      "duration": "instantaneous",
+      "description": "Une vague de force tonnante émane de vous.",
+      "damage": "2d8",
+      "damageType": "thunder",
+      "areaOfEffect": {
+        "type": "cube",
+        "size": 15
+      },
+      "savingThrow": {
+        "ability": "con",
+        "effect": "halfDamage"
+      },
+      "effect": {
+        "type": "push",
+        "distance": 10
+      },
+      "upcast": {
+        "damage": "1d8"
+      },
+      "classes": ["wizard", "sorcerer", "bard", "druid"],
+      "emoji": "💨"
+    },
+    "guiding_bolt": {
+      "id": "guiding_bolt",
+      "name": "Trait de lumière",
+      "level": 1,
+      "school": "evocation",
+      "castingTime": "action",
+      "range": 120,
+      "components": ["V", "S"],
+      "duration": "1 round",
+      "description": "Un trait de lumière fonce vers une créature et lui octroie un désavantage.",
+      "damage": "4d6",
+      "damageType": "radiant",
+      "attackType": "ranged",
+      "effect": {
+        "type": "advantage_next_attack",
+        "duration": 1
+      },
+      "upcast": {
+        "damage": "1d6"
+      },
+      "classes": ["cleric"],
+      "emoji": "✨"
+    },
+    "inflict_wounds": {
+      "id": "inflict_wounds",
+      "name": "Blessure",
+      "level": 1,
+      "school": "necromancy",
+      "castingTime": "action",
+      "range": 0,
+      "components": ["V", "S"],
+      "duration": "instantaneous",
+      "description": "Une attaque de mêlée magique qui inflige de lourds dégâts nécrotiques.",
+      "damage": "3d10",
+      "damageType": "necrotic",
+      "attackType": "melee",
+      "upcast": {
+        "damage": "1d10"
+      },
+      "classes": ["cleric"],
+      "emoji": "💀"
+    },
+    "hex": {
+      "id": "hex",
+      "name": "Malédiction",
+      "level": 1,
+      "school": "enchantment",
+      "castingTime": "bonus_action",
+      "range": 90,
+      "components": ["V", "S", "M"],
+      "duration": "concentration, 1 hour",
+      "description": "Vous maudissez une créature qui subit des dégâts nécrotiques supplémentaires.",
+      "bonusDamage": "1d6",
+      "damageType": "necrotic",
+      "effect": {
+        "type": "disadvantage_ability",
+        "ability": "choice"
+      },
+      "concentration": true,
+      "classes": ["warlock"],
+      "emoji": "🔮"
+    },
+    "bless": {
+      "id": "bless",
+      "name": "Bénédiction",
+      "level": 1,
+      "school": "enchantment",
+      "castingTime": "action",
+      "range": 30,
+      "components": ["V", "S", "M"],
+      "duration": "concentration, 1 minute",
+      "description": "Jusqu'à 3 créatures ajoutent 1d4 à leurs jets d'attaque et de sauvegarde.",
+      "buff": {
+        "type": "attack_save_bonus",
+        "dice": "1d4"
+      },
+      "targets": 3,
+      "concentration": true,
+      "classes": ["cleric", "paladin"],
+      "emoji": "🙏"
+    },
+    "mage_armor": {
+      "id": "mage_armor",
+      "name": "Armure de mage",
+      "level": 1,
+      "school": "abjuration",
+      "castingTime": "action",
+      "range": 0,
+      "components": ["V", "S", "M"],
+      "duration": "8 hours",
+      "description": "Une force protectrice entoure une créature, lui donnant une CA de 13 + DEX.",
+      "buff": {
+        "type": "set_ac",
+        "formula": "13 + dex"
+      },
+      "classes": ["wizard", "sorcerer"],
+      "emoji": "🛡️"
+    },
+    "sleep": {
+      "id": "sleep",
+      "name": "Sommeil",
+      "level": 1,
+      "school": "enchantment",
+      "castingTime": "action",
+      "range": 90,
+      "components": ["V", "S", "M"],
+      "duration": "1 minute",
+      "description": "Ce sort envoie des créatures dans un sommeil magique.",
+      "hitPoints": "5d8",
+      "effect": {
+        "type": "unconscious",
+        "condition": "hp_threshold"
+      },
+      "upcast": {
+        "hitPoints": "2d8"
+      },
+      "classes": ["wizard", "sorcerer", "bard"],
+      "emoji": "😴"
+    },
+    "faerie_fire": {
+      "id": "faerie_fire",
+      "name": "Lueurs féeriques",
+      "level": 1,
+      "school": "evocation",
+      "castingTime": "action",
+      "range": 60,
+      "components": ["V"],
+      "duration": "concentration, 1 minute",
+      "description": "Les créatures dans la zone brillent et les attaques contre elles ont l'avantage.",
+      "areaOfEffect": {
+        "type": "cube",
+        "size": 20
+      },
+      "savingThrow": {
+        "ability": "dex",
+        "effect": "noEffect"
+      },
+      "effect": {
+        "type": "advantage_attacks_against",
+        "noInvisibility": true
+      },
+      "concentration": true,
+      "classes": ["druid", "bard"],
+      "emoji": "✨"
+    },
+    "hunters_mark": {
+      "id": "hunters_mark",
+      "name": "Marque du chasseur",
+      "level": 1,
+      "school": "divination",
+      "castingTime": "bonus_action",
+      "range": 90,
+      "components": ["V"],
+      "duration": "concentration, 1 hour",
+      "description": "Vous marquez une créature comme proie, infligeant des dégâts supplémentaires.",
+      "bonusDamage": "1d6",
+      "effect": {
+        "type": "advantage_tracking"
+      },
+      "concentration": true,
+      "classes": ["ranger"],
+      "emoji": "🎯"
+    },
+    "divine_smite": {
+      "id": "divine_smite",
+      "name": "Châtiment divin",
+      "level": 1,
+      "school": "evocation",
+      "castingTime": "special",
+      "range": 0,
+      "components": [],
+      "duration": "instantaneous",
+      "description": "Ajoute des dégâts radiants à une attaque de mêlée réussie.",
+      "damage": "2d8",
+      "damageType": "radiant",
+      "bonusVsUndead": "1d8",
+      "onHit": true,
+      "upcast": {
+        "damage": "1d8"
+      },
+      "maxLevel": 4,
+      "classes": ["paladin"],
+      "emoji": "⚔️"
+    }
+  },
+  
+  "level2": {
+    "scorching_ray": {
+      "id": "scorching_ray",
+      "name": "Rayon ardent",
+      "level": 2,
+      "school": "evocation",
+      "castingTime": "action",
+      "range": 120,
+      "components": ["V", "S"],
+      "duration": "instantaneous",
+      "description": "Vous créez trois rayons de feu et les lancez vers vos cibles.",
+      "damage": "2d6",
+      "damageType": "fire",
+      "attackType": "ranged",
+      "rays": 3,
+      "upcast": {
+        "rays": 1
+      },
+      "classes": ["wizard", "sorcerer"],
+      "emoji": "🔥"
+    },
+    "misty_step": {
+      "id": "misty_step",
+      "name": "Pas brumeux",
+      "level": 2,
+      "school": "conjuration",
+      "castingTime": "bonus_action",
+      "range": 0,
+      "components": ["V"],
+      "duration": "instantaneous",
+      "description": "Vous vous téléportez jusqu'à 9 mètres dans un espace inoccupé visible.",
+      "teleport": 30,
+      "classes": ["wizard", "sorcerer", "warlock"],
+      "emoji": "💨"
+    },
+    "spiritual_weapon": {
+      "id": "spiritual_weapon",
+      "name": "Arme spirituelle",
+      "level": 2,
+      "school": "evocation",
+      "castingTime": "bonus_action",
+      "range": 60,
+      "components": ["V", "S"],
+      "duration": "1 minute",
+      "description": "Vous créez une arme spectrale flottante qui peut attaquer en action bonus.",
+      "damage": "1d8",
+      "damageType": "force",
+      "attackType": "melee",
+      "bonusActionAttack": true,
+      "upcast": {
+        "damage": "1d8",
+        "perLevels": 2
+      },
+      "classes": ["cleric"],
+      "emoji": "⚔️"
+    },
+    "hold_person": {
+      "id": "hold_person",
+      "name": "Immobiliser un humanoïde",
+      "level": 2,
+      "school": "enchantment",
+      "castingTime": "action",
+      "range": 60,
+      "components": ["V", "S", "M"],
+      "duration": "concentration, 1 minute",
+      "description": "La cible doit réussir un jet de Sagesse ou être paralysée.",
+      "savingThrow": {
+        "ability": "wis",
+        "effect": "noEffect",
+        "repeatEachTurn": true
+      },
+      "effect": {
+        "type": "paralyzed"
+      },
+      "targetType": "humanoid",
+      "concentration": true,
+      "upcast": {
+        "additionalTargets": 1
+      },
+      "classes": ["wizard", "sorcerer", "cleric", "bard", "druid", "warlock"],
+      "emoji": "🔒"
+    },
+    "invisibility": {
+      "id": "invisibility",
+      "name": "Invisibilité",
+      "level": 2,
+      "school": "illusion",
+      "castingTime": "action",
+      "range": 0,
+      "components": ["V", "S", "M"],
+      "duration": "concentration, 1 hour",
+      "description": "Une créature devient invisible jusqu'à ce qu'elle attaque ou lance un sort.",
+      "effect": {
+        "type": "invisible",
+        "breaksOn": ["attack", "spell"]
+      },
+      "concentration": true,
+      "upcast": {
+        "additionalTargets": 1
+      },
+      "classes": ["wizard", "sorcerer", "bard", "warlock"],
+      "emoji": "👻"
+    },
+    "shatter": {
+      "id": "shatter",
+      "name": "Fracassement",
+      "level": 2,
+      "school": "evocation",
+      "castingTime": "action",
+      "range": 60,
+      "components": ["V", "S", "M"],
+      "duration": "instantaneous",
+      "description": "Un bruit soudain et douloureusement intense retentit.",
+      "damage": "3d8",
+      "damageType": "thunder",
+      "areaOfEffect": {
+        "type": "sphere",
+        "radius": 10
+      },
+      "savingThrow": {
+        "ability": "con",
+        "effect": "halfDamage"
+      },
+      "upcast": {
+        "damage": "1d8"
+      },
+      "classes": ["wizard", "sorcerer", "bard", "warlock"],
+      "emoji": "💥"
+    },
+    "prayer_of_healing": {
+      "id": "prayer_of_healing",
+      "name": "Prière de soins",
+      "level": 2,
+      "school": "evocation",
+      "castingTime": "10 minutes",
+      "range": 30,
+      "components": ["V"],
+      "duration": "instantaneous",
+      "description": "Jusqu'à 6 créatures récupèrent des points de vie.",
+      "healing": "2d8",
+      "targets": 6,
+      "outOfCombat": true,
+      "upcast": {
+        "healing": "1d8"
+      },
+      "classes": ["cleric"],
+      "emoji": "💚"
+    },
+    "lesser_restoration": {
+      "id": "lesser_restoration",
+      "name": "Restauration partielle",
+      "level": 2,
+      "school": "abjuration",
+      "castingTime": "action",
+      "range": 0,
+      "components": ["V", "S"],
+      "duration": "instantaneous",
+      "description": "Met fin à une maladie ou condition affectant la cible.",
+      "removeConditions": ["blinded", "deafened", "paralyzed", "poisoned"],
+      "classes": ["cleric", "paladin", "druid", "bard", "ranger"],
+      "emoji": "💊"
+    },
+    "mirror_image": {
+      "id": "mirror_image",
+      "name": "Image miroir",
+      "level": 2,
+      "school": "illusion",
+      "castingTime": "action",
+      "range": 0,
+      "components": ["V", "S"],
+      "duration": "1 minute",
+      "description": "Trois duplicatas illusoires de vous apparaissent.",
+      "images": 3,
+      "imageAC": 10,
+      "classes": ["wizard", "sorcerer", "warlock"],
+      "emoji": "👥"
+    },
+    "darkness": {
+      "id": "darkness",
+      "name": "Ténèbres",
+      "level": 2,
+      "school": "evocation",
+      "castingTime": "action",
+      "range": 60,
+      "components": ["V", "M"],
+      "duration": "concentration, 10 minutes",
+      "description": "Des ténèbres magiques s'étendent depuis un point que vous choisissez.",
+      "areaOfEffect": {
+        "type": "sphere",
+        "radius": 15
+      },
+      "effect": {
+        "type": "heavily_obscured",
+        "blocksDarkvision": true
+      },
+      "concentration": true,
+      "classes": ["wizard", "sorcerer", "warlock"],
+      "emoji": "🌑"
+    }
+  },
+  
+  "level3": {
+    "fireball": {
+      "id": "fireball",
+      "name": "Boule de feu",
+      "level": 3,
+      "school": "evocation",
+      "castingTime": "action",
+      "range": 150,
+      "components": ["V", "S", "M"],
+      "duration": "instantaneous",
+      "description": "Une boule de feu explose dans un rayon de 6 mètres.",
+      "damage": "8d6",
+      "damageType": "fire",
+      "areaOfEffect": {
+        "type": "sphere",
+        "radius": 20
+      },
+      "savingThrow": {
+        "ability": "dex",
+        "effect": "halfDamage"
+      },
+      "upcast": {
+        "damage": "1d6"
+      },
+      "classes": ["wizard", "sorcerer"],
+      "emoji": "🔥"
+    },
+    "lightning_bolt": {
+      "id": "lightning_bolt",
+      "name": "Éclair",
+      "level": 3,
+      "school": "evocation",
+      "castingTime": "action",
+      "range": 100,
+      "components": ["V", "S", "M"],
+      "duration": "instantaneous",
+      "description": "Un éclair forme une ligne de 30 mètres de long et 1,5 mètre de large.",
+      "damage": "8d6",
+      "damageType": "lightning",
+      "areaOfEffect": {
+        "type": "line",
+        "length": 100,
+        "width": 5
+      },
+      "savingThrow": {
+        "ability": "dex",
+        "effect": "halfDamage"
+      },
+      "upcast": {
+        "damage": "1d6"
+      },
+      "classes": ["wizard", "sorcerer"],
+      "emoji": "⚡"
+    },
+    "counterspell": {
+      "id": "counterspell",
+      "name": "Contresort",
+      "level": 3,
+      "school": "abjuration",
+      "castingTime": "reaction",
+      "range": 60,
+      "components": ["S"],
+      "duration": "instantaneous",
+      "description": "Vous tentez d'interrompre un sort en cours d'incantation.",
+      "counterLevel": 3,
+      "checkDC": "10 + spell level",
+      "trigger": "enemy_casting",
+      "classes": ["wizard", "sorcerer", "warlock"],
+      "emoji": "🚫"
+    },
+    "dispel_magic": {
+      "id": "dispel_magic",
+      "name": "Dissipation de la magie",
+      "level": 3,
+      "school": "abjuration",
+      "castingTime": "action",
+      "range": 120,
+      "components": ["V", "S"],
+      "duration": "instantaneous",
+      "description": "Met fin à tous les sorts de niveau 3 ou moins sur une cible.",
+      "dispelLevel": 3,
+      "checkDC": "10 + spell level",
+      "classes": ["wizard", "sorcerer", "cleric", "bard", "druid", "paladin", "warlock"],
+      "emoji": "✨"
+    },
+    "revivify": {
+      "id": "revivify",
+      "name": "Revivifier",
+      "level": 3,
+      "school": "necromancy",
+      "castingTime": "action",
+      "range": 0,
+      "components": ["V", "S", "M"],
+      "materialCost": 300,
+      "duration": "instantaneous",
+      "description": "Une créature morte depuis moins d'une minute revient à la vie avec 1 PV.",
+      "resurrection": {
+        "timeLimitMinutes": 1,
+        "hpRestored": 1
+      },
+      "classes": ["cleric", "paladin"],
+      "emoji": "💫"
+    },
+    "spirit_guardians": {
+      "id": "spirit_guardians",
+      "name": "Esprits gardiens",
+      "level": 3,
+      "school": "conjuration",
+      "castingTime": "action",
+      "range": 0,
+      "components": ["V", "S", "M"],
+      "duration": "concentration, 10 minutes",
+      "description": "Des esprits vous entourent et infligent des dégâts aux ennemis proches.",
+      "damage": "3d8",
+      "damageType": "radiant",
+      "areaOfEffect": {
+        "type": "sphere",
+        "radius": 15,
+        "centered": true
+      },
+      "savingThrow": {
+        "ability": "wis",
+        "effect": "halfDamage"
+      },
+      "effect": {
+        "type": "halved_speed"
+      },
+      "concentration": true,
+      "upcast": {
+        "damage": "1d8"
+      },
+      "classes": ["cleric"],
+      "emoji": "👻"
+    },
+    "haste": {
+      "id": "haste",
+      "name": "Hâte",
+      "level": 3,
+      "school": "transmutation",
+      "castingTime": "action",
+      "range": 30,
+      "components": ["V", "S", "M"],
+      "duration": "concentration, 1 minute",
+      "description": "La cible gagne une action supplémentaire, +2 CA et double sa vitesse.",
+      "buff": {
+        "acBonus": 2,
+        "speedMultiplier": 2,
+        "extraAction": true,
+        "advantageDexSaves": true
+      },
+      "concentration": true,
+      "endEffect": {
+        "type": "lethargy",
+        "duration": 1
+      },
+      "classes": ["wizard", "sorcerer"],
+      "emoji": "⚡"
+    },
+    "slow": {
+      "id": "slow",
+      "name": "Lenteur",
+      "level": 3,
+      "school": "transmutation",
+      "castingTime": "action",
+      "range": 120,
+      "components": ["V", "S", "M"],
+      "duration": "concentration, 1 minute",
+      "description": "Les cibles voient leur vitesse réduite et leurs actions limitées.",
+      "targets": 6,
+      "areaOfEffect": {
+        "type": "cube",
+        "size": 40
+      },
+      "savingThrow": {
+        "ability": "wis",
+        "effect": "noEffect",
+        "repeatEachTurn": true
+      },
+      "debuff": {
+        "speedReduction": -10,
+        "acPenalty": -2,
+        "noReactions": true,
+        "limitedActions": true
+      },
+      "concentration": true,
+      "classes": ["wizard", "sorcerer"],
+      "emoji": "🐌"
+    },
+    "vampiric_touch": {
+      "id": "vampiric_touch",
+      "name": "Toucher vampirique",
+      "level": 3,
+      "school": "necromancy",
+      "castingTime": "action",
+      "range": 0,
+      "components": ["V", "S"],
+      "duration": "concentration, 1 minute",
+      "description": "Vous drainez la vie d'une créature et vous soignez.",
+      "damage": "3d6",
+      "damageType": "necrotic",
+      "attackType": "melee",
+      "selfHeal": "half_damage",
+      "concentration": true,
+      "upcast": {
+        "damage": "1d6"
+      },
+      "classes": ["wizard", "warlock"],
+      "emoji": "🧛"
+    },
+    "call_lightning": {
+      "id": "call_lightning",
+      "name": "Appel de la foudre",
+      "level": 3,
+      "school": "conjuration",
+      "castingTime": "action",
+      "range": 120,
+      "components": ["V", "S"],
+      "duration": "concentration, 10 minutes",
+      "description": "Un nuage d'orage apparaît et vous pouvez faire tomber des éclairs.",
+      "damage": "3d10",
+      "damageType": "lightning",
+      "areaOfEffect": {
+        "type": "cylinder",
+        "radius": 5,
+        "height": 100
+      },
+      "savingThrow": {
+        "ability": "dex",
+        "effect": "halfDamage"
+      },
+      "repeatAction": "action",
+      "concentration": true,
+      "upcast": {
+        "damage": "1d10"
+      },
+      "classes": ["druid"],
+      "emoji": "⛈️"
+    }
+  }
+}

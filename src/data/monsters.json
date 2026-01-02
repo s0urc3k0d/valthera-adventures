@@ -1,0 +1,476 @@
+{
+  "goblin": {
+    "id": "goblin",
+    "name": "Gobelin",
+    "type": "humanoïde",
+    "level": 1,
+    "emoji": "👺",
+    "description": "Une petite créature verte et fourbe, connue pour ses embuscades.",
+    "hp": { "base": 7, "perLevel": 4 },
+    "ac": 13,
+    "speed": 30,
+    "attributes": {
+      "str": 8,
+      "dex": 14,
+      "con": 10,
+      "int": 10,
+      "wis": 8,
+      "cha": 8
+    },
+    "attackBonus": 4,
+    "damage": "1d6+2",
+    "damageType": "slashing",
+    "xpReward": 50,
+    "goldDrop": { "min": 2, "max": 10 },
+    "loot": [
+      { "itemId": "dagger", "chance": 0.3 },
+      { "itemId": "health_potion_minor", "chance": 0.1 }
+    ],
+    "abilities": ["nimble_escape"],
+    "zones": ["shadowfen-marshes", "whispering-woods"]
+  },
+  
+  "wolf": {
+    "id": "wolf",
+    "name": "Loup",
+    "type": "bête",
+    "level": 1,
+    "emoji": "🐺",
+    "description": "Un prédateur sauvage chassant en meute.",
+    "hp": { "base": 11, "perLevel": 5 },
+    "ac": 13,
+    "speed": 40,
+    "attributes": {
+      "str": 12,
+      "dex": 15,
+      "con": 12,
+      "int": 3,
+      "wis": 12,
+      "cha": 6
+    },
+    "attackBonus": 4,
+    "damage": "2d4+2",
+    "damageType": "piercing",
+    "xpReward": 50,
+    "goldDrop": { "min": 0, "max": 0 },
+    "loot": [
+      { "itemId": "monster_fang", "chance": 0.5 },
+      { "itemId": "monster_hide", "chance": 0.3 }
+    ],
+    "abilities": ["pack_tactics"],
+    "zones": ["whispering-woods", "frostpeak-mountains"]
+  },
+  
+  "skeleton": {
+    "id": "skeleton",
+    "name": "Squelette",
+    "type": "mort-vivant",
+    "level": 1,
+    "emoji": "💀",
+    "description": "Les os animés d'un guerrier tombé depuis longtemps.",
+    "hp": { "base": 13, "perLevel": 5 },
+    "ac": 13,
+    "speed": 30,
+    "attributes": {
+      "str": 10,
+      "dex": 14,
+      "con": 15,
+      "int": 6,
+      "wis": 8,
+      "cha": 5
+    },
+    "attackBonus": 4,
+    "damage": "1d6+2",
+    "damageType": "slashing",
+    "xpReward": 50,
+    "goldDrop": { "min": 1, "max": 5 },
+    "loot": [
+      { "itemId": "shortsword", "chance": 0.2 },
+      { "itemId": "iron_ore", "chance": 0.2 }
+    ],
+    "resistances": ["piercing"],
+    "immunities": ["poison"],
+    "zones": ["ancient-ruins", "forgotten-crypt"]
+  },
+  
+  "giant_spider": {
+    "id": "giant_spider",
+    "name": "Araignée géante",
+    "type": "bête",
+    "level": 2,
+    "emoji": "🕷️",
+    "description": "Une araignée de la taille d'un poney, tissant des toiles mortelles.",
+    "hp": { "base": 26, "perLevel": 8 },
+    "ac": 14,
+    "speed": 30,
+    "attributes": {
+      "str": 14,
+      "dex": 16,
+      "con": 12,
+      "int": 2,
+      "wis": 11,
+      "cha": 4
+    },
+    "attackBonus": 5,
+    "damage": "1d8+3",
+    "damageType": "piercing",
+    "xpReward": 100,
+    "goldDrop": { "min": 0, "max": 0 },
+    "loot": [
+      { "itemId": "monster_fang", "chance": 0.6 },
+      { "itemId": "antidote", "chance": 0.2 }
+    ],
+    "abilities": ["poison_bite", "web"],
+    "zones": ["shadowfen-marshes", "ancient-ruins"]
+  },
+  
+  "orc": {
+    "id": "orc",
+    "name": "Orc",
+    "type": "humanoïde",
+    "level": 2,
+    "emoji": "👹",
+    "description": "Un guerrier brutal à la peau grise, assoiffé de bataille.",
+    "hp": { "base": 15, "perLevel": 6 },
+    "ac": 13,
+    "speed": 30,
+    "attributes": {
+      "str": 16,
+      "dex": 12,
+      "con": 16,
+      "int": 7,
+      "wis": 11,
+      "cha": 10
+    },
+    "attackBonus": 5,
+    "damage": "1d12+3",
+    "damageType": "slashing",
+    "xpReward": 100,
+    "goldDrop": { "min": 5, "max": 20 },
+    "loot": [
+      { "itemId": "greataxe", "chance": 0.15 },
+      { "itemId": "health_potion_minor", "chance": 0.2 }
+    ],
+    "abilities": ["aggressive"],
+    "zones": ["shadowfen-marshes", "bloodstone-canyon"]
+  },
+  
+  "zombie": {
+    "id": "zombie",
+    "name": "Zombie",
+    "type": "mort-vivant",
+    "level": 2,
+    "emoji": "🧟",
+    "description": "Un cadavre animé, lent mais tenace.",
+    "hp": { "base": 22, "perLevel": 7 },
+    "ac": 8,
+    "speed": 20,
+    "attributes": {
+      "str": 13,
+      "dex": 6,
+      "con": 16,
+      "int": 3,
+      "wis": 6,
+      "cha": 5
+    },
+    "attackBonus": 3,
+    "damage": "1d6+1",
+    "damageType": "bludgeoning",
+    "xpReward": 50,
+    "goldDrop": { "min": 0, "max": 3 },
+    "loot": [
+      { "itemId": "monster_hide", "chance": 0.3 }
+    ],
+    "abilities": ["undead_fortitude"],
+    "immunities": ["poison"],
+    "zones": ["ancient-ruins", "forgotten-crypt"]
+  },
+  
+  "bandit": {
+    "id": "bandit",
+    "name": "Bandit",
+    "type": "humanoïde",
+    "level": 1,
+    "emoji": "🗡️",
+    "description": "Un hors-la-loi vivant de vol et de pillage.",
+    "hp": { "base": 11, "perLevel": 4 },
+    "ac": 12,
+    "speed": 30,
+    "attributes": {
+      "str": 11,
+      "dex": 12,
+      "con": 12,
+      "int": 10,
+      "wis": 10,
+      "cha": 10
+    },
+    "attackBonus": 3,
+    "damage": "1d6+1",
+    "damageType": "slashing",
+    "xpReward": 25,
+    "goldDrop": { "min": 5, "max": 25 },
+    "loot": [
+      { "itemId": "shortsword", "chance": 0.2 },
+      { "itemId": "leather_armor", "chance": 0.1 },
+      { "itemId": "lockpick", "chance": 0.15 }
+    ],
+    "zones": ["whispering-woods", "valthera-city"]
+  },
+  
+  "dire_wolf": {
+    "id": "dire_wolf",
+    "name": "Loup sanguinaire",
+    "type": "bête",
+    "level": 3,
+    "emoji": "🐕",
+    "description": "Un loup massif, bien plus grand et féroce que ses cousins ordinaires.",
+    "hp": { "base": 37, "perLevel": 10 },
+    "ac": 14,
+    "speed": 50,
+    "attributes": {
+      "str": 17,
+      "dex": 15,
+      "con": 15,
+      "int": 3,
+      "wis": 12,
+      "cha": 7
+    },
+    "attackBonus": 5,
+    "damage": "2d6+3",
+    "damageType": "piercing",
+    "xpReward": 200,
+    "goldDrop": { "min": 0, "max": 0 },
+    "loot": [
+      { "itemId": "monster_fang", "chance": 0.7 },
+      { "itemId": "monster_hide", "chance": 0.5 }
+    ],
+    "abilities": ["pack_tactics", "keen_senses"],
+    "zones": ["frostpeak-mountains", "whispering-woods"]
+  },
+  
+  "ogre": {
+    "id": "ogre",
+    "name": "Ogre",
+    "type": "géant",
+    "level": 4,
+    "emoji": "👊",
+    "description": "Une brute massive au cerveau petit mais aux muscles énormes.",
+    "hp": { "base": 59, "perLevel": 12 },
+    "ac": 11,
+    "speed": 40,
+    "attributes": {
+      "str": 19,
+      "dex": 8,
+      "con": 16,
+      "int": 5,
+      "wis": 7,
+      "cha": 7
+    },
+    "attackBonus": 6,
+    "damage": "2d8+4",
+    "damageType": "bludgeoning",
+    "xpReward": 450,
+    "goldDrop": { "min": 15, "max": 50 },
+    "loot": [
+      { "itemId": "greataxe", "chance": 0.3 },
+      { "itemId": "health_potion", "chance": 0.25 },
+      { "itemId": "gem_ruby", "chance": 0.1 }
+    ],
+    "zones": ["bloodstone-canyon", "frostpeak-mountains"]
+  },
+  
+  "troll": {
+    "id": "troll",
+    "name": "Troll",
+    "type": "géant",
+    "level": 5,
+    "emoji": "🧌",
+    "description": "Une créature régénérante au long nez et aux griffes acérées.",
+    "hp": { "base": 84, "perLevel": 15 },
+    "ac": 15,
+    "speed": 30,
+    "attributes": {
+      "str": 18,
+      "dex": 13,
+      "con": 20,
+      "int": 7,
+      "wis": 9,
+      "cha": 7
+    },
+    "attackBonus": 7,
+    "damage": "2d6+4",
+    "damageType": "slashing",
+    "xpReward": 1800,
+    "goldDrop": { "min": 30, "max": 100 },
+    "loot": [
+      { "itemId": "health_potion_greater", "chance": 0.4 },
+      { "itemId": "gem_emerald", "chance": 0.15 }
+    ],
+    "abilities": ["regeneration"],
+    "vulnerabilities": ["fire", "acid"],
+    "zones": ["shadowfen-marshes"]
+  },
+  
+  "wraith": {
+    "id": "wraith",
+    "name": "Spectre",
+    "type": "mort-vivant",
+    "level": 5,
+    "emoji": "👻",
+    "description": "Une âme malveillante incapable de trouver le repos.",
+    "hp": { "base": 67, "perLevel": 12 },
+    "ac": 13,
+    "speed": 0,
+    "flySpeed": 60,
+    "attributes": {
+      "str": 6,
+      "dex": 16,
+      "con": 16,
+      "int": 12,
+      "wis": 14,
+      "cha": 15
+    },
+    "attackBonus": 6,
+    "damage": "4d8+3",
+    "damageType": "necrotic",
+    "xpReward": 1800,
+    "goldDrop": { "min": 0, "max": 0 },
+    "loot": [
+      { "itemId": "gem_sapphire", "chance": 0.2 },
+      { "itemId": "ancient_tome", "chance": 0.05 }
+    ],
+    "abilities": ["incorporeal", "life_drain"],
+    "resistances": ["acid", "cold", "fire", "lightning", "thunder"],
+    "immunities": ["necrotic", "poison"],
+    "zones": ["forgotten-crypt", "ancient-ruins"]
+  },
+  
+  "young_dragon_green": {
+    "id": "young_dragon_green",
+    "name": "Jeune dragon vert",
+    "type": "dragon",
+    "level": 8,
+    "emoji": "🐉",
+    "description": "Un dragon rusé et manipulateur au souffle empoisonné.",
+    "hp": { "base": 136, "perLevel": 20 },
+    "ac": 18,
+    "speed": 40,
+    "flySpeed": 80,
+    "attributes": {
+      "str": 19,
+      "dex": 12,
+      "con": 17,
+      "int": 16,
+      "wis": 13,
+      "cha": 15
+    },
+    "attackBonus": 7,
+    "damage": "2d10+4",
+    "damageType": "piercing",
+    "xpReward": 3900,
+    "goldDrop": { "min": 200, "max": 500 },
+    "loot": [
+      { "itemId": "gem_diamond", "chance": 0.3 },
+      { "itemId": "health_potion_supreme", "chance": 0.4 },
+      { "itemId": "cloak_elvenkind", "chance": 0.1 }
+    ],
+    "abilities": ["poison_breath", "frightful_presence"],
+    "immunities": ["poison"],
+    "zones": ["whispering-woods"]
+  },
+  
+  "mimic": {
+    "id": "mimic",
+    "name": "Mimic",
+    "type": "monstruosité",
+    "level": 3,
+    "emoji": "📦",
+    "description": "Une créature capable de prendre l'apparence d'objets, souvent des coffres.",
+    "hp": { "base": 58, "perLevel": 9 },
+    "ac": 12,
+    "speed": 15,
+    "attributes": {
+      "str": 17,
+      "dex": 12,
+      "con": 15,
+      "int": 5,
+      "wis": 13,
+      "cha": 8
+    },
+    "attackBonus": 5,
+    "damage": "1d8+3",
+    "damageType": "piercing",
+    "xpReward": 450,
+    "goldDrop": { "min": 50, "max": 150 },
+    "loot": [
+      { "itemId": "health_potion", "chance": 0.5 },
+      { "itemId": "gem_ruby", "chance": 0.3 },
+      { "itemId": "ring_protection", "chance": 0.05 }
+    ],
+    "abilities": ["adhesive", "false_appearance"],
+    "immunities": ["acid"],
+    "zones": ["ancient-ruins", "forgotten-crypt"]
+  },
+  
+  "owlbear": {
+    "id": "owlbear",
+    "name": "Hibours",
+    "type": "monstruosité",
+    "level": 3,
+    "emoji": "🦉",
+    "description": "Une créature mi-ours mi-hibou, aussi féroce qu'imprévisible.",
+    "hp": { "base": 59, "perLevel": 10 },
+    "ac": 13,
+    "speed": 40,
+    "attributes": {
+      "str": 20,
+      "dex": 12,
+      "con": 17,
+      "int": 3,
+      "wis": 12,
+      "cha": 7
+    },
+    "attackBonus": 7,
+    "damage": "2d8+5",
+    "damageType": "slashing",
+    "xpReward": 700,
+    "goldDrop": { "min": 0, "max": 0 },
+    "loot": [
+      { "itemId": "monster_fang", "chance": 0.8 },
+      { "itemId": "monster_hide", "chance": 0.6 }
+    ],
+    "abilities": ["keen_sight", "keen_smell"],
+    "zones": ["whispering-woods", "frostpeak-mountains"]
+  },
+  
+  "cultist": {
+    "id": "cultist",
+    "name": "Cultiste",
+    "type": "humanoïde",
+    "level": 1,
+    "emoji": "🧙",
+    "description": "Un fanatique voué à des forces obscures.",
+    "hp": { "base": 9, "perLevel": 3 },
+    "ac": 12,
+    "speed": 30,
+    "attributes": {
+      "str": 11,
+      "dex": 12,
+      "con": 10,
+      "int": 10,
+      "wis": 11,
+      "cha": 10
+    },
+    "attackBonus": 3,
+    "damage": "1d6+1",
+    "damageType": "slashing",
+    "xpReward": 25,
+    "goldDrop": { "min": 2, "max": 10 },
+    "loot": [
+      { "itemId": "dagger", "chance": 0.3 },
+      { "itemId": "mana_potion", "chance": 0.1 }
+    ],
+    "abilities": ["dark_devotion"],
+    "zones": ["ancient-ruins", "forgotten-crypt"]
+  }
+}

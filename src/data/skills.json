@@ -1,0 +1,128 @@
+{
+  "acrobatics": {
+    "id": "acrobatics",
+    "name": "Acrobaties",
+    "ability": "dex",
+    "emoji": "🤸",
+    "description": "Équilibre, sauts, et manœuvres acrobatiques."
+  },
+  "animal_handling": {
+    "id": "animal_handling",
+    "name": "Dressage",
+    "ability": "wis",
+    "emoji": "🐴",
+    "description": "Calmer, contrôler ou comprendre les animaux."
+  },
+  "arcana": {
+    "id": "arcana",
+    "name": "Arcanes",
+    "ability": "int",
+    "emoji": "✨",
+    "description": "Connaissances sur les sorts, objets magiques et plans."
+  },
+  "athletics": {
+    "id": "athletics",
+    "name": "Athlétisme",
+    "ability": "str",
+    "emoji": "🏋️",
+    "description": "Escalade, nage, saut et efforts physiques."
+  },
+  "deception": {
+    "id": "deception",
+    "name": "Tromperie",
+    "ability": "cha",
+    "emoji": "🎭",
+    "description": "Mentir, déguiser et tromper les autres."
+  },
+  "history": {
+    "id": "history",
+    "name": "Histoire",
+    "ability": "int",
+    "emoji": "📜",
+    "description": "Souvenirs des événements historiques et légendes."
+  },
+  "insight": {
+    "id": "insight",
+    "name": "Perspicacité",
+    "ability": "wis",
+    "emoji": "👁️",
+    "description": "Détecter les mensonges et les intentions cachées."
+  },
+  "intimidation": {
+    "id": "intimidation",
+    "name": "Intimidation",
+    "ability": "cha",
+    "emoji": "😠",
+    "description": "Influencer par la menace, l'hostilité ou la violence."
+  },
+  "investigation": {
+    "id": "investigation",
+    "name": "Investigation",
+    "ability": "int",
+    "emoji": "🔍",
+    "description": "Chercher des indices, déduire et résoudre des énigmes."
+  },
+  "medicine": {
+    "id": "medicine",
+    "name": "Médecine",
+    "ability": "wis",
+    "emoji": "💊",
+    "description": "Stabiliser les mourants, diagnostiquer les maladies."
+  },
+  "nature": {
+    "id": "nature",
+    "name": "Nature",
+    "ability": "int",
+    "emoji": "🌿",
+    "description": "Connaissances sur le terrain, les plantes et les animaux."
+  },
+  "perception": {
+    "id": "perception",
+    "name": "Perception",
+    "ability": "wis",
+    "emoji": "👀",
+    "description": "Repérer, entendre ou détecter une présence."
+  },
+  "performance": {
+    "id": "performance",
+    "name": "Représentation",
+    "ability": "cha",
+    "emoji": "🎵",
+    "description": "Divertir par la musique, la danse ou le théâtre."
+  },
+  "persuasion": {
+    "id": "persuasion",
+    "name": "Persuasion",
+    "ability": "cha",
+    "emoji": "💬",
+    "description": "Influencer par le tact, la grâce et le charme."
+  },
+  "religion": {
+    "id": "religion",
+    "name": "Religion",
+    "ability": "int",
+    "emoji": "⛪",
+    "description": "Connaissances sur les dieux, rites et symboles sacrés."
+  },
+  "sleight_of_hand": {
+    "id": "sleight_of_hand",
+    "name": "Escamotage",
+    "ability": "dex",
+    "emoji": "🖐️",
+    "description": "Pickpocket, tours de passe-passe et dissimulation."
+  },
+  "stealth": {
+    "id": "stealth",
+    "name": "Discrétion",
+    "ability": "dex",
+    "emoji": "🥷",
+    "description": "Se cacher, se déplacer silencieusement."
+  },
+  "survival": {
+    "id": "survival",
+    "name": "Survie",
+    "ability": "wis",
+    "emoji": "🏕️",
+    "description": "Pister, chasser, naviguer en territoire sauvage."
+  }
+}

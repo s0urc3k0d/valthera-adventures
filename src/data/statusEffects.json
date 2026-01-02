@@ -1,0 +1,550 @@
+{
+  "conditions": {
+    "blinded": {
+      "id": "blinded",
+      "name": "Aveuglé",
+      "emoji": "🌑",
+      "description": "Ne peut pas voir. Rate automatiquement les jets nécessitant la vue. Désavantage aux attaques, avantage pour les attaquants.",
+      "effects": {
+        "autoFailChecks": ["sight_based"],
+        "disadvantageOnAttacks": true,
+        "attackersHaveAdvantage": true
+      },
+      "canStack": false,
+      "endConditions": ["spell_end", "cure", "duration"]
+    },
+    
+    "charmed": {
+      "id": "charmed",
+      "name": "Charmé",
+      "emoji": "💕",
+      "description": "Ne peut pas attaquer le charmeur. Le charmeur a l'avantage aux interactions sociales.",
+      "effects": {
+        "cannotAttack": "charmer",
+        "charmerHasAdvantage": ["persuasion", "deception", "intimidation"]
+      },
+      "canStack": false,
+      "endConditions": ["damage_from_charmer", "spell_end", "duration"]
+    },
+    
+    "deafened": {
+      "id": "deafened",
+      "name": "Assourdi",
+      "emoji": "🔇",
+      "description": "Ne peut pas entendre. Rate automatiquement les jets nécessitant l'ouïe.",
+      "effects": {
+        "autoFailChecks": ["hearing_based"]
+      },
+      "canStack": false,
+      "endConditions": ["spell_end", "cure", "duration"]
+    },
+    
+    "frightened": {
+      "id": "frightened",
+      "name": "Effrayé",
+      "emoji": "😨",
+      "description": "Désavantage aux jets tant que la source de peur est visible. Ne peut pas s'en approcher volontairement.",
+      "effects": {
+        "disadvantageOnChecks": true,
+        "disadvantageOnAttacks": true,
+        "cannotApproach": "source",
+        "condition": "source_visible"
+      },
+      "canStack": false,
+      "endConditions": ["source_not_visible", "spell_end", "duration"]
+    },
+    
+    "grappled": {
+      "id": "grappled",
+      "name": "Empoigné",
+      "emoji": "🤜",
+      "description": "Vitesse réduite à 0. Termine si l'empoigneur est incapacité ou éloigné.",
+      "effects": {
+        "speedZero": true
+      },
+      "canStack": false,
+      "endConditions": ["grappler_incapacitated", "forced_apart", "escape"]
+    },
+    
+    "incapacitated": {
+      "id": "incapacitated",
+      "name": "Neutralisé",
+      "emoji": "💫",
+      "description": "Ne peut pas prendre d'actions ni de réactions.",
+      "effects": {
+        "noActions": true,
+        "noReactions": true
+      },
+      "canStack": false,
+      "endConditions": ["spell_end", "duration"]
+    },
+    
+    "invisible": {
+      "id": "invisible",
+      "name": "Invisible",
+      "emoji": "👻",
+      "description": "Impossible à voir sans magie. Avantage aux attaques, désavantage pour les attaquants.",
+      "effects": {
+        "advantageOnAttacks": true,
+        "attackersHaveDisadvantage": true,
+        "cannotBeSeen": true
+      },
+      "canStack": false,
+      "endConditions": ["attack", "spell_cast", "spell_end", "duration"]
+    },
+    
+    "paralyzed": {
+      "id": "paralyzed",
+      "name": "Paralysé",
+      "emoji": "⚡",
+      "description": "Neutralisé et ne peut ni bouger ni parler. Rate les jets FOR et DEX. Attaques contre ont l'avantage. Critiques automatiques si adjacents.",
+      "effects": {
+        "incapacitated": true,
+        "cannotMove": true,
+        "cannotSpeak": true,
+        "autoFailSaves": ["str", "dex"],
+        "attackersHaveAdvantage": true,
+        "adjacentAttacksCrit": true
+      },
+      "canStack": false,
+      "endConditions": ["spell_end", "duration", "save"]
+    },
+    
+    "petrified": {
+      "id": "petrified",
+      "name": "Pétrifié",
+      "emoji": "🗿",
+      "description": "Transformé en substance inanimée. Poids × 10. Résistance à tous les dégâts. Immunité aux poisons et maladies.",
+      "effects": {
+        "incapacitated": true,
+        "cannotMove": true,
+        "cannotSpeak": true,
+        "autoFailSaves": ["str", "dex"],
+        "attackersHaveAdvantage": true,
+        "resistAll": true,
+        "immuneToPoison": true,
+        "immuneToDisease": true,
+        "weightMultiplier": 10
+      },
+      "canStack": false,
+      "endConditions": ["spell_end", "greater_restoration"]
+    },
+    
+    "poisoned": {
+      "id": "poisoned",
+      "name": "Empoisonné",
+      "emoji": "🤢",
+      "description": "Désavantage sur les jets d'attaque et de caractéristiques.",
+      "effects": {
+        "disadvantageOnAttacks": true,
+        "disadvantageOnChecks": true
+      },
+      "canStack": false,
+      "endConditions": ["cure", "duration", "save"]
+    },
+    
+    "prone": {
+      "id": "prone",
+      "name": "À terre",
+      "emoji": "🔻",
+      "description": "Désavantage aux attaques. Attaques de mêlée adjacentes ont l'avantage, à distance ont le désavantage.",
+      "effects": {
+        "disadvantageOnAttacks": true,
+        "meleeAttackersHaveAdvantage": true,
+        "rangedAttackersHaveDisadvantage": true,
+        "canOnlyCrawl": true
+      },
+      "canStack": false,
+      "endConditions": ["stand_up"]
+    },
+    
+    "restrained": {
+      "id": "restrained",
+      "name": "Entravé",
+      "emoji": "⛓️",
+      "description": "Vitesse 0. Désavantage aux attaques et jets DEX. Attaques contre ont l'avantage.",
+      "effects": {
+        "speedZero": true,
+        "disadvantageOnAttacks": true,
+        "disadvantageDexSaves": true,
+        "attackersHaveAdvantage": true
+      },
+      "canStack": false,
+      "endConditions": ["spell_end", "escape", "duration"]
+    },
+    
+    "stunned": {
+      "id": "stunned",
+      "name": "Étourdi",
+      "emoji": "💫",
+      "description": "Neutralisé, ne peut pas bouger, parle avec difficulté. Rate jets FOR et DEX. Attaques ont l'avantage.",
+      "effects": {
+        "incapacitated": true,
+        "cannotMove": true,
+        "autoFailSaves": ["str", "dex"],
+        "attackersHaveAdvantage": true
+      },
+      "canStack": false,
+      "endConditions": ["spell_end", "duration"]
+    },
+    
+    "unconscious": {
+      "id": "unconscious",
+      "name": "Inconscient",
+      "emoji": "💤",
+      "description": "Neutralisé, ne peut ni bouger ni parler, laisse tomber les objets. Rate jets FOR et DEX. Attaques ont l'avantage. Critiques automatiques si adjacents.",
+      "effects": {
+        "incapacitated": true,
+        "cannotMove": true,
+        "cannotSpeak": true,
+        "dropItems": true,
+        "autoFailSaves": ["str", "dex"],
+        "attackersHaveAdvantage": true,
+        "adjacentAttacksCrit": true
+      },
+      "canStack": false,
+      "endConditions": ["damage", "healing", "duration"]
+    },
+    
+    "exhaustion": {
+      "id": "exhaustion",
+      "name": "Épuisement",
+      "emoji": "😫",
+      "description": "Condition cumulative avec des effets de plus en plus graves.",
+      "levels": {
+        "1": {
+          "description": "Désavantage aux jets de caractéristiques",
+          "effects": { "disadvantageOnChecks": true }
+        },
+        "2": {
+          "description": "Vitesse réduite de moitié",
+          "effects": { "speedHalved": true }
+        },
+        "3": {
+          "description": "Désavantage aux attaques et jets de sauvegarde",
+          "effects": { "disadvantageOnAttacks": true, "disadvantageOnSaves": true }
+        },
+        "4": {
+          "description": "Points de vie maximum réduits de moitié",
+          "effects": { "maxHpHalved": true }
+        },
+        "5": {
+          "description": "Vitesse réduite à 0",
+          "effects": { "speedZero": true }
+        },
+        "6": {
+          "description": "Mort",
+          "effects": { "death": true }
+        }
+      },
+      "canStack": true,
+      "maxStacks": 6,
+      "recovery": "long_rest_reduces_by_1"
+    }
+  },
+  
+  "spellEffects": {
+    "burning": {
+      "id": "burning",
+      "name": "En feu",
+      "emoji": "🔥",
+      "description": "Subit des dégâts de feu au début de chaque tour.",
+      "damagePerTurn": "1d6",
+      "damageType": "fire",
+      "endConditions": ["action_to_extinguish", "water", "duration"],
+      "duration": 3
+    },
+    
+    "bleeding": {
+      "id": "bleeding",
+      "name": "Saignement",
+      "emoji": "🩸",
+      "description": "Perd des points de vie au début de chaque tour.",
+      "damagePerTurn": "1d4",
+      "damageType": "none",
+      "endConditions": ["healing", "medicine_check", "duration"],
+      "duration": 5
+    },
+    
+    "frozen": {
+      "id": "frozen",
+      "name": "Gelé",
+      "emoji": "🧊",
+      "description": "Vitesse réduite de moitié. Désavantage aux jets de DEX.",
+      "effects": {
+        "speedHalved": true,
+        "disadvantageDexSaves": true,
+        "disadvantageDexChecks": true
+      },
+      "duration": 2
+    },
+    
+    "shocked": {
+      "id": "shocked",
+      "name": "Électrocuté",
+      "emoji": "⚡",
+      "description": "Ne peut pas prendre de réactions jusqu'à son prochain tour.",
+      "effects": {
+        "noReactions": true
+      },
+      "duration": 1
+    },
+    
+    "blessed": {
+      "id": "blessed",
+      "name": "Béni",
+      "emoji": "✨",
+      "description": "Ajoute 1d4 aux jets d'attaque et de sauvegarde.",
+      "effects": {
+        "attackBonus": "1d4",
+        "saveBonus": "1d4"
+      },
+      "concentration": true,
+      "duration": 10
+    },
+    
+    "cursed": {
+      "id": "cursed",
+      "name": "Maudit",
+      "emoji": "💀",
+      "description": "Soustrait 1d4 aux jets d'attaque et de sauvegarde.",
+      "effects": {
+        "attackPenalty": "1d4",
+        "savePenalty": "1d4"
+      },
+      "concentration": true,
+      "duration": 10
+    },
+    
+    "hexed": {
+      "id": "hexed",
+      "name": "Maléfice",
+      "emoji": "🔮",
+      "description": "Dégâts nécrotic supplémentaires et désavantage sur un type de caractéristique.",
+      "effects": {
+        "bonusDamage": "1d6",
+        "bonusDamageType": "necrotic",
+        "disadvantageAbility": "chosen"
+      },
+      "concentration": true,
+      "duration": 60
+    },
+    
+    "hunters_mark": {
+      "id": "hunters_mark",
+      "name": "Marque du chasseur",
+      "emoji": "🎯",
+      "description": "Dégâts supplémentaires et avantage pour pister la cible.",
+      "effects": {
+        "bonusDamage": "1d6",
+        "advantageTracking": true
+      },
+      "concentration": true,
+      "duration": 60
+    },
+    
+    "hasted": {
+      "id": "hasted",
+      "name": "Hâte",
+      "emoji": "⚡",
+      "description": "Vitesse doublée, +2 CA, avantage DEX, action supplémentaire limitée.",
+      "effects": {
+        "speedDouble": true,
+        "acBonus": 2,
+        "advantageDexSaves": true,
+        "extraAction": ["attack_one", "dash", "disengage", "hide", "use_object"]
+      },
+      "concentration": true,
+      "duration": 10,
+      "endEffect": {
+        "type": "lethargy",
+        "description": "Ne peut ni bouger ni agir jusqu'à la fin de son prochain tour.",
+        "duration": 1
+      }
+    },
+    
+    "slowed": {
+      "id": "slowed",
+      "name": "Ralenti",
+      "emoji": "🐌",
+      "description": "Vitesse réduite de moitié, -2 CA, -2 DEX saves, pas de réactions, une action OU bonus action.",
+      "effects": {
+        "speedHalved": true,
+        "acPenalty": 2,
+        "dexSavePenalty": 2,
+        "noReactions": true,
+        "limitedActions": true
+      },
+      "concentration": true,
+      "duration": 10
+    },
+    
+    "shielded": {
+      "id": "shielded",
+      "name": "Bouclier",
+      "emoji": "🛡️",
+      "description": "+5 à la CA jusqu'au début de votre prochain tour.",
+      "effects": {
+        "acBonus": 5
+      },
+      "duration": 1,
+      "trigger": "reaction"
+    },
+    
+    "raging": {
+      "id": "raging",
+      "name": "En rage",
+      "emoji": "😤",
+      "description": "Résistance aux dégâts physiques, bonus aux dégâts, avantage FOR.",
+      "effects": {
+        "damageBonus": 2,
+        "resistances": ["bludgeoning", "piercing", "slashing"],
+        "advantageStrChecks": true,
+        "advantageStrSaves": true,
+        "cannotCastSpells": true
+      },
+      "duration": 10,
+      "endConditions": ["no_attack_or_damage", "unconscious", "bonus_action_end"]
+    },
+    
+    "concentrating": {
+      "id": "concentrating",
+      "name": "Concentration",
+      "emoji": "🎯",
+      "description": "Maintient un sort de concentration actif.",
+      "effects": {
+        "maintainingSpell": true
+      },
+      "breakConditions": ["damage_con_save_fail", "incapacitated", "new_concentration", "voluntary"]
+    },
+    
+    "inspired": {
+      "id": "inspired",
+      "name": "Inspiré",
+      "emoji": "🎵",
+      "description": "Possède un dé d'inspiration bardique à utiliser.",
+      "effects": {
+        "inspirationDie": "variable"
+      },
+      "duration": "10 minutes",
+      "oneTimeUse": true
+    },
+    
+    "smiting": {
+      "id": "smiting",
+      "name": "Châtiment préparé",
+      "emoji": "⚔️",
+      "description": "Le prochain coup de mêlée inflige des dégâts radiants supplémentaires.",
+      "effects": {
+        "bonusDamageOnHit": "2d8+",
+        "bonusDamageType": "radiant",
+        "bonusVsUndead": "1d8"
+      },
+      "duration": 1,
+      "trigger": "next_melee_hit"
+    },
+
+    "regenerating": {
+      "id": "regenerating",
+      "name": "Régénération",
+      "emoji": "💚",
+      "description": "Récupère des points de vie au début de chaque tour.",
+      "healingPerTurn": "1d4",
+      "duration": 5
+    },
+    
+    "protected": {
+      "id": "protected",
+      "name": "Protégé",
+      "emoji": "🛡️",
+      "description": "Bénéficie d'un bonus aux jets de sauvegarde.",
+      "effects": {
+        "saveBonus": "variable"
+      },
+      "duration": 10,
+      "concentration": true
+    },
+    
+    "hidden": {
+      "id": "hidden",
+      "name": "Caché",
+      "emoji": "🥷",
+      "description": "Non détecté par les ennemis. Avantage sur la première attaque.",
+      "effects": {
+        "unseen": true,
+        "advantageFirstAttack": true
+      },
+      "endConditions": ["attack", "spell_cast", "loud_noise", "detected"]
+    },
+
+    "flying": {
+      "id": "flying",
+      "name": "Vol",
+      "emoji": "🦅",
+      "description": "Peut voler à sa vitesse de déplacement.",
+      "effects": {
+        "canFly": true,
+        "flySpeed": "walking_speed"
+      },
+      "concentration": true,
+      "duration": 10,
+      "endEffect": {
+        "type": "fall",
+        "description": "Tombe si en l'air quand le sort se termine."
+      }
+    },
+
+    "enlarged": {
+      "id": "enlarged",
+      "name": "Agrandi",
+      "emoji": "📈",
+      "description": "Taille augmentée, +1d4 dégâts aux armes, avantage jets de FOR.",
+      "effects": {
+        "sizeIncrease": 1,
+        "weaponDamageBonus": "1d4",
+        "advantageStrChecks": true,
+        "advantageStrSaves": true
+      },
+      "concentration": true,
+      "duration": 10
+    },
+
+    "reduced": {
+      "id": "reduced",
+      "name": "Réduit",
+      "emoji": "📉",
+      "description": "Taille diminuée, -1d4 dégâts aux armes, désavantage jets de FOR.",
+      "effects": {
+        "sizeDecrease": 1,
+        "weaponDamagePenalty": "1d4",
+        "disadvantageStrChecks": true,
+        "disadvantageStrSaves": true
+      },
+      "concentration": true,
+      "duration": 10
+    }
+  },
+
+  "immunities": {
+    "undead": ["poisoned", "exhaustion", "charmed"],
+    "construct": ["poisoned", "exhaustion", "charmed", "frightened"],
+    "elemental": ["poisoned", "exhaustion", "paralyzed", "petrified"],
+    "elf": {
+      "advantage": ["charmed"],
+      "immune": ["magical_sleep"]
+    },
+    "dwarf": {
+      "advantage": ["poisoned"],
+      "resistance": ["poison"]
+    },
+    "halfling": {
+      "advantage": ["frightened"]
+    }
+  },
+
+  "savingThrows": {
+    "endOfTurn": ["paralyzed", "stunned", "frightened", "charmed"],
+    "startOfTurn": [],
+    "onDamage": ["concentrating"]
+  }
+}

@@ -1,0 +1,1069 @@
+{
+  "fighter": {
+    "classId": "fighter",
+    "className": "Guerrier",
+    "resources": [],
+    "abilities": {
+      "second_wind": {
+        "id": "second_wind",
+        "name": "Second souffle",
+        "level": 1,
+        "type": "healing",
+        "actionType": "bonus_action",
+        "description": "Vous pouvez utiliser une action bonus pour récupérer des points de vie égaux à 1d10 + votre niveau de guerrier.",
+        "healing": "1d10 + level",
+        "usesPerRest": "short",
+        "uses": 1,
+        "emoji": "💨"
+      },
+      "action_surge": {
+        "id": "action_surge",
+        "name": "Sursaut d'action",
+        "level": 2,
+        "type": "buff",
+        "actionType": "free",
+        "description": "Vous pouvez prendre une action supplémentaire en plus de votre action normale.",
+        "effect": {
+          "type": "extra_action",
+          "duration": "turn"
+        },
+        "usesPerRest": "short",
+        "uses": 1,
+        "usesAtLevel": {
+          "17": 2
+        },
+        "emoji": "⚡"
+      },
+      "indomitable": {
+        "id": "indomitable",
+        "name": "Indomptable",
+        "level": 9,
+        "type": "defensive",
+        "actionType": "reaction",
+        "description": "Vous pouvez relancer un jet de sauvegarde raté.",
+        "effect": {
+          "type": "reroll_save"
+        },
+        "usesPerRest": "long",
+        "uses": 1,
+        "usesAtLevel": {
+          "13": 2,
+          "17": 3
+        },
+        "emoji": "💪"
+      }
+    },
+    "fightingStyles": {
+      "archery": {
+        "id": "archery",
+        "name": "Archerie",
+        "description": "+2 aux jets d'attaque avec une arme à distance.",
+        "effect": {
+          "type": "attack_bonus",
+          "value": 2,
+          "condition": "ranged_weapon"
+        }
+      },
+      "defense": {
+        "id": "defense",
+        "name": "Défense",
+        "description": "+1 à la CA quand vous portez une armure.",
+        "effect": {
+          "type": "ac_bonus",
+          "value": 1,
+          "condition": "wearing_armor"
+        }
+      },
+      "dueling": {
+        "id": "dueling",
+        "name": "Duel",
+        "description": "+2 aux dégâts quand vous maniez une arme à une main sans autre arme.",
+        "effect": {
+          "type": "damage_bonus",
+          "value": 2,
+          "condition": "one_handed_only"
+        }
+      },
+      "great_weapon": {
+        "id": "great_weapon",
+        "name": "Combat à deux armes",
+        "description": "Relancez les 1 et 2 sur les dés de dégâts avec des armes à deux mains.",
+        "effect": {
+          "type": "reroll_damage",
+          "threshold": 2,
+          "condition": "two_handed_weapon"
+        }
+      },
+      "protection": {
+        "id": "protection",
+        "name": "Protection",
+        "description": "Réaction: imposez le désavantage sur une attaque contre un allié adjacent.",
+        "effect": {
+          "type": "impose_disadvantage",
+          "condition": "ally_adjacent",
+          "actionType": "reaction"
+        }
+      }
+    }
+  },
+  
+  "rogue": {
+    "classId": "rogue",
+    "className": "Roublard",
+    "resources": [],
+    "abilities": {
+      "sneak_attack": {
+        "id": "sneak_attack",
+        "name": "Attaque sournoise",
+        "level": 1,
+        "type": "damage",
+        "actionType": "passive",
+        "description": "Une fois par tour, vous infligez des dégâts supplémentaires quand vous avez l'avantage ou un allié adjacent à la cible.",
+        "damage": {
+          "1": "1d6",
+          "3": "2d6",
+          "5": "3d6",
+          "7": "4d6",
+          "9": "5d6",
+          "11": "6d6",
+          "13": "7d6",
+          "15": "8d6",
+          "17": "9d6",
+          "19": "10d6"
+        },
+        "conditions": ["advantage", "ally_adjacent"],
+        "weaponType": ["finesse", "ranged"],
+        "oncePerTurn": true,
+        "emoji": "🗡️"
+      },
+      "cunning_action": {
+        "id": "cunning_action",
+        "name": "Action rusée",
+        "level": 2,
+        "type": "utility",
+        "actionType": "bonus_action",
+        "description": "Vous pouvez effectuer Dash, Disengage ou Hide en action bonus.",
+        "options": ["dash", "disengage", "hide"],
+        "usesPerTurn": 1,
+        "emoji": "💨"
+      },
+      "uncanny_dodge": {
+        "id": "uncanny_dodge",
+        "name": "Esquive instinctive",
+        "level": 5,
+        "type": "defensive",
+        "actionType": "reaction",
+        "description": "Quand un attaquant visible vous touche, réduisez les dégâts de moitié.",
+        "effect": {
+          "type": "halve_damage"
+        },
+        "trigger": "hit_by_attack",
+        "emoji": "🛡️"
+      },
+      "evasion": {
+        "id": "evasion",
+        "name": "Évasion",
+        "level": 7,
+        "type": "defensive",
+        "actionType": "passive",
+        "description": "Dégâts réduits à zéro sur un jet de sauvegarde DEX réussi, moitié sur un échec.",
+        "effect": {
+          "type": "improved_dex_save"
+        },
+        "emoji": "💨"
+      }
+    }
+  },
+  
+  "wizard": {
+    "classId": "wizard",
+    "className": "Magicien",
+    "resources": [],
+    "abilities": {
+      "arcane_recovery": {
+        "id": "arcane_recovery",
+        "name": "Récupération arcanique",
+        "level": 1,
+        "type": "resource",
+        "actionType": "special",
+        "description": "Une fois par jour, récupérez des emplacements de sorts lors d'un repos court.",
+        "effect": {
+          "type": "recover_spell_slots",
+          "maxLevel": "half_wizard_level_rounded_up",
+          "totalLevels": "half_wizard_level_rounded_up"
+        },
+        "usesPerRest": "long",
+        "uses": 1,
+        "restType": "short",
+        "emoji": "📖"
+      },
+      "spell_mastery": {
+        "id": "spell_mastery",
+        "name": "Maîtrise des sorts",
+        "level": 18,
+        "type": "utility",
+        "actionType": "passive",
+        "description": "Choisissez un sort de niveau 1 et un de niveau 2 que vous pouvez lancer à volonté.",
+        "effect": {
+          "type": "at_will_spells",
+          "level1": 1,
+          "level2": 1
+        },
+        "emoji": "✨"
+      }
+    }
+  },
+  
+  "cleric": {
+    "classId": "cleric",
+    "className": "Clerc",
+    "resources": [
+      {
+        "id": "channel_divinity",
+        "name": "Conduit divin",
+        "maxUses": {
+          "2": 1,
+          "6": 2,
+          "18": 3
+        },
+        "recoversOn": "short"
+      }
+    ],
+    "abilities": {
+      "turn_undead": {
+        "id": "turn_undead",
+        "name": "Renvoi des morts-vivants",
+        "level": 2,
+        "type": "control",
+        "actionType": "action",
+        "description": "Les morts-vivants qui ratent un jet de Sagesse doivent fuir pendant 1 minute.",
+        "resource": "channel_divinity",
+        "savingThrow": {
+          "ability": "wis",
+          "dc": "spell_dc"
+        },
+        "effect": {
+          "type": "frightened",
+          "targets": "undead",
+          "duration": 10,
+          "areaOfEffect": 30
+        },
+        "emoji": "✨"
+      },
+      "destroy_undead": {
+        "id": "destroy_undead",
+        "name": "Destruction des morts-vivants",
+        "level": 5,
+        "type": "damage",
+        "actionType": "passive",
+        "description": "Les morts-vivants faibles sont instantanément détruits par Renvoi des morts-vivants.",
+        "crThreshold": {
+          "5": 0.5,
+          "8": 1,
+          "11": 2,
+          "14": 3,
+          "17": 4
+        },
+        "emoji": "💀"
+      },
+      "divine_intervention": {
+        "id": "divine_intervention",
+        "name": "Intervention divine",
+        "level": 10,
+        "type": "special",
+        "actionType": "action",
+        "description": "Vous pouvez implorer votre dieu pour qu'il intervienne. Réussite sur un d100 ≤ niveau.",
+        "successChance": "level_percent",
+        "usesPerRest": "long",
+        "uses": 1,
+        "guaranteedAtLevel": 20,
+        "emoji": "🙏"
+      }
+    }
+  },
+  
+  "barbarian": {
+    "classId": "barbarian",
+    "className": "Barbare",
+    "resources": [
+      {
+        "id": "rage",
+        "name": "Rage",
+        "maxUses": {
+          "1": 2,
+          "3": 3,
+          "6": 4,
+          "12": 5,
+          "17": 6,
+          "20": "unlimited"
+        },
+        "recoversOn": "long"
+      }
+    ],
+    "abilities": {
+      "rage": {
+        "id": "rage",
+        "name": "Rage",
+        "level": 1,
+        "type": "buff",
+        "actionType": "bonus_action",
+        "description": "Vous entrez en rage, gagnant résistance, bonus aux dégâts et avantage en Force.",
+        "resource": "rage",
+        "duration": 10,
+        "effect": {
+          "damageBonus": {
+            "1": 2,
+            "9": 3,
+            "16": 4
+          },
+          "resistances": ["bludgeoning", "piercing", "slashing"],
+          "advantageStrChecks": true,
+          "advantageStrSaves": true,
+          "cannotCastSpells": true
+        },
+        "endConditions": ["no_attack", "unconscious", "ended"],
+        "emoji": "😤"
+      },
+      "reckless_attack": {
+        "id": "reckless_attack",
+        "name": "Attaque téméraire",
+        "level": 2,
+        "type": "offensive",
+        "actionType": "special",
+        "description": "Avantage sur toutes vos attaques STR ce tour, mais attaques contre vous ont l'avantage.",
+        "effect": {
+          "advantageOnAttacks": true,
+          "grantAdvantageToEnemies": true
+        },
+        "duration": "turn",
+        "emoji": "⚔️"
+      },
+      "danger_sense": {
+        "id": "danger_sense",
+        "name": "Sens du danger",
+        "level": 2,
+        "type": "defensive",
+        "actionType": "passive",
+        "description": "Avantage sur les jets de sauvegarde de Dextérité contre les effets visibles.",
+        "effect": {
+          "type": "advantage_dex_saves",
+          "condition": "can_see"
+        },
+        "emoji": "👁️"
+      },
+      "feral_instinct": {
+        "id": "feral_instinct",
+        "name": "Instinct sauvage",
+        "level": 7,
+        "type": "utility",
+        "actionType": "passive",
+        "description": "Avantage sur l'initiative. Peut agir normalement même si surpris.",
+        "effect": {
+          "advantageInitiative": true,
+          "actWhenSurprised": true
+        },
+        "emoji": "🐺"
+      },
+      "brutal_critical": {
+        "id": "brutal_critical",
+        "name": "Critique brutal",
+        "level": 9,
+        "type": "damage",
+        "actionType": "passive",
+        "description": "Lancez des dés de dégâts supplémentaires sur un coup critique.",
+        "effect": {
+          "extraCritDice": {
+            "9": 1,
+            "13": 2,
+            "17": 3
+          }
+        },
+        "emoji": "💥"
+      },
+      "relentless_rage": {
+        "id": "relentless_rage",
+        "name": "Rage incessante",
+        "level": 11,
+        "type": "defensive",
+        "actionType": "passive",
+        "description": "Si vous tombez à 0 PV en rage, faites un jet de CON (DD 10+) pour rester à 1 PV.",
+        "effect": {
+          "type": "death_save",
+          "startingDC": 10,
+          "dcIncrement": 5,
+          "condition": "raging"
+        },
+        "emoji": "💪"
+      }
+    }
+  },
+  
+  "paladin": {
+    "classId": "paladin",
+    "className": "Paladin",
+    "resources": [
+      {
+        "id": "lay_on_hands",
+        "name": "Imposition des mains",
+        "maxUses": "level * 5",
+        "recoversOn": "long",
+        "poolType": "points"
+      },
+      {
+        "id": "channel_divinity",
+        "name": "Conduit divin",
+        "maxUses": 1,
+        "recoversOn": "short"
+      }
+    ],
+    "abilities": {
+      "divine_sense": {
+        "id": "divine_sense",
+        "name": "Sens du divin",
+        "level": 1,
+        "type": "utility",
+        "actionType": "action",
+        "description": "Détectez les célestes, fiélons et morts-vivants dans un rayon de 18 mètres.",
+        "range": 60,
+        "usesPerRest": "long",
+        "uses": "1 + cha_mod",
+        "emoji": "👁️"
+      },
+      "lay_on_hands": {
+        "id": "lay_on_hands",
+        "name": "Imposition des mains",
+        "level": 1,
+        "type": "healing",
+        "actionType": "action",
+        "description": "Soignez des PV en puisant dans votre réserve (niveau × 5 points).",
+        "resource": "lay_on_hands",
+        "healingPerPoint": 1,
+        "cureDisease": 5,
+        "curePoison": 5,
+        "emoji": "🙌"
+      },
+      "divine_smite": {
+        "id": "divine_smite",
+        "name": "Châtiment divin",
+        "level": 2,
+        "type": "damage",
+        "actionType": "special",
+        "description": "Dépensez un emplacement de sort pour infliger des dégâts radiants supplémentaires.",
+        "damage": {
+          "1": "2d8",
+          "2": "3d8",
+          "3": "4d8",
+          "4": "5d8"
+        },
+        "damageType": "radiant",
+        "bonusVsUndead": "1d8",
+        "maxSlotLevel": 4,
+        "trigger": "melee_hit",
+        "emoji": "⚔️"
+      },
+      "aura_of_protection": {
+        "id": "aura_of_protection",
+        "name": "Aura de protection",
+        "level": 6,
+        "type": "buff",
+        "actionType": "passive",
+        "description": "Vous et vos alliés dans un rayon de 3 m ajoutez votre mod CHA aux jets de sauvegarde.",
+        "effect": {
+          "type": "save_bonus",
+          "value": "cha_mod",
+          "range": {
+            "6": 10,
+            "18": 30
+          }
+        },
+        "emoji": "🛡️"
+      },
+      "aura_of_courage": {
+        "id": "aura_of_courage",
+        "name": "Aura de courage",
+        "level": 10,
+        "type": "buff",
+        "actionType": "passive",
+        "description": "Vous et vos alliés proches êtes immunisés à la condition effrayé.",
+        "effect": {
+          "type": "immunity",
+          "condition": "frightened",
+          "range": {
+            "10": 10,
+            "18": 30
+          }
+        },
+        "emoji": "🦁"
+      },
+      "cleansing_touch": {
+        "id": "cleansing_touch",
+        "name": "Contact purificateur",
+        "level": 14,
+        "type": "utility",
+        "actionType": "action",
+        "description": "Mettez fin à un sort sur vous ou une créature consentante.",
+        "usesPerRest": "long",
+        "uses": "cha_mod",
+        "emoji": "✨"
+      }
+    }
+  },
+  
+  "ranger": {
+    "classId": "ranger",
+    "className": "Rôdeur",
+    "resources": [],
+    "abilities": {
+      "favored_enemy": {
+        "id": "favored_enemy",
+        "name": "Ennemi juré",
+        "level": 1,
+        "type": "utility",
+        "actionType": "passive",
+        "description": "Avantage sur les jets de Survie pour pister et d'INT pour se rappeler des infos.",
+        "enemyTypes": ["aberrations", "beasts", "celestials", "constructs", "dragons", "elementals", "fey", "fiends", "giants", "monstrosities", "oozes", "plants", "undead"],
+        "numChoices": {
+          "1": 1,
+          "6": 2,
+          "14": 3
+        },
+        "emoji": "🎯"
+      },
+      "natural_explorer": {
+        "id": "natural_explorer",
+        "name": "Explorateur-né",
+        "level": 1,
+        "type": "utility",
+        "actionType": "passive",
+        "description": "Avantages lors des voyages en terrain favori.",
+        "terrainTypes": ["arctic", "coast", "desert", "forest", "grassland", "mountain", "swamp", "underdark"],
+        "benefits": [
+          "double_proficiency_checks",
+          "no_difficult_terrain_penalty",
+          "advantage_initiative",
+          "advantage_attack_surprised"
+        ],
+        "emoji": "🗺️"
+      },
+      "primeval_awareness": {
+        "id": "primeval_awareness",
+        "name": "Vigilance primitive",
+        "level": 3,
+        "type": "utility",
+        "actionType": "action",
+        "description": "Dépensez un emplacement pour détecter certains types de créatures.",
+        "cost": "spell_slot",
+        "range": "1 mile (6 miles favored terrain)",
+        "detectTypes": ["aberrations", "celestials", "dragons", "elementals", "fey", "fiends", "undead"],
+        "emoji": "🌿"
+      },
+      "hide_in_plain_sight": {
+        "id": "hide_in_plain_sight",
+        "name": "Se fondre dans le décor",
+        "level": 10,
+        "type": "utility",
+        "actionType": "action",
+        "description": "Après 1 minute de camouflage, +10 aux jets de Discrétion tant que vous ne bougez pas.",
+        "prepTime": "1 minute",
+        "effect": {
+          "type": "stealth_bonus",
+          "value": 10,
+          "condition": "stationary"
+        },
+        "emoji": "🥷"
+      },
+      "vanish": {
+        "id": "vanish",
+        "name": "Disparition",
+        "level": 14,
+        "type": "utility",
+        "actionType": "bonus_action",
+        "description": "Vous pouvez vous cacher en action bonus. Impossible à pister sauf par magie.",
+        "effect": {
+          "hideAsBonusAction": true,
+          "untrackable": true
+        },
+        "emoji": "💨"
+      }
+    }
+  },
+  
+  "monk": {
+    "classId": "monk",
+    "className": "Moine",
+    "resources": [
+      {
+        "id": "ki",
+        "name": "Ki",
+        "maxUses": "level",
+        "recoversOn": "short"
+      }
+    ],
+    "abilities": {
+      "martial_arts": {
+        "id": "martial_arts",
+        "name": "Arts martiaux",
+        "level": 1,
+        "type": "passive",
+        "actionType": "passive",
+        "description": "Utilisez DEX pour les attaques à mains nues et avec armes de moine. Dé de dégâts spécial.",
+        "martialArtsDie": {
+          "1": "1d4",
+          "5": "1d6",
+          "11": "1d8",
+          "17": "1d10"
+        },
+        "bonusUnarmedStrike": true,
+        "emoji": "👊"
+      },
+      "flurry_of_blows": {
+        "id": "flurry_of_blows",
+        "name": "Déluge de coups",
+        "level": 2,
+        "type": "offensive",
+        "actionType": "bonus_action",
+        "description": "Dépensez 1 ki pour effectuer deux attaques à mains nues en action bonus.",
+        "resource": "ki",
+        "cost": 1,
+        "effect": {
+          "extraUnarmedStrikes": 2
+        },
+        "emoji": "👊👊"
+      },
+      "patient_defense": {
+        "id": "patient_defense",
+        "name": "Défense patiente",
+        "level": 2,
+        "type": "defensive",
+        "actionType": "bonus_action",
+        "description": "Dépensez 1 ki pour prendre l'action Esquiver en action bonus.",
+        "resource": "ki",
+        "cost": 1,
+        "effect": {
+          "dodge": true
+        },
+        "emoji": "🛡️"
+      },
+      "step_of_the_wind": {
+        "id": "step_of_the_wind",
+        "name": "Pas du vent",
+        "level": 2,
+        "type": "utility",
+        "actionType": "bonus_action",
+        "description": "Dépensez 1 ki pour Dash ou Disengage en action bonus et doubler votre saut.",
+        "resource": "ki",
+        "cost": 1,
+        "effect": {
+          "dashOrDisengage": true,
+          "doubleJump": true
+        },
+        "emoji": "💨"
+      },
+      "deflect_missiles": {
+        "id": "deflect_missiles",
+        "name": "Dévier les projectiles",
+        "level": 3,
+        "type": "defensive",
+        "actionType": "reaction",
+        "description": "Réduisez les dégâts d'une attaque à distance. Renvoyez le projectile pour 1 ki.",
+        "damageReduction": "1d10 + dex_mod + monk_level",
+        "throwBack": {
+          "cost": 1,
+          "attackType": "ranged",
+          "range": 20
+        },
+        "emoji": "🏹"
+      },
+      "stunning_strike": {
+        "id": "stunning_strike",
+        "name": "Frappe étourdissante",
+        "level": 5,
+        "type": "control",
+        "actionType": "special",
+        "description": "Dépensez 1 ki quand vous touchez. La cible doit réussir un jet CON ou être étourdie.",
+        "resource": "ki",
+        "cost": 1,
+        "trigger": "melee_hit",
+        "savingThrow": {
+          "ability": "con",
+          "dc": "ki_dc"
+        },
+        "effect": {
+          "type": "stunned",
+          "duration": 1
+        },
+        "emoji": "💫"
+      },
+      "ki_empowered_strikes": {
+        "id": "ki_empowered_strikes",
+        "name": "Frappes de ki",
+        "level": 6,
+        "type": "passive",
+        "actionType": "passive",
+        "description": "Vos attaques à mains nues comptent comme magiques pour ignorer les résistances.",
+        "effect": {
+          "magicalUnarmed": true
+        },
+        "emoji": "✨"
+      },
+      "evasion": {
+        "id": "evasion",
+        "name": "Évasion",
+        "level": 7,
+        "type": "defensive",
+        "actionType": "passive",
+        "description": "Dégâts réduits à zéro sur un jet de sauvegarde DEX réussi, moitié sur un échec.",
+        "effect": {
+          "type": "improved_dex_save"
+        },
+        "emoji": "💨"
+      },
+      "stillness_of_mind": {
+        "id": "stillness_of_mind",
+        "name": "Tranquillité de l'esprit",
+        "level": 7,
+        "type": "utility",
+        "actionType": "action",
+        "description": "Mettez fin à un effet qui vous charme ou vous effraie.",
+        "effect": {
+          "endConditions": ["charmed", "frightened"]
+        },
+        "emoji": "🧘"
+      }
+    }
+  },
+  
+  "bard": {
+    "classId": "bard",
+    "className": "Barde",
+    "resources": [
+      {
+        "id": "bardic_inspiration",
+        "name": "Inspiration bardique",
+        "maxUses": "cha_mod",
+        "recoversOn": "long",
+        "shortRestAtLevel": 5,
+        "die": {
+          "1": "d6",
+          "5": "d8",
+          "10": "d10",
+          "15": "d12"
+        }
+      }
+    ],
+    "abilities": {
+      "bardic_inspiration": {
+        "id": "bardic_inspiration",
+        "name": "Inspiration bardique",
+        "level": 1,
+        "type": "buff",
+        "actionType": "bonus_action",
+        "description": "Donnez un dé d'inspiration à un allié pour l'ajouter à un jet dans les 10 minutes.",
+        "resource": "bardic_inspiration",
+        "range": 60,
+        "duration": "10 minutes",
+        "die": {
+          "1": "d6",
+          "5": "d8",
+          "10": "d10",
+          "15": "d12"
+        },
+        "emoji": "🎵"
+      },
+      "jack_of_all_trades": {
+        "id": "jack_of_all_trades",
+        "name": "Touche-à-tout",
+        "level": 2,
+        "type": "passive",
+        "actionType": "passive",
+        "description": "Ajoutez la moitié de votre bonus de maîtrise aux jets de caractéristiques non maîtrisés.",
+        "effect": {
+          "type": "half_proficiency",
+          "condition": "not_proficient"
+        },
+        "emoji": "🎭"
+      },
+      "song_of_rest": {
+        "id": "song_of_rest",
+        "name": "Chant reposant",
+        "level": 2,
+        "type": "healing",
+        "actionType": "special",
+        "description": "Pendant un repos court, les alliés récupèrent des PV supplémentaires.",
+        "healingDie": {
+          "2": "d6",
+          "9": "d8",
+          "13": "d10",
+          "17": "d12"
+        },
+        "restType": "short",
+        "emoji": "🎶"
+      },
+      "countercharm": {
+        "id": "countercharm",
+        "name": "Contre-charme",
+        "level": 6,
+        "type": "buff",
+        "actionType": "action",
+        "description": "Vous et vos alliés proches avez l'avantage contre charme et peur.",
+        "range": 30,
+        "duration": "until_end_of_next_turn",
+        "effect": {
+          "advantage": ["charmed", "frightened"]
+        },
+        "emoji": "🎵"
+      },
+      "magical_secrets": {
+        "id": "magical_secrets",
+        "name": "Secrets magiques",
+        "level": 10,
+        "type": "utility",
+        "actionType": "passive",
+        "description": "Apprenez deux sorts de n'importe quelle classe.",
+        "spellsLearned": {
+          "10": 2,
+          "14": 2,
+          "18": 2
+        },
+        "emoji": "📖"
+      }
+    }
+  },
+  
+  "sorcerer": {
+    "classId": "sorcerer",
+    "className": "Ensorceleur",
+    "resources": [
+      {
+        "id": "sorcery_points",
+        "name": "Points de sorcellerie",
+        "maxUses": "level",
+        "recoversOn": "long"
+      }
+    ],
+    "abilities": {
+      "font_of_magic": {
+        "id": "font_of_magic",
+        "name": "Source de magie",
+        "level": 2,
+        "type": "resource",
+        "actionType": "bonus_action",
+        "description": "Convertissez des emplacements de sorts en points de sorcellerie et vice versa.",
+        "resource": "sorcery_points",
+        "conversions": {
+          "slotToPoints": {
+            "1": 2,
+            "2": 3,
+            "3": 5,
+            "4": 6,
+            "5": 7
+          },
+          "pointsToSlot": {
+            "1": 2,
+            "2": 3,
+            "3": 5,
+            "4": 6,
+            "5": 7
+          }
+        },
+        "emoji": "✨"
+      },
+      "metamagic": {
+        "id": "metamagic",
+        "name": "Métamagie",
+        "level": 3,
+        "type": "utility",
+        "actionType": "special",
+        "description": "Modifiez vos sorts avec des options de métamagie.",
+        "options": {
+          "careful": {
+            "name": "Sort prudent",
+            "cost": 1,
+            "description": "Les alliés choisis réussissent auto leurs jets de sauvegarde."
+          },
+          "distant": {
+            "name": "Sort distant",
+            "cost": 1,
+            "description": "Doublez la portée du sort (ou 9m si toucher)."
+          },
+          "empowered": {
+            "name": "Sort puissant",
+            "cost": 1,
+            "description": "Relancez jusqu'à CHA mod dés de dégâts."
+          },
+          "extended": {
+            "name": "Sort prolongé",
+            "cost": 1,
+            "description": "Doublez la durée du sort (max 24h)."
+          },
+          "heightened": {
+            "name": "Sort intense",
+            "cost": 3,
+            "description": "Une cible a le désavantage sur son premier jet de sauvegarde."
+          },
+          "quickened": {
+            "name": "Sort rapide",
+            "cost": 2,
+            "description": "Lancez un sort d'action en action bonus."
+          },
+          "subtle": {
+            "name": "Sort subtil",
+            "cost": 1,
+            "description": "Lancez sans composantes verbales ni somatiques."
+          },
+          "twinned": {
+            "name": "Sort jumelé",
+            "cost": "spell_level",
+            "description": "Ciblez une deuxième créature avec le sort."
+          }
+        },
+        "numKnown": {
+          "3": 2,
+          "10": 3,
+          "17": 4
+        },
+        "emoji": "🔮"
+      }
+    }
+  },
+  
+  "warlock": {
+    "classId": "warlock",
+    "className": "Sorcier",
+    "resources": [],
+    "abilities": {
+      "pact_magic": {
+        "id": "pact_magic",
+        "name": "Magie de pacte",
+        "level": 1,
+        "type": "passive",
+        "actionType": "passive",
+        "description": "Vos emplacements de sorts se rechargent lors d'un repos court.",
+        "spellSlots": {
+          "1": { "slots": 1, "level": 1 },
+          "2": { "slots": 2, "level": 1 },
+          "3": { "slots": 2, "level": 2 },
+          "5": { "slots": 2, "level": 3 },
+          "7": { "slots": 2, "level": 4 },
+          "9": { "slots": 2, "level": 5 },
+          "11": { "slots": 3, "level": 5 },
+          "17": { "slots": 4, "level": 5 }
+        },
+        "recoversOn": "short",
+        "emoji": "🔮"
+      },
+      "eldritch_invocations": {
+        "id": "eldritch_invocations",
+        "name": "Invocations occultes",
+        "level": 2,
+        "type": "utility",
+        "actionType": "passive",
+        "description": "Vous gagnez des pouvoirs spéciaux grâce à votre pacte.",
+        "numKnown": {
+          "2": 2,
+          "5": 3,
+          "7": 4,
+          "9": 5,
+          "12": 6,
+          "15": 7,
+          "18": 8
+        },
+        "emoji": "👁️"
+      },
+      "pact_boon": {
+        "id": "pact_boon",
+        "name": "Pacte",
+        "level": 3,
+        "type": "utility",
+        "actionType": "passive",
+        "description": "Choisissez un don de votre patron: Chaîne, Lame, ou Tome.",
+        "options": {
+          "chain": {
+            "name": "Pacte de la chaîne",
+            "description": "Obtenez un familier amélioré (diablotin, quasit, etc.)."
+          },
+          "blade": {
+            "name": "Pacte de la lame",
+            "description": "Invoquez une arme de pacte magique."
+          },
+          "tome": {
+            "name": "Pacte du grimoire",
+            "description": "Obtenez un grimoire avec 3 tours de magie supplémentaires."
+          }
+        },
+        "emoji": "📜"
+      },
+      "mystic_arcanum": {
+        "id": "mystic_arcanum",
+        "name": "Arcanum mystique",
+        "level": 11,
+        "type": "utility",
+        "actionType": "special",
+        "description": "Vous pouvez lancer un sort de haut niveau une fois par repos long.",
+        "spells": {
+          "11": 6,
+          "13": 7,
+          "15": 8,
+          "17": 9
+        },
+        "usesPerRest": "long",
+        "uses": 1,
+        "emoji": "✨"
+      }
+    }
+  },
+  
+  "druid": {
+    "classId": "druid",
+    "className": "Druide",
+    "resources": [
+      {
+        "id": "wild_shape",
+        "name": "Forme sauvage",
+        "maxUses": 2,
+        "recoversOn": "short"
+      }
+    ],
+    "abilities": {
+      "wild_shape": {
+        "id": "wild_shape",
+        "name": "Forme sauvage",
+        "level": 2,
+        "type": "transformation",
+        "actionType": "action",
+        "bonusActionAtLevel": 20,
+        "description": "Vous pouvez vous transformer en un animal que vous avez déjà vu.",
+        "resource": "wild_shape",
+        "duration": "level / 2 hours",
+        "maxCR": {
+          "2": 0.25,
+          "4": 0.5,
+          "8": 1
+        },
+        "restrictions": {
+          "2": ["no_flying", "no_swimming"],
+          "4": ["no_flying"],
+          "8": []
+        },
+        "emoji": "🐺"
+      },
+      "natural_recovery": {
+        "id": "natural_recovery",
+        "name": "Récupération naturelle",
+        "level": 2,
+        "type": "resource",
+        "actionType": "special",
+        "description": "Récupérez des emplacements de sorts lors d'un repos court.",
+        "circle": "land",
+        "effect": {
+          "type": "recover_spell_slots",
+          "totalLevels": "half_druid_level_rounded_up"
+        },
+        "usesPerRest": "long",
+        "uses": 1,
+        "restType": "short",
+        "emoji": "🌿"
+      }
+    }
+  }
+}

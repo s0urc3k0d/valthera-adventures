@@ -1,0 +1,701 @@
+{
+  "fighter": {
+    "id": "fighter",
+    "name": "Guerrier",
+    "description": "Maîtres du combat martial, experts de toutes les armes et armures.",
+    "hitDie": "d10",
+    "primaryAbility": ["str", "dex"],
+    "savingThrows": ["str", "con"],
+    "armorProficiencies": ["light", "medium", "heavy", "shields"],
+    "weaponProficiencies": ["simple", "martial"],
+    "skillChoices": ["acrobatics", "animal_handling", "athletics", "history", "insight", "intimidation", "perception", "survival"],
+    "numSkills": 2,
+    "startingEquipment": {
+      "weapons": ["longsword", "shield"],
+      "armor": ["chain_mail"],
+      "items": ["explorer_pack"]
+    },
+    "startingGold": { "min": 125, "max": 200 },
+    "spellcasting": null,
+    "features": {
+      "1": ["fighting_style", "second_wind"],
+      "2": ["action_surge"],
+      "3": ["martial_archetype"],
+      "4": ["ability_score_improvement"],
+      "5": ["extra_attack"]
+    },
+    "fightingStyles": ["archery", "defense", "dueling", "great_weapon", "protection", "two_weapon"],
+    "subclasses": {
+      "champion": {
+        "name": "Champion",
+        "description": "Concentré sur la perfection physique brute.",
+        "features": {
+          "3": ["improved_critical"],
+          "7": ["remarkable_athlete"],
+          "10": ["additional_fighting_style"]
+        }
+      },
+      "battlemaster": {
+        "name": "Maître de Guerre",
+        "description": "Tacticien utilisant des manœuvres de combat.",
+        "features": {
+          "3": ["combat_superiority", "maneuvers"],
+          "7": ["know_your_enemy"],
+          "10": ["improved_combat_superiority"]
+        }
+      }
+    },
+    "emoji": "⚔️"
+  },
+  "wizard": {
+    "id": "wizard",
+    "name": "Magicien",
+    "description": "Érudits de la magie arcanique, maîtres des sorts.",
+    "hitDie": "d6",
+    "primaryAbility": ["int"],
+    "savingThrows": ["int", "wis"],
+    "armorProficiencies": [],
+    "weaponProficiencies": ["dagger", "dart", "sling", "quarterstaff", "light_crossbow"],
+    "skillChoices": ["arcana", "history", "insight", "investigation", "medicine", "religion"],
+    "numSkills": 2,
+    "startingEquipment": {
+      "weapons": ["quarterstaff"],
+      "items": ["scholar_pack", "spellbook"]
+    },
+    "startingGold": { "min": 75, "max": 150 },
+    "spellcasting": {
+      "ability": "int",
+      "type": "prepared",
+      "cantripsKnown": { "1": 3, "4": 4, "10": 5 },
+      "spellsKnown": "all",
+      "spellSlots": {
+        "1": { "1": 2 },
+        "2": { "1": 3 },
+        "3": { "1": 4, "2": 2 },
+        "4": { "1": 4, "2": 3 },
+        "5": { "1": 4, "2": 3, "3": 2 }
+      }
+    },
+    "features": {
+      "1": ["spellcasting", "arcane_recovery"],
+      "2": ["arcane_tradition"],
+      "4": ["ability_score_improvement"],
+      "18": ["spell_mastery"],
+      "20": ["signature_spells"]
+    },
+    "subclasses": {
+      "evocation": {
+        "name": "École d'Évocation",
+        "description": "Spécialisé dans les sorts destructeurs.",
+        "features": {
+          "2": ["evocation_savant", "sculpt_spells"],
+          "6": ["potent_cantrip"],
+          "10": ["empowered_evocation"]
+        }
+      },
+      "abjuration": {
+        "name": "École d'Abjuration",
+        "description": "Maître des sorts de protection.",
+        "features": {
+          "2": ["abjuration_savant", "arcane_ward"],
+          "6": ["projected_ward"],
+          "10": ["improved_abjuration"]
+        }
+      }
+    },
+    "emoji": "🧙"
+  },
+  "rogue": {
+    "id": "rogue",
+    "name": "Roublard",
+    "description": "Experts en furtivité, compétences et attaques sournoises.",
+    "hitDie": "d8",
+    "primaryAbility": ["dex"],
+    "savingThrows": ["dex", "int"],
+    "armorProficiencies": ["light"],
+    "weaponProficiencies": ["simple", "hand_crossbow", "longsword", "rapier", "shortsword"],
+    "skillChoices": ["acrobatics", "athletics", "deception", "insight", "intimidation", "investigation", "perception", "performance", "persuasion", "sleight_of_hand", "stealth"],
+    "numSkills": 4,
+    "startingEquipment": {
+      "weapons": ["rapier", "shortbow"],
+      "armor": ["leather_armor"],
+      "items": ["thieves_tools", "burglar_pack"]
+    },
+    "startingGold": { "min": 100, "max": 160 },
+    "spellcasting": null,
+    "features": {
+      "1": ["expertise", "sneak_attack", "thieves_cant"],
+      "2": ["cunning_action"],
+      "3": ["roguish_archetype"],
+      "4": ["ability_score_improvement"],
+      "5": ["uncanny_dodge"]
+    },
+    "sneakAttackDice": {
+      "1": "1d6", "3": "2d6", "5": "3d6", "7": "4d6", "9": "5d6",
+      "11": "6d6", "13": "7d6", "15": "8d6", "17": "9d6", "19": "10d6"
+    },
+    "subclasses": {
+      "thief": {
+        "name": "Voleur",
+        "description": "Expert du vol et de l'agilité.",
+        "features": {
+          "3": ["fast_hands", "second_story_work"],
+          "9": ["supreme_sneak"],
+          "13": ["use_magic_device"]
+        }
+      },
+      "assassin": {
+        "name": "Assassin",
+        "description": "Maître de l'élimination furtive.",
+        "features": {
+          "3": ["bonus_proficiencies", "assassinate"],
+          "9": ["infiltration_expertise"],
+          "13": ["impostor"]
+        }
+      }
+    },
+    "emoji": "🗡️"
+  },
+  "cleric": {
+    "id": "cleric",
+    "name": "Clerc",
+    "description": "Intermédiaires entre le monde mortel et les dieux.",
+    "hitDie": "d8",
+    "primaryAbility": ["wis"],
+    "savingThrows": ["wis", "cha"],
+    "armorProficiencies": ["light", "medium", "shields"],
+    "weaponProficiencies": ["simple"],
+    "skillChoices": ["history", "insight", "medicine", "persuasion", "religion"],
+    "numSkills": 2,
+    "startingEquipment": {
+      "weapons": ["mace", "shield"],
+      "armor": ["scale_mail"],
+      "items": ["priest_pack", "holy_symbol"]
+    },
+    "startingGold": { "min": 100, "max": 175 },
+    "spellcasting": {
+      "ability": "wis",
+      "type": "prepared",
+      "cantripsKnown": { "1": 3, "4": 4, "10": 5 },
+      "spellSlots": {
+        "1": { "1": 2 },
+        "2": { "1": 3 },
+        "3": { "1": 4, "2": 2 },
+        "4": { "1": 4, "2": 3 },
+        "5": { "1": 4, "2": 3, "3": 2 }
+      }
+    },
+    "features": {
+      "1": ["spellcasting", "divine_domain"],
+      "2": ["channel_divinity", "turn_undead"],
+      "4": ["ability_score_improvement"],
+      "5": ["destroy_undead"]
+    },
+    "subclasses": {
+      "life": {
+        "name": "Domaine de la Vie",
+        "description": "Concentré sur la guérison et la vitalité.",
+        "features": {
+          "1": ["bonus_proficiency", "disciple_of_life"],
+          "2": ["preserve_life"],
+          "6": ["blessed_healer"]
+        },
+        "domainSpells": {
+          "1": ["bless", "cure_wounds"],
+          "3": ["lesser_restoration", "spiritual_weapon"],
+          "5": ["beacon_of_hope", "revivify"]
+        }
+      },
+      "war": {
+        "name": "Domaine de la Guerre",
+        "description": "Champion divin au combat.",
+        "features": {
+          "1": ["bonus_proficiencies", "war_priest"],
+          "2": ["guided_strike"],
+          "6": ["war_gods_blessing"]
+        },
+        "domainSpells": {
+          "1": ["divine_favor", "shield_of_faith"],
+          "3": ["magic_weapon", "spiritual_weapon"],
+          "5": ["crusaders_mantle", "spirit_guardians"]
+        }
+      }
+    },
+    "emoji": "⛪"
+  },
+  "paladin": {
+    "id": "paladin",
+    "name": "Paladin",
+    "description": "Guerriers saints liés par un serment sacré.",
+    "hitDie": "d10",
+    "primaryAbility": ["str", "cha"],
+    "savingThrows": ["wis", "cha"],
+    "armorProficiencies": ["light", "medium", "heavy", "shields"],
+    "weaponProficiencies": ["simple", "martial"],
+    "skillChoices": ["athletics", "insight", "intimidation", "medicine", "persuasion", "religion"],
+    "numSkills": 2,
+    "startingEquipment": {
+      "weapons": ["longsword", "shield"],
+      "armor": ["chain_mail"],
+      "items": ["priest_pack", "holy_symbol"]
+    },
+    "startingGold": { "min": 125, "max": 200 },
+    "spellcasting": {
+      "ability": "cha",
+      "type": "prepared",
+      "startLevel": 2,
+      "spellSlots": {
+        "2": { "1": 2 },
+        "3": { "1": 3 },
+        "5": { "1": 4, "2": 2 },
+        "7": { "1": 4, "2": 3 },
+        "9": { "1": 4, "2": 3, "3": 2 }
+      }
+    },
+    "features": {
+      "1": ["divine_sense", "lay_on_hands"],
+      "2": ["fighting_style", "spellcasting", "divine_smite"],
+      "3": ["divine_health", "sacred_oath"],
+      "4": ["ability_score_improvement"],
+      "5": ["extra_attack"]
+    },
+    "layOnHandsPool": "level * 5",
+    "subclasses": {
+      "devotion": {
+        "name": "Serment de Dévotion",
+        "description": "Parangon de justice et de vertu.",
+        "features": {
+          "3": ["sacred_weapon", "turn_the_unholy"],
+          "7": ["aura_of_devotion"],
+          "15": ["purity_of_spirit"]
+        },
+        "oathSpells": {
+          "3": ["protection_from_evil", "sanctuary"],
+          "5": ["lesser_restoration", "zone_of_truth"],
+          "9": ["beacon_of_hope", "dispel_magic"]
+        }
+      },
+      "vengeance": {
+        "name": "Serment de Vengeance",
+        "description": "Chasseur implacable du mal.",
+        "features": {
+          "3": ["abjure_enemy", "vow_of_enmity"],
+          "7": ["relentless_avenger"],
+          "15": ["soul_of_vengeance"]
+        },
+        "oathSpells": {
+          "3": ["bane", "hunters_mark"],
+          "5": ["hold_person", "misty_step"],
+          "9": ["haste", "protection_from_energy"]
+        }
+      }
+    },
+    "emoji": "🛡️"
+  },
+  "ranger": {
+    "id": "ranger",
+    "name": "Rôdeur",
+    "description": "Guerriers des étendues sauvages et chasseurs de monstres.",
+    "hitDie": "d10",
+    "primaryAbility": ["dex", "wis"],
+    "savingThrows": ["str", "dex"],
+    "armorProficiencies": ["light", "medium", "shields"],
+    "weaponProficiencies": ["simple", "martial"],
+    "skillChoices": ["animal_handling", "athletics", "insight", "investigation", "nature", "perception", "stealth", "survival"],
+    "numSkills": 3,
+    "startingEquipment": {
+      "weapons": ["longbow", "shortsword", "shortsword"],
+      "armor": ["scale_mail"],
+      "items": ["explorer_pack"]
+    },
+    "startingGold": { "min": 100, "max": 175 },
+    "spellcasting": {
+      "ability": "wis",
+      "type": "known",
+      "startLevel": 2,
+      "spellsKnown": { "2": 2, "3": 3, "5": 4, "7": 5, "9": 6 },
+      "spellSlots": {
+        "2": { "1": 2 },
+        "3": { "1": 3 },
+        "5": { "1": 4, "2": 2 },
+        "7": { "1": 4, "2": 3 },
+        "9": { "1": 4, "2": 3, "3": 2 }
+      }
+    },
+    "features": {
+      "1": ["favored_enemy", "natural_explorer"],
+      "2": ["fighting_style", "spellcasting"],
+      "3": ["ranger_archetype", "primeval_awareness"],
+      "4": ["ability_score_improvement"],
+      "5": ["extra_attack"]
+    },
+    "subclasses": {
+      "hunter": {
+        "name": "Chasseur",
+        "description": "Expert de la traque et de l'élimination de proies.",
+        "features": {
+          "3": ["hunters_prey"],
+          "7": ["defensive_tactics"],
+          "11": ["multiattack"]
+        }
+      },
+      "beast_master": {
+        "name": "Maître des Bêtes",
+        "description": "Lié à un compagnon animal.",
+        "features": {
+          "3": ["rangers_companion"],
+          "7": ["exceptional_training"],
+          "11": ["bestial_fury"]
+        }
+      }
+    },
+    "emoji": "🏹"
+  },
+  "barbarian": {
+    "id": "barbarian",
+    "name": "Barbare",
+    "description": "Guerriers féroces puisant dans leur rage primitive.",
+    "hitDie": "d12",
+    "primaryAbility": ["str"],
+    "savingThrows": ["str", "con"],
+    "armorProficiencies": ["light", "medium", "shields"],
+    "weaponProficiencies": ["simple", "martial"],
+    "skillChoices": ["animal_handling", "athletics", "intimidation", "nature", "perception", "survival"],
+    "numSkills": 2,
+    "startingEquipment": {
+      "weapons": ["greataxe", "handaxe", "handaxe"],
+      "items": ["explorer_pack"]
+    },
+    "startingGold": { "min": 50, "max": 100 },
+    "spellcasting": null,
+    "features": {
+      "1": ["rage", "unarmored_defense"],
+      "2": ["reckless_attack", "danger_sense"],
+      "3": ["primal_path"],
+      "4": ["ability_score_improvement"],
+      "5": ["extra_attack", "fast_movement"]
+    },
+    "rageData": {
+      "uses": { "1": 2, "3": 3, "6": 4, "12": 5, "17": 6, "20": "unlimited" },
+      "damage": { "1": 2, "9": 3, "16": 4 }
+    },
+    "subclasses": {
+      "berserker": {
+        "name": "Berserker",
+        "description": "La rage à son paroxysme.",
+        "features": {
+          "3": ["frenzy"],
+          "6": ["mindless_rage"],
+          "10": ["intimidating_presence"]
+        }
+      },
+      "totem_warrior": {
+        "name": "Guerrier Totem",
+        "description": "Guidé par les esprits animaux.",
+        "features": {
+          "3": ["spirit_seeker", "totem_spirit"],
+          "6": ["aspect_of_the_beast"],
+          "10": ["spirit_walker"]
+        }
+      }
+    },
+    "emoji": "🪓"
+  },
+  "bard": {
+    "id": "bard",
+    "name": "Barde",
+    "description": "Maîtres des arts, de la magie et de l'inspiration.",
+    "hitDie": "d8",
+    "primaryAbility": ["cha"],
+    "savingThrows": ["dex", "cha"],
+    "armorProficiencies": ["light"],
+    "weaponProficiencies": ["simple", "hand_crossbow", "longsword", "rapier", "shortsword"],
+    "skillChoices": "any",
+    "numSkills": 3,
+    "startingEquipment": {
+      "weapons": ["rapier"],
+      "armor": ["leather_armor"],
+      "items": ["entertainer_pack", "lute"]
+    },
+    "startingGold": { "min": 100, "max": 175 },
+    "spellcasting": {
+      "ability": "cha",
+      "type": "known",
+      "cantripsKnown": { "1": 2, "4": 3, "10": 4 },
+      "spellsKnown": { "1": 4, "2": 5, "3": 6, "4": 7, "5": 8 },
+      "spellSlots": {
+        "1": { "1": 2 },
+        "2": { "1": 3 },
+        "3": { "1": 4, "2": 2 },
+        "4": { "1": 4, "2": 3 },
+        "5": { "1": 4, "2": 3, "3": 2 }
+      }
+    },
+    "features": {
+      "1": ["spellcasting", "bardic_inspiration"],
+      "2": ["jack_of_all_trades", "song_of_rest"],
+      "3": ["bard_college", "expertise"],
+      "4": ["ability_score_improvement"],
+      "5": ["font_of_inspiration"]
+    },
+    "bardicInspirationDie": {
+      "1": "d6", "5": "d8", "10": "d10", "15": "d12"
+    },
+    "subclasses": {
+      "lore": {
+        "name": "Collège du Savoir",
+        "description": "Érudit collectant connaissances et secrets.",
+        "features": {
+          "3": ["bonus_proficiencies", "cutting_words"],
+          "6": ["additional_magical_secrets"],
+          "14": ["peerless_skill"]
+        }
+      },
+      "valor": {
+        "name": "Collège de la Vaillance",
+        "description": "Barde guerrier inspirant par l'exemple.",
+        "features": {
+          "3": ["bonus_proficiencies", "combat_inspiration"],
+          "6": ["extra_attack"],
+          "14": ["battle_magic"]
+        }
+      }
+    },
+    "emoji": "🎵"
+  },
+  "druid": {
+    "id": "druid",
+    "name": "Druide",
+    "description": "Gardiens de la nature avec le pouvoir de se transformer.",
+    "hitDie": "d8",
+    "primaryAbility": ["wis"],
+    "savingThrows": ["int", "wis"],
+    "armorProficiencies": ["light", "medium", "shields"],
+    "weaponProficiencies": ["club", "dagger", "dart", "javelin", "mace", "quarterstaff", "scimitar", "sickle", "sling", "spear"],
+    "skillChoices": ["arcana", "animal_handling", "insight", "medicine", "nature", "perception", "religion", "survival"],
+    "numSkills": 2,
+    "startingEquipment": {
+      "weapons": ["scimitar", "shield"],
+      "armor": ["leather_armor"],
+      "items": ["explorer_pack", "druidic_focus"]
+    },
+    "startingGold": { "min": 50, "max": 100 },
+    "spellcasting": {
+      "ability": "wis",
+      "type": "prepared",
+      "cantripsKnown": { "1": 2, "4": 3, "10": 4 },
+      "spellSlots": {
+        "1": { "1": 2 },
+        "2": { "1": 3 },
+        "3": { "1": 4, "2": 2 },
+        "4": { "1": 4, "2": 3 },
+        "5": { "1": 4, "2": 3, "3": 2 }
+      }
+    },
+    "features": {
+      "1": ["druidic", "spellcasting"],
+      "2": ["wild_shape", "druid_circle"],
+      "4": ["ability_score_improvement"],
+      "18": ["timeless_body", "beast_spells"]
+    },
+    "wildShapeCR": {
+      "2": 0.25, "4": 0.5, "8": 1
+    },
+    "subclasses": {
+      "land": {
+        "name": "Cercle de la Terre",
+        "description": "Druide lié à un terrain spécifique.",
+        "features": {
+          "2": ["bonus_cantrip", "natural_recovery"],
+          "6": ["lands_stride"],
+          "10": ["natures_ward"]
+        }
+      },
+      "moon": {
+        "name": "Cercle de la Lune",
+        "description": "Maître de la forme sauvage au combat.",
+        "features": {
+          "2": ["combat_wild_shape", "circle_forms"],
+          "6": ["primal_strike"],
+          "10": ["elemental_wild_shape"]
+        }
+      }
+    },
+    "emoji": "🌿"
+  },
+  "monk": {
+    "id": "monk",
+    "name": "Moine",
+    "description": "Maîtres des arts martiaux canalisant le ki.",
+    "hitDie": "d8",
+    "primaryAbility": ["dex", "wis"],
+    "savingThrows": ["str", "dex"],
+    "armorProficiencies": [],
+    "weaponProficiencies": ["simple", "shortsword"],
+    "skillChoices": ["acrobatics", "athletics", "history", "insight", "religion", "stealth"],
+    "numSkills": 2,
+    "startingEquipment": {
+      "weapons": ["shortsword"],
+      "items": ["explorer_pack"]
+    },
+    "startingGold": { "min": 25, "max": 50 },
+    "spellcasting": null,
+    "features": {
+      "1": ["unarmored_defense", "martial_arts"],
+      "2": ["ki", "unarmored_movement"],
+      "3": ["monastic_tradition", "deflect_missiles"],
+      "4": ["ability_score_improvement", "slow_fall"],
+      "5": ["extra_attack", "stunning_strike"]
+    },
+    "kiPoints": "level",
+    "martialArtsDie": {
+      "1": "d4", "5": "d6", "11": "d8", "17": "d10"
+    },
+    "unarmoredMovement": {
+      "2": 10, "6": 15, "10": 20, "14": 25, "18": 30
+    },
+    "subclasses": {
+      "open_hand": {
+        "name": "Voie de la Main Ouverte",
+        "description": "Maîtrise suprême des arts martiaux.",
+        "features": {
+          "3": ["open_hand_technique"],
+          "6": ["wholeness_of_body"],
+          "11": ["tranquility"]
+        }
+      },
+      "shadow": {
+        "name": "Voie de l'Ombre",
+        "description": "Utilise le ki pour manipuler les ombres.",
+        "features": {
+          "3": ["shadow_arts"],
+          "6": ["shadow_step"],
+          "11": ["cloak_of_shadows"]
+        }
+      }
+    },
+    "emoji": "🥋"
+  },
+  "sorcerer": {
+    "id": "sorcerer",
+    "name": "Sorcier",
+    "description": "Lanceurs de sorts dont le pouvoir est inné.",
+    "hitDie": "d6",
+    "primaryAbility": ["cha"],
+    "savingThrows": ["con", "cha"],
+    "armorProficiencies": [],
+    "weaponProficiencies": ["dagger", "dart", "sling", "quarterstaff", "light_crossbow"],
+    "skillChoices": ["arcana", "deception", "insight", "intimidation", "persuasion", "religion"],
+    "numSkills": 2,
+    "startingEquipment": {
+      "weapons": ["quarterstaff"],
+      "items": ["explorer_pack", "arcane_focus"]
+    },
+    "startingGold": { "min": 75, "max": 150 },
+    "spellcasting": {
+      "ability": "cha",
+      "type": "known",
+      "cantripsKnown": { "1": 4, "4": 5, "10": 6 },
+      "spellsKnown": { "1": 2, "2": 3, "3": 4, "4": 5, "5": 6 },
+      "spellSlots": {
+        "1": { "1": 2 },
+        "2": { "1": 3 },
+        "3": { "1": 4, "2": 2 },
+        "4": { "1": 4, "2": 3 },
+        "5": { "1": 4, "2": 3, "3": 2 }
+      }
+    },
+    "features": {
+      "1": ["spellcasting", "sorcerous_origin"],
+      "2": ["font_of_magic", "sorcery_points"],
+      "3": ["metamagic"],
+      "4": ["ability_score_improvement"]
+    },
+    "sorceryPoints": "level",
+    "subclasses": {
+      "draconic": {
+        "name": "Lignée Draconique",
+        "description": "Sang de dragon coulant dans vos veines.",
+        "features": {
+          "1": ["dragon_ancestor", "draconic_resilience"],
+          "6": ["elemental_affinity"],
+          "14": ["dragon_wings"]
+        }
+      },
+      "wild_magic": {
+        "name": "Magie Sauvage",
+        "description": "Magie chaotique et imprévisible.",
+        "features": {
+          "1": ["wild_magic_surge", "tides_of_chaos"],
+          "6": ["bend_luck"],
+          "14": ["controlled_chaos"]
+        }
+      }
+    },
+    "emoji": "✨"
+  },
+  "warlock": {
+    "id": "warlock",
+    "name": "Occultiste",
+    "description": "Liés à une entité puissante leur accordant des pouvoirs.",
+    "hitDie": "d8",
+    "primaryAbility": ["cha"],
+    "savingThrows": ["wis", "cha"],
+    "armorProficiencies": ["light"],
+    "weaponProficiencies": ["simple"],
+    "skillChoices": ["arcana", "deception", "history", "intimidation", "investigation", "nature", "religion"],
+    "numSkills": 2,
+    "startingEquipment": {
+      "weapons": ["light_crossbow"],
+      "armor": ["leather_armor"],
+      "items": ["scholar_pack", "arcane_focus"]
+    },
+    "startingGold": { "min": 75, "max": 150 },
+    "spellcasting": {
+      "ability": "cha",
+      "type": "pact",
+      "cantripsKnown": { "1": 2, "4": 3, "10": 4 },
+      "spellsKnown": { "1": 2, "2": 3, "3": 4, "4": 5, "5": 6 },
+      "pactSlots": { "1": 1, "2": 2, "11": 3, "17": 4 },
+      "pactSlotLevel": { "1": 1, "3": 2, "5": 3, "7": 4, "9": 5 }
+    },
+    "features": {
+      "1": ["otherworldly_patron", "pact_magic"],
+      "2": ["eldritch_invocations"],
+      "3": ["pact_boon"],
+      "4": ["ability_score_improvement"]
+    },
+    "invocationsKnown": { "2": 2, "5": 3, "7": 4, "9": 5, "12": 6, "15": 7, "18": 8 },
+    "subclasses": {
+      "fiend": {
+        "name": "Le Fiélon",
+        "description": "Pacte avec un démon ou diable.",
+        "features": {
+          "1": ["dark_ones_blessing"],
+          "6": ["dark_ones_own_luck"],
+          "10": ["fiendish_resilience"]
+        },
+        "expandedSpells": {
+          "1": ["burning_hands", "command"],
+          "2": ["blindness_deafness", "scorching_ray"],
+          "3": ["fireball", "stinking_cloud"]
+        }
+      },
+      "archfey": {
+        "name": "L'Archifée",
+        "description": "Pacte avec une puissance féerique.",
+        "features": {
+          "1": ["fey_presence"],
+          "6": ["misty_escape"],
+          "10": ["beguiling_defenses"]
+        },
+        "expandedSpells": {
+          "1": ["faerie_fire", "sleep"],
+          "2": ["calm_emotions", "phantasmal_force"],
+          "3": ["blink", "plant_growth"]
+        }
+      }
+    },
+    "emoji": "👁️"
+  }
+}

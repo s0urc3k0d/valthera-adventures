@@ -1,0 +1,153 @@
+{
+  "adventurers-guild": {
+    "id": "adventurers-guild",
+    "name": "Guilde des Aventuriers",
+    "description": "L'organisation qui rassemble les aventuriers de Valthera. Ils offrent des contrats, des ressources et un réseau de contacts.",
+    "shortDescription": "La guilde qui unit les aventuriers.",
+    "emoji": "⚔️",
+    "color": 15844367,
+    "headquarters": "valthera-city",
+    "leader": "elena-whisperwind",
+    "ranks": [
+      { "name": "Recrue", "minRep": 0, "perks": [] },
+      { "name": "Membre", "minRep": 100, "perks": ["guild_discount_5"] },
+      { "name": "Vétéran", "minRep": 300, "perks": ["guild_discount_10", "priority_contracts"] },
+      { "name": "Élite", "minRep": 600, "perks": ["guild_discount_15", "elite_equipment", "vip_quarters"] },
+      { "name": "Champion", "minRep": 1000, "perks": ["guild_discount_20", "legendary_contracts", "guild_title"] }
+    ],
+    "services": [
+      { "id": "contract_board", "name": "Tableau des Contrats", "rankRequired": 0 },
+      { "id": "training_grounds", "name": "Terrains d'Entraînement", "rankRequired": 100 },
+      { "id": "guild_vault", "name": "Coffre de la Guilde", "rankRequired": 300 }
+    ],
+    "enemies": [],
+    "allies": ["valthera-crown", "valthera-merchants"]
+  },
+
+  "valthera-crown": {
+    "id": "valthera-crown",
+    "name": "Couronne de Valthera",
+    "description": "La monarchie qui gouverne le royaume de Valthera. Ils maintiennent l'ordre et protègent les citoyens.",
+    "shortDescription": "Le gouvernement royal de Valthera.",
+    "emoji": "👑",
+    "color": 16766720,
+    "headquarters": "valthera-city",
+    "leader": "king-aldric",
+    "ranks": [
+      { "name": "Citoyen", "minRep": 0, "perks": [] },
+      { "name": "Loyal Sujet", "minRep": 100, "perks": ["tax_reduction_5"] },
+      { "name": "Défenseur", "minRep": 300, "perks": ["tax_reduction_10", "royal_bounties"] },
+      { "name": "Chevalier", "minRep": 600, "perks": ["tax_reduction_15", "noble_access", "royal_armor"] },
+      { "name": "Champion Royal", "minRep": 1000, "perks": ["tax_reduction_20", "palace_access", "royal_title"] }
+    ],
+    "services": [
+      { "id": "bounty_board", "name": "Tableau des Primes", "rankRequired": 0 },
+      { "id": "royal_armory", "name": "Armurerie Royale", "rankRequired": 300 },
+      { "id": "palace_audience", "name": "Audience au Palais", "rankRequired": 600 }
+    ],
+    "enemies": ["shadow-syndicate"],
+    "allies": ["adventurers-guild", "temple-of-light"]
+  },
+
+  "valthera-merchants": {
+    "id": "valthera-merchants",
+    "name": "Guilde des Marchands",
+    "description": "L'association des commerçants de Valthera. Ils contrôlent le commerce et offrent des réductions à leurs alliés.",
+    "shortDescription": "L'union des marchands de la ville.",
+    "emoji": "💰",
+    "color": 15105570,
+    "headquarters": "valthera-city",
+    "leader": "marcus-ironforge",
+    "ranks": [
+      { "name": "Client", "minRep": 0, "perks": [] },
+      { "name": "Régulier", "minRep": 100, "perks": ["shop_discount_5"] },
+      { "name": "Privilégié", "minRep": 300, "perks": ["shop_discount_10", "rare_items"] },
+      { "name": "VIP", "minRep": 600, "perks": ["shop_discount_15", "exotic_items", "bulk_deals"] },
+      { "name": "Partenaire", "minRep": 1000, "perks": ["shop_discount_20", "legendary_items", "trade_routes"] }
+    ],
+    "services": [
+      { "id": "marketplace", "name": "Marché Central", "rankRequired": 0 },
+      { "id": "black_market", "name": "Marché Noir", "rankRequired": 300, "hidden": true },
+      { "id": "import_export", "name": "Import/Export", "rankRequired": 600 }
+    ],
+    "enemies": ["shadow-syndicate"],
+    "allies": ["adventurers-guild", "valthera-crown"]
+  },
+
+  "temple-of-light": {
+    "id": "temple-of-light",
+    "name": "Temple de la Lumière",
+    "description": "L'ordre religieux qui vénère Solara, déesse de la lumière. Ils offrent guérison et bénédictions.",
+    "shortDescription": "L'ordre religieux de Solara.",
+    "emoji": "✨",
+    "color": 16777130,
+    "headquarters": "valthera-city",
+    "leader": "high-priestess-lyra",
+    "ranks": [
+      { "name": "Fidèle", "minRep": 0, "perks": [] },
+      { "name": "Dévot", "minRep": 100, "perks": ["free_healing_minor"] },
+      { "name": "Béni", "minRep": 300, "perks": ["free_healing_moderate", "holy_water"] },
+      { "name": "Protégé", "minRep": 600, "perks": ["free_healing_major", "resurrection_discount", "sacred_items"] },
+      { "name": "Champion de la Lumière", "minRep": 1000, "perks": ["full_restoration", "divine_blessing", "holy_title"] }
+    ],
+    "services": [
+      { "id": "healing", "name": "Soins Divins", "rankRequired": 0 },
+      { "id": "blessing", "name": "Bénédictions", "rankRequired": 100 },
+      { "id": "purification", "name": "Purification", "rankRequired": 300 }
+    ],
+    "enemies": ["shadow-syndicate", "cult-of-darkness"],
+    "allies": ["valthera-crown"]
+  },
+
+  "shadow-syndicate": {
+    "id": "shadow-syndicate",
+    "name": "Syndicat des Ombres",
+    "description": "Une organisation criminelle qui opère dans l'ombre. Ils offrent des services... discrets.",
+    "shortDescription": "Le monde souterrain de Valthera.",
+    "emoji": "🗡️",
+    "color": 2303786,
+    "headquarters": "valthera-city",
+    "leader": "the-whisper",
+    "hidden": true,
+    "ranks": [
+      { "name": "Inconnu", "minRep": 0, "perks": [] },
+      { "name": "Contact", "minRep": 100, "perks": ["fence_access"] },
+      { "name": "Associé", "minRep": 300, "perks": ["black_market_discount", "smuggling"] },
+      { "name": "Agent", "minRep": 600, "perks": ["assassination_contracts", "safe_houses"] },
+      { "name": "Maître des Ombres", "minRep": 1000, "perks": ["syndicate_leadership", "shadow_network"] }
+    ],
+    "services": [
+      { "id": "fence", "name": "Receleur", "rankRequired": 100 },
+      { "id": "intel", "name": "Renseignements", "rankRequired": 300 },
+      { "id": "contracts", "name": "Contrats Spéciaux", "rankRequired": 600 }
+    ],
+    "enemies": ["valthera-crown", "temple-of-light", "valthera-merchants"],
+    "allies": []
+  },
+
+  "forest-spirits": {
+    "id": "forest-spirits",
+    "name": "Esprits de la Forêt",
+    "description": "Les êtres féeriques qui habitent les Bois Murmurants. Mystérieux et capricieux.",
+    "shortDescription": "Les gardiens mystiques de la forêt.",
+    "emoji": "🧚",
+    "color": 5763719,
+    "headquarters": "whispering-woods",
+    "leader": "queen-titania",
+    "hidden": true,
+    "ranks": [
+      { "name": "Étranger", "minRep": 0, "perks": [] },
+      { "name": "Toléré", "minRep": 100, "perks": ["forest_safe_passage"] },
+      { "name": "Ami", "minRep": 300, "perks": ["fey_gifts", "nature_guidance"] },
+      { "name": "Allié", "minRep": 600, "perks": ["pixie_companion", "fey_magic"] },
+      { "name": "Champion Sylvestre", "minRep": 1000, "perks": ["fey_blessing", "forest_sanctuary"] }
+    ],
+    "services": [
+      { "id": "nature_lore", "name": "Savoir de la Nature", "rankRequired": 100 },
+      { "id": "fey_crafting", "name": "Artisanat Féerique", "rankRequired": 300 },
+      { "id": "moonlight_ritual", "name": "Rituel Lunaire", "rankRequired": 600 }
+    ],
+    "enemies": [],
+    "allies": []
+  }
+}

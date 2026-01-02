@@ -1,0 +1,278 @@
+{
+  "acolyte": {
+    "id": "acolyte",
+    "name": "Acolyte",
+    "emoji": "⛪",
+    "description": "Vous avez passé votre vie au service d'un temple, médiateur entre les dieux et les mortels.",
+    "skillProficiencies": ["insight", "religion"],
+    "toolProficiencies": [],
+    "languages": 2,
+    "startingEquipment": {
+      "items": ["holy_symbol", "prayer_book", "incense"],
+      "gold": 15
+    },
+    "feature": {
+      "name": "Refuge du Fidèle",
+      "description": "Les prêtres de votre foi vous offrent le gîte et le couvert, et vous aident si nécessaire."
+    },
+    "traits": [
+      "Je me prosterne devant les plus pauvres.",
+      "Je cite souvent les textes sacrés.",
+      "Je suis tolérant envers les autres religions.",
+      "Je me méfie des étrangers."
+    ]
+  },
+  "criminal": {
+    "id": "criminal",
+    "name": "Criminel",
+    "emoji": "🗡️",
+    "description": "Vous avez un passé criminel, expert en activités illégales et contacts louches.",
+    "skillProficiencies": ["deception", "stealth"],
+    "toolProficiencies": ["thieves_tools", "gaming_set"],
+    "languages": 0,
+    "startingEquipment": {
+      "items": ["crowbar", "dark_clothes", "thieves_tools"],
+      "gold": 15
+    },
+    "feature": {
+      "name": "Contact Criminel",
+      "description": "Vous avez un contact fiable dans le monde criminel qui peut vous fournir informations et services."
+    },
+    "traits": [
+      "Je ne fais confiance à personne.",
+      "Je garde toujours un plan de secours.",
+      "Je suis loyal envers mes amis, pas les idéaux.",
+      "L'argent est ma motivation principale."
+    ]
+  },
+  "folk_hero": {
+    "id": "folk_hero",
+    "name": "Héros du Peuple",
+    "emoji": "🌾",
+    "description": "Vous venez d'un milieu humble mais avez accompli un acte héroïque qui vous a rendu célèbre.",
+    "skillProficiencies": ["animal_handling", "survival"],
+    "toolProficiencies": ["artisan_tools", "vehicles_land"],
+    "languages": 0,
+    "startingEquipment": {
+      "items": ["artisan_tools", "shovel", "common_clothes"],
+      "gold": 10
+    },
+    "feature": {
+      "name": "Hospitalité Rustique",
+      "description": "Les gens du peuple vous accueillent, vous cachent et vous soignent si nécessaire."
+    },
+    "traits": [
+      "Je défends toujours les opprimés.",
+      "Je suis gêné par l'attention.",
+      "Je juge les gens par leurs actes.",
+      "Le travail honnête est la clé du bonheur."
+    ]
+  },
+  "noble": {
+    "id": "noble",
+    "name": "Noble",
+    "emoji": "👑",
+    "description": "Vous êtes issu d'une famille aristocratique, avec privilèges et responsabilités.",
+    "skillProficiencies": ["history", "persuasion"],
+    "toolProficiencies": ["gaming_set"],
+    "languages": 1,
+    "startingEquipment": {
+      "items": ["fine_clothes", "signet_ring", "scroll_of_pedigree"],
+      "gold": 25
+    },
+    "feature": {
+      "name": "Position Privilégiée",
+      "description": "Les gens vous traitent avec déférence et vous accordent des faveurs dues à votre rang."
+    },
+    "traits": [
+      "Mon éloquence peut charmer un roi.",
+      "Les manières communes me répugnent.",
+      "Je dois prouver que je mérite mon rang.",
+      "Le sang noble coule dans mes veines."
+    ]
+  },
+  "sage": {
+    "id": "sage",
+    "name": "Sage",
+    "emoji": "📚",
+    "description": "Vous avez passé des années à étudier les connaissances du monde dans une bibliothèque.",
+    "skillProficiencies": ["arcana", "history"],
+    "toolProficiencies": [],
+    "languages": 2,
+    "startingEquipment": {
+      "items": ["ink", "quill", "small_knife", "scholarly_robes"],
+      "gold": 10
+    },
+    "feature": {
+      "name": "Chercheur",
+      "description": "Quand vous cherchez une information, vous savez souvent où la trouver ou qui la possède."
+    },
+    "traits": [
+      "Je suis prêt à tout pour le savoir.",
+      "J'utilise des mots compliqués par habitude.",
+      "Je suis socialement maladroit.",
+      "J'ai toujours une citation appropriée."
+    ]
+  },
+  "soldier": {
+    "id": "soldier",
+    "name": "Soldat",
+    "emoji": "⚔️",
+    "description": "Vous avez servi dans une armée, habitué à la discipline et au combat.",
+    "skillProficiencies": ["athletics", "intimidation"],
+    "toolProficiencies": ["gaming_set", "vehicles_land"],
+    "languages": 0,
+    "startingEquipment": {
+      "items": ["insignia_of_rank", "trophy", "dice_set", "common_clothes"],
+      "gold": 10
+    },
+    "feature": {
+      "name": "Rang Militaire",
+      "description": "Les soldats de votre ancienne armée vous reconnaissent et vous accordent respect et assistance."
+    },
+    "traits": [
+      "Je respecte la hiérarchie.",
+      "La guerre m'a hanté.",
+      "Je protège mes compagnons.",
+      "Je ne laisse aucun soldat derrière."
+    ]
+  },
+  "outlander": {
+    "id": "outlander",
+    "name": "Étranger",
+    "emoji": "🏕️",
+    "description": "Vous avez grandi loin de la civilisation, dans les contrées sauvages.",
+    "skillProficiencies": ["athletics", "survival"],
+    "toolProficiencies": ["musical_instrument"],
+    "languages": 1,
+    "startingEquipment": {
+      "items": ["staff", "hunting_trap", "trophy_animal", "traveler_clothes"],
+      "gold": 10
+    },
+    "feature": {
+      "name": "Vagabond",
+      "description": "Vous avez une excellente mémoire des cartes et pouvez trouver nourriture et eau pour vous et cinq autres."
+    },
+    "traits": [
+      "La civilisation me semble étrange.",
+      "Je suis direct et sans fioritures.",
+      "La nature est mon vrai foyer.",
+      "Je respecte les animaux plus que les hommes."
+    ]
+  },
+  "entertainer": {
+    "id": "entertainer",
+    "name": "Artiste",
+    "emoji": "🎭",
+    "description": "Vous avez vécu de vos talents artistiques, captivant les foules avec vos performances.",
+    "skillProficiencies": ["acrobatics", "performance"],
+    "toolProficiencies": ["disguise_kit", "musical_instrument"],
+    "languages": 0,
+    "startingEquipment": {
+      "items": ["musical_instrument", "favor_of_admirer", "costume"],
+      "gold": 15
+    },
+    "feature": {
+      "name": "À la Demande Populaire",
+      "description": "Vous pouvez toujours trouver un endroit pour vous produire en échange du gîte et du couvert."
+    },
+    "traits": [
+      "Je suis le centre de l'attention.",
+      "Je connais une histoire pour chaque situation.",
+      "Je ne supporte pas l'ennui.",
+      "L'art dépasse tout."
+    ]
+  },
+  "hermit": {
+    "id": "hermit",
+    "name": "Ermite",
+    "emoji": "🏔️",
+    "description": "Vous avez vécu en réclusion, méditant sur la nature de l'existence.",
+    "skillProficiencies": ["medicine", "religion"],
+    "toolProficiencies": ["herbalism_kit"],
+    "languages": 1,
+    "startingEquipment": {
+      "items": ["scroll_case", "winter_blanket", "common_clothes", "herbalism_kit"],
+      "gold": 5
+    },
+    "feature": {
+      "name": "Découverte",
+      "description": "Votre méditation vous a révélé une vérité unique sur le monde, un secret ou une révélation."
+    },
+    "traits": [
+      "Le silence est d'or.",
+      "Je cherche l'illumination.",
+      "Les interactions sociales me perturbent.",
+      "J'ai vu des choses que personne ne croirait."
+    ]
+  },
+  "guild_artisan": {
+    "id": "guild_artisan",
+    "name": "Artisan de Guilde",
+    "emoji": "🔨",
+    "description": "Vous êtes membre d'une guilde d'artisans, expert dans votre métier.",
+    "skillProficiencies": ["insight", "persuasion"],
+    "toolProficiencies": ["artisan_tools"],
+    "languages": 1,
+    "startingEquipment": {
+      "items": ["artisan_tools", "letter_of_introduction", "traveler_clothes"],
+      "gold": 15
+    },
+    "feature": {
+      "name": "Membre de Guilde",
+      "description": "Votre guilde vous offre logement, support juridique et réseau de contacts."
+    },
+    "traits": [
+      "Mon métier est ma fierté.",
+      "Je fais tout avec perfection.",
+      "Les affaires sont les affaires.",
+      "La qualité a un prix."
+    ]
+  },
+  "charlatan": {
+    "id": "charlatan",
+    "name": "Charlatan",
+    "emoji": "🎲",
+    "description": "Vous vivez de l'arnaque et de la manipulation, expert en supercherie.",
+    "skillProficiencies": ["deception", "sleight_of_hand"],
+    "toolProficiencies": ["disguise_kit", "forgery_kit"],
+    "languages": 0,
+    "startingEquipment": {
+      "items": ["fine_clothes", "disguise_kit", "con_tools"],
+      "gold": 15
+    },
+    "feature": {
+      "name": "Fausse Identité",
+      "description": "Vous avez une fausse identité avec documentation, contacts et déguisement."
+    },
+    "traits": [
+      "Je mens comme je respire.",
+      "Je suis toujours quelqu'un d'autre.",
+      "Je fuis les problèmes plutôt que les affronter.",
+      "Tout le monde est une marque potentielle."
+    ]
+  },
+  "urchin": {
+    "id": "urchin",
+    "name": "Enfant des Rues",
+    "emoji": "🏚️",
+    "description": "Vous avez grandi dans les rues, survivant par votre ingéniosité.",
+    "skillProficiencies": ["sleight_of_hand", "stealth"],
+    "toolProficiencies": ["disguise_kit", "thieves_tools"],
+    "languages": 0,
+    "startingEquipment": {
+      "items": ["small_knife", "map_of_city", "pet_mouse", "common_clothes"],
+      "gold": 10
+    },
+    "feature": {
+      "name": "Secrets de la Ville",
+      "description": "Vous connaissez les passages secrets et les raccourcis de toute ville."
+    },
+    "traits": [
+      "Je cache ma nourriture et mes trésors.",
+      "Je me méfie de tout le monde.",
+      "J'aide les autres orphelins quand je peux.",
+      "L'or est la seule sécurité."
+    ]
+  }
+}

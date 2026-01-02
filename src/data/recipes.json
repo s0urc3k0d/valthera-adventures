@@ -1,0 +1,269 @@
+{
+  "recipes": {
+    "health_potion_minor": {
+      "id": "health_potion_minor",
+      "name": "Potion de soins mineure",
+      "result": "health_potion_minor",
+      "quantity": 1,
+      "skill": "nature",
+      "dc": 10,
+      "time": 30,
+      "materials": [
+        { "itemId": "herb_healing", "quantity": 2 }
+      ],
+      "category": "alchemy",
+      "description": "Une potion basique aux propriétés curatives.",
+      "emoji": "🧪"
+    },
+    "health_potion": {
+      "id": "health_potion",
+      "name": "Potion de soins",
+      "result": "health_potion",
+      "quantity": 1,
+      "skill": "nature",
+      "dc": 14,
+      "time": 60,
+      "materials": [
+        { "itemId": "herb_healing", "quantity": 4 },
+        { "itemId": "health_potion_minor", "quantity": 1 }
+      ],
+      "category": "alchemy",
+      "description": "Une potion de soins standard, plus efficace.",
+      "emoji": "🧪"
+    },
+    "mana_potion": {
+      "id": "mana_potion",
+      "name": "Potion de mana",
+      "result": "mana_potion",
+      "quantity": 1,
+      "skill": "arcana",
+      "dc": 12,
+      "time": 45,
+      "materials": [
+        { "itemId": "herb_healing", "quantity": 2 },
+        { "itemId": "gem_sapphire", "quantity": 1 }
+      ],
+      "category": "alchemy",
+      "description": "Une potion qui restaure l'énergie magique.",
+      "emoji": "💧",
+      "requirements": { "level": 3 }
+    },
+    "antidote": {
+      "id": "antidote",
+      "name": "Antidote",
+      "result": "antidote",
+      "quantity": 1,
+      "skill": "nature",
+      "dc": 12,
+      "time": 30,
+      "materials": [
+        { "itemId": "herb_healing", "quantity": 3 }
+      ],
+      "category": "alchemy",
+      "description": "Un remède contre les poisons.",
+      "emoji": "💚"
+    },
+    "leather_armor": {
+      "id": "leather_armor",
+      "name": "Armure de cuir",
+      "result": "leather_armor",
+      "quantity": 1,
+      "skill": "survival",
+      "dc": 12,
+      "time": 120,
+      "materials": [
+        { "itemId": "monster_hide", "quantity": 3 }
+      ],
+      "category": "leatherworking",
+      "description": "Une armure de cuir basique fabriquée à partir de peaux.",
+      "emoji": "🦺"
+    },
+    "studded_leather": {
+      "id": "studded_leather",
+      "name": "Cuir clouté",
+      "result": "studded_leather",
+      "quantity": 1,
+      "skill": "survival",
+      "dc": 15,
+      "time": 180,
+      "materials": [
+        { "itemId": "monster_hide", "quantity": 4 },
+        { "itemId": "iron_ore", "quantity": 2 }
+      ],
+      "category": "leatherworking",
+      "description": "Une armure de cuir renforcée de rivets métalliques.",
+      "emoji": "🦺",
+      "requirements": { "level": 3 }
+    },
+    "dagger": {
+      "id": "dagger",
+      "name": "Dague",
+      "result": "dagger",
+      "quantity": 1,
+      "skill": "none",
+      "dc": 10,
+      "time": 60,
+      "materials": [
+        { "itemId": "iron_ore", "quantity": 2 }
+      ],
+      "category": "smithing",
+      "description": "Une lame courte simple.",
+      "emoji": "🗡️"
+    },
+    "shortsword": {
+      "id": "shortsword",
+      "name": "Épée courte",
+      "result": "shortsword",
+      "quantity": 1,
+      "skill": "none",
+      "dc": 12,
+      "time": 90,
+      "materials": [
+        { "itemId": "iron_ore", "quantity": 4 }
+      ],
+      "category": "smithing",
+      "description": "Une épée légère et maniable.",
+      "emoji": "⚔️"
+    },
+    "longsword": {
+      "id": "longsword",
+      "name": "Épée longue",
+      "result": "longsword",
+      "quantity": 1,
+      "skill": "none",
+      "dc": 14,
+      "time": 120,
+      "materials": [
+        { "itemId": "iron_ore", "quantity": 6 }
+      ],
+      "category": "smithing",
+      "description": "Une épée classique, équilibrée et polyvalente.",
+      "emoji": "⚔️",
+      "requirements": { "level": 2 }
+    },
+    "shield": {
+      "id": "shield",
+      "name": "Bouclier",
+      "result": "shield",
+      "quantity": 1,
+      "skill": "none",
+      "dc": 12,
+      "time": 90,
+      "materials": [
+        { "itemId": "iron_ore", "quantity": 3 },
+        { "itemId": "monster_hide", "quantity": 1 }
+      ],
+      "category": "smithing",
+      "description": "Un bouclier de bois renforcé de métal.",
+      "emoji": "🛡️"
+    },
+    "torch_bundle": {
+      "id": "torch_bundle",
+      "name": "Lot de torches",
+      "result": "torch",
+      "quantity": 5,
+      "skill": "none",
+      "dc": 8,
+      "time": 15,
+      "materials": [
+        { "itemId": "rope", "quantity": 1 }
+      ],
+      "category": "basic",
+      "description": "Des torches simples pour s'éclairer.",
+      "emoji": "🔥"
+    },
+    "rope_bundle": {
+      "id": "rope_bundle",
+      "name": "Corde renforcée",
+      "result": "rope",
+      "quantity": 2,
+      "skill": "none",
+      "dc": 10,
+      "time": 30,
+      "materials": [
+        { "itemId": "monster_hide", "quantity": 1 }
+      ],
+      "category": "basic",
+      "description": "De la corde fabriquée à partir de fibres de créatures.",
+      "emoji": "🪢"
+    },
+    "chain_shirt": {
+      "id": "chain_shirt",
+      "name": "Chemise de mailles",
+      "result": "chain_shirt",
+      "quantity": 1,
+      "skill": "none",
+      "dc": 16,
+      "time": 240,
+      "materials": [
+        { "itemId": "iron_ore", "quantity": 10 }
+      ],
+      "category": "smithing",
+      "description": "Une chemise d'anneaux métalliques entrelacés.",
+      "emoji": "🥋",
+      "requirements": { "level": 4 }
+    },
+    "ring_strength": {
+      "id": "ring_strength",
+      "name": "Anneau de force",
+      "result": "ring_strength",
+      "quantity": 1,
+      "skill": "arcana",
+      "dc": 18,
+      "time": 300,
+      "materials": [
+        { "itemId": "iron_ore", "quantity": 2 },
+        { "itemId": "gem_ruby", "quantity": 1 },
+        { "itemId": "monster_fang", "quantity": 5 }
+      ],
+      "category": "enchanting",
+      "description": "Un anneau enchanté qui augmente la force.",
+      "emoji": "💍",
+      "requirements": { "level": 5 }
+    },
+    "amulet_health": {
+      "id": "amulet_health",
+      "name": "Amulette de santé",
+      "result": "amulet_health",
+      "quantity": 1,
+      "skill": "arcana",
+      "dc": 16,
+      "time": 240,
+      "materials": [
+        { "itemId": "gem_emerald", "quantity": 1 },
+        { "itemId": "herb_healing", "quantity": 10 }
+      ],
+      "category": "enchanting",
+      "description": "Une amulette qui augmente la vitalité.",
+      "emoji": "📿",
+      "requirements": { "level": 4 }
+    }
+  },
+  "categories": {
+    "basic": {
+      "name": "Artisanat basique",
+      "description": "Objets simples nécessitant peu de compétences.",
+      "emoji": "🔨"
+    },
+    "alchemy": {
+      "name": "Alchimie",
+      "description": "Potions et élixirs aux effets variés.",
+      "emoji": "⚗️"
+    },
+    "smithing": {
+      "name": "Forge",
+      "description": "Armes et armures métalliques.",
+      "emoji": "⚒️"
+    },
+    "leatherworking": {
+      "name": "Travail du cuir",
+      "description": "Armures légères et équipement en cuir.",
+      "emoji": "🦺"
+    },
+    "enchanting": {
+      "name": "Enchantement",
+      "description": "Objets magiques aux pouvoirs mystiques.",
+      "emoji": "✨"
+    }
+  }
+}
