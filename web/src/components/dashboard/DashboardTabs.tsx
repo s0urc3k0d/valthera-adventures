@@ -12,11 +12,16 @@ import { GuildTab } from './tabs/GuildTab';
 import type { ICharacter, IGuild, ICharacterQuest } from '@/lib/models';
 import { getItemName } from '@/lib/gameData';
 
+// XP formula from bot: Math.floor(100 * Math.pow(level, 1.5))
+function xpToLevel(level: number): number {
+  return Math.floor(100 * Math.pow(level, 1.5));
+}
+
 // Normaliser les données du personnage pour gérer les différences entre bot et web models
 function normalizeCharacter(char: any) {
-  // Get stats from attributes (bot) or stats (web)
-  const attrs = char.attributes || char.stats || {};
-  const stats = {
+  // Get attributes from bot format (str, dex) or web format (strength, dexterity)
+  const attrs = char.attributes || {};
+  const characterAttributes = {
     strength: attrs.str ?? attrs.strength ?? 10,
     dexterity: attrs.dex ?? attrs.dexterity ?? 10,
     constitution: attrs.con ?? attrs.constitution ?? 10,
@@ -41,22 +46,37 @@ function normalizeCharacter(char: any) {
     accessory: getEquippedItem(['ring1', 'ring2', 'amulet', 'belt', 'cape']),
   };
 
+  // Get current XP and calculate XP for next level
+  const currentXp = char.xp ?? char.experience ?? 0;
+  const currentLevel = char.level ?? 1;
+  const xpForNextLevel = xpToLevel(currentLevel + 1);
+
   return {
     ...char,
     // Health: bot uses 'hp', web expects 'health'
     health: char.health || char.hp || { current: 10, max: 10 },
     // Mana: bot might not have mana for all classes
     mana: char.mana || { current: 0, max: 0 },
-    // Stats in web format (full names)
-    stats,
+    // Attributes (str, dex, etc.) in web format (full names)
+    stats: characterAttributes,
+    // Statistics (monstersKilled, deaths, etc.) - bot uses 'stats' field
+    statistics: char.stats || {},
     // Equipment with item names (French)
     equipment,
-    // Experience: bot uses 'xp', web expects 'experience'
-    experience: char.experience ?? char.xp ?? 0,
-    // Gold: bot uses object, normalize to number
+    // Experience values
+    experience: currentXp,
+    xpForNextLevel,
+    // Gold: display just gold pieces, not converted to copper
     goldTotal: typeof char.gold === 'number' 
       ? char.gold 
-      : (char.gold?.copper || 0) + (char.gold?.silver || 0) * 10 + (char.gold?.gold || 0) * 100 + (char.gold?.platinum || 0) * 1000,
+      : (char.gold?.gold || 0),
+    // Full gold breakdown for display
+    goldBreakdown: {
+      copper: char.gold?.copper || 0,
+      silver: char.gold?.silver || 0,
+      gold: char.gold?.gold || 0,
+      platinum: char.gold?.platinum || 0,
+    },
   };
 }
 
@@ -102,9 +122,10 @@ export function DashboardTabs({ character: rawCharacter, quests, guild, user }: 
     }
   };
 
-  // Calculer le niveau d'XP
-  const xpForNextLevel = character.level * 1000;
-  const xpProgress = (character.experience / xpForNextLevel) * 100;
+  // Calculer la progression d'XP (using pre-calculated xpForNextLevel from normalizeCharacter)
+  const xpProgress = character.xpForNextLevel > 0 
+    ? (character.experience / character.xpForNextLevel) * 100 
+    : 0;
 
   return (
     <div>
@@ -180,8 +201,8 @@ export function DashboardTabs({ character: rawCharacter, quests, guild, user }: 
                     style={{ width: `${Math.min(xpProgress, 100)}%` }}
                   />
                 </div>
-                <span className="text-xs text-valthera-200 w-16 text-right">
-                  {character.experience}/{xpForNextLevel}
+                <span className="text-xs text-valthera-200 w-20 text-right">
+                  {character.experience}/{character.xpForNextLevel}
                 </span>
               </div>
             </div>

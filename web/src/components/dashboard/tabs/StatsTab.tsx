@@ -17,6 +17,7 @@ interface StatsTabProps {
 }
 
 export function StatsTab({ character }: StatsTabProps) {
+  // Bot stores stats in character.stats, normalized to character.statistics
   const stats = character.statistics || {};
 
   const statGroups = [
