@@ -1,110 +1,98 @@
 # Configuration nginx pour Valthera Adventures
 # 
 # Cette configuration est prévue pour un nginx externe (hors Docker)
-# qui proxy vers le bot Discord pour les health checks et métriques.
+# qui proxy vers le bot Discord et le site web.
 #
 # Usage:
 #   1. Copiez ce fichier dans /etc/nginx/sites-available/valthera.conf
 #   2. Créez un lien: ln -s /etc/nginx/sites-available/valthera.conf /etc/nginx/sites-enabled/
 #   3. Testez: nginx -t
 #   4. Rechargez: nginx -s reload
-#
-# Note: Le bot Discord utilise WebSocket pour communiquer avec Discord,
-# donc seuls les endpoints de monitoring HTTP sont disponibles.
 
-# Upstream pour le bot Valthera
+# Upstream pour le bot Valthera (health checks / metrics)
 upstream valthera_bot {
     server 127.0.0.1:3000;
     keepalive 2;
 }
 
-# Configuration HTTP (ou HTTPS avec certificat)
+# Upstream pour le site web Next.js
+upstream valthera_web {
+    server 127.0.0.1:3001;
+    keepalive 4;
+}
+
+# ===========================================
+# SITE WEB PRINCIPAL
+# ===========================================
 server {
     listen 80;
     listen [::]:80;
     
-    # Remplacez par votre domaine ou laissez localhost
+    # Remplacez par votre domaine
     server_name valthera.local localhost;
     
     # Logs
     access_log /var/log/nginx/valthera_access.log;
     error_log /var/log/nginx/valthera_error.log;
 
+    # Proxy vers Next.js
+    location / {
+        proxy_pass http://valthera_web;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    # Static files caching
+    location /_next/static {
+        proxy_pass http://valthera_web;
+        proxy_cache_valid 60m;
+        add_header Cache-Control "public, max-age=31536000, immutable";
+    }
+
     # ===========================================
-    # HEALTH CHECKS
+    # BOT HEALTH CHECKS / MONITORING
     # ===========================================
     
     # Liveness probe - Le processus est-il en vie?
-    location /health {
+    location /api/bot/health {
         proxy_pass http://valthera_bot/health;
         proxy_http_version 1.1;
         proxy_set_header Connection "";
         proxy_connect_timeout 5s;
         proxy_read_timeout 10s;
-        
-        # Pas de cache pour les health checks
         add_header Cache-Control "no-store, no-cache, must-revalidate";
     }
     
-    # Alias Kubernetes-style
-    location /healthz {
-        proxy_pass http://valthera_bot/health;
-        proxy_http_version 1.1;
-        proxy_set_header Connection "";
-    }
-    
     # Readiness probe - Le bot est-il prêt à servir?
-    location /ready {
-        proxy_pass http://valthera_bot/ready;
-        proxy_http_version 1.1;
-        proxy_set_header Connection "";
-        proxy_connect_timeout 5s;
-        proxy_read_timeout 10s;
-    }
-    
-    location /readyz {
+    location /api/bot/ready {
         proxy_pass http://valthera_bot/ready;
         proxy_http_version 1.1;
         proxy_set_header Connection "";
     }
 
-    # ===========================================
-    # MONITORING / PROMETHEUS
-    # ===========================================
-    
     # Métriques Prometheus
-    # Accès restreint recommandé en production!
-    location /metrics {
+    location /api/bot/metrics {
         proxy_pass http://valthera_bot/metrics;
         proxy_http_version 1.1;
         proxy_set_header Connection "";
         
         # Restreindre l'accès (décommentez selon vos besoins)
         # allow 127.0.0.1;
-        # allow 10.0.0.0/8;    # Réseau interne
-        # allow 172.16.0.0/12; # Docker
+        # allow 10.0.0.0/8;
         # deny all;
     }
     
     # Status détaillé JSON
-    location /status {
+    location /api/bot/status {
         proxy_pass http://valthera_bot/status;
         proxy_http_version 1.1;
         proxy_set_header Connection "";
-        
-        # Restreindre l'accès (décommentez selon vos besoins)
-        # allow 127.0.0.1;
-        # deny all;
-    }
-
-    # ===========================================
-    # PAGE D'ACCUEIL (optionnel)
-    # ===========================================
-    
-    location / {
-        # Page statique simple ou redirect
-        return 200 '{"service": "Valthera Adventures Bot", "status": "running", "health": "/health", "metrics": "/metrics"}';
-        add_header Content-Type application/json;
     }
 
     # ===========================================
@@ -117,6 +105,7 @@ server {
     # Headers de sécurité basiques
     add_header X-Content-Type-Options nosniff always;
     add_header X-Frame-Options DENY always;
+    add_header X-XSS-Protection "1; mode=block" always;
 }
 
 # ===========================================

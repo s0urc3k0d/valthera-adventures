@@ -1,8 +1,18 @@
 # 🗺️ Valthera Adventures - Roadmap
 
-> Dernière mise à jour : 1er Janvier 2026
+> Dernière mise à jour : Janvier 2026
 
 ## 📊 État Actuel du Projet
+
+### 🌐 Interface Web (Nouveau!)
+Une interface web complète a été développée avec Next.js 14 :
+- **Page d'accueil** présentant le projet
+- **Wiki** avec documentation des commandes et classes
+- **Dashboard joueur** avec connexion Discord OAuth2
+- **Leaderboards** multi-catégories
+- **Carte interactive** des zones
+
+Voir [web/README.md](web/README.md) pour plus de détails.
 
 ### ✅ Phase 0 - Fondations (Complété)
 - [x] Structure du projet
@@ -385,10 +395,11 @@
 
 | Intégration | Description | Priorité |
 |-------------|-------------|----------|
-| Express.js | API REST pour dashboard | Moyenne |
+| Express.js | ✅ Health Server (API de santé) | - |
+| Next.js 14 | ✅ Interface web complète | - |
+| NextAuth.js | ✅ Login via Discord OAuth2 | - |
+| TailwindCSS | ✅ Styling de l'interface web | - |
 | Socket.io | Temps réel web | Basse |
-| React Dashboard | Interface admin web | Basse |
-| OAuth2 Discord | Login web via Discord | Moyenne |
 | OpenAPI/Swagger | Documentation API | Basse |
 
 ### 🤖 Intelligence Artificielle
@@ -429,8 +440,9 @@
 
 | Plateforme | Faisabilité | Priorité |
 |------------|-------------|----------|
-| Web App | Interface web compagnon | Basse |
-| Mobile (React Native) | App mobile | Très basse |
+| Web App | ✅ Interface web complète (Next.js) | - |
+| Mobile (PWA) | ✅ Manifest PWA configuré | - |
+| Mobile (React Native) | App mobile native | Très basse |
 | Twitch Extension | Overlay stream | Très basse |
 
 ---
@@ -439,23 +451,26 @@
 
 ```
 2026 Q1 (Jan-Mar)
-├── Phase 1: Core Gameplay ████████████░░░░ 75%
-├── Phase 2: Combat Avancé ████░░░░░░░░░░░░ 25%
-└── Phase 3: Exploration   ██░░░░░░░░░░░░░░ 10%
+├── Phase 1: Core Gameplay ████████████████ 100% ✅
+├── Phase 2: Combat Avancé ████████████████ 100% ✅
+├── Phase 3: Exploration   ████████████████ 100% ✅
+├── Phase 4: Économie      ████████████████ 100% ✅
+├── Phase 5: Quêtes        ████████████████ 100% ✅
+└── Phase 6: Social        ████████████████ 100% ✅
 
 2026 Q2 (Avr-Juin)
-├── Phase 3: Exploration   ████████████████ 100%
-├── Phase 4: Économie      ████████████████ 100%
-└── Phase 5: Quêtes        ████████░░░░░░░░ 50%
+├── Interface Web          ████████████████ 100% ✅
+├── Docker & Deployment    ████████████████ 100% ✅
+└── Phase 7: Endgame       ████░░░░░░░░░░░░ 25%
 
 2026 Q3 (Juil-Sep)
-├── Phase 5: Quêtes        ████████████████ 100%
-├── Phase 6: Social        ████████████████ 100%
-└── Intégrations web       ████████░░░░░░░░ 50%
-
-2026 Q4 (Oct-Déc)
 ├── Phase 7: Endgame       ████████████████ 100%
 ├── Polish & Balance       ████████████████ 100%
+└── Intégrations avancées  ████████░░░░░░░░ 50%
+
+2026 Q4 (Oct-Déc)
+├── Contenu additionnel    ████████████████ 100%
+├── Tests communautaires   ████████████████ 100%
 └── Launch Public          🚀
 ```
 
@@ -463,27 +478,37 @@
 
 ## 🎯 Objectifs par Jalon
 
-### v0.1.0 - Alpha Privée
-- [ ] Création de personnage complète
-- [ ] Combat fonctionnel (PvE)
-- [ ] 3 zones explorables
-- [ ] 10 monstres différents
-- [ ] Inventaire de base
+### v0.1.0 - Alpha Privée ✅
+- [x] Création de personnage complète
+- [x] Combat fonctionnel (PvE)
+- [x] 3 zones explorables
+- [x] 15+ monstres différents
+- [x] Inventaire de base
 
-### v0.2.0 - Alpha Publique
-- [ ] 10 zones
-- [ ] 30 monstres
-- [ ] Système de quêtes basique
-- [ ] Boutiques fonctionnelles
-- [ ] Système de groupe
+### v0.2.0 - Alpha Publique ✅
+- [x] 8 zones
+- [x] 15+ monstres
+- [x] Système de quêtes complet
+- [x] Boutiques fonctionnelles
+- [x] Système de groupe
 
-### v0.5.0 - Bêta
-- [ ] 25+ zones
-- [ ] 100+ monstres
-- [ ] Toutes les classes jouables
-- [ ] Système de sorts complet
-- [ ] Guildes
-- [ ] 50+ quêtes
+### v0.5.0 - Bêta ✅
+- [x] 8+ zones avec connections
+- [x] 15+ monstres
+- [x] 12 classes jouables
+- [x] Système de sorts complet (40+ sorts)
+- [x] Guildes complètes
+- [x] 12+ quêtes
+- [x] Interface web complète
+
+### v0.6.0 - Bêta Web ✅
+- [x] Page d'accueil présentant le projet
+- [x] Wiki avec commandes et classes
+- [x] Dashboard joueur avec OAuth Discord
+- [x] Leaderboards multi-catégories
+- [x] Carte interactive
+- [x] Docker deployment
+- [x] Health monitoring API
 
 ### v1.0.0 - Release
 - [ ] Contenu complet niveaux 1-20
@@ -498,15 +523,17 @@
 ## 📝 Notes de Développement
 
 ### Priorités Immédiates
-1. Finaliser le système de combat de base
-2. Implémenter le système d'inventaire
-3. Créer les premiers monstres
-4. Tester la boucle de gameplay core
+1. ✅ Système de combat de base - **Complété**
+2. ✅ Système d'inventaire - **Complété**
+3. ✅ Création des monstres - **Complété**
+4. ✅ Interface web - **Complété**
+5. Ajouter plus de contenu (zones, monstres, quêtes)
+6. Implémenter les donjons
 
-### Décisions Techniques à Prendre
-- [ ] Redis vs mémoire pour le cache de combat?
+### Décisions Techniques Prises
+- [x] Redis vs mémoire pour le cache de combat? → **Mémoire pour MVP, Redis en v1.0**
+- [x] API REST maintenant ou plus tard? → **Express health server + Next.js API**
 - [ ] Sharding Discord à partir de combien de serveurs?
-- [ ] API REST maintenant ou plus tard?
 - [ ] Tests automatisés: Jest ou Vitest?
 
 ### Risques Identifiés

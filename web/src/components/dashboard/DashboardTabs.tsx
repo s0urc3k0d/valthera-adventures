@@ -1,0 +1,180 @@
+'use client';
+
+import { useState } from 'react';
+import { User, Sword, ShieldCheck } from 'lucide-react';
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
+import { OverviewTab } from './tabs/OverviewTab';
+import { InventoryTab } from './tabs/InventoryTab';
+import { QuestsTab } from './tabs/QuestsTab';
+import { StatsTab } from './tabs/StatsTab';
+import { GuildTab } from './tabs/GuildTab';
+import type { ICharacter, IQuest, IGuild } from '@/lib/models';
+
+interface DashboardTabsProps {
+  character: ICharacter;
+  quests: IQuest[];
+  guild: IGuild | null;
+  user: {
+    name?: string | null;
+    email?: string | null;
+    image?: string | null;
+  };
+}
+
+const tabs = [
+  { id: 'overview', label: 'Aperçu', icon: User },
+  { id: 'inventory', label: 'Inventaire', icon: ShieldCheck },
+  { id: 'quests', label: 'Quêtes', icon: Sword },
+  { id: 'stats', label: 'Statistiques', icon: Sword },
+  { id: 'guild', label: 'Guilde', icon: ShieldCheck },
+];
+
+export function DashboardTabs({ character, quests, guild, user }: DashboardTabsProps) {
+  const [activeTab, setActiveTab] = useState('overview');
+
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case 'overview':
+        return <OverviewTab character={character} />;
+      case 'inventory':
+        return <InventoryTab character={character} />;
+      case 'quests':
+        return <QuestsTab quests={quests} />;
+      case 'stats':
+        return <StatsTab character={character} />;
+      case 'guild':
+        return <GuildTab guild={guild} character={character} />;
+      default:
+        return null;
+    }
+  };
+
+  // Calculer le niveau d'XP
+  const xpForNextLevel = character.level * 1000;
+  const xpProgress = (character.experience / xpForNextLevel) * 100;
+
+  return (
+    <div>
+      {/* Header avec infos personnage */}
+      <div className="card p-6 mb-8">
+        <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+          {/* Avatar */}
+          <div className="relative">
+            {user.image ? (
+              <Image
+                src={user.image}
+                alt={character.name}
+                width={80}
+                height={80}
+                className="rounded-xl"
+              />
+            ) : (
+              <div className="w-20 h-20 rounded-xl bg-valthera-600 flex items-center justify-center">
+                <User className="w-10 h-10 text-white" />
+              </div>
+            )}
+            <div className="absolute -bottom-2 -right-2 px-2 py-0.5 bg-valthera-600 rounded-full text-xs font-bold text-white">
+              Nv.{character.level}
+            </div>
+          </div>
+
+          {/* Infos principales */}
+          <div className="flex-1">
+            <h1 className="text-2xl font-bold text-white font-medieval">
+              {character.name}
+            </h1>
+            <p className="text-gray-400">
+              {character.race} • {character.class}
+              {character.background && ` • ${character.background}`}
+            </p>
+
+            {/* Barres HP/Mana/XP */}
+            <div className="mt-4 space-y-2 max-w-md">
+              {/* HP */}
+              <div className="flex items-center gap-3">
+                <span className="text-xs text-gray-400 w-10">PV</span>
+                <div className="flex-1 progress-bar">
+                  <div
+                    className="progress-fill progress-health"
+                    style={{ width: `${(character.health.current / character.health.max) * 100}%` }}
+                  />
+                </div>
+                <span className="text-xs text-gray-300 w-16 text-right">
+                  {character.health.current}/{character.health.max}
+                </span>
+              </div>
+
+              {/* Mana */}
+              <div className="flex items-center gap-3">
+                <span className="text-xs text-gray-400 w-10">Mana</span>
+                <div className="flex-1 progress-bar">
+                  <div
+                    className="progress-fill progress-mana"
+                    style={{ width: `${(character.mana.current / character.mana.max) * 100}%` }}
+                  />
+                </div>
+                <span className="text-xs text-gray-300 w-16 text-right">
+                  {character.mana.current}/{character.mana.max}
+                </span>
+              </div>
+
+              {/* XP */}
+              <div className="flex items-center gap-3">
+                <span className="text-xs text-gray-400 w-10">XP</span>
+                <div className="flex-1 progress-bar">
+                  <div
+                    className="progress-fill progress-xp"
+                    style={{ width: `${Math.min(xpProgress, 100)}%` }}
+                  />
+                </div>
+                <span className="text-xs text-gray-300 w-16 text-right">
+                  {character.experience}/{xpForNextLevel}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Gold */}
+          <div className="text-center md:text-right">
+            <div className="text-3xl font-bold text-gradient-gold font-medieval">
+              {character.gold.toLocaleString()}
+            </div>
+            <div className="text-sm text-gray-400">Pièces d'or</div>
+          </div>
+        </div>
+      </div>
+
+      {/* Tabs Navigation */}
+      <div className="flex gap-2 mb-6 overflow-x-auto pb-2 scrollbar-thin">
+        {tabs.map((tab) => (
+          <button
+            key={tab.id}
+            onClick={() => setActiveTab(tab.id)}
+            className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all whitespace-nowrap ${
+              activeTab === tab.id
+                ? 'bg-valthera-600 text-white'
+                : 'bg-gray-800/50 text-gray-400 hover:bg-gray-800 hover:text-white'
+            }`}
+          >
+            <tab.icon className="w-4 h-4" />
+            {tab.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Tab Content */}
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={activeTab}
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -10 }}
+          transition={{ duration: 0.2 }}
+        >
+          {renderTabContent()}
+        </motion.div>
+      </AnimatePresence>
+    </div>
+  );
+}
