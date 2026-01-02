@@ -1,6 +1,7 @@
-// Service pour charger les données de jeu (items, quêtes, etc.)
+// Service pour charger les données de jeu (items, quêtes, zones, etc.)
 import itemsData from '@/data/items.json';
 import questsData from '@/data/quests.json';
+import zonesData from '@/data/zones.json';
 
 // Type pour les items
 interface ItemData {
@@ -135,5 +136,45 @@ export function calculateQuestProgress(questId: string, progress: Record<string,
   return totalRequired > 0 ? (totalCompleted / totalRequired) : 0;
 }
 
+// Type pour les zones
+interface ZoneData {
+  id: string;
+  name: string;
+  description: string;
+  shortDescription?: string;
+  type: string;
+  emoji?: string;
+  [key: string]: any;
+}
+
+// Index des zones par ID
+const zonesIndex: Record<string, ZoneData> = {};
+for (const zone of zonesData as ZoneData[]) {
+  zonesIndex[zone.id] = zone;
+}
+
+/**
+ * Récupère les données d'une zone par son ID
+ */
+export function getZoneById(zoneId: string): ZoneData | null {
+  return zonesIndex[zoneId] || null;
+}
+
+/**
+ * Récupère le nom d'une zone par son ID
+ */
+export function getZoneName(zoneId: string): string {
+  const zone = zonesIndex[zoneId];
+  return zone?.name || zoneId.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+}
+
+/**
+ * Récupère l'emoji d'une zone par son ID
+ */
+export function getZoneEmoji(zoneId: string): string {
+  const zone = zonesIndex[zoneId];
+  return zone?.emoji || '📍';
+}
+
 // Export des index pour accès direct si nécessaire
-export { itemsIndex, questsIndex };
+export { itemsIndex, questsIndex, zonesIndex };

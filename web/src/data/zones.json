@@ -1,0 +1,196 @@
+[
+  {
+    "id": "val-serein",
+    "name": "Val-Serein",
+    "description": "La capitale du royaume de Valthera, une ville prospère aux hautes murailles de pierre blanche. Les marchands affluent de toutes les régions, et les aventuriers y trouvent tavernes, guildes et opportunités.",
+    "shortDescription": "Capitale du royaume de Valthera, point de départ des aventuriers.",
+    "type": "town",
+    "level": { "min": 1, "max": 20, "recommended": 1 },
+    "safeZone": true,
+    "restingAllowed": true,
+    "encounterRate": 0,
+    "connectedZones": [
+      { "zoneId": "whispering-woods", "travelTime": 30, "travelCost": 0 },
+      { "zoneId": "silver-mines", "travelTime": 45, "travelCost": 5, "requirements": { "level": 3 } },
+      { "zoneId": "eastern-road", "travelTime": 20, "travelCost": 0 }
+    ],
+    "npcs": [
+      { "npcId": "marcus-ironforge", "name": "Marcus Forge-de-Fer", "type": "merchant", "location": "Forge du Marteau d'Argent" },
+      { "npcId": "elena-whisperwind", "name": "Elena Vent-Murmurant", "type": "questgiver", "location": "Guilde des Aventuriers" },
+      { "npcId": "old-tom", "name": "Vieux Tom", "type": "innkeeper", "location": "L'Épée Rouillée" },
+      { "npcId": "sera-nightshade", "name": "Sera Belladone", "type": "merchant", "location": "L'Apothicaire du Crépuscule" }
+    ],
+    "shops": [
+      { "id": "iron-hammer", "name": "Le Marteau d'Argent", "type": "armorer", "npcId": "marcus-ironforge" },
+      { "id": "twilight-apothecary", "name": "L'Apothicaire du Crépuscule", "type": "apothecary", "npcId": "sera-nightshade" },
+      { "id": "general-goods", "name": "Bazar de Val-Serein", "type": "general" }
+    ],
+    "services": [
+      { "id": "rusty-sword-inn", "name": "L'Épée Rouillée", "type": "inn", "cost": 5, "description": "Auberge confortable avec bonnes chambres et meilleure bière." },
+      { "id": "adventurers-guild", "name": "Guilde des Aventuriers", "type": "guild", "cost": 0, "description": "Quartier général des aventuriers de Valthera." },
+      { "id": "temple-of-light", "name": "Temple de la Lumière", "type": "temple", "cost": 0, "description": "Lieu de culte et de guérison." }
+    ],
+    "pointsOfInterest": [
+      { "id": "royal-palace", "name": "Palais Royal", "description": "Résidence du roi de Valthera.", "type": "landmark", "discoverable": false },
+      { "id": "market-square", "name": "Place du Marché", "description": "Centre commercial animé de la ville.", "type": "landmark", "discoverable": false }
+    ],
+    "region": "valthera",
+    "coordinates": { "x": 0, "y": 0 },
+    "emoji": "🏰",
+    "color": 7506394,
+    "tags": ["capitale", "hub", "commerce", "guilde"]
+  },
+  {
+    "id": "whispering-woods",
+    "name": "Bois Murmurants",
+    "description": "Une forêt ancienne où les arbres semblent murmurer des secrets. Les voyageurs parlent de fées malicieuses et de créatures nocturnes.",
+    "shortDescription": "Forêt mystérieuse aux murmures étranges.",
+    "type": "forest",
+    "level": { "min": 1, "max": 5, "recommended": 2 },
+    "safeZone": false,
+    "restingAllowed": true,
+    "encounterRate": 0.35,
+    "connectedZones": [
+      { "zoneId": "val-serein", "travelTime": 30, "travelCost": 0 },
+      { "zoneId": "ancient-ruins", "travelTime": 45, "travelCost": 0, "requirements": { "level": 3 }, "hidden": true },
+      { "zoneId": "moonlit-glade", "travelTime": 20, "travelCost": 0 }
+    ],
+    "monsters": [
+      { "monsterId": "wolf", "spawnChance": 40, "minCount": 1, "maxCount": 3 },
+      { "monsterId": "giant-spider", "spawnChance": 25, "minCount": 1, "maxCount": 2 },
+      { "monsterId": "goblin", "spawnChance": 30, "minCount": 2, "maxCount": 4 },
+      { "monsterId": "pixie", "spawnChance": 10, "minCount": 1, "maxCount": 1, "conditions": { "timeOfDay": ["night"] } }
+    ],
+    "resources": [
+      { "resourceId": "herbs", "gatherChance": 60, "minQuantity": 1, "maxQuantity": 3, "skill": "nature", "skillDC": 10 },
+      { "resourceId": "wood", "gatherChance": 80, "minQuantity": 2, "maxQuantity": 5 }
+    ],
+    "pointsOfInterest": [
+      { "id": "fairy-ring", "name": "Cercle des Fées", "description": "Un cercle de champignons luminescents.", "type": "secret", "discoverable": true, "discoveryDC": 15, "rewards": { "xp": 50 } },
+      { "id": "old-hunter-camp", "name": "Camp du Vieux Chasseur", "description": "Un campement abandonné.", "type": "landmark", "discoverable": true, "discoveryDC": 10 }
+    ],
+    "environment": {
+      "lighting": "dim",
+      "terrain": "difficult"
+    },
+    "weatherEffects": true,
+    "region": "valthera",
+    "coordinates": { "x": -2, "y": 1 },
+    "emoji": "🌲",
+    "color": 3066993,
+    "tags": ["forêt", "exploration", "fées", "niveau-bas"]
+  },
+  {
+    "id": "silver-mines",
+    "name": "Mines d'Argent",
+    "description": "D'anciennes mines abandonnées après une invasion de créatures souterraines. On dit que des trésors y dorment encore.",
+    "shortDescription": "Mines abandonnées infestées de créatures.",
+    "type": "dungeon",
+    "level": { "min": 3, "max": 7, "recommended": 4 },
+    "safeZone": false,
+    "restingAllowed": false,
+    "encounterRate": 0.5,
+    "connectedZones": [
+      { "zoneId": "val-serein", "travelTime": 45, "travelCost": 5 }
+    ],
+    "monsters": [
+      { "monsterId": "kobold", "spawnChance": 35, "minCount": 3, "maxCount": 6 },
+      { "monsterId": "giant-rat", "spawnChance": 40, "minCount": 2, "maxCount": 5 },
+      { "monsterId": "rust-monster", "spawnChance": 15, "minCount": 1, "maxCount": 1 },
+      { "monsterId": "cave-troll", "spawnChance": 10, "minCount": 1, "maxCount": 1 }
+    ],
+    "resources": [
+      { "resourceId": "silver-ore", "gatherChance": 30, "minQuantity": 1, "maxQuantity": 2, "skill": "mining", "skillDC": 12 },
+      { "resourceId": "gems", "gatherChance": 10, "minQuantity": 1, "maxQuantity": 1, "skill": "mining", "skillDC": 16 }
+    ],
+    "dungeon": {
+      "floors": 3,
+      "bossId": "mine-foreman-ghost",
+      "respawnTime": 24,
+      "instance": false
+    },
+    "environment": {
+      "lighting": "dark",
+      "terrain": "hazardous",
+      "hazards": [
+        { "type": "collapse", "damage": "2d6", "saveDC": 13, "saveType": "dex" }
+      ]
+    },
+    "weatherEffects": false,
+    "region": "valthera",
+    "coordinates": { "x": 2, "y": -1 },
+    "emoji": "⛏️",
+    "color": 9807270,
+    "tags": ["donjon", "mines", "souterrain", "trésor"]
+  },
+  {
+    "id": "moonlit-glade",
+    "name": "Clairière au Clair de Lune",
+    "description": "Une clairière enchantée où la lumière de la lune semble toujours briller. Les druides viennent y méditer.",
+    "shortDescription": "Clairière magique baignée de lumière lunaire.",
+    "type": "wilderness",
+    "level": { "min": 2, "max": 6, "recommended": 3 },
+    "safeZone": false,
+    "restingAllowed": true,
+    "encounterRate": 0.25,
+    "connectedZones": [
+      { "zoneId": "whispering-woods", "travelTime": 20, "travelCost": 0 },
+      { "zoneId": "druid-grove", "travelTime": 30, "travelCost": 0, "requirements": { "quest": "druid-initiation" }, "hidden": true }
+    ],
+    "monsters": [
+      { "monsterId": "blink-dog", "spawnChance": 20, "minCount": 1, "maxCount": 2 },
+      { "monsterId": "sprite", "spawnChance": 30, "minCount": 2, "maxCount": 4 },
+      { "monsterId": "owlbear", "spawnChance": 15, "minCount": 1, "maxCount": 1, "conditions": { "timeOfDay": ["night"] } }
+    ],
+    "npcs": [
+      { "npcId": "moonwhisper", "name": "Sage Lunemurmure", "type": "questgiver", "location": "Pierre de Lune" }
+    ],
+    "resources": [
+      { "resourceId": "moonflower", "gatherChance": 40, "minQuantity": 1, "maxQuantity": 2, "skill": "nature", "skillDC": 14 }
+    ],
+    "pointsOfInterest": [
+      { "id": "moonstone", "name": "Pierre de Lune", "description": "Un menhir ancien rayonnant de magie lunaire.", "type": "landmark", "discoverable": false }
+    ],
+    "environment": {
+      "lighting": "bright",
+      "terrain": "normal"
+    },
+    "weatherEffects": true,
+    "region": "valthera",
+    "coordinates": { "x": -3, "y": 2 },
+    "emoji": "🌙",
+    "color": 12370112,
+    "tags": ["clairière", "magie", "druides", "fées"]
+  },
+  {
+    "id": "eastern-road",
+    "name": "Route de l'Est",
+    "description": "La route commerciale principale menant vers les royaumes de l'est. Des patrouilles la surveillent, mais les bandits restent un danger.",
+    "shortDescription": "Route commerciale vers l'est.",
+    "type": "wilderness",
+    "level": { "min": 1, "max": 4, "recommended": 2 },
+    "safeZone": false,
+    "restingAllowed": true,
+    "encounterRate": 0.2,
+    "connectedZones": [
+      { "zoneId": "val-serein", "travelTime": 20, "travelCost": 0 },
+      { "zoneId": "crossroads-inn", "travelTime": 40, "travelCost": 0 },
+      { "zoneId": "bandit-camp", "travelTime": 25, "travelCost": 0, "hidden": true, "requirements": { "quest": "bandit-threat" } }
+    ],
+    "monsters": [
+      { "monsterId": "bandit", "spawnChance": 35, "minCount": 2, "maxCount": 4 },
+      { "monsterId": "wolf", "spawnChance": 25, "minCount": 1, "maxCount": 2 },
+      { "monsterId": "traveling-merchant", "spawnChance": 15, "minCount": 1, "maxCount": 1 }
+    ],
+    "environment": {
+      "lighting": "normal",
+      "terrain": "normal"
+    },
+    "weatherEffects": true,
+    "region": "valthera",
+    "coordinates": { "x": 1, "y": 0 },
+    "emoji": "🛤️",
+    "color": 10070709,
+    "tags": ["route", "commerce", "bandits"]
+  }
+]

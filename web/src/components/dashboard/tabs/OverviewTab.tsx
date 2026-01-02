@@ -1,6 +1,7 @@
 'use client';
 
 import { Sword, Shield, Zap, Heart, Brain, Star, MapPin } from 'lucide-react';
+import { getZoneName } from '@/lib/gameData';
 
 interface OverviewTabProps {
   character: any;
@@ -119,11 +120,13 @@ export function OverviewTab({ character }: OverviewTabProps) {
             </div>
             <div>
               <div className="text-white font-medium">
-                {character.location?.zoneId?.replace(/_/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase()) || 'Inconnu'}
+                {/* Bot stores location as string (zone ID), not object */}
+                {typeof character.location === 'string' 
+                  ? getZoneName(character.location)
+                  : character.location?.zoneId 
+                    ? getZoneName(character.location.zoneId)
+                    : 'Inconnu'}
               </div>
-              {character.location?.subZone && (
-                <div className="text-sm text-gray-400">{character.location.subZone}</div>
-              )}
             </div>
           </div>
         </div>
