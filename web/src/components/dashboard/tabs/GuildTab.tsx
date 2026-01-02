@@ -1,11 +1,11 @@
 'use client';
 
 import { Shield, Users, Crown, Star, Coins } from 'lucide-react';
-import type { IGuild, ICharacter } from '@/lib/models';
+import type { IGuild } from '@/lib/models';
 
 interface GuildTabProps {
   guild: IGuild | null;
-  character: ICharacter;
+  character: any;
 }
 
 export function GuildTab({ guild, character }: GuildTabProps) {

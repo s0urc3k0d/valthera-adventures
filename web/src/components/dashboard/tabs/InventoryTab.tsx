@@ -1,10 +1,9 @@
 'use client';
 
 import { Package, Sword, Shield, FlaskConical, Scroll, Gem } from 'lucide-react';
-import type { ICharacter } from '@/lib/models';
 
 interface InventoryTabProps {
-  character: ICharacter;
+  character: any;
 }
 
 // Mapping des types d'items vers icônes et couleurs
@@ -30,8 +29,8 @@ export function InventoryTab({ character }: InventoryTabProps) {
   // TODO: Charger les détails des items depuis la base de données
   const inventory = character.inventory || [];
 
-  const equippedItems = inventory.filter((item) => item.equipped);
-  const bagItems = inventory.filter((item) => !item.equipped);
+  const equippedItems = inventory.filter((item: any) => item.equipped);
+  const bagItems = inventory.filter((item: any) => !item.equipped);
 
   return (
     <div className="space-y-6">
@@ -46,7 +45,7 @@ export function InventoryTab({ character }: InventoryTabProps) {
           <div className="text-sm text-valthera-200/60 font-body">Équipés</div>
         </div>
         <div className="card p-4 text-center">
-          <div className="text-2xl font-bold text-valthera-400">{character.gold.toLocaleString()}</div>
+          <div className="text-2xl font-bold text-valthera-400">{(character.goldTotal || 0).toLocaleString()}</div>
           <div className="text-sm text-valthera-200/60 font-body">Or</div>
         </div>
         <div className="card p-4 text-center">
@@ -63,7 +62,7 @@ export function InventoryTab({ character }: InventoryTabProps) {
 
         {bagItems.length > 0 ? (
           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {bagItems.map((item, index) => {
+            {bagItems.map((item: any, index: number) => {
               const config = itemTypeConfig.default;
               const Icon = config.icon;
               const rarity = rarityConfig.common;

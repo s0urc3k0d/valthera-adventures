@@ -1,10 +1,10 @@
 'use client';
 
 import { ScrollText, CheckCircle, Clock, XCircle } from 'lucide-react';
-import type { IQuest } from '@/lib/models';
+import type { ICharacterQuest } from '@/lib/models';
 
 interface QuestsTabProps {
-  quests: IQuest[];
+  quests: ICharacterQuest[];
 }
 
 const statusConfig = {
@@ -18,8 +18,8 @@ export function QuestsTab({ quests }: QuestsTabProps) {
   const completedQuests = quests.filter((q) => q.status === 'completed');
   const failedQuests = quests.filter((q) => q.status === 'failed');
 
-  const QuestCard = ({ quest }: { quest: IQuest }) => {
-    const config = statusConfig[quest.status];
+  const QuestCard = ({ quest }: { quest: ICharacterQuest }) => {
+    const config = statusConfig[quest.status as keyof typeof statusConfig] || statusConfig.active;
     const Icon = config.icon;
 
     // Calculer la progression

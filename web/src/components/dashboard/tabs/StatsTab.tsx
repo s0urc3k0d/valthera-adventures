@@ -12,10 +12,8 @@ import {
   ShoppingCart,
   ScrollText
 } from 'lucide-react';
-import type { ICharacter } from '@/lib/models';
-
 interface StatsTabProps {
-  character: ICharacter;
+  character: any;
 }
 
 export function StatsTab({ character }: StatsTabProps) {

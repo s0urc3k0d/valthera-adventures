@@ -24,6 +24,20 @@ function normalizeCharacter(char: any) {
     charisma: attrs.cha ?? attrs.charisma ?? 10,
   };
 
+  // Extract equipped items from inventory
+  const inventory = char.inventory || [];
+  const getEquippedItem = (slots: string[]) => {
+    const item = inventory.find((i: any) => i.equipped && slots.includes(i.slot));
+    return item ? (item.customName || item.itemId) : null;
+  };
+
+  // Build equipment object with item names
+  const equipment = {
+    weapon: getEquippedItem(['mainHand', 'offHand']),
+    armor: getEquippedItem(['chest', 'head', 'legs', 'feet', 'hands']),
+    accessory: getEquippedItem(['ring1', 'ring2', 'amulet', 'belt', 'cape']),
+  };
+
   return {
     ...char,
     // Health: bot uses 'hp', web expects 'health'
@@ -32,6 +46,8 @@ function normalizeCharacter(char: any) {
     mana: char.mana || { current: 0, max: 0 },
     // Stats in web format (full names)
     stats,
+    // Equipment with item names
+    equipment,
     // Gold: bot uses object, normalize to number
     goldTotal: typeof char.gold === 'number' 
       ? char.gold 
@@ -169,7 +185,7 @@ export function DashboardTabs({ character: rawCharacter, quests, guild, user }: 
           {/* Gold */}
           <div className="text-center md:text-right">
             <div className="text-3xl font-bold text-gradient-gold font-medieval">
-              {character.gold.toLocaleString()}
+              {(character.goldTotal || 0).toLocaleString()}
             </div>
             <div className="text-sm text-valthera-200/60 font-body">Pièces d'or</div>
           </div>

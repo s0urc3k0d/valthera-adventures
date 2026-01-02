@@ -1,10 +1,9 @@
 'use client';
 
 import { Sword, Shield, Zap, Heart, Brain, Star, MapPin } from 'lucide-react';
-import type { ICharacter } from '@/lib/models';
 
 interface OverviewTabProps {
-  character: ICharacter;
+  character: any;
 }
 
 const statIcons: Record<string, any> = {
@@ -38,7 +37,7 @@ export function OverviewTab({ character }: OverviewTabProps) {
         <div className="card p-6">
           <h2 className="text-xl font-bold text-valthera-100 font-medieval mb-6">Caractéristiques</h2>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {Object.entries(character.stats).map(([stat, value]) => {
+            {Object.entries(character.stats).map(([stat, value]: [string, any]) => {
               const Icon = statIcons[stat] || Sword;
               return (
                 <div
@@ -120,9 +119,9 @@ export function OverviewTab({ character }: OverviewTabProps) {
             </div>
             <div>
               <div className="text-white font-medium">
-                {character.location.zoneId.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase())}
+                {character.location?.zoneId?.replace(/_/g, ' ').replace(/\b\w/g, (c: string) => c.toUpperCase()) || 'Inconnu'}
               </div>
-              {character.location.subZone && (
+              {character.location?.subZone && (
                 <div className="text-sm text-gray-400">{character.location.subZone}</div>
               )}
             </div>
@@ -132,9 +131,9 @@ export function OverviewTab({ character }: OverviewTabProps) {
         {/* Compétences */}
         <div className="card p-6">
           <h2 className="text-xl font-bold text-white font-medieval mb-4">Compétences</h2>
-          {character.skills.length > 0 ? (
+          {character.skills?.length > 0 ? (
             <div className="flex flex-wrap gap-2">
-              {character.skills.map((skill) => (
+              {character.skills.map((skill: any) => (
                 <span key={skill} className="badge-primary">
                   {skill}
                 </span>
@@ -148,9 +147,9 @@ export function OverviewTab({ character }: OverviewTabProps) {
         {/* Sorts */}
         <div className="card p-6">
           <h2 className="text-xl font-bold text-white font-medieval mb-4">Sorts</h2>
-          {character.spells.length > 0 ? (
+          {character.spells?.length > 0 ? (
             <div className="flex flex-wrap gap-2">
-              {character.spells.map((spell) => (
+              {character.spells.map((spell: any) => (
                 <span key={spell} className="badge bg-blue-500/20 text-blue-300">
                   {spell}
                 </span>
@@ -164,9 +163,9 @@ export function OverviewTab({ character }: OverviewTabProps) {
         {/* Capacités */}
         <div className="card p-6">
           <h2 className="text-xl font-bold text-white font-medieval mb-4">Capacités</h2>
-          {character.abilities.length > 0 ? (
+          {character.abilities?.length > 0 ? (
             <div className="flex flex-wrap gap-2">
-              {character.abilities.map((ability) => (
+              {character.abilities.map((ability: any) => (
                 <span key={ability} className="badge bg-amber-500/20 text-amber-300">
                   {ability}
                 </span>
