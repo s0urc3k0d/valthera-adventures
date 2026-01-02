@@ -2,8 +2,9 @@ import mongoose from 'mongoose';
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
-if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable');
+// Ne pas lancer d'erreur pendant le build Next.js
+if (!MONGODB_URI && process.env.NODE_ENV !== 'production') {
+  console.warn('MONGODB_URI not defined - this is expected during build');
 }
 
 interface MongooseCache {
@@ -22,6 +23,10 @@ if (!global.mongoose) {
 }
 
 export async function connectDB(): Promise<typeof mongoose> {
+  if (!MONGODB_URI) {
+    throw new Error('Please define the MONGODB_URI environment variable');
+  }
+  
   if (cached.conn) {
     return cached.conn;
   }

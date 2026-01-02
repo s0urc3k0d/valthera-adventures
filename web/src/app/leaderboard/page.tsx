@@ -2,6 +2,8 @@ import { Trophy, Medal, Crown, Coins, Sword, ScrollText } from 'lucide-react';
 import { connectDB } from '@/lib/mongodb';
 import { Character, Guild } from '@/lib/models';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata = {
   title: 'Classements',
   description: 'Les meilleurs aventuriers de Valthera',
