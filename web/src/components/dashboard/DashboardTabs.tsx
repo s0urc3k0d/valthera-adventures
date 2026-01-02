@@ -9,11 +9,39 @@ import { InventoryTab } from './tabs/InventoryTab';
 import { QuestsTab } from './tabs/QuestsTab';
 import { StatsTab } from './tabs/StatsTab';
 import { GuildTab } from './tabs/GuildTab';
-import type { ICharacter, IQuest, IGuild } from '@/lib/models';
+import type { ICharacter, IGuild, ICharacterQuest } from '@/lib/models';
+
+// Normaliser les données du personnage pour gérer les différences entre bot et web models
+function normalizeCharacter(char: any) {
+  // Get stats from attributes (bot) or stats (web)
+  const attrs = char.attributes || char.stats || {};
+  const stats = {
+    strength: attrs.str ?? attrs.strength ?? 10,
+    dexterity: attrs.dex ?? attrs.dexterity ?? 10,
+    constitution: attrs.con ?? attrs.constitution ?? 10,
+    intelligence: attrs.int ?? attrs.intelligence ?? 10,
+    wisdom: attrs.wis ?? attrs.wisdom ?? 10,
+    charisma: attrs.cha ?? attrs.charisma ?? 10,
+  };
+
+  return {
+    ...char,
+    // Health: bot uses 'hp', web expects 'health'
+    health: char.health || char.hp || { current: 10, max: 10 },
+    // Mana: bot might not have mana for all classes
+    mana: char.mana || { current: 0, max: 0 },
+    // Stats in web format (full names)
+    stats,
+    // Gold: bot uses object, normalize to number
+    goldTotal: typeof char.gold === 'number' 
+      ? char.gold 
+      : (char.gold?.copper || 0) + (char.gold?.silver || 0) * 10 + (char.gold?.gold || 0) * 100 + (char.gold?.platinum || 0) * 1000,
+  };
+}
 
 interface DashboardTabsProps {
-  character: ICharacter;
-  quests: IQuest[];
+  character: any; // Using any to handle both formats
+  quests: ICharacterQuest[];
   guild: IGuild | null;
   user: {
     name?: string | null;
@@ -30,8 +58,11 @@ const tabs = [
   { id: 'guild', label: 'Guilde', icon: ShieldCheck },
 ];
 
-export function DashboardTabs({ character, quests, guild, user }: DashboardTabsProps) {
+export function DashboardTabs({ character: rawCharacter, quests, guild, user }: DashboardTabsProps) {
   const [activeTab, setActiveTab] = useState('overview');
+  
+  // Normaliser les données du personnage
+  const character = normalizeCharacter(rawCharacter);
 
   const renderTabContent = () => {
     switch (activeTab) {
