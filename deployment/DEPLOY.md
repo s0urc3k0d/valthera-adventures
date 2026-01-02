@@ -116,25 +116,51 @@ DOMAIN=valthera-adventures.sourcekod.fr
 openssl rand -base64 32
 ```
 
-### 4. Initialiser SSL
+### 4. Configurer Nginx (sur l'hôte)
+
+Copier la configuration Nginx :
 ```bash
-chmod +x scripts/deploy.sh
-./scripts/deploy.sh init
+# Copier le fichier de configuration
+sudo cp nginx/valthera-adventures.conf /etc/nginx/sites-available/
+
+# Activer le site
+sudo ln -s /etc/nginx/sites-available/valthera-adventures.conf /etc/nginx/sites-enabled/
+
+# Tester la configuration
+sudo nginx -t
+
+# Recharger Nginx
+sudo systemctl reload nginx
 ```
 
-### 5. Déployer l'Application
+### 5. Obtenir le Certificat SSL
+
 ```bash
-./scripts/deploy.sh deploy
+# Installer certbot si nécessaire
+sudo apt install certbot python3-certbot-nginx -y
+
+# Obtenir le certificat SSL
+sudo certbot --nginx -d valthera-adventures.sourcekod.fr -d www.valthera-adventures.sourcekod.fr
 ```
 
-### 6. Obtenir le Certificat SSL
+### 6. Démarrer l'Application
+
 ```bash
-./scripts/deploy.sh ssl
+# Lancer les conteneurs Docker
+docker compose -f docker-compose.prod.yml up -d --build
+
+# Vérifier que tout fonctionne
+docker compose -f docker-compose.prod.yml ps
 ```
 
 ### 7. Déployer les Commandes Discord
+
 ```bash
-./scripts/deploy.sh commands
+# Attendre que le bot soit démarré (30 secondes)
+sleep 30
+
+# Enregistrer les commandes slash
+docker compose -f docker-compose.prod.yml exec bot node scripts/deploy-commands.js
 ```
 
 ---
@@ -142,22 +168,34 @@ chmod +x scripts/deploy.sh
 ## Commandes Utiles
 
 ```bash
-# Voir les logs
-./scripts/deploy.sh logs
+# Voir les logs (tous les services)
+docker compose -f docker-compose.prod.yml logs -f
+
+# Voir les logs d'un service spécifique
+docker compose -f docker-compose.prod.yml logs -f bot
+docker compose -f docker-compose.prod.yml logs -f web
+docker compose -f docker-compose.prod.yml logs -f mongo
 
 # Redémarrer les services
-./scripts/deploy.sh restart
+docker compose -f docker-compose.prod.yml restart
 
 # Arrêter les services
-./scripts/deploy.sh stop
+docker compose -f docker-compose.prod.yml down
 
 # Voir le statut
-./scripts/deploy.sh status
+docker compose -f docker-compose.prod.yml ps
 
 # Mettre à jour
 git pull
-./scripts/deploy.sh deploy
-./scripts/deploy.sh commands
+docker compose -f docker-compose.prod.yml up -d --build
+docker compose -f docker-compose.prod.yml exec bot node scripts/deploy-commands.js
+```
+
+### Script d'aide (optionnel)
+Vous pouvez aussi utiliser le script `./scripts/deploy.sh` qui encapsule ces commandes :
+```bash
+chmod +x scripts/deploy.sh
+./scripts/deploy.sh help
 ```
 
 ---
@@ -182,7 +220,7 @@ git pull
           ▼                               ▼
 ┌─────────────────────┐       ┌─────────────────────┐
 │   Web App (Next.js) │       │   Bot Discord       │
-│      Port 3001      │       │   (Discord.js)      │
+│      Port 3080      │       │   (Discord.js)      │
 └──────────┬──────────┘       └──────────┬──────────┘
            │                             │
            └──────────────┬──────────────┘
