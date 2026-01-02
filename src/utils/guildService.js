@@ -591,7 +591,7 @@ export async function withdrawGold(guildId, playerId, amount) {
   }
 }
 
-export default {
+export {
   createGuild,
   inviteToGuild,
   acceptGuildInvite,
