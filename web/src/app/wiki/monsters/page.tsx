@@ -157,7 +157,7 @@ export default function MonstersPage() {
     ? monsters 
     : monsters.filter(m => m.type === filterType);
 
-  const types = ['all', ...new Set(monsters.map(m => m.type))];
+  const types = ['all', ...Array.from(new Set(monsters.map(m => m.type)))];
 
   return (
     <div className="min-h-screen bg-valthera-950">

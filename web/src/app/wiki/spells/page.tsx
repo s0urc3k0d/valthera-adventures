@@ -87,7 +87,7 @@ export default function SpellsPage() {
   const [filterClass, setFilterClass] = useState<string>('all');
   const [selectedSpell, setSelectedSpell] = useState<Spell | null>(null);
 
-  const allClasses = [...new Set(spells.flatMap(s => s.classes))].sort();
+  const allClasses = Array.from(new Set(spells.flatMap(s => s.classes))).sort();
   
   const filteredSpells = spells.filter(spell => {
     if (filterLevel !== null && spell.level !== filterLevel) return false;
