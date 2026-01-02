@@ -1,6 +1,7 @@
 #!/bin/bash
 # ===========================================
 # Script de déploiement Valthera Adventures
+# Pour VPS Ubuntu avec Nginx existant
 # ===========================================
 
 set -e
@@ -11,6 +12,11 @@ GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
+
+# Configuration
+DOMAIN="valthera-adventures.sourcekod.fr"
+APP_DIR="/opt/valthera-adventures"
+DEPLOY_DIR="$APP_DIR/deployment"
 
 # Fonction d'affichage
 log() {
@@ -38,74 +44,58 @@ check_prerequisites() {
         error "Docker n'est pas installé"
     fi
     
-    if ! command -v docker-compose &> /dev/null && ! docker compose version &> /dev/null; then
+    if ! docker compose version &> /dev/null; then
         error "Docker Compose n'est pas installé"
     fi
     
-    if [ ! -f ".env" ]; then
-        error "Fichier .env manquant. Copiez .env.example vers .env et configurez-le"
+    if ! command -v nginx &> /dev/null; then
+        error "Nginx n'est pas installé"
+    fi
+    
+    if [ ! -f "$DEPLOY_DIR/.env" ]; then
+        error "Fichier .env manquant dans $DEPLOY_DIR"
     fi
     
     success "Prérequis vérifiés"
 }
 
-# Configuration initiale SSL
-init_ssl() {
-    log "Initialisation des certificats SSL..."
+# Configuration Nginx
+setup_nginx() {
+    log "Configuration de Nginx..."
     
-    DOMAIN="valthera-adventures.sourcekod.fr"
-    EMAIL="admin@sourcekod.fr"  # Modifiez avec votre email
+    # Copier la configuration
+    sudo cp "$DEPLOY_DIR/nginx/valthera-adventures.conf" /etc/nginx/sites-available/
     
-    # Créer les dossiers nécessaires
-    mkdir -p certbot/conf certbot/www
-    
-    # Télécharger les options SSL recommandées
-    if [ ! -f "certbot/conf/options-ssl-nginx.conf" ]; then
-        curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot-nginx/certbot_nginx/_internal/tls_configs/options-ssl-nginx.conf > certbot/conf/options-ssl-nginx.conf
+    # Créer le lien symbolique si nécessaire
+    if [ ! -L /etc/nginx/sites-enabled/valthera-adventures.conf ]; then
+        sudo ln -s /etc/nginx/sites-available/valthera-adventures.conf /etc/nginx/sites-enabled/
     fi
     
-    if [ ! -f "certbot/conf/ssl-dhparams.pem" ]; then
-        curl -s https://raw.githubusercontent.com/certbot/certbot/master/certbot/certbot/ssl-dhparams.pem > certbot/conf/ssl-dhparams.pem
-    fi
+    # Créer le dossier pour certbot
+    sudo mkdir -p /var/www/certbot
     
-    # Créer un certificat temporaire si nécessaire
-    if [ ! -d "certbot/conf/live/$DOMAIN" ]; then
-        log "Création d'un certificat temporaire..."
-        mkdir -p certbot/conf/live/$DOMAIN
-        openssl req -x509 -nodes -newkey rsa:4096 -days 1 \
-            -keyout "certbot/conf/live/$DOMAIN/privkey.pem" \
-            -out "certbot/conf/live/$DOMAIN/fullchain.pem" \
-            -subj "/CN=localhost" 2>/dev/null
-    fi
+    # Tester la configuration
+    sudo nginx -t
     
-    success "SSL initialisé"
+    # Recharger Nginx
+    sudo systemctl reload nginx
+    
+    success "Nginx configuré"
 }
 
-# Obtenir un vrai certificat Let's Encrypt
-get_ssl_certificate() {
-    log "Obtention du certificat Let's Encrypt..."
+# Obtenir certificat SSL
+get_ssl() {
+    log "Obtention du certificat SSL Let's Encrypt..."
     
-    DOMAIN="valthera-adventures.sourcekod.fr"
-    EMAIL="admin@sourcekod.fr"  # Modifiez avec votre email
+    # Vérifier si certbot est installé
+    if ! command -v certbot &> /dev/null; then
+        log "Installation de Certbot..."
+        sudo apt update
+        sudo apt install -y certbot python3-certbot-nginx
+    fi
     
-    # Démarrer nginx temporairement
-    docker compose -f docker-compose.prod.yml up -d nginx
-    
-    # Supprimer le certificat temporaire
-    rm -rf certbot/conf/live/$DOMAIN
-    
-    # Obtenir le vrai certificat
-    docker compose -f docker-compose.prod.yml run --rm certbot certonly \
-        --webroot \
-        --webroot-path=/var/www/certbot \
-        --email $EMAIL \
-        --agree-tos \
-        --no-eff-email \
-        -d $DOMAIN \
-        -d www.$DOMAIN
-    
-    # Redémarrer nginx
-    docker compose -f docker-compose.prod.yml restart nginx
+    # Obtenir le certificat
+    sudo certbot --nginx -d $DOMAIN -d www.$DOMAIN --non-interactive --agree-tos --email admin@sourcekod.fr
     
     success "Certificat SSL obtenu"
 }
@@ -114,21 +104,23 @@ get_ssl_certificate() {
 deploy() {
     log "Construction et démarrage des conteneurs..."
     
-    # Pull des dernières images de base
-    docker compose -f docker-compose.prod.yml pull mongo nginx certbot
+    cd "$DEPLOY_DIR"
+    
+    # Pull de l'image MongoDB
+    docker compose pull mongo
     
     # Build des images personnalisées
-    docker compose -f docker-compose.prod.yml build --no-cache
+    docker compose build --no-cache
     
     # Démarrer les services
-    docker compose -f docker-compose.prod.yml up -d
+    docker compose up -d
     
     # Attendre que les services soient prêts
     log "Attente du démarrage des services..."
-    sleep 10
+    sleep 15
     
     # Vérifier le statut
-    docker compose -f docker-compose.prod.yml ps
+    docker compose ps
     
     success "Déploiement terminé"
 }
@@ -136,23 +128,41 @@ deploy() {
 # Déployer les commandes Discord
 deploy_commands() {
     log "Déploiement des commandes Discord..."
-    docker compose -f docker-compose.prod.yml exec bot node src/scripts/deploy-commands.js
+    cd "$DEPLOY_DIR"
+    docker compose exec bot node src/scripts/deploy-commands.js
     success "Commandes Discord déployées"
+}
+
+# Mise à jour
+update() {
+    log "Mise à jour de l'application..."
+    
+    cd "$APP_DIR"
+    git pull origin main
+    
+    cd "$DEPLOY_DIR"
+    docker compose build --no-cache
+    docker compose up -d
+    
+    success "Application mise à jour"
 }
 
 # Afficher les logs
 show_logs() {
-    docker compose -f docker-compose.prod.yml logs -f
+    cd "$DEPLOY_DIR"
+    docker compose logs -f "$@"
 }
 
 # Menu principal
 case "$1" in
-    init)
+    check)
         check_prerequisites
-        init_ssl
+        ;;
+    nginx)
+        setup_nginx
         ;;
     ssl)
-        get_ssl_certificate
+        get_ssl
         ;;
     deploy)
         check_prerequisites
@@ -161,23 +171,42 @@ case "$1" in
     commands)
         deploy_commands
         ;;
+    update)
+        update
+        ;;
     logs)
-        show_logs
+        shift
+        show_logs "$@"
         ;;
     restart)
-        docker compose -f docker-compose.prod.yml restart
+        cd "$DEPLOY_DIR"
+        docker compose restart
         ;;
     stop)
-        docker compose -f docker-compose.prod.yml down
+        cd "$DEPLOY_DIR"
+        docker compose down
         ;;
     status)
-        docker compose -f docker-compose.prod.yml ps
+        cd "$DEPLOY_DIR"
+        docker compose ps
         ;;
     *)
-        echo "Usage: $0 {init|ssl|deploy|commands|logs|restart|stop|status}"
+        echo "Usage: $0 {check|nginx|ssl|deploy|commands|update|logs|restart|stop|status}"
         echo ""
         echo "Commandes disponibles:"
-        echo "  init     - Initialiser SSL avec certificat temporaire"
+        echo "  check    - Vérifier les prérequis"
+        echo "  nginx    - Configurer Nginx"
+        echo "  ssl      - Obtenir certificat Let's Encrypt"
+        echo "  deploy   - Construire et démarrer les conteneurs"
+        echo "  commands - Déployer les commandes Discord"
+        echo "  update   - Mettre à jour depuis Git"
+        echo "  logs     - Afficher les logs (ex: logs bot, logs web)"
+        echo "  restart  - Redémarrer tous les services"
+        echo "  stop     - Arrêter tous les services"
+        echo "  status   - Afficher le statut des services"
+        exit 1
+        ;;
+esac
         echo "  ssl      - Obtenir un certificat Let's Encrypt"
         echo "  deploy   - Construire et démarrer les conteneurs"
         echo "  commands - Déployer les commandes Discord"
