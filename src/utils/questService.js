@@ -430,34 +430,34 @@ export function getAllReputations(character) {
 /**
  * Vérifie si un objectif de type "talk" est valide
  */
-export function checkTalkObjective(character, npcId) {
-  return updateQuestProgress(character, 'talk', npcId, 1);
+export async function checkTalkObjective(character, npcId) {
+  return await updateQuestProgress(character, 'talk', npcId, 1);
 }
 
 /**
  * Vérifie si un objectif de type "kill" est valide
  */
-export function checkKillObjective(character, monsterId) {
-  return updateQuestProgress(character, 'kill', monsterId, 1);
+export async function checkKillObjective(character, monsterId) {
+  return await updateQuestProgress(character, 'kill', monsterId, 1);
 }
 
 /**
  * Vérifie si un objectif de type "reach" est valide
  */
-export function checkReachObjective(character, zoneId) {
-  return updateQuestProgress(character, 'reach', zoneId, 1);
+export async function checkReachObjective(character, zoneId) {
+  return await updateQuestProgress(character, 'reach', zoneId, 1);
 }
 
 /**
  * Vérifie si un objectif de type "explore" est valide
  */
-export function checkExploreObjective(character, target) {
-  return updateQuestProgress(character, 'explore', target, 1);
+export async function checkExploreObjective(character, target) {
+  return await updateQuestProgress(character, 'explore', target, 1);
 }
 
 /**
  * Vérifie si un objectif de type "collect" est valide
  */
-export function checkCollectObjective(character, itemId, amount = 1) {
-  return updateQuestProgress(character, 'collect', itemId, amount);
+export async function checkCollectObjective(character, itemId, amount = 1) {
+  return await updateQuestProgress(character, 'collect', itemId, amount);
 }
