@@ -335,7 +335,7 @@ async function showEquipment(interaction, session, isUpdate = false) {
   const components = [
     createNavigationRow(session),
     createEquipmentActionsRow(equippedItems),
-  ];
+  ].filter(Boolean);
   
   const payload = { embeds: [embed], components };
   
@@ -761,9 +761,9 @@ function createUseItemMenu(items) {
 }
 
 function createEquipmentActionsRow(equippedItems) {
-  return new ActionRowBuilder().addComponents(
-    button('inventory:view', '◀️ Retour', { style: 'secondary' }),
-  );
+  // Note: Le bouton retour n'est plus nécessaire car createNavigationRow 
+  // contient déjà le bouton "Inventaire" qui sert de retour
+  return null;
 }
 
 // ============================================================
