@@ -46,7 +46,7 @@ async function deployCommands() {
     // Note: Les commandes globales peuvent prendre jusqu'à 1h pour se propager
     if (process.env.NODE_ENV === 'production') {
       const data = await rest.put(
-        Routes.applicationCommands(process.env.CLIENT_ID),
+        Routes.applicationCommands(process.env.DISCORD_CLIENT_ID),
         { body: commands }
       );
       console.log(`✅ ${data.length} commandes déployées globalement!`);
@@ -59,7 +59,7 @@ async function deployCommands() {
       }
       
       const data = await rest.put(
-        Routes.applicationGuildCommands(process.env.CLIENT_ID, process.env.GUILD_ID),
+        Routes.applicationGuildCommands(process.env.DISCORD_CLIENT_ID, process.env.GUILD_ID),
         { body: commands }
       );
       console.log(`✅ ${data.length} commandes déployées sur le serveur de développement!`);
