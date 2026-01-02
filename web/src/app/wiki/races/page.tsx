@@ -3,7 +3,35 @@
 import Link from 'next/link';
 import { useState } from 'react';
 
-const races = [
+interface Feature {
+  name: string;
+  description: string;
+}
+
+interface Subrace {
+  id: string;
+  name: string;
+  emoji: string;
+  description: string;
+  bonusAbilities: Record<string, number>;
+  features: Feature[];
+}
+
+interface Race {
+  id: string;
+  name: string;
+  emoji: string;
+  description: string;
+  traits: string[];
+  abilities: Record<string, number>;
+  features: Feature[];
+  languages: string[];
+  speed: number;
+  size: string;
+  subraces: Subrace[];
+}
+
+const races: Race[] = [
   {
     id: 'human',
     name: 'Humain',
