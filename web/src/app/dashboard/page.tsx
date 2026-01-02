@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/api/auth/[...nextauth]/route';
+import { authOptions } from '@/lib/auth';
 import { DashboardTabs } from '@/components/dashboard/DashboardTabs';
 import { connectDB } from '@/lib/mongodb';
 import { Character, Quest, Guild } from '@/lib/models';
