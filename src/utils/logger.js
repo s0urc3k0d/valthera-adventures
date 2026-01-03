@@ -1,11 +1,24 @@
 import winston from 'winston';
 import DailyRotateFile from 'winston-daily-rotate-file';
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const logsDir = path.join(__dirname, '../../logs');
+
+// Vérifier si on peut écrire dans le dossier logs
+let canWriteLogs = false;
+try {
+  if (!fs.existsSync(logsDir)) {
+    fs.mkdirSync(logsDir, { recursive: true });
+  }
+  fs.accessSync(logsDir, fs.constants.W_OK);
+  canWriteLogs = true;
+} catch (err) {
+  console.warn(`⚠️ Cannot write to logs directory: ${logsDir}. File logging disabled.`);
+}
 
 // Format personnalisé pour la console
 const consoleFormat = winston.format.combine(
@@ -24,40 +37,45 @@ const fileFormat = winston.format.combine(
   winston.format.json()
 );
 
-// Configuration des transports
+// Configuration des transports - toujours la console
 const transports = [
-  // Console
   new winston.transports.Console({
     format: consoleFormat,
     level: process.env.LOG_LEVEL || 'debug',
   }),
-  
-  // Fichier pour toutes les logs
-  new DailyRotateFile({
-    filename: path.join(logsDir, 'valthera-%DATE%.log'),
-    datePattern: 'YYYY-MM-DD',
-    format: fileFormat,
-    maxSize: '20m',
-    maxFiles: '14d',
-    level: 'info',
-  }),
-  
-  // Fichier pour les erreurs uniquement
-  new DailyRotateFile({
-    filename: path.join(logsDir, 'error-%DATE%.log'),
-    datePattern: 'YYYY-MM-DD',
-    format: fileFormat,
-    maxSize: '20m',
-    maxFiles: '30d',
-    level: 'error',
-  }),
 ];
 
+// Ajouter les fichiers seulement si on peut écrire
+if (canWriteLogs) {
+  transports.push(
+    new DailyRotateFile({
+      filename: path.join(logsDir, 'valthera-%DATE%.log'),
+      datePattern: 'YYYY-MM-DD',
+      format: fileFormat,
+      maxSize: '20m',
+      maxFiles: '14d',
+      level: 'info',
+    }),
+    new DailyRotateFile({
+      filename: path.join(logsDir, 'error-%DATE%.log'),
+      datePattern: 'YYYY-MM-DD',
+      format: fileFormat,
+      maxSize: '20m',
+      maxFiles: '30d',
+      level: 'error',
+    })
+  );
+}
+
 // Création du logger
-const logger = winston.createLogger({
+const loggerOptions = {
   level: process.env.LOG_LEVEL || 'info',
   transports,
-  exceptionHandlers: [
+};
+
+// Ajouter les handlers d'exceptions seulement si on peut écrire
+if (canWriteLogs) {
+  loggerOptions.exceptionHandlers = [
     new DailyRotateFile({
       filename: path.join(logsDir, 'exceptions-%DATE%.log'),
       datePattern: 'YYYY-MM-DD',
@@ -65,8 +83,8 @@ const logger = winston.createLogger({
       maxSize: '20m',
       maxFiles: '30d',
     }),
-  ],
-  rejectionHandlers: [
+  ];
+  loggerOptions.rejectionHandlers = [
     new DailyRotateFile({
       filename: path.join(logsDir, 'rejections-%DATE%.log'),
       datePattern: 'YYYY-MM-DD',
@@ -74,8 +92,10 @@ const logger = winston.createLogger({
       maxSize: '20m',
       maxFiles: '30d',
     }),
-  ],
-});
+  ];
+}
+
+const logger = winston.createLogger(loggerOptions);
 
 // Méthodes helper pour les catégories de log
 logger.game = (message, meta = {}) => {
