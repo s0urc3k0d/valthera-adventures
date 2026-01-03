@@ -18,12 +18,15 @@ db.runCommand({
   validationLevel: 'moderate'
 });
 
-// Supprimer l'ancien index composite et créer le nouveau
-try {
-  db.characters.dropIndex({ userId: 1, guildId: 1 });
-  print('✅ Ancien index userId+guildId supprimé');
-} catch (e) {
-  print('ℹ️ Index userId+guildId non trouvé (déjà supprimé ou inexistant)');
+// Supprimer les anciens index obsolètes
+const oldIndexes = ['userId_1_guildId_1', 'odiscordUserId_1', 'discordUserId_1'];
+for (const indexName of oldIndexes) {
+  try {
+    db.characters.dropIndex(indexName);
+    print(`✅ Ancien index "${indexName}" supprimé`);
+  } catch (e) {
+    print(`ℹ️ Index "${indexName}" non trouvé (déjà supprimé ou inexistant)`);
+  }
 }
 
 // Créer le nouvel index unique sur userId seul
@@ -31,7 +34,11 @@ try {
   db.characters.createIndex({ userId: 1 }, { unique: true });
   print('✅ Nouvel index unique sur userId créé');
 } catch (e) {
-  print('ℹ️ Index userId existe déjà: ' + e.message);
+  if (e.code === 85 || e.code === 86) {
+    print('ℹ️ Index userId existe déjà');
+  } else {
+    print('⚠️ Erreur création index: ' + e.message);
+  }
 }
 
 print('✅ Validateur MongoDB mis à jour - guildId est maintenant optionnel');
