@@ -6,10 +6,10 @@ db.createCollection('characters', {
   validator: {
     $jsonSchema: {
       bsonType: 'object',
-      required: ['userId', 'guildId', 'name', 'race', 'class'],
+      required: ['userId', 'name', 'race', 'class'],
       properties: {
         userId: { bsonType: 'string' },
-        guildId: { bsonType: 'string' },
+        guildId: { bsonType: ['string', 'null'] },
         name: { bsonType: 'string', minLength: 2, maxLength: 32 },
         level: { bsonType: 'int', minimum: 1, maximum: 20 }
       }
@@ -23,8 +23,8 @@ db.createCollection('items');
 db.createCollection('quests');
 db.createCollection('zones');
 
-// Index pour les recherches fréquentes
-db.characters.createIndex({ userId: 1, guildId: 1 }, { unique: true });
+// Index pour les recherches fréquentes - userId unique (personnage partagé entre serveurs)
+db.characters.createIndex({ userId: 1 }, { unique: true });
 db.characters.createIndex({ level: -1 });
 db.characters.createIndex({ 'stats.monstersKilled': -1 });
 
